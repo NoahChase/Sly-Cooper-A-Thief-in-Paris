@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bkj2lgimxhtox"
+path="res://.godot/imported/paris_island_marais_cameracol.obj-5ba4f3f5c09347695533ce86e4f67d5a.mesh"
+
+[deps]
+
+files=["res://.godot/imported/paris_island_marais_cameracol.obj-5ba4f3f5c09347695533ce86e4f67d5a.mesh"]
+
+source_file="res://Assets/Objects/paris_island_marais_cameracol.obj"
+dest_files=["res://.godot/imported/paris_island_marais_cameracol.obj-5ba4f3f5c09347695533ce86e4f67d5a.mesh", "res://.godot/imported/paris_island_marais_cameracol.obj-5ba4f3f5c09347695533ce86e4f67d5a.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=false

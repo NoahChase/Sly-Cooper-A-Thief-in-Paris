@@ -1,0 +1,57 @@
+[gd_scene load_steps=3 format=3 uid="uid://bpmyxtyrehy6y"]
+
+[ext_resource type="PackedScene" uid="uid://di30owbxjuttf" path="res://Assets/Objects/paris_hero_classic_03_.blend" id="1_77y7g"]
+[ext_resource type="PackedScene" uid="uid://dnrakpid2nwcd" path="res://Assets/Objects/paris_detail_hotel_window.blend" id="2_kif4y"]
+
+[node name="paris_hero_classic_03_" type="Node3D"]
+
+[node name="paris_hero_classic_03_" parent="." instance=ExtResource("1_77y7g")]
+transform = Transform3D(7, 0, 0, 0, 7, 0, 0, 0, 7, 0, 0, 0)
+
+[node name="paris_detail_hotel_window" parent="." instance=ExtResource("2_kif4y")]
+transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, 11, 7, -5)
+
+[node name="paris_detail_hotel_window2" parent="." instance=ExtResource("2_kif4y")]
+transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, 5, 7, -5)
+
+[node name="paris_detail_hotel_window3" parent="." instance=ExtResource("2_kif4y")]
+transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, -5, 7, -5)
+
+[node name="paris_detail_hotel_window4" parent="." instance=ExtResource("2_kif4y")]
+transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, -11, 7, -5)
+
+[node name="paris_detail_hotel_window5" parent="." instance=ExtResource("2_kif4y")]
+transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, 11, 13, -2)
+
+[node name="paris_detail_hotel_window6" parent="." instance=ExtResource("2_kif4y")]
+transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, 5, 13, -2)
+
+[node name="paris_detail_hotel_window7" parent="." instance=ExtResource("2_kif4y")]
+transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, -5, 13, -2)
+
+[node name="paris_detail_hotel_window8" parent="." instance=ExtResource("2_kif4y")]
+transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, -11, 13, -2)
+
+[node name="paris_detail_hotel_window9" parent="." instance=ExtResource("2_kif4y")]
+transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, -10.5, 7, 5)
+
+[node name="paris_detail_hotel_window10" parent="." instance=ExtResource("2_kif4y")]
+transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, -4.5, 7, 5)
+
+[node name="paris_detail_hotel_window11" parent="." instance=ExtResource("2_kif4y")]
+transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, 5.5, 7, 5)
+
+[node name="paris_detail_hotel_window12" parent="." instance=ExtResource("2_kif4y")]
+transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, 11.5, 7, 5)
+
+[node name="paris_detail_hotel_window13" parent="." instance=ExtResource("2_kif4y")]
+transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, -10.5, 13, 2)
+
+[node name="paris_detail_hotel_window14" parent="." instance=ExtResource("2_kif4y")]
+transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, -4.5, 13, 2)
+
+[node name="paris_detail_hotel_window15" parent="." instance=ExtResource("2_kif4y")]
+transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, 5.5, 13, 2)
+
+[node name="paris_detail_hotel_window16" parent="." instance=ExtResource("2_kif4y")]
+transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, 11.5, 13, 2)

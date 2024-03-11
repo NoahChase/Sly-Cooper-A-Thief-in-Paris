@@ -1,0 +1,54 @@
+[gd_scene load_steps=7 format=3 uid="uid://d3ibkdws82a34"]
+
+[ext_resource type="PackedScene" uid="uid://dki2qttdigjub" path="res://Scenes/test_ball.tscn" id="2_5pd1k"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3e74x"]
+diffuse_mode = 3
+albedo_color = Color(0.533333, 0.447059, 0.376471, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_qtqx5"]
+size = Vector3(3.5, 0.33, 0.33)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_7kbnf"]
+data = PackedVector3Array(-1.75, 0.165, 0.165, 1.75, 0.165, 0.165, -1.75, -0.165, 0.165, 1.75, 0.165, 0.165, 1.75, -0.165, 0.165, -1.75, -0.165, 0.165, 1.75, 0.165, -0.165, -1.75, 0.165, -0.165, 1.75, -0.165, -0.165, -1.75, 0.165, -0.165, -1.75, -0.165, -0.165, 1.75, -0.165, -0.165, 1.75, 0.165, 0.165, 1.75, 0.165, -0.165, 1.75, -0.165, 0.165, 1.75, 0.165, -0.165, 1.75, -0.165, -0.165, 1.75, -0.165, 0.165, -1.75, 0.165, -0.165, -1.75, 0.165, 0.165, -1.75, -0.165, -0.165, -1.75, 0.165, 0.165, -1.75, -0.165, 0.165, -1.75, -0.165, -0.165, 1.75, 0.165, 0.165, -1.75, 0.165, 0.165, 1.75, 0.165, -0.165, -1.75, 0.165, 0.165, -1.75, 0.165, -0.165, 1.75, 0.165, -0.165, -1.75, -0.165, 0.165, 1.75, -0.165, 0.165, -1.75, -0.165, -0.165, 1.75, -0.165, 0.165, 1.75, -0.165, -0.165, -1.75, -0.165, -0.165)
+
+[sub_resource type="Curve3D" id="Curve3D_7xvkn"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -1.72012, 0.198525, 0.00492118, 0, 0, 0, 0, 0, 0, 1.71868, 0.194375, 0.00198213),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1g5f3"]
+size = Vector3(6, 8, 2)
+
+[node name="Beam" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_3e74x")
+mesh = SubResource("BoxMesh_qtqx5")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_7kbnf")
+
+[node name="Path3D" type="Path3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.045937, 0)
+curve = SubResource("Curve3D_7xvkn")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="Path3D"]
+transform = Transform3D(0.00085467, 0.00120679, -0.999977, 5.82065e-11, 0.999979, 0.00120679, 0.99998, -1.03149e-06, 0.000854668, -1.72012, 0.198525, 0.00492118)
+loop = false
+
+[node name="Test Ball" parent="Path3D/PathFollow3D" groups=["Point"] instance=ExtResource("2_5pd1k")]
+transform = Transform3D(0.25, -4.26326e-14, -8.73115e-11, 1.42109e-14, 0.25, 2.77748e-11, 8.73115e-11, -3.04327e-11, 0.25, 5.12227e-09, -0.0337069, 8.82149e-06)
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+shape = SubResource("BoxShape3D_1g5f3")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]

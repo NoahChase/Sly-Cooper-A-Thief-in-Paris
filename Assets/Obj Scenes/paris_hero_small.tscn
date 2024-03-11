@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://chto78kaa1o1b"]
+
+[ext_resource type="PackedScene" uid="uid://cj8pjvygf5wwf" path="res://Assets/Objects/paris_hero_small.blend" id="1_mrdiw"]
+
+[node name="paris_hero_small" type="Node3D"]
+
+[node name="paris_hero_small" parent="." instance=ExtResource("1_mrdiw")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, -1)

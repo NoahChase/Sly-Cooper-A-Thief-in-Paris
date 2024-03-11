@@ -1,0 +1,79 @@
+[gd_scene load_steps=6 format=3 uid="uid://hoejfbofo651"]
+
+[ext_resource type="PackedScene" uid="uid://vwgnnu5yqmth" path="res://Assets/Objects/paris_cheese.blend" id="1_0ei5f"]
+[ext_resource type="Script" path="res://Assets/Obj Scenes/jump_mesh.gd" id="1_1mlxn"]
+
+[sub_resource type="Animation" id="Animation_xvohx"]
+resource_name = "bounce"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("paris_cheese:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(1, 0.8, 1), Vector3(1, 1.2, 1), Vector3(1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("paris_cheese:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, -0.0877587, 0), Vector3(0, 0.4, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_i8xec"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("paris_cheese:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("paris_cheese:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -0.02, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ykls3"]
+_data = {
+"RESET": SubResource("Animation_i8xec"),
+"bounce": SubResource("Animation_xvohx")
+}
+
+[node name="paris_cheese" type="Node3D"]
+script = ExtResource("1_1mlxn")
+
+[node name="paris_cheese" parent="." instance=ExtResource("1_0ei5f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.02, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ykls3")
+}
+
+[node name="Node3D" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.484824, 0)

@@ -1,0 +1,8 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://bpcolnmuv3ess"]
+
+[ext_resource type="FontFile" uid="uid://cou66ovll1ppy" path="res://Assets/Fonts/Fatcow-moyG.otf" id="1_tyi12"]
+
+[resource]
+default_base_scale = 2.0
+default_font = ExtResource("1_tyi12")
+default_font_size = 60

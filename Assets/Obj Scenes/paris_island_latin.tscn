@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://d0tv8ykski4ew"]
+
+[ext_resource type="PackedScene" uid="uid://ctxdmi1itltqg" path="res://Assets/Objects/paris_island_latin.blend" id="1_l0gta"]
+
+[node name="paris_island_latin" type="Node3D"]
+
+[node name="paris_island_latin" parent="." instance=ExtResource("1_l0gta")]
+transform = Transform3D(75, 0, 0, 0, 75, 0, 0, 0, 75, 0, 0, 0)

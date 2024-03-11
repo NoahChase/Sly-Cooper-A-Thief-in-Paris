@@ -1,0 +1,229 @@
+[gd_scene load_steps=2 format=3 uid="uid://cohi2r15gi6fu"]
+
+[ext_resource type="PackedScene" uid="uid://b54d7imkef563" path="res://Assets/Objects/paris_eiffeltower.blend" id="1_c8mwj"]
+
+[node name="paris_eiffeltower" type="Node3D"]
+
+[node name="paris_eiffeltower" parent="." instance=ExtResource("1_c8mwj")]
+transform = Transform3D(52, 0, 0, 0, 52, 0, 0, 0, 52, 0, 0, 0)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.4859, 0, 27.0083)
+light_color = Color(0.988235, 0.909804, 0.545098, 1)
+omni_range = 50.0
+
+[node name="OmniLight3D13" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.0926, 81, 14.5263)
+light_color = Color(0.988235, 0.909804, 0.545098, 1)
+omni_range = 50.0
+
+[node name="OmniLight3D14" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.3391, 81, 14.5263)
+light_color = Color(0.988235, 0.909804, 0.545098, 1)
+omni_range = 50.0
+
+[node name="OmniLight3D15" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.0926, 81, -13.9737)
+light_color = Color(0.988235, 0.909804, 0.545098, 1)
+omni_range = 50.0
+
+[node name="OmniLight3D17" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.2816, 172.41, -9.38907)
+light_color = Color(0.988235, 0.909804, 0.545098, 1)
+omni_range = 50.0
+
+[node name="OmniLight3D18" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.2816, 172.41, 9.87985)
+light_color = Color(0.988235, 0.909804, 0.545098, 1)
+omni_range = 50.0
+
+[node name="OmniLight3D19" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.92088, 172.41, -9.38907)
+light_color = Color(0.988235, 0.909804, 0.545098, 1)
+omni_range = 50.0
+
+[node name="OmniLight3D21" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0101929, 201.91, 0.138707)
+light_color = Color(0.988235, 0.909804, 0.545098, 1)
+omni_range = 50.0
+
+[node name="OmniLight3D20" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.92088, 172.41, 9.87985)
+light_color = Color(0.988235, 0.909804, 0.545098, 1)
+omni_range = 50.0
+
+[node name="OmniLight3D16" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.3391, 81, -13.9737)
+light_color = Color(0.988235, 0.909804, 0.545098, 1)
+omni_range = 50.0
+
+[node name="OmniLight3D9" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 52.3338, -43.2771, 51.9906)
+light_color = Color(0.988235, 0.909804, 0.545098, 1)
+omni_range = 50.0
+omni_attenuation = 0.353553
+
+[node name="OmniLight3D10" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 52.3338, -43.2771, -50.4458)
+light_color = Color(0.988235, 0.909804, 0.545098, 1)
+omni_range = 50.0
+omni_attenuation = 0.353553
+
+[node name="OmniLight3D11" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -51.041, -43.2771, 51.9906)
+light_color = Color(0.988235, 0.909804, 0.545098, 1)
+omni_range = 50.0
+omni_attenuation = 0.353553
+
+[node name="OmniLight3D12" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -51.041, -43.2771, -50.4458)
+light_color = Color(0.988235, 0.909804, 0.545098, 1)
+omni_range = 50.0
+omni_attenuation = 0.353553
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.4859, 0, -26.7417)
+light_color = Color(0.988235, 0.94902, 0.513726, 1)
+omni_range = 50.0
+
+[node name="OmniLight3D5" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.1937, 41.4378, -22.6421)
+light_color = Color(0.988235, 0.909804, 0.545098, 1)
+omni_range = 50.0
+
+[node name="OmniLight3D6" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.8063, 41.4378, -22.6421)
+light_color = Color(0.988235, 0.909804, 0.545098, 1)
+omni_range = 50.0
+
+[node name="OmniLight3D7" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.1937, 41.4378, 21.1079)
+light_color = Color(0.988235, 0.909804, 0.545098, 1)
+omni_range = 50.0
+
+[node name="OmniLight3D8" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.8063, 41.4378, 21.1079)
+light_color = Color(0.988235, 0.909804, 0.545098, 1)
+omni_range = 50.0
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.5141, 0, 27.0083)
+light_color = Color(0.988235, 0.909804, 0.545098, 1)
+omni_range = 50.0
+
+[node name="OmniLight3D4" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.5141, 0, -26.7417)
+light_color = Color(0.988235, 0.909804, 0.545098, 1)
+omni_range = 50.0
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(0.690037, 0.560014, 0.458513, 0, 0.633502, -0.773741, -0.723775, 0.533909, 0.43714, 47.1054, -49.3345, 59.5862)
+light_color = Color(0.988235, 0.909804, 0.545098, 1)
+light_energy = 200.0
+spot_range = 272.889
+spot_angle = 27.1358
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="."]
+transform = Transform3D(0.776465, 0.487581, 0.399209, 3.29355e-08, 0.633502, -0.773741, -0.630161, 0.600782, 0.491892, 57.8544, -49.3345, 47.5308)
+light_color = Color(0.988235, 0.909804, 0.545098, 1)
+light_energy = 200.0
+spot_range = 272.889
+spot_angle = 27.1358
+
+[node name="SpotLight3D3" type="SpotLight3D" parent="."]
+transform = Transform3D(0.699663, -0.552817, -0.45262, 5.2936e-08, 0.633502, -0.773741, 0.714473, 0.541358, 0.443238, -57.5326, -49.062, 46.5219)
+light_color = Color(0.988235, 0.909804, 0.545098, 1)
+light_energy = 200.0
+spot_range = 272.889
+spot_angle = 27.1358
+
+[node name="SpotLight3D9" type="SpotLight3D" parent="."]
+transform = Transform3D(-0.0104718, -0.773698, -0.633468, 5.2936e-08, 0.633502, -0.773741, 0.999945, -0.00810251, -0.00663388, -57.5326, -49.4364, 0.315525)
+light_color = Color(0.988235, 0.909804, 0.545098, 1)
+light_energy = 100.0
+spot_range = 272.889
+spot_angle = 27.1358
+
+[node name="SpotLight3D13" type="SpotLight3D" parent="."]
+transform = Transform3D(0.787914, -0.476458, -0.390101, 5.26239e-08, 0.633502, -0.773741, 0.615785, 0.609641, 0.499145, -22.668, 42.1732, 21.872)
+light_color = Color(0.988235, 0.909804, 0.545098, 1)
+light_energy = 100.0
+spot_range = 90.084
+spot_angle = 70.1905
+
+[node name="SpotLight3D14" type="SpotLight3D" parent="."]
+transform = Transform3D(0.487189, 0.675705, 0.553235, 5.26239e-08, 0.633502, -0.773741, -0.873296, 0.376958, 0.308635, 21.832, 42.1732, 21.872)
+light_color = Color(0.988235, 0.909804, 0.545098, 1)
+light_energy = 100.0
+spot_range = 90.084
+spot_angle = 70.1905
+
+[node name="SpotLight3D15" type="SpotLight3D" parent="."]
+transform = Transform3D(-0.753058, 0.509086, 0.416815, 6.86495e-08, 0.633502, -0.773741, -0.657954, -0.582672, -0.477064, 21.832, 42.1732, -19.878)
+light_color = Color(0.988235, 0.909804, 0.545098, 1)
+light_energy = 100.0
+spot_range = 90.084
+spot_angle = 70.1905
+
+[node name="SpotLight3D16" type="SpotLight3D" parent="."]
+transform = Transform3D(-0.60325, -0.617099, -0.505251, 1.07867e-07, 0.633502, -0.773741, 0.797552, -0.466759, -0.38216, -22.2156, 42.1732, -19.878)
+light_color = Color(0.988235, 0.909804, 0.545098, 1)
+light_energy = 100.0
+spot_range = 90.084
+spot_angle = 70.1905
+
+[node name="SpotLight3D10" type="SpotLight3D" parent="."]
+transform = Transform3D(0.0104719, 0.773698, 0.633468, 6.545e-08, 0.633502, -0.773741, -0.999945, 0.00810259, 0.00663393, 63.9674, -49.4364, 0.315525)
+light_color = Color(0.988235, 0.909804, 0.545098, 1)
+light_energy = 100.0
+spot_range = 272.889
+spot_angle = 27.1358
+
+[node name="SpotLight3D11" type="SpotLight3D" parent="."]
+transform = Transform3D(-0.999945, 0.00810263, 0.00663393, 9.50534e-08, 0.633502, -0.773741, -0.0104719, -0.773698, -0.633468, -0.835213, -49.4364, -57.9345)
+light_color = Color(0.988235, 0.909804, 0.545098, 1)
+light_energy = 100.0
+spot_range = 272.889
+spot_angle = 27.1358
+
+[node name="SpotLight3D12" type="SpotLight3D" parent="."]
+transform = Transform3D(0.999945, -0.00810269, -0.00663394, 1.23532e-07, 0.633502, -0.773741, 0.010472, 0.773698, 0.633468, -0.835213, -49.4364, 54.8155)
+light_color = Color(0.988235, 0.909804, 0.545098, 1)
+light_energy = 100.0
+spot_range = 272.889
+spot_angle = 27.1358
+
+[node name="SpotLight3D4" type="SpotLight3D" parent="."]
+transform = Transform3D(0.63138, -0.600016, -0.491265, 1.79694e-08, 0.633502, -0.773741, 0.775474, 0.488524, 0.399981, -47.0192, -49.3345, 57.339)
+light_color = Color(0.988235, 0.909804, 0.545098, 1)
+light_energy = 200.0
+spot_range = 272.889
+spot_angle = 27.1358
+
+[node name="SpotLight3D5" type="SpotLight3D" parent="."]
+transform = Transform3D(-0.690037, -0.560014, -0.458513, 3.58353e-08, 0.633503, -0.773741, 0.723774, -0.533909, -0.43714, -43.7804, -49.3345, -57.4857)
+light_color = Color(0.988235, 0.909804, 0.545098, 1)
+light_energy = 200.0
+spot_range = 272.889
+spot_angle = 27.1358
+
+[node name="SpotLight3D6" type="SpotLight3D" parent="."]
+transform = Transform3D(-0.786892, -0.477468, -0.390928, 2.53544e-08, 0.633502, -0.773741, 0.617091, -0.60885, -0.498498, -57.1404, -49.3345, -44.569)
+light_color = Color(0.988235, 0.909804, 0.545098, 1)
+light_energy = 200.0
+spot_range = 272.889
+spot_angle = 27.1358
+
+[node name="SpotLight3D7" type="SpotLight3D" parent="."]
+transform = Transform3D(-0.921199, 0.301056, 0.246491, 9.85348e-08, 0.633503, -0.773741, -0.389092, -0.712769, -0.583582, 55.0049, -50.4255, -53.1795)
+light_color = Color(0.988235, 0.909804, 0.545098, 1)
+light_energy = 200.0
+spot_range = 272.889
+spot_angle = 27.1358
+
+[node name="SpotLight3D8" type="SpotLight3D" parent="."]
+transform = Transform3D(-0.427407, 0.706857, 0.563628, 0.00499818, 0.625279, -0.780385, -0.904045, -0.330725, -0.270782, 45.1487, -52.5139, -54.2928)
+light_color = Color(0.988235, 0.909804, 0.545098, 1)
+light_energy = 200.0
+spot_range = 272.889
+spot_angle = 27.1358

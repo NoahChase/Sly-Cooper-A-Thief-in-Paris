@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://i0e1m8e40vny"]
+
+[ext_resource type="ArrayMesh" uid="uid://bkj2lgimxhtox" path="res://Assets/Objects/paris_island_marais_cameracol.obj" id="1_dkm2f"]
+
+[node name="ParisIslandMaraisCameracol" type="Node3D"]
+
+[node name="ParisIslandMaraisCameracol" type="MeshInstance3D" parent="."]
+mesh = ExtResource("1_dkm2f")

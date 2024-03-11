@@ -1,0 +1,69 @@
+[gd_scene load_steps=7 format=3 uid="uid://bvfox0yrvskwo"]
+
+[ext_resource type="Script" path="res://Path.gd" id="1_wg8pr"]
+[ext_resource type="PackedScene" uid="uid://dki2qttdigjub" path="res://Scenes/test_ball.tscn" id="2_m118p"]
+
+[sub_resource type="Curve3D" id="Curve3D_66dxp"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(-0.0910645, 0.261847, 0.191349, 0.0910645, -0.261847, -0.191349, 0.315736, 0.378542, -4.8159, 0.0191927, 0.06604, -0.383853, -0.0191927, -0.06604, 0.383853, -0.279236, 0.112185, -4.10578, 0.0575781, 0.10144, -0.422238, -0.0575781, -0.10144, 0.422238, 0.108549, -0.063963, -1.74105, 0.0191927, -0.136963, -0.479816, -0.0191927, 0.136963, 0.479816, 0.315736, 0.0300312, 0.423684, 0.172734, 0.182373, -0.844475, -0.172734, -0.182373, 0.844475, 0.12381, 0.135744, 2.84196, -0.307082, 0, 0.0575781, 0.307082, 0, -0.0575781, -0.020202, 0.187136, 5.31235),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0)
+}
+point_count = 6
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7yua1"]
+diffuse_mode = 3
+albedo_color = Color(0.631373, 0.631373, 0.631373, 1)
+metallic = 0.69
+metallic_specular = 0.79
+roughness = 0.27
+clearcoat_enabled = true
+clearcoat = 0.52
+clearcoat_roughness = 0.09
+
+[sub_resource type="Animation" id="Animation_8vypb"]
+resource_name = "snap"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vt4pe"]
+_data = {
+"snap": SubResource("Animation_8vypb")
+}
+
+[node name="Pipe" type="Node3D"]
+script = ExtResource("1_wg8pr")
+basis_type = 2
+length = 10.71
+
+[node name="Path3D" type="Path3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0805683, -0.0159814)
+curve = SubResource("Curve3D_66dxp")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="Path3D"]
+transform = Transform3D(-0.184173, -1.5144e-05, 0.982887, 0, 0.999994, 1.54076e-05, -0.982881, 2.8377e-06, -0.184174, -0.020206, 0.187136, 5.31235)
+progress = 10.7103
+rotation_mode = 4
+use_model_front = true
+loop = false
+
+[node name="Test Ball" parent="Path3D/PathFollow3D" groups=["Path", "Pole"] instance=ExtResource("2_m118p")]
+transform = Transform3D(0.4, -2.98022e-08, 3.72529e-08, 2.98022e-08, 0.4, -6.39488e-13, -2.98023e-08, -1.13687e-13, 0.4, -4.76837e-07, 0.0341859, -0.0422414)
+
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="Path3D"]
+material_override = SubResource("StandardMaterial3D_7yua1")
+polygon = PackedVector2Array(0, 0, 0, 0.125, 0.125, 0.125, 0.125, 0)
+mode = 2
+path_node = NodePath("..")
+path_interval_type = 0
+path_interval = 0.48
+path_simplify_angle = 0.0
+path_rotation = 2
+path_local = true
+path_continuous_u = true
+path_u_distance = 1.0
+path_joined = false
+smooth_faces = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_vt4pe")
+}

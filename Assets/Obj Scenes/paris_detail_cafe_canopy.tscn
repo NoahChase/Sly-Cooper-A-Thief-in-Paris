@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://cv8gb0e3o8m2e"]
+
+[ext_resource type="Script" path="res://Jump_Container.gd" id="1_etw0n"]
+[ext_resource type="PackedScene" uid="uid://bi4p4u4dxn7f" path="res://Assets/Objects/paris_cafe_canopy.blend" id="2_obhrf"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3a8l0"]
+size = Vector3(1.98789, 0.111621, 2.21317)
+
+[node name="paris_detail_cafe_canopy" type="Node3D"]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
+script = ExtResource("1_etw0n")
+
+[node name="paris_cafe_canopy" parent="." instance=ExtResource("2_obhrf")]
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(0.999743, 0.0227573, 0, -0.0227573, 0.999743, 0, 0, 0, 1, -0.0316476, 0.367679, 0)
+shape = SubResource("BoxShape3D_3a8l0")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]

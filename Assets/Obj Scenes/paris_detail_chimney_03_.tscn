@@ -1,0 +1,43 @@
+[gd_scene load_steps=8 format=3 uid="uid://duxyjp282nebo"]
+
+[ext_resource type="Texture2D" uid="uid://bk36dcjogpnkv" path="res://Assets/Textures/bricks_small_128.png" id="1_upsoh"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mce1j"]
+albedo_color = Color(0.909804, 0.603922, 0.427451, 1)
+albedo_texture = ExtResource("1_upsoh")
+
+[sub_resource type="BoxMesh" id="BoxMesh_rcq2o"]
+size = Vector3(1.2, 4, 1.4)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_c8oex"]
+data = PackedVector3Array(-0.6, 2, 0.7, 0.6, 2, 0.7, -0.6, -2, 0.7, 0.6, 2, 0.7, 0.6, -2, 0.7, -0.6, -2, 0.7, 0.6, 2, -0.7, -0.6, 2, -0.7, 0.6, -2, -0.7, -0.6, 2, -0.7, -0.6, -2, -0.7, 0.6, -2, -0.7, 0.6, 2, 0.7, 0.6, 2, -0.7, 0.6, -2, 0.7, 0.6, 2, -0.7, 0.6, -2, -0.7, 0.6, -2, 0.7, -0.6, 2, -0.7, -0.6, 2, 0.7, -0.6, -2, -0.7, -0.6, 2, 0.7, -0.6, -2, 0.7, -0.6, -2, -0.7, 0.6, 2, 0.7, -0.6, 2, 0.7, 0.6, 2, -0.7, -0.6, 2, 0.7, -0.6, 2, -0.7, 0.6, 2, -0.7, -0.6, -2, 0.7, 0.6, -2, 0.7, -0.6, -2, -0.7, 0.6, -2, 0.7, 0.6, -2, -0.7, -0.6, -2, -0.7)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hxnnm"]
+albedo_color = Color(0.545098, 0.545098, 0.501961, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_u2668"]
+size = Vector3(1.5, 0.125, 1.9)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_g1wom"]
+data = PackedVector3Array(-0.75, 0.0625, 0.95, 0.75, 0.0625, 0.95, -0.75, -0.0625, 0.95, 0.75, 0.0625, 0.95, 0.75, -0.0625, 0.95, -0.75, -0.0625, 0.95, 0.75, 0.0625, -0.95, -0.75, 0.0625, -0.95, 0.75, -0.0625, -0.95, -0.75, 0.0625, -0.95, -0.75, -0.0625, -0.95, 0.75, -0.0625, -0.95, 0.75, 0.0625, 0.95, 0.75, 0.0625, -0.95, 0.75, -0.0625, 0.95, 0.75, 0.0625, -0.95, 0.75, -0.0625, -0.95, 0.75, -0.0625, 0.95, -0.75, 0.0625, -0.95, -0.75, 0.0625, 0.95, -0.75, -0.0625, -0.95, -0.75, 0.0625, 0.95, -0.75, -0.0625, 0.95, -0.75, -0.0625, -0.95, 0.75, 0.0625, 0.95, -0.75, 0.0625, 0.95, 0.75, 0.0625, -0.95, -0.75, 0.0625, 0.95, -0.75, 0.0625, -0.95, 0.75, 0.0625, -0.95, -0.75, -0.0625, 0.95, 0.75, -0.0625, 0.95, -0.75, -0.0625, -0.95, 0.75, -0.0625, 0.95, 0.75, -0.0625, -0.95, -0.75, -0.0625, -0.95)
+
+[node name="paris_detail_chimney_03_" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_mce1j")
+mesh = SubResource("BoxMesh_rcq2o")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_c8oex")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+material_override = SubResource("StandardMaterial3D_hxnnm")
+mesh = SubResource("BoxMesh_u2668")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_g1wom")

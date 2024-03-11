@@ -1,0 +1,799 @@
+[gd_scene load_steps=44 format=3 uid="uid://dtn4nhjv25y3a"]
+
+[ext_resource type="Script" path="res://Scripts/player.gd" id="1_te7i4"]
+[ext_resource type="Theme" uid="uid://f5b5fpewrxb6" path="res://Assets/Fonts/handwriting.tres" id="2_7h14n"]
+[ext_resource type="PackedScene" uid="uid://d14wkv5cix3g2" path="res://Scenes/pause_menu.tscn" id="2_s8llo"]
+[ext_resource type="PackedScene" uid="uid://dgmannm3l1q1s" path="res://Scenes/particle_sparkle.tscn" id="2_yoffi"]
+[ext_resource type="Theme" uid="uid://bpcolnmuv3ess" path="res://Assets/Fonts/menu.tres" id="3_57adr"]
+[ext_resource type="PackedScene" uid="uid://ckjh4w5mqu7dr" path="res://Assets/Obj Scenes/sly_cooper.tscn" id="3_lw72l"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_2yoqs"]
+radius = 0.4
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_dlwdf"]
+auto_exposure_enabled = true
+dof_blur_far_enabled = true
+dof_blur_far_distance = 600.0
+dof_blur_far_transition = 300.0
+dof_blur_amount = 0.03
+auto_exposure_min_sensitivity = 300.0
+auto_exposure_max_sensitivity = 1700.0
+
+[sub_resource type="Animation" id="Animation_x27lb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_0e7qf"]
+resource_name = "out_in_out"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_b03u3"]
+_data = {
+"RESET": SubResource("Animation_x27lb"),
+"out_in_out": SubResource("Animation_0e7qf")
+}
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_mrv5y"]
+radius = 4.0
+
+[sub_resource type="Animation" id="Animation_8ebks"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0.723407, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_yva5k"]
+resource_name = "spin"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 6.28319, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0.723407, 0), Vector3(0, 0.723407, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_3fxke"]
+resource_name = "w_flip"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 3.14159, 0), Vector3(6.28319, 3.14159, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kwuyl"]
+_data = {
+"RESET": SubResource("Animation_8ebks"),
+"spin": SubResource("Animation_yva5k"),
+"w_flip": SubResource("Animation_3fxke")
+}
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6jg6h"]
+transparency = 1
+albedo_color = Color(0.490196, 0.490196, 0.490196, 0)
+roughness = 0.8
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_n0yqv"]
+radial_segments = 6
+rings = 2
+
+[sub_resource type="BoxMesh" id="BoxMesh_824gw"]
+size = Vector3(2, 0.25, 0.25)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_xkpx8"]
+height = 8.0
+radius = 2.0
+
+[sub_resource type="Animation" id="Animation_w1sja"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Platform Snap Col:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.1, 0.1, 0.1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Platform Snap Col:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -3, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Platform Snap Col:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_ycku0"]
+resource_name = "area_check"
+length = 0.1
+step = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Platform Snap Col:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.099, 0.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(1, 1, 1), Vector3(0.1, 0.1, 0.1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Platform Snap Col:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_cgtqx"]
+resource_name = "area_expand"
+length = 0.1
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Platform Snap Col:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.1, 0.1, 0.1), Vector3(1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Platform Snap Col:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, -2.75, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Platform Snap Col:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kf3c4"]
+_data = {
+"RESET": SubResource("Animation_w1sja"),
+"area_check": SubResource("Animation_ycku0"),
+"area_expand": SubResource("Animation_cgtqx")
+}
+
+[sub_resource type="Animation" id="Animation_3dlou"]
+resource_name = "A_Flip"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 6.28319)]
+}
+
+[sub_resource type="Animation" id="Animation_i5f4v"]
+resource_name = "D_Flip"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, -6.28319)]
+}
+
+[sub_resource type="Animation" id="Animation_wqmor"]
+length = 0.001
+step = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MeshInstance3D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MeshInstance3D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_5pv83"]
+resource_name = "S_Flip"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(6.28319, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_mk5sx"]
+resource_name = "flip"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-6.28319, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_wgnat"]
+resource_name = "spin"
+length = 0.4
+step = 0.025
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.175, 0.225, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(1, 1.1, 1), Vector3(1, 0.9, 1), Vector3(1, 0.9, 1), Vector3(1, 1.1, 1), Vector3(1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MeshInstance3D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 6.28319, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MeshInstance3D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(0.435275, 0.482968, 1),
+"update": 0,
+"values": [Vector3(0, 1, 0), Vector3(0, 2, 0), Vector3(0, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_yteif"]
+resource_name = "walk"
+length = 0.4
+step = 0.025
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.175, 0.4),
+"transitions": PackedFloat32Array(0.450625, 0.435275, 0.435275, 0.450625),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(1, 0.975, 1), Vector3(1, 1.075, 1), Vector3(1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fejdm"]
+_data = {
+"A_Flip": SubResource("Animation_3dlou"),
+"D_Flip": SubResource("Animation_i5f4v"),
+"RESET": SubResource("Animation_wqmor"),
+"S_Flip": SubResource("Animation_5pv83"),
+"flip": SubResource("Animation_mk5sx"),
+"spin": SubResource("Animation_wgnat"),
+"walk": SubResource("Animation_yteif")
+}
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gytom"]
+transparency = 1
+albedo_color = Color(1, 1, 0, 0)
+
+[sub_resource type="SphereMesh" id="SphereMesh_gasc8"]
+radius = 0.125
+height = 0.25
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_k6s53"]
+radius = 0.1
+
+[sub_resource type="Animation" id="Animation_thl5o"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Ball_Area/Ball_Area_Col:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_dmn75"]
+resource_name = "check_ledge"
+length = 0.01
+step = 0.005
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Ball_Area/Ball_Area_Col:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.005, 0.01),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(0, 0, 0), Vector3(1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_nsx8m"]
+resource_name = "check_ledge_final"
+length = 0.1
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Ball_Area/Ball_Area_Col:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jpcwi"]
+_data = {
+"RESET": SubResource("Animation_thl5o"),
+"check_ledge": SubResource("Animation_dmn75"),
+"check_ledge_final": SubResource("Animation_nsx8m")
+}
+
+[sub_resource type="Animation" id="Animation_smojd"]
+resource_name = "1move"
+
+[sub_resource type="Animation" id="Animation_n6kd7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Ray_H:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1.65864, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Ray_H2:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.944292, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Ray_H3:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.520439, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_hmuwk"]
+resource_name = "h_sway"
+length = 0.45
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Ray_H:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.45),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(1.04056, 1.74515, 1.72159), Vector3(1.04056, -1.74515, -1.72159)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Ray_H2:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.45),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.777573, 0.604541, 0.777693), Vector3(0.777573, -0.604541, -0.777693)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Ray_H3:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.45),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.445203, 0.279093, 0.587164), Vector3(0.445203, -0.279093, -0.587164)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kixou"]
+_data = {
+"1move": SubResource("Animation_smojd"),
+"RESET": SubResource("Animation_n6kd7"),
+"h_sway": SubResource("Animation_hmuwk")
+}
+
+[node name="Player" type="CharacterBody3D" groups=["Player"]]
+floor_max_angle = 0.959931
+script = ExtResource("1_te7i4")
+
+[node name="Pause Menu" parent="." instance=ExtResource("2_s8llo")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_2yoqs")
+
+[node name="CameraOrigin" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+
+[node name="CameraArm" type="SpringArm3D" parent="CameraOrigin"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+spring_length = 4.5
+
+[node name="camera" type="Camera3D" parent="CameraOrigin/CameraArm"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
+attributes = SubResource("CameraAttributesPractical_dlwdf")
+fov = 80.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="CameraOrigin/CameraArm/camera"]
+visible = false
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CameraOrigin/CameraArm/camera/CanvasLayer"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -216.0
+offset_top = 51.0
+offset_right = -71.0
+offset_bottom = 146.0
+grow_horizontal = 0
+size_flags_horizontal = 6
+size_flags_vertical = 4
+theme = ExtResource("3_57adr")
+theme_override_colors/default_color = Color(0.72549, 0.72549, 0.72549, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="CameraOrigin/CameraArm/camera/CanvasLayer"]
+visible = false
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -241.0
+offset_top = 117.0
+offset_right = -9.0
+offset_bottom = 194.0
+grow_horizontal = 0
+theme = ExtResource("2_7h14n")
+theme_override_colors/default_color = Color(0.72549, 0.678431, 0.266667, 0.894118)
+theme_override_colors/font_selected_color = Color(0, 0, 0, 1)
+theme_override_colors/selection_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+text = "Le Marais"
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="CameraOrigin/CameraArm/camera/CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="RichTextLabel4" type="RichTextLabel" parent="CameraOrigin/CameraArm/camera/CanvasLayer"]
+offset_top = 56.0
+offset_right = 229.0
+offset_bottom = 132.0
+
+[node name="CanvasAnimation" type="AnimationPlayer" parent="CameraOrigin/CameraArm/camera/CanvasLayer"]
+libraries = {
+"": SubResource("AnimationLibrary_b03u3")
+}
+
+[node name="Area3D" type="Area3D" parent="CameraOrigin/CameraArm/camera"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CameraOrigin/CameraArm/camera/Area3D"]
+shape = SubResource("SphereShape3D_mrv5y")
+
+[node name="cam_home" type="Node3D" parent="CameraOrigin/CameraArm"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
+
+[node name="cam_safe" type="Node3D" parent="CameraOrigin/CameraArm"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.5)
+
+[node name="Feet" type="Node3D" parent="."]
+
+[node name="sly_container" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.723407, 0)
+
+[node name="sly_container_anim" type="AnimationPlayer" parent="sly_container"]
+autoplay = "RESET"
+libraries = {
+"": SubResource("AnimationLibrary_kwuyl")
+}
+
+[node name="sly_rot_helper" type="Node3D" parent="sly_container"]
+transform = Transform3D(15, 0, 0, 0, 15, -2.27374e-13, 0, 2.27374e-13, 15, 0, -1.19209e-07, -8.74227e-08)
+
+[node name="sly_cooper" parent="sly_container" instance=ExtResource("3_lw72l")]
+transform = Transform3D(15, 0, 0, 0, 15, -2.62268e-06, 0, 2.62268e-06, 15, 0, -0.725, 4.37114e-08)
+
+[node name="Ray_H" type="RayCast3D" parent="sly_container/sly_cooper"]
+transform = Transform3D(-0.067, -5.83473e-09, 5.13867e-10, 0, -0.00587796, -0.0667416, 5.85732e-09, -0.0667416, 0.00587796, -0.00098944, 0.120232, 4.88425e-05)
+target_position = Vector3(0, 0, -3)
+
+[node name="Ray_H2" type="RayCast3D" parent="sly_container/sly_cooper"]
+transform = Transform3D(-0.067, -4.74492e-09, -3.43424e-09, 1.51336e-23, 0.0392832, -0.0542755, 5.85733e-09, -0.0542755, -0.0392832, -0.000989437, 0.0522851, 0.0271153)
+target_position = Vector3(0, 0, -4.5)
+
+[node name="Ray_H3" type="RayCast3D" parent="sly_container/sly_cooper"]
+transform = Transform3D(-0.067, -2.91262e-09, -5.08181e-09, 0, 0.0581292, -0.0333165, 5.85733e-09, -0.0333165, -0.0581292, -0.000989437, 0.00900004, 0.0268967)
+target_position = Vector3(0, 0, -4)
+
+[node name="Ray_H4" type="RayCast3D" parent="sly_container/sly_cooper"]
+transform = Transform3D(-0.067, -1.5125e-11, -5.85731e-09, 0, 0.0669997, -0.00017301, 5.85733e-09, -0.00017301, -0.0669997, 0.000989431, 0.00625883, 0.0260367)
+target_position = Vector3(0, 0, -4)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+visible = false
+material_override = SubResource("StandardMaterial3D_6jg6h")
+mesh = SubResource("CapsuleMesh_n0yqv")
+
+[node name="arms" type="MeshInstance3D" parent="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.298214, 0)
+visible = false
+mesh = SubResource("BoxMesh_824gw")
+skeleton = NodePath("../..")
+
+[node name="Platform Snap Area" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="Platform Snap Col" type="CollisionShape3D" parent="Platform Snap Area"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, -3, 0)
+shape = SubResource("CylinderShape3D_xkpx8")
+
+[node name="Area Col Anim Player" type="AnimationPlayer" parent="Platform Snap Area"]
+libraries = {
+"": SubResource("AnimationLibrary_kf3c4")
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_fejdm")
+}
+
+[node name="Ray_V_Container" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.273712, 0)
+
+[node name="Ray_V" type="RayCast3D" parent="Ray_V_Container"]
+target_position = Vector3(0, -60, 0)
+
+[node name="Ray_V_Ball" type="MeshInstance3D" parent="Ray_V_Container" groups=["Ray_V_Ball"]]
+material_override = SubResource("StandardMaterial3D_gytom")
+mesh = SubResource("SphereMesh_gasc8")
+
+[node name="Ball_Area" type="Area3D" parent="Ray_V_Container/Ray_V_Ball"]
+
+[node name="Ball_Area_Col" type="CollisionShape3D" parent="Ray_V_Container/Ray_V_Ball/Ball_Area"]
+transform = Transform3D(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1.12686, 0)
+shape = SubResource("CylinderShape3D_k6s53")
+
+[node name="Ledge_Col_Anim" type="AnimationPlayer" parent="Ray_V_Container/Ray_V_Ball"]
+libraries = {
+"": SubResource("AnimationLibrary_jpcwi")
+}
+
+[node name="Particle_Sparkle" parent="Ray_V_Container" instance=ExtResource("2_yoffi")]
+process_mode = 3
+top_level = true
+visible = false
+
+[node name="Ray_H" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.0877308, -0.996144, 0, 0.996144, -0.0877308, 0, 2.02878, 0)
+target_position = Vector3(0, 0, -3)
+
+[node name="Ray_H2" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.586316, -0.810082, 0, 0.810082, 0.586316, 0, 1, -0.40525)
+target_position = Vector3(0, 0, -4.5)
+
+[node name="Ray_H3" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.867601, -0.497261, 0, 0.497261, 0.867601, 0, 0.259, -0.369855)
+target_position = Vector3(0, 0, -4)
+
+[node name="Ray_H4" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.999996, -0.00258224, 0, 0.00258224, 0.999996, -0.00197887, 0.0229255, -0.187433)
+target_position = Vector3(0, 0, -4)
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_kixou")
+}
+
+[connection signal="body_entered" from="CameraOrigin/CameraArm/camera/Area3D" to="CameraOrigin" method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="CameraOrigin/CameraArm/camera/Area3D" to="CameraOrigin" method="_on_area_3d_body_exited"]
+[connection signal="body_entered" from="Platform Snap Area" to="." method="_on_platform_snap_area_body_entered"]
+[connection signal="body_exited" from="Platform Snap Area" to="." method="_on_platform_snap_area_body_exited"]
+[connection signal="body_entered" from="Ray_V_Container/Ray_V_Ball/Ball_Area" to="." method="_on_ball_area_body_entered"]
+[connection signal="body_exited" from="Ray_V_Container/Ray_V_Ball/Ball_Area" to="." method="_on_ball_area_body_exited"]

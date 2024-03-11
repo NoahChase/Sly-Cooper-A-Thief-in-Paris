@@ -1,0 +1,95 @@
+[gd_scene load_steps=10 format=3 uid="uid://dgmannm3l1q1s"]
+
+[ext_resource type="Texture2D" uid="uid://cief7ne5hhepl" path="res://Assets/Textures/particle_platform_.png" id="1_6fjma"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_unxdb"]
+transparency = 1
+shading_mode = 0
+specular_mode = 2
+disable_ambient_light = true
+albedo_color = Color(1, 1, 1, 0.109804)
+albedo_texture = ExtResource("1_6fjma")
+disable_receive_shadows = true
+billboard_mode = 1
+grow_amount = -6.472
+proximity_fade_distance = 10.0
+distance_fade_mode = 1
+distance_fade_min_distance = 20.0
+
+[sub_resource type="Curve" id="Curve_fju07"]
+_data = [Vector2(0, 0.273684), 0.0, 0.0, 0, 0, Vector2(0.5, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.273684), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_5a2ch"]
+curve = SubResource("Curve_fju07")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_55vyn"]
+lifetime_randomness = 0.66
+emission_shape = 2
+emission_sphere_radius = 0.25
+direction = Vector3(0, 0, 0)
+flatness = 1.0
+gravity = Vector3(0, 0, 0)
+tangential_accel_min = 0.05
+tangential_accel_max = 0.1
+damping_min = 0.05
+damping_max = 0.05
+scale_curve = SubResource("CurveTexture_5a2ch")
+
+[sub_resource type="QuadMesh" id="QuadMesh_u156o"]
+
+[sub_resource type="Animation" id="Animation_a27g0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:draw_pass_1:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_ulbcc"]
+resource_name = "growshrink"
+length = 3.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:draw_pass_1:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5, 3),
+"transitions": PackedFloat32Array(1, 1.31951, 1),
+"update": 0,
+"values": [Vector2(0.125, 0.125), Vector2(0.5, 0.5), Vector2(0.125, 0.125)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_koosc"]
+_data = {
+"RESET": SubResource("Animation_a27g0"),
+"growshrink": SubResource("Animation_ulbcc")
+}
+
+[node name="Particle_Sparkle" type="Node3D"]
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+material_override = SubResource("StandardMaterial3D_unxdb")
+cast_shadow = 0
+amount = 14
+lifetime = 3.0
+fixed_fps = 60
+trail_lifetime = 0.1
+process_material = SubResource("ParticleProcessMaterial_55vyn")
+draw_pass_1 = SubResource("QuadMesh_u156o")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="GPUParticles3D"]
+autoplay = "growshrink"
+libraries = {
+"": SubResource("AnimationLibrary_koosc")
+}

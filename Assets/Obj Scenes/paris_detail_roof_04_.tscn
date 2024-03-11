@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bgoyqnq84tq45"]
+
+[ext_resource type="PackedScene" uid="uid://crdwuanyaaedy" path="res://Assets/Objects/paris_detail_roof_04_.blend" id="1_g8rto"]
+
+[node name="paris_detail_roof_04_" type="Node3D"]
+
+[node name="paris_detail_roof_04_" parent="." instance=ExtResource("1_g8rto")]

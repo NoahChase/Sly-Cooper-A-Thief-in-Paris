@@ -1,0 +1,47 @@
+[gd_scene load_steps=4 format=3 uid="uid://cisi02tdb2ln4"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ipc72"]
+emission_shape = 2
+emission_sphere_radius = 1.0
+spread = 180.0
+gravity = Vector3(0, 0.7, 0)
+initial_velocity_min = -0.1
+initial_velocity_max = 0.1
+linear_accel_min = -0.1
+linear_accel_max = 0.1
+tangential_accel_min = 0.1
+tangential_accel_max = 0.3
+damping_min = 0.1
+damping_max = 0.125
+scale_min = 0.3
+turbulence_enabled = true
+turbulence_noise_strength = 0.75
+turbulence_noise_scale = 4.5
+turbulence_noise_speed_random = 0.1
+turbulence_influence_min = 0.05
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vx51g"]
+transparency = 4
+blend_mode = 1
+diffuse_mode = 3
+specular_mode = 1
+albedo_color = Color(0.615686, 0.615686, 0.615686, 0.0352941)
+metallic_specular = 0.0
+roughness = 0.78
+distance_fade_mode = 1
+distance_fade_max_distance = 1.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_fdaaw"]
+material = SubResource("StandardMaterial3D_vx51g")
+radial_segments = 5
+rings = 3
+
+[node name="Smoke_Particles" type="Node3D"]
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+amount = 24
+lifetime = 6.0
+randomness = 1.0
+fixed_fps = 15
+process_material = SubResource("ParticleProcessMaterial_ipc72")
+draw_pass_1 = SubResource("SphereMesh_fdaaw")

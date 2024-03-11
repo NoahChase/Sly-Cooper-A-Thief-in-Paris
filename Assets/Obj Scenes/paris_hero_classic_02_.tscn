@@ -1,0 +1,41 @@
+[gd_scene load_steps=5 format=3 uid="uid://bxi2l8e5s8qx3"]
+
+[ext_resource type="PackedScene" uid="uid://rr01mh7kbsrq" path="res://Assets/Objects/paris_hero_classic_02_.blend" id="1_0umjb"]
+[ext_resource type="PackedScene" uid="uid://dki2qttdigjub" path="res://Scenes/test_ball.tscn" id="2_fq6hi"]
+[ext_resource type="PackedScene" uid="uid://crdwuanyaaedy" path="res://Assets/Objects/paris_detail_roof_04_.blend" id="3_b4mgv"]
+[ext_resource type="PackedScene" uid="uid://d3ibkdws82a34" path="res://Scenes/beam.tscn" id="4_vu17y"]
+
+[node name="paris_hero_classic_02_" type="Node3D"]
+
+[node name="paris_hero_classic_02_" parent="." instance=ExtResource("1_0umjb")]
+transform = Transform3D(7, 0, 0, 0, 7, 0, 0, 0, 7, 0, 0, 0)
+
+[node name="Test Ball" parent="." groups=["Point"] instance=ExtResource("2_fq6hi")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 7.41574, 3.47445, -5.8358)
+
+[node name="Test Ball2" parent="." groups=["Point"] instance=ExtResource("2_fq6hi")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 7.41574, 3.47445, 5.93584)
+
+[node name="Test Ball3" parent="." groups=["Point"] instance=ExtResource("2_fq6hi")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -7.41165, 3.47445, -5.8358)
+
+[node name="Test Ball4" parent="." groups=["Point"] instance=ExtResource("2_fq6hi")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -7.41165, 3.47445, 5.93584)
+
+[node name="paris_detail_roof_04_" parent="." instance=ExtResource("3_b4mgv")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -5.54004, 5.8065, 0)
+
+[node name="paris_detail_roof_04_2" parent="." instance=ExtResource("3_b4mgv")]
+transform = Transform3D(-2, 0, -1.74846e-07, 0, 2, 0, 1.74846e-07, 0, -2, 5.65416, 5.8065, 0)
+
+[node name="Beam" parent="." instance=ExtResource("4_vu17y")]
+transform = Transform3D(0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, -7, 10, 2)
+
+[node name="Beam2" parent="." instance=ExtResource("4_vu17y")]
+transform = Transform3D(0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, 0.965926, -7, 10, -2)
+
+[node name="Beam3" parent="." instance=ExtResource("4_vu17y")]
+transform = Transform3D(-0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, -0.965926, 7, 10, -2)
+
+[node name="Beam4" parent="." instance=ExtResource("4_vu17y")]
+transform = Transform3D(-0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, -0.965926, 7, 10, 2)

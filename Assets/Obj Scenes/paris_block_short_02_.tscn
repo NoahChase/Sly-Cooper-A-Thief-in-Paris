@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://daaq3swb36vo8"]
+
+[ext_resource type="PackedScene" uid="uid://djfgaismxiu0v" path="res://Assets/Objects/paris_block_short_02_.blend" id="1_6omfi"]
+[ext_resource type="PackedScene" uid="uid://bgoyqnq84tq45" path="res://Assets/Obj Scenes/paris_detail_roof_04_.tscn" id="2_u0urd"]
+[ext_resource type="PackedScene" uid="uid://ee1pvnq7m5lk" path="res://Assets/Obj Scenes/paris_detail_roof_03_.tscn" id="3_coa40"]
+[ext_resource type="PackedScene" uid="uid://c5cxj2wcjof08" path="res://Assets/Obj Scenes/paris_balcony_rd.tscn" id="4_gkqv1"]
+
+[node name="paris_block_short_02_" type="Node3D"]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+
+[node name="paris_block_short_02_" parent="." instance=ExtResource("1_6omfi")]
+transform = Transform3D(7, 0, 0, 0, 7, 0, 0, 0, 7, 0, 0, 0)
+
+[node name="paris_detail_roof_04_" parent="." instance=ExtResource("2_u0urd")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0.258819, 0.965926, -1.13133e-08, 0.965926, -0.258819, -4.2222e-08, -1, -7, -7.25947)
+
+[node name="paris_detail_roof_04_2" parent="." instance=ExtResource("2_u0urd")]
+transform = Transform3D(2.08616e-07, -3.72529e-08, 1, 0.258819, 0.965926, -9.7219e-09, -0.965926, 0.258819, 1.49012e-07, -1.24307, -7, 7.23928)
+
+[node name="paris_detail_roof_04_3" parent="." instance=ExtResource("2_u0urd")]
+transform = Transform3D(-0.954997, 0.0816239, 0.285164, 0.0891318, 0.995929, 0.0134272, -0.282907, 0.0382401, -0.958385, 5.54263, -5.36465, 2.23928)
+
+[node name="paris_detail_roof_04_4" parent="." instance=ExtResource("2_u0urd")]
+transform = Transform3D(-0.948623, 0.0889917, -0.303637, 0.0891318, 0.995929, 0.0134273, 0.303596, -0.0143263, -0.952693, 5.23175, -5.36465, -2.76072)
+
+[node name="paris_detail_roof_03_" parent="." instance=ExtResource("3_coa40")]
+transform = Transform3D(0.313015, 0, 0.949748, 0, 1, 0, -0.949748, 0, 0.313015, -4.8612, -0.577099, 6.38517)
+
+[node name="paris_detail_roof_03_2" parent="." instance=ExtResource("3_coa40")]
+transform = Transform3D(0.280801, 0, -0.959766, 0, 1, 0, 0.959766, 0, 0.280801, -4.8612, -0.577099, -6.24953)
+
+[node name="paris_balcony_rd" parent="." instance=ExtResource("4_gkqv1")]
+transform = Transform3D(-0.163724, 0, -0.472434, 0, 0.5, 0, 0.472434, 0, -0.163724, 6.28728, -7.36465, 2.36995)
+
+[node name="paris_balcony_rd2" parent="." instance=ExtResource("4_gkqv1")]
+transform = Transform3D(0.218291, 0, -0.449832, 0, 0.5, 0, 0.449832, 0, 0.218291, 6.28728, -7.36465, -2.63005)

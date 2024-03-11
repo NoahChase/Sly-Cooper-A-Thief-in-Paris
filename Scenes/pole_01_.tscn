@@ -1,0 +1,156 @@
+[gd_scene load_steps=12 format=3 uid="uid://42r6gawhab6j"]
+
+[ext_resource type="PackedScene" uid="uid://dki2qttdigjub" path="res://Scenes/test_ball.tscn" id="1_byh2h"]
+[ext_resource type="Script" path="res://Scripts/pole.gd" id="1_jd64m"]
+
+[sub_resource type="Curve3D" id="Curve3D_7i0g0"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(-0.0910645, 0.261847, 0.191349, 0.0910645, -0.261847, -0.191349, 0.315736, 0.378542, -4.8159, 0.0191927, 0.06604, -0.383853, -0.0191927, -0.06604, 0.383853, -0.279236, 0.112185, -4.10578, 0.0575781, 0.10144, -0.422238, -0.0575781, -0.10144, 0.422238, 0.108549, -0.063963, -1.74105, 0.0191927, -0.136963, -0.479816, -0.0191927, 0.136963, 0.479816, 0.315736, 0.0300312, 0.423684, 0.172734, 0.182373, -0.844475, -0.172734, -0.182373, 0.844475, 0.12381, 0.135744, 2.84196, -0.307082, 0, 0.0575781, 0.307082, 0, -0.0575781, -0.020202, 0.187136, 5.31235),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0)
+}
+point_count = 6
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0qssa"]
+shading_mode = 2
+diffuse_mode = 3
+albedo_color = Color(0.545098, 0.545098, 0.545098, 1)
+metallic = 0.9
+metallic_specular = 0.9
+roughness = 0.27
+
+[sub_resource type="Animation" id="Animation_f7fxm"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Path3D/PathFollow3D:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.5]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Path3D/PathFollow3D2:progress_ratio")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_jb3s3"]
+resource_name = "path_progress"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Path3D/PathFollow3D:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1.4, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.5, 1.0, 0.0, 0.5]
+}
+
+[sub_resource type="Animation" id="Animation_8vypb"]
+resource_name = "snap"
+
+[sub_resource type="Animation" id="Animation_iwuis"]
+resource_name = "twinkle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Path3D/PathFollow3D2:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 1.0, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vt4pe"]
+_data = {
+"RESET": SubResource("Animation_f7fxm"),
+"path_progress": SubResource("Animation_jb3s3"),
+"snap": SubResource("Animation_8vypb"),
+"twinkle": SubResource("Animation_iwuis")
+}
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qstw5"]
+size = Vector3(3.86678, 3.79445, 11.8964)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2vn0h"]
+size = Vector3(40, 40, 40)
+
+[node name="Pole_01_" type="Node3D"]
+script = ExtResource("1_jd64m")
+
+[node name="Path3D" type="Path3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0805683, -0.0159814)
+curve = SubResource("Curve3D_7i0g0")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="Path3D"]
+transform = Transform3D(0.994933, -0.0143505, 0.0986104, 0, 0.989595, 0.144007, -0.0996401, -0.143293, 0.984651, 0.298865, -0.038113, 0.0824827)
+progress = 5.35515
+rotation_mode = 4
+use_model_front = true
+loop = false
+
+[node name="Test Ball" parent="Path3D/PathFollow3D" groups=["Path", "Pole"] instance=ExtResource("1_byh2h")]
+transform = Transform3D(0.4, -2.98023e-08, 3.72529e-08, 2.98023e-08, 0.4, 8.88178e-16, -3.72529e-08, 1.88738e-15, 0.4, -1.19209e-07, 0.0341859, -0.0422413)
+
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="Path3D"]
+material_override = SubResource("StandardMaterial3D_0qssa")
+polygon = PackedVector2Array(0, 0, 0, 0.125, 0.125, 0.125, 0.125, 0)
+mode = 2
+path_node = NodePath("..")
+path_interval_type = 0
+path_interval = 0.48
+path_simplify_angle = 0.0
+path_rotation = 2
+path_local = true
+path_continuous_u = true
+path_u_distance = 1.0
+path_joined = false
+smooth_faces = true
+
+[node name="PathFollow3D2" type="PathFollow3D" parent="Path3D"]
+transform = Transform3D(0.902957, 0.334037, -0.270337, -1.49011e-08, 0.629091, 0.777326, 0.429724, -0.701894, 0.568044, 0.315736, 0.378542, -4.8159)
+
+[node name="Test Ball" parent="Path3D/PathFollow3D2" instance=ExtResource("1_byh2h")]
+collision_layer = 0
+collision_mask = 0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "twinkle"
+libraries = {
+"": SubResource("AnimationLibrary_vt4pe")
+}
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("BoxShape3D_qstw5")
+
+[node name="sparklearea" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="sparklearea"]
+shape = SubResource("BoxShape3D_2vn0h")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]
+[connection signal="body_entered" from="sparklearea" to="." method="_on_sparklearea_body_entered"]

@@ -1,0 +1,80 @@
+[gd_scene load_steps=2 format=3 uid="uid://egsxno8ntieb"]
+
+[ext_resource type="PackedScene" uid="uid://dhei2lvh6a07c" path="res://Assets/Objects/paris_hero_notre_dame.blend" id="1_hjkgh"]
+
+[node name="paris_hero_notre_dame" type="Node3D"]
+
+[node name="paris_hero_notre_dame2" parent="." instance=ExtResource("1_hjkgh")]
+transform = Transform3D(45, 0, 0, 0, 45, 0, 0, 0, 45, 0, 0, 0)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(-0.390875, 0.811874, 0.433679, -0.235223, 0.367411, -0.899822, -0.88988, -0.453729, 0.0473599, 54.0004, -44, 33.2589)
+light_color = Color(0.631373, 0.596078, 0.419608, 1)
+light_energy = 6.0
+shadow_enabled = true
+spot_range = 182.317
+spot_attenuation = 0.450625
+spot_angle = 35.4159
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="."]
+transform = Transform3D(-0.0901846, 0.928841, 0.359335, 0.242957, 0.370423, -0.896526, -0.965836, 0.00645028, -0.259075, 54.0004, -44, -34.7411)
+light_color = Color(0.631373, 0.596078, 0.419608, 1)
+light_energy = 6.0
+shadow_enabled = true
+spot_range = 182.317
+spot_attenuation = 0.450625
+spot_angle = 39.7804
+
+[node name="SpotLight3D3" type="SpotLight3D" parent="."]
+transform = Transform3D(-0.00820062, 0.945453, 0.325655, 0.00446525, 0.325698, -0.945463, -0.999956, -0.00629925, -0.00689261, 54.0004, -44, -3.74113)
+light_color = Color(0.631373, 0.596078, 0.419608, 1)
+light_energy = 6.0
+shadow_enabled = true
+spot_range = 182.317
+spot_attenuation = 0.450625
+spot_angle = 34.3
+
+[node name="SpotLight3D4" type="SpotLight3D" parent="."]
+transform = Transform3D(0.765992, 0.639944, 0.06106, -0.235223, 0.367411, -0.899822, -0.59827, 0.674893, 0.431963, -71.4271, -44, 78.0297)
+light_color = Color(0.631373, 0.596078, 0.419608, 1)
+light_energy = 6.0
+shadow_enabled = true
+spot_range = 182.317
+spot_attenuation = 0.450625
+spot_angle = 35.4159
+
+[node name="SpotLight3D7" type="SpotLight3D" parent="."]
+transform = Transform3D(0.967988, 0.00513571, -0.250946, -0.235223, 0.367411, -0.899822, 0.0875789, 0.930045, 0.356857, -130.854, -44, 65.0297)
+light_color = Color(0.631373, 0.596078, 0.419608, 1)
+light_energy = 6.0
+shadow_enabled = true
+spot_range = 182.317
+spot_attenuation = 0.450625
+spot_angle = 35.4159
+
+[node name="SpotLight3D8" type="SpotLight3D" parent="."]
+transform = Transform3D(0.754221, -0.514938, -0.407419, -0.235223, 0.367411, -0.899822, 0.613043, 0.774499, 0.155983, -180.854, -44, 40.0297)
+light_color = Color(0.631373, 0.596078, 0.419608, 1)
+light_energy = 6.0
+shadow_enabled = true
+spot_range = 182.317
+spot_attenuation = 0.450625
+spot_angle = 35.4159
+
+[node name="SpotLight3D5" type="SpotLight3D" parent="."]
+transform = Transform3D(0.965836, -0.00645032, 0.259075, 0.242957, 0.370423, -0.896526, -0.0901845, 0.928841, 0.359335, 35.0004, -44, 59.1046)
+light_color = Color(0.631373, 0.596078, 0.419608, 1)
+light_energy = 6.0
+shadow_enabled = true
+spot_range = 182.317
+spot_attenuation = 0.450625
+spot_angle = 39.7804
+
+[node name="SpotLight3D6" type="SpotLight3D" parent="."]
+transform = Transform3D(0.999956, 0.00629921, 0.0068926, 0.00446525, 0.325698, -0.945463, -0.00820058, 0.945453, 0.325655, -23.9996, -44, 58.1608)
+light_color = Color(0.631373, 0.596078, 0.419608, 1)
+light_energy = 6.0
+shadow_enabled = true
+spot_range = 182.317
+spot_attenuation = 0.450625
+spot_angle = 34.3

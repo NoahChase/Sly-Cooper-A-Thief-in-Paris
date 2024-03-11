@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://cdxmv3188ib66"
+path="res://.godot/imported/paris_block_end_02_.obj-690d4cd0d1e99cb5b878221ab4417d86.mesh"
+
+[deps]
+
+files=["res://.godot/imported/paris_block_end_02_.obj-690d4cd0d1e99cb5b878221ab4417d86.mesh"]
+
+source_file="res://Assets/Objects/paris_block_end_02_.obj"
+dest_files=["res://.godot/imported/paris_block_end_02_.obj-690d4cd0d1e99cb5b878221ab4417d86.mesh", "res://.godot/imported/paris_block_end_02_.obj-690d4cd0d1e99cb5b878221ab4417d86.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

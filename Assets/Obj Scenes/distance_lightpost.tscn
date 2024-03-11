@@ -1,0 +1,47 @@
+[gd_scene load_steps=5 format=3 uid="uid://p2s6u10w2glw"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i374h"]
+shading_mode = 2
+diffuse_mode = 3
+albedo_color = Color(0.52549, 0.52549, 0.52549, 1)
+metallic = 0.52
+metallic_specular = 0.88
+roughness = 0.44
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_wmvce"]
+top_radius = 0.1
+bottom_radius = 0.15
+height = 8.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bmc3l"]
+shading_mode = 0
+albedo_color = Color(0.780392, 0.682353, 0.12549, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_0xolr"]
+size = Vector3(0.4, 0.66, 0.4)
+
+[node name="distance_lightpost" type="Node3D"]
+
+[node name="LIGHTPOST" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.25, 0)
+light_color = Color(0.701961, 0.623529, 0.407843, 1)
+light_energy = 0.33
+shadow_bias = 0.25
+shadow_normal_bias = 3.0
+shadow_blur = 3.97
+distance_fade_begin = 50.0
+distance_fade_shadow = 20.0
+distance_fade_length = 50.0
+omni_range = 50.0
+omni_attenuation = 0.420449
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="LIGHTPOST"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.20876, 0)
+material_override = SubResource("StandardMaterial3D_i374h")
+mesh = SubResource("CylinderMesh_wmvce")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="LIGHTPOST"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.303061, -0.551022, 0)
+material_override = SubResource("StandardMaterial3D_bmc3l")
+cast_shadow = 0
+mesh = SubResource("BoxMesh_0xolr")

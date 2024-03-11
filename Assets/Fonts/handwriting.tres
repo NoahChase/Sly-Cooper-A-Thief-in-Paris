@@ -1,0 +1,7 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://f5b5fpewrxb6"]
+
+[ext_resource type="FontFile" uid="uid://dksbkb7hp8bmb" path="res://Assets/Fonts/orange-garden.regular.otf" id="1_82oyx"]
+
+[resource]
+default_font = ExtResource("1_82oyx")
+default_font_size = 64

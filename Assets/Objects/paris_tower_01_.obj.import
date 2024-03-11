@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://b3lfpxq0xb2ho"
+path="res://.godot/imported/paris_tower_01_.obj-cec0981480412feecc4da749bdf5936e.mesh"
+
+[deps]
+
+files=["res://.godot/imported/paris_tower_01_.obj-cec0981480412feecc4da749bdf5936e.mesh"]
+
+source_file="res://Assets/Objects/paris_tower_01_.obj"
+dest_files=["res://.godot/imported/paris_tower_01_.obj-cec0981480412feecc4da749bdf5936e.mesh", "res://.godot/imported/paris_tower_01_.obj-cec0981480412feecc4da749bdf5936e.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

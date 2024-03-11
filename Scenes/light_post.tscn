@@ -1,0 +1,141 @@
+[gd_scene load_steps=12 format=3 uid="uid://yb0msdp8jiku"]
+
+[ext_resource type="Script" path="res://Scripts/pole.gd" id="1_gun0y"]
+[ext_resource type="PackedScene" uid="uid://dki2qttdigjub" path="res://Scenes/test_ball.tscn" id="2_k1s1a"]
+
+[sub_resource type="Curve3D" id="Curve3D_61p0w"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -0.0721342, 5.4053, 0.00012207, 0, 0, 0, 0, 0, 0, -0.0854735, 0.064155, 0.00781438),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Animation" id="Animation_838dt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PathFollow3D2:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_vrami"]
+resource_name = "twinkle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PathFollow3D2:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 1.0, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dda4u"]
+_data = {
+"RESET": SubResource("Animation_838dt"),
+"twinkle": SubResource("Animation_vrami")
+}
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_s35hx"]
+height = 13.3865
+radius = 2.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_utf3o"]
+shading_mode = 2
+diffuse_mode = 3
+albedo_color = Color(0.52549, 0.52549, 0.52549, 1)
+metallic = 0.52
+metallic_specular = 0.88
+roughness = 0.44
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_ps4u2"]
+top_radius = 0.1
+bottom_radius = 0.15
+height = 8.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_riqco"]
+shading_mode = 0
+albedo_color = Color(0.588235, 0.478431, 0.219608, 1)
+uv1_scale = Vector3(1, 2, 3)
+uv1_offset = Vector3(1, 2, 3)
+uv1_world_triplanar = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_ejk08"]
+size = Vector3(0.4, 0.66, 0.4)
+
+[node name="Light_Post" type="Node3D"]
+script = ExtResource("1_gun0y")
+basis_type = 2
+length = 2.5
+
+[node name="Path3D" type="Path3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.209189, 0, 0)
+curve = SubResource("Curve3D_61p0w")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="Path3D"]
+transform = Transform3D(0.865512, 0.500887, 2.18945e-08, 0, -4.37114e-08, 1, 0.500887, -0.865512, -3.78328e-08, -0.0853971, 0.0947376, 0.00777034)
+progress = 5.30039
+loop = false
+
+[node name="Test Ball" parent="Path3D/PathFollow3D" groups=["Path", "Pole"] instance=ExtResource("2_k1s1a")]
+
+[node name="PathFollow3D2" type="PathFollow3D" parent="Path3D"]
+transform = Transform3D(-1.62921e-07, 1, 4.37114e-08, 0, -4.37114e-08, 1, 0.999999, 1.62921e-07, 7.12149e-15, -0.0721342, 5.4053, 0.00012207)
+
+[node name="Test Ball" parent="Path3D/PathFollow3D2" instance=ExtResource("2_k1s1a")]
+collision_layer = 0
+collision_mask = 0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Path3D"]
+autoplay = "twinkle"
+libraries = {
+"": SubResource("AnimationLibrary_dda4u")
+}
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.66507, 0)
+shape = SubResource("CylinderShape3D_s35hx")
+
+[node name="LIGHTPOST" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.25, 0)
+light_color = Color(0.666667, 0.584314, 0.431373, 1)
+light_energy = 0.25
+shadow_bias = 0.25
+shadow_normal_bias = 3.0
+shadow_blur = 3.97
+distance_fade_enabled = true
+distance_fade_begin = 100.0
+distance_fade_shadow = 20.0
+distance_fade_length = 50.0
+omni_range = 50.0
+omni_attenuation = 0.420449
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="LIGHTPOST"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.20876, 0)
+material_override = SubResource("StandardMaterial3D_utf3o")
+mesh = SubResource("CylinderMesh_ps4u2")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="LIGHTPOST"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.303061, -0.551022, 0)
+material_override = SubResource("StandardMaterial3D_riqco")
+cast_shadow = 0
+mesh = SubResource("BoxMesh_ejk08")
+
+[node name="Test Ball" parent="LIGHTPOST" groups=["Point"] instance=ExtResource("2_k1s1a")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.303061, -0.231293, 0)
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]

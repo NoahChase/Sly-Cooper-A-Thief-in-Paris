@@ -1,0 +1,33 @@
+[gd_scene load_steps=3 format=3 uid="uid://8x64nph8ag05"]
+
+[ext_resource type="PackedScene" uid="uid://5geuvsvvaaoh" path="res://Assets/Objects/paris_hero_classic_tower.blend" id="1_6s0l2"]
+[ext_resource type="PackedScene" uid="uid://crdwuanyaaedy" path="res://Assets/Objects/paris_detail_roof_04_.blend" id="2_lbcxx"]
+
+[node name="paris_hero_classic_tower" type="Node3D"]
+
+[node name="paris_hero_classic_tower" parent="." instance=ExtResource("1_6s0l2")]
+transform = Transform3D(7, 0, 0, 0, 7, 0, 0, 0, 7, 0, 0, 0)
+
+[node name="paris_detail_roof_04_" parent="." instance=ExtResource("2_lbcxx")]
+transform = Transform3D(0.932065, 0, -0.362292, 0, 1, 0, 0.362292, 0, 0.932065, -5.93314, 6, -2.41932)
+
+[node name="paris_detail_roof_04_2" parent="." instance=ExtResource("2_lbcxx")]
+transform = Transform3D(0.932065, 0, -0.362292, 0, 1, 0, 0.362292, 0, 0.932065, -5.93314, 10, -2.41932)
+
+[node name="paris_detail_roof_04_3" parent="." instance=ExtResource("2_lbcxx")]
+transform = Transform3D(0.40289, 0, -0.915248, 0, 1, 0, 0.915248, 0, 0.40289, -2.30267, 6, -6.04426)
+
+[node name="paris_detail_roof_04_4" parent="." instance=ExtResource("2_lbcxx")]
+transform = Transform3D(0.40289, 0, -0.915248, 0, 1, 0, 0.915248, 0, 0.40289, -2.30267, 10, -6.04426)
+
+[node name="paris_detail_roof_04_5" parent="." instance=ExtResource("2_lbcxx")]
+transform = Transform3D(-0.932065, 0, 0.362292, 0, 1, 0, -0.362292, 0, -0.932065, 5.85871, 6, 2.32602)
+
+[node name="paris_detail_roof_04_6" parent="." instance=ExtResource("2_lbcxx")]
+transform = Transform3D(-0.932065, 0, 0.362292, 0, 1, 0, -0.362292, 0, -0.932065, 5.85871, 10, 2.32602)
+
+[node name="paris_detail_roof_04_7" parent="." instance=ExtResource("2_lbcxx")]
+transform = Transform3D(-0.402891, 0, 0.915248, 0, 1, 0, -0.915248, 0, -0.402891, 2.22824, 6, 5.95096)
+
+[node name="paris_detail_roof_04_8" parent="." instance=ExtResource("2_lbcxx")]
+transform = Transform3D(-0.402891, 0, 0.915248, 0, 1, 0, -0.915248, 0, -0.402891, 2.22824, 10, 5.95096)
