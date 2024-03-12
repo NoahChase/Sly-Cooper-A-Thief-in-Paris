@@ -365,7 +365,7 @@ func ledge_detect():
 	to_ray_ball = ray_v_ball.global_transform.origin - global_transform.origin
 	distance_to_ball = to_ray_ball.length()
 		
-	if not $Ray_V_Container/Ray_V_Ball/Ledge_Col_Anim.current_animation == "check_ledge_final":
+	if not $Ray_V_Container/Ray_V_Ball/Ledge_Col_Anim.current_animation == "check_ledge_final" and distance_to_ball <= 3:
 		$Ray_V_Container/Ray_V_Ball/Ledge_Col_Anim.play("check_ledge")
 		$Ray_V_Container/Ray_V_Ball/Ledge_Col_Anim.queue("check_ledge_final")
 

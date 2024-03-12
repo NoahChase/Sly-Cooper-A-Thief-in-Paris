@@ -8,3 +8,4 @@ res://Scenes/world.tscn
 res://Assets/Obj Scenes/sly_cooper.tscn
 res://Scenes/TEST.tscn
 res://Scenes/light_post.tscn
+res://Scripts/player.gd
