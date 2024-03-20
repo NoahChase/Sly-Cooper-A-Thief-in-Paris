@@ -4,7 +4,7 @@ res://Assets/Materials/sly_cooper.outline.gdshader
 res://Assets/Materials/CobbleStone_01_.tres
 res://Assets/Materials/brick_128_01_.tres
 res://Assets/Materials/Water.tres
+res://Scripts/player.gd
 res://Scenes/world.tscn
 res://Assets/Obj Scenes/sly_cooper.tscn
 res://Scenes/TEST.tscn
-res://Scripts/player.gd

@@ -171,7 +171,7 @@ func _physics_process(delta):
 		air_accel = lerpf(air_accel, 0.0, lerp_val/3)
 		can_right_stick = true
 		if double_jump == false:
-			air_accel = 0.6
+			air_accel = lerpf(air_accel + 0.5, 0.0, lerp_val)
 			
 		$"CameraOrigin/State Reader".text = str("[center]AIR")
 		sly_anim_tree.set("parameters/Transition/transition_request", air_anim)
@@ -403,22 +403,42 @@ func move_to_target():
 		var to_target = platform.global_transform.origin - global_transform.origin
 		var distance = to_target.length()
 		
-		var tween = create_tween().set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
+		var x_tween = create_tween().set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
+		var y_tween = create_tween().set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
+		var z_tween = create_tween().set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
+
 		if not anim_player.current_animation == "spin":
 			anim_player.play("spin")
-			tween.tween_property(
+	
+			var target_position = platform.global_transform.origin + final_offset
+	
+			x_tween.tween_property(
 				self,
-				"position",
-				platform.global_transform.origin + final_offset,
-				distance/(SPEED*SPEED_MULT),
-			).set_trans(Tween.TRANS_SPRING).set_ease(Tween.EASE_IN_OUT)
+				"position:x",
+				platform.global_transform.origin.x,
+				distance / (SPEED * SPEED_MULT),
+			).set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_OUT)
+	
+			y_tween.tween_property(
+				self,
+				"position:y",
+				platform.global_transform.origin.y,
+				distance / (SPEED * SPEED_MULT),
+			).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN)
+	
+			z_tween.tween_property(
+				self,
+				"position:z",
+				platform.global_transform.origin.z,
+				distance / (SPEED * SPEED_MULT),
+			).set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_OUT)
 			sly_anim_tree.set("parameters/Transition/transition_request", "not_on_floor")
 			$AnimationPlayer.queue("RESET")
-		state_now = State.ON_PLATFORM
-		if tween.is_running():
-			state_now = State.TWEENING
-		elif target != null:
-			state_now = State.ON_PLATFORM
+			
+			if x_tween.is_running() and y_tween.is_running() and z_tween.is_running():
+				state_now = State.TWEENING
+			elif target != null:
+				state_now = State.ON_PLATFORM
 			
 			
 func ledge_detect():
