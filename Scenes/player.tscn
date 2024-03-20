@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://dtn4nhjv25y3a"]
+[gd_scene load_steps=46 format=3 uid="uid://dtn4nhjv25y3a"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_te7i4"]
 [ext_resource type="Theme" uid="uid://f5b5fpewrxb6" path="res://Assets/Fonts/handwriting.tres" id="2_7h14n"]
@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://dgmannm3l1q1s" path="res://Scenes/particle_sparkle.tscn" id="2_yoffi"]
 [ext_resource type="Theme" uid="uid://bpcolnmuv3ess" path="res://Assets/Fonts/menu.tres" id="3_57adr"]
 [ext_resource type="PackedScene" uid="uid://ckjh4w5mqu7dr" path="res://Assets/Obj Scenes/sly_cooper.tscn" id="3_lw72l"]
+[ext_resource type="Texture2D" uid="uid://cief7ne5hhepl" path="res://Assets/Textures/particle_platform_.png" id="6_7abxt"]
+[ext_resource type="AudioStream" uid="uid://s7c4vbxnk30a" path="res://Assets/Sounds/swoosh-sound-effect-for-fight-scenes-or-transitions-1-149889.mp3" id="7_cbunl"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_2yoqs"]
 radius = 0.4
@@ -444,14 +446,19 @@ _data = {
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gytom"]
 transparency = 1
-albedo_color = Color(1, 1, 0, 0)
+shading_mode = 0
+albedo_color = Color(1, 1, 1, 0.219608)
+albedo_texture = ExtResource("6_7abxt")
+uv1_scale = Vector3(4, 4, 4)
+uv1_offset = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+billboard_mode = 1
 
-[sub_resource type="SphereMesh" id="SphereMesh_gasc8"]
-radius = 0.125
-height = 0.25
+[sub_resource type="BoxMesh" id="BoxMesh_mri13"]
+size = Vector3(0.25, 0.25, 0.25)
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_k6s53"]
-radius = 0.1
+radius = 0.13
 
 [sub_resource type="Animation" id="Animation_thl5o"]
 length = 0.001
@@ -600,10 +607,13 @@ _data = {
 }
 
 [node name="Player" type="CharacterBody3D" groups=["Player"]]
+floor_constant_speed = true
 floor_max_angle = 0.959931
+floor_snap_length = 1.0
 script = ExtResource("1_te7i4")
 
 [node name="Pause Menu" parent="." instance=ExtResource("2_s8llo")]
+size_flags_horizontal = 4
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -611,6 +621,38 @@ shape = SubResource("CapsuleShape3D_2yoqs")
 
 [node name="CameraOrigin" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+
+[node name="Jump Counter" type="RichTextLabel" parent="CameraOrigin"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -86.0
+offset_top = -42.0
+offset_right = 86.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 6
+bbcode_enabled = true
+
+[node name="State Reader" type="RichTextLabel" parent="CameraOrigin"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -59.0
+offset_top = -141.0
+offset_right = 59.0
+offset_bottom = -81.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("3_57adr")
+bbcode_enabled = true
+fit_content = true
 
 [node name="CameraArm" type="SpringArm3D" parent="CameraOrigin"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
@@ -684,6 +726,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.5)
 
 [node name="Feet" type="Node3D" parent="."]
 
+[node name="Head" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+
 [node name="sly_container" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.723407, 0)
 
@@ -751,8 +796,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.273712, 0)
 target_position = Vector3(0, -60, 0)
 
 [node name="Ray_V_Ball" type="MeshInstance3D" parent="Ray_V_Container" groups=["Ray_V_Ball"]]
+visible = false
 material_override = SubResource("StandardMaterial3D_gytom")
-mesh = SubResource("SphereMesh_gasc8")
+mesh = SubResource("BoxMesh_mri13")
 
 [node name="Ball_Area" type="Area3D" parent="Ray_V_Container/Ray_V_Ball"]
 
@@ -790,6 +836,10 @@ target_position = Vector3(0, 0, -4)
 libraries = {
 "": SubResource("AnimationLibrary_kixou")
 }
+
+[node name="jump_sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_cbunl")
+volume_db = -17.0
 
 [connection signal="body_entered" from="CameraOrigin/CameraArm/camera/Area3D" to="CameraOrigin" method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="CameraOrigin/CameraArm/camera/Area3D" to="CameraOrigin" method="_on_area_3d_body_exited"]

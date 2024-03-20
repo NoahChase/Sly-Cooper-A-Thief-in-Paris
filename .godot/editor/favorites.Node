@@ -3,3 +3,4 @@ CSGPolygon3D
 AnimationPlayer
 PathFollow3D
 MeshInstance3D
+AudioStreamPlayer

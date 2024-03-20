@@ -1,4 +1,8 @@
 RichTextLabel
+CanvasLayer
+TextureButton
+AudioStreamPlayer
+AudioStreamPlayer3D
 SpotLight3D
 MeshInstance3D
 AnimationPlayer
@@ -7,7 +11,6 @@ VBoxContainer
 Button
 CenterContainer
 MarginContainer
-CanvasLayer
 ColorRect
 Node3D
 CollisionShape3D
@@ -21,12 +24,9 @@ DirectionalLight3D
 WorldEnvironment
 MultiMeshInstance3D
 GPUParticles3D
-AudioStreamPlayer3D
 Container
 Timer
 CPUParticles3D
 Node
 OmniLight3D
 AnimationTree
-NavigationRegion3D
-PointLight2D

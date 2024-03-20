@@ -1,5 +1,5 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1710212436
+::res://::1710899260
 export_presets.cfg::TextFile::-1::1706502988::0::1::::<><>::
 icon.svg::CompressedTexture2D::3185188914393438761::1701222441::1701222449::1::::<><>::
 Jump_Container.gd::GDScript::-1::1706071950::0::1::::<>Node3D<>::
@@ -10,7 +10,7 @@ sly-cooper-fan-game-screenshot.png::CompressedTexture2D::3258104325273413698::17
 sly-cooper-fan-game.png::CompressedTexture2D::7630196204509754639::1706493828::1706493845::1::::<><>::
 sly_pause_menu_1080.png::CompressedTexture2D::411867565003703690::1706478788::1706478789::1::::<><>::
 Water.gdshader::Shader::-1::1706041067::0::1::::<><>::
-::res://Assets/::1706493845
+::res://Assets/::1710652336
 ::res://Assets/Fonts/::1706493827
 Fatcow-LrJn.ttf::FontFile::3895097630249388372::1706482873::1706482873::1::::<><>::
 Fatcow-moyG.otf::FontFile::5798711088069987058::1706482873::1706482873::1::::<><>::
@@ -22,14 +22,14 @@ menu.tres::Theme::3444252477682472886::1706482972::0::1::::<><>::uid://cou66ovll
 orange-garden.regular.otf::FontFile::7898387964261001461::1705879067::1705879067::1::::<><>::
 qwigley.regular.ttf::FontFile::2799088331118571033::1705879067::1705879067::1::::<><>::
 TheComicStruves-WyVAE.ttf::FontFile::1383951161266270469::1706482881::1706482882::1::::<><>::
-::res://Assets/Materials/::1710201445
-blur.gdshader::Shader::-1::1710201445::0::1::::<><>::
-brick_128_01_.tres::StandardMaterial3D::1046700776181968757::1710197852::0::1::::<><>::uid://bk36dcjogpnkv::::res://Assets/Textures/bricks_small_128.png
-CobbleStone_01_.tres::StandardMaterial3D::7574030609554619342::1710197852::0::1::::<><>::uid://btpnsmyomibhc::::res://Assets/Textures/detailcobble.png<>uid://dls4nwel275h::::res://Assets/Textures/detailcobble_NORMAL.png<>uid://b3st0raort8vl::::res://Assets/Textures/cobblestest.png
+::res://Assets/Materials/::1710828223
+blur.gdshader::Shader::-1::1710828223::0::1::::<><>::
+brick_128_01_.tres::StandardMaterial3D::1046700776181968757::1710801110::0::1::::<><>::uid://bk36dcjogpnkv::::res://Assets/Textures/bricks_small_128.png
+CobbleStone_01_.tres::StandardMaterial3D::7574030609554619342::1710808872::0::1::::<><>::uid://btpnsmyomibhc::::res://Assets/Textures/detailcobble.png<>uid://dls4nwel275h::::res://Assets/Textures/detailcobble_NORMAL.png<>uid://b3st0raort8vl::::res://Assets/Textures/cobblestest.png
 Metal.tres::StandardMaterial3D::499493974802975739::1705811190::0::1::::<><>::
-sly_cooper.outline.gdshader::Shader::-1::1710201445::0::1::::<><>::
-Water.tres::Shader::1576208034141649025::1710201445::0::1::::<><>::
-::res://Assets/Obj Scenes/::1710197853
+sly_cooper.outline.gdshader::Shader::-1::1710828223::0::1::::<><>::
+Water.tres::Shader::1576208034141649025::1710828223::0::1::::<><>::
+::res://Assets/Obj Scenes/::1710828023
 distance_lightpost.tscn::PackedScene::1109720211209219068::1709002563::0::1::::<><>::
 jump_mesh.gd::GDScript::-1::1705980195::0::1::::<>Node3D<>::
 paris_balcony_rd.tscn::PackedScene::6884049447233671751::1705808891::0::1::::<><>::uid://t0ueh8wpn3s7
@@ -78,8 +78,8 @@ paris_island_latin.tscn::PackedScene::8954541584244202546::1705989812::0::1::::<
 paris_island_marais.tscn::PackedScene::7631682853088286079::1706331542::0::1::::<><>::uid://b4oklvobii10n
 paris_island_marais_cameracol.tscn::PackedScene::613410173048596862::1706327014::0::1::::<><>::uid://bkj2lgimxhtox
 pickup_bottle.gd::GDScript::-1::1706396100::0::1::::<>Node3D<>::
-pickup_bottle.tscn::PackedScene::7744571182231164870::1707178174::0::1::::<><>::uid://blb31i1s6tchh
-sly_cooper.tscn::PackedScene::5493787212950936471::1710197853::0::1::::<><>::uid://dlkm1efw2xmhc::::res://Assets/Objects/sly_cooper_anims.glb<>res://Assets/Materials/sly_cooper.outline.gdshader
+pickup_bottle.tscn::PackedScene::7744571182231164870::1710808834::0::1::::<><>::uid://blb31i1s6tchh::::res://Assets/Objects/bottle.blend<>res://Assets/Obj Scenes/pickup_bottle.gd<>uid://33h36tvmoi8l::::res://Assets/Sounds/bottle-clink-101000.mp3<>uid://x3ssojwgla6m::::res://Assets/Sounds/bottle-break-39916.mp3<>res://Assets/Materials/sly_cooper.outline.gdshader
+sly_cooper.tscn::PackedScene::5493787212950936471::1710828023::0::1::::<><>::uid://dlkm1efw2xmhc::::res://Assets/Objects/sly_cooper_anims.glb<>res://Assets/Materials/sly_cooper.outline.gdshader
 water.tscn::PackedScene::3416471823862484162::1709071247::0::1::::<><>::uid://wpr6e64eqqxt
 ::res://Assets/Objects/::1708131897
 bottle.blend::PackedScene::3162309309116234693::1705880325::1705880347::1::::<><>::
@@ -130,9 +130,10 @@ paris_mini_block_01.blend::PackedScene::7228926333583999517::1706052410::1706052
 paris_test_building_01_.blend::PackedScene::2181323146720630201::1708131892::1708131897::1::::<><>::
 paris_tower_01_.obj::Mesh::4374748066645687168::1701823245::1701823245::1::::<><>::
 sly_cooper_anims.glb::PackedScene::7952758362046983176::1702420557::1702424101::1::::<><>::
-::res://Assets/Sounds/::1705880344
+::res://Assets/Sounds/::1710652337
 bottle-break-39916.mp3::AudioStreamMP3::1673271781186675554::1705879822::1705879822::1::::<><>::
 bottle-clink-101000.mp3::AudioStreamMP3::2023566878703161757::1705873618::1705873618::1::::<><>::
+swoosh-sound-effect-for-fight-scenes-or-transitions-1-149889.mp3::AudioStreamMP3::1329633601221241474::1710652331::1710652337::1::::<><>::
 ::res://Assets/Textures/::1708131047
 bricks_small_128.png::CompressedTexture2D::3147999400939232629::1701224394::1701224427::1::::<><>::
 cobblestest.png::CompressedTexture2D::4390066266397820737::1705888068::1705888147::1::::<><>::
@@ -143,26 +144,26 @@ particle_platform_.png::CompressedTexture2D::5342971048230956161::1701899826::17
 sly promo.png::CompressedTexture2D::6643983366217678710::1705871781::1705871789::1::::<><>::
 sly_cooper_logo_vector_by_enverse-d6l9esg.png::CompressedTexture2D::9162344193471943202::1702244571::1705803422::1::::<><>::
 ::res://Exports/::1706494449
-::res://Scenes/::1710197853
+::res://Scenes/::1710828221
 beam.tscn::PackedScene::9141143462327250045::1706331542::0::1::::<><>::uid://dki2qttdigjub
 head.gd::GDScript::-1::1703038130::0::1::::<>Node3D<>::
 jump_container.tscn::PackedScene::6897269912681798379::1705989812::0::1::::<><>::res://Jump_Container.gd
-light_post.tscn::PackedScene::1688136930193566976::1710197853::0::1::::<><>::res://Scripts/pole.gd<>uid://dki2qttdigjub::::res://Scenes/test_ball.tscn
+light_post.tscn::PackedScene::1688136930193566976::1710213051::0::1::::<><>::res://Scripts/pole.gd<>uid://dki2qttdigjub
 particle_sparkle.tscn::PackedScene::7605191563906116166::1702412514::0::1::::<><>::uid://cief7ne5hhepl
 path_3d.tscn::PackedScene::4630826020479669185::1701820236::0::1::::<><>::uid://dki2qttdigjub
-pause_menu.tscn::PackedScene::9045393721752773455::1707177936::0::1::::<><>::res://Scripts/pause_menu.gd<>res://Assets/Materials/blur.gdshader<>uid://f4rns2nupn67
+pause_menu.tscn::PackedScene::9045393721752773455::1710808834::0::1::::<><>::res://Scripts/pause_menu.gd<>res://Assets/Materials/blur.gdshader<>uid://f4rns2nupn67::::res://sly_pause_menu_1080.png<>uid://bpcolnmuv3ess::::res://Assets/Fonts/menu.tres
 pipe.tscn::PackedScene::3871600750980867746::1709412961::0::1::::<><>::res://Path.gd<>uid://dki2qttdigjub
-player.tscn::PackedScene::8521471381673810200::1710197852::0::1::::<><>::res://Scripts/player.gd<>uid://f5b5fpewrxb6::::res://Assets/Fonts/handwriting.tres<>uid://d14wkv5cix3g2::::res://Scenes/pause_menu.tscn<>uid://dgmannm3l1q1s::::res://Scenes/particle_sparkle.tscn<>uid://bpcolnmuv3ess::::res://Assets/Fonts/menu.tres<>uid://ckjh4w5mqu7dr::::res://Assets/Obj Scenes/sly_cooper.tscn
+player.tscn::PackedScene::8521471381673810200::1710828221::0::1::::<><>::res://Scripts/player.gd<>uid://f5b5fpewrxb6::::res://Assets/Fonts/handwriting.tres<>uid://d14wkv5cix3g2::::res://Scenes/pause_menu.tscn<>uid://dgmannm3l1q1s::::res://Scenes/particle_sparkle.tscn<>uid://bpcolnmuv3ess::::res://Assets/Fonts/menu.tres<>uid://ckjh4w5mqu7dr::::res://Assets/Obj Scenes/sly_cooper.tscn<>uid://cief7ne5hhepl::::res://Assets/Textures/particle_platform_.png<>uid://s7c4vbxnk30a::::res://Assets/Sounds/swoosh-sound-effect-for-fight-scenes-or-transitions-1-149889.mp3
 pole_01_.tscn::PackedScene::2092302529499671515::1707437715::0::1::::<><>::uid://dki2qttdigjub
 rope_container.tscn::PackedScene::3454047329922350505::1703133014::0::1::::<><>::res://Scripts/pole.gd
 smoke_particles.tscn::PackedScene::5372042744473746059::1705808891::0::1::::<><>::
-TEST.tscn::PackedScene::2261388649244646896::1710197853::0::1::::<><>::uid://dtn4nhjv25y3a::::res://Scenes/player.tscn<>uid://df56gbi2lxwfe::::res://Assets/Materials/CobbleStone_01_.tres<>uid://bvfox0yrvskwo::::res://Scenes/pipe.tscn<>uid://42r6gawhab6j::::res://Scenes/pole_01_.tscn<>uid://6cwcracmy210::::res://Assets/Objects/paris_test_building_01_.blend<>uid://b44k8u50ali18::::res://Assets/Obj Scenes/paris_detail_window_up.tscn<>uid://dnrakpid2nwcd::::res://Assets/Objects/paris_detail_hotel_window.blend<>uid://c4e05gkitsd37::::res://Assets/Obj Scenes/paris_hero_palace.tscn
+TEST.tscn::PackedScene::2261388649244646896::1710828023::0::1::::<><>::uid://dtn4nhjv25y3a::::res://Scenes/player.tscn<>uid://df56gbi2lxwfe::::res://Assets/Materials/CobbleStone_01_.tres<>uid://bvfox0yrvskwo::::res://Scenes/pipe.tscn<>uid://42r6gawhab6j::::res://Scenes/pole_01_.tscn<>uid://6cwcracmy210::::res://Assets/Objects/paris_test_building_01_.blend<>uid://b44k8u50ali18::::res://Assets/Obj Scenes/paris_detail_window_up.tscn<>uid://dnrakpid2nwcd::::res://Assets/Objects/paris_detail_hotel_window.blend<>uid://c4e05gkitsd37::::res://Assets/Obj Scenes/paris_hero_palace.tscn
 test_ball.tscn::PackedScene::7879334468441458589::1703133014::0::1::::<><>::res://Scripts/test_ball.gd<>uid://dgmannm3l1q1s
-world.tscn::PackedScene::8183935888303569885::1710197853::0::1::::<><>::uid://df56gbi2lxwfe::::res://Assets/Materials/CobbleStone_01_.tres<>res://Scripts/world.gd<>uid://dtn4nhjv25y3a::::res://Scenes/player.tscn<>uid://6cwcracmy210::::res://Assets/Objects/paris_test_building_01_.blend<>uid://o6bakigmh5u4::::res://Assets/Materials/brick_128_01_.tres<>res://Scripts/pole.gd<>uid://dki2qttdigjub::::res://Scenes/test_ball.tscn<>uid://42r6gawhab6j::::res://Scenes/pole_01_.tscn<>uid://da80mi2ik886t::::res://Assets/Objects/paris_mini_block_01.blend<>uid://bno5ojo0o7i4a::::res://Assets/Obj Scenes/paris_block_small.tscn<>uid://bt3ekofpw6fik::::res://Assets/Obj Scenes/paris_block_lg.tscn<>uid://chto78kaa1o1b::::res://Assets/Obj Scenes/paris_hero_small.tscn<>uid://dsyi4350ncm1r::::res://Assets/Obj Scenes/paris_hero_crop_01.tscn<>uid://d7njdyf5igcb::::res://Assets/Obj Scenes/paris_hero_long_01_.tscn<>uid://5ylccc58c6sc::::res://Assets/Obj Scenes/paris_hero_short_01_.tscn<>uid://egsxno8ntieb::::res://Assets/Obj Scenes/paris_hero_notre_dame.tscn<>uid://cd4oe3t6lkxjk::::res://Assets/Obj Scenes/paris_hero_castle_01.tscn<>uid://b2ktqggsdu4kk::::res://Assets/Obj Scenes/paris_block_short_01_.tscn<>uid://vlqq6ccb03sa::::res://Assets/Obj Scenes/paris_hero_long_02_.tscn<>uid://cossj8gfb8uod::::res://Assets/Obj Scenes/paris_church_tower.tscn<>uid://b0mvb4707i6vp::::res://Assets/Obj Scenes/paris_detail_roof_01_.tscn<>uid://daaq3swb36vo8::::res://Assets/Obj Scenes/paris_block_short_02_.tscn<>uid://85vj0l5x3a8n::::res://Assets/Obj Scenes/paris_hero_L_01_.tscn<>uid://b65xq26fow5pg::::res://Assets/Obj Scenes/paris_hero_classic_01_.tscn<>uid://dwlkbvcnmeflk::::res://Assets/Obj Scenes/paris_block_med_02_.tscn<>uid://co68uujn3wjvi::::res://Assets/Obj Scenes/paris_detail_chimney_01_.tscn<>uid://m3hncfokrdrb::::res://Assets/Obj Scenes/paris_detail_chimney_02_.tscn<>uid://8x64nph8ag05::::res://Assets/Obj Scenes/paris_hero_classic_tower.tscn<>uid://yb0msdp8jiku::::res://Scenes/light_post.tscn<>uid://duxyjp282nebo::::res://Assets/Obj Scenes/paris_detail_chimney_03_.tscn<>uid://hoejfbofo651::::res://Assets/Obj Scenes/paris_cheese.tscn<>uid://c4e05gkitsd37::::res://Assets/Obj Scenes/paris_hero_palace.tscn<>uid://bxi2l8e5s8qx3::::res://Assets/Obj Scenes/paris_hero_classic_02_.tscn<>uid://c8o43voltdkya::::res://Assets/Obj Scenes/paris_detail_roof_02_paris_detail_roof_02_.tscn<>uid://dpjlvmb4mbfwa::::res://Assets/Obj Scenes/paris_block_med.tscn<>uid://cohi2r15gi6fu::::res://Assets/Obj Scenes/paris_eiffeltower.tscn<>uid://bpmyxtyrehy6y::::res://Assets/Obj Scenes/paris_hero_classic_03_.tscn<>uid://c5cxj2wcjof08::::res://Assets/Obj Scenes/paris_balcony_rd.tscn<>uid://cv8gb0e3o8m2e::::res://Assets/Obj Scenes/paris_detail_cafe_canopy.tscn<>uid://d3ibkdws82a34::::res://Scenes/beam.tscn<>uid://bar780rq3dtf::::res://Assets/Obj Scenes/paris_hero_classic_hotel.tscn<>uid://dilr7q8yvhtfi::::res://Assets/Obj Scenes/pickup_bottle.tscn<>uid://n53piq0b62j4::::res://Assets/Obj Scenes/paris_island_large.tscn<>uid://dgy3x4bgxtxet::::res://Assets/Obj Scenes/paris_island_marais.tscn<>uid://c5jda7dagd4b4::::res://Scenes/jump_container.tscn<>uid://d0tv8ykski4ew::::res://Assets/Obj Scenes/paris_island_latin.tscn<>uid://bow716kmpj75o::::res://Assets/Obj Scenes/water.tscn<>uid://p2s6u10w2glw::::res://Assets/Obj Scenes/distance_lightpost.tscn
-::res://Scripts/::1709510029
+world.tscn::PackedScene::8183935888303569885::1710828023::0::1::::<><>::uid://df56gbi2lxwfe::::res://Assets/Materials/CobbleStone_01_.tres<>res://Scripts/world.gd<>uid://dtn4nhjv25y3a::::res://Scenes/player.tscn<>uid://6cwcracmy210::::res://Assets/Objects/paris_test_building_01_.blend<>uid://o6bakigmh5u4::::res://Assets/Materials/brick_128_01_.tres<>res://Scripts/pole.gd<>uid://dki2qttdigjub::::res://Scenes/test_ball.tscn<>uid://42r6gawhab6j::::res://Scenes/pole_01_.tscn<>uid://da80mi2ik886t::::res://Assets/Objects/paris_mini_block_01.blend<>uid://bno5ojo0o7i4a::::res://Assets/Obj Scenes/paris_block_small.tscn<>uid://bt3ekofpw6fik::::res://Assets/Obj Scenes/paris_block_lg.tscn<>uid://chto78kaa1o1b::::res://Assets/Obj Scenes/paris_hero_small.tscn<>uid://dsyi4350ncm1r::::res://Assets/Obj Scenes/paris_hero_crop_01.tscn<>uid://d7njdyf5igcb::::res://Assets/Obj Scenes/paris_hero_long_01_.tscn<>uid://5ylccc58c6sc::::res://Assets/Obj Scenes/paris_hero_short_01_.tscn<>uid://egsxno8ntieb::::res://Assets/Obj Scenes/paris_hero_notre_dame.tscn<>uid://cd4oe3t6lkxjk::::res://Assets/Obj Scenes/paris_hero_castle_01.tscn<>uid://b2ktqggsdu4kk::::res://Assets/Obj Scenes/paris_block_short_01_.tscn<>uid://vlqq6ccb03sa::::res://Assets/Obj Scenes/paris_hero_long_02_.tscn<>uid://cossj8gfb8uod::::res://Assets/Obj Scenes/paris_church_tower.tscn<>uid://b0mvb4707i6vp::::res://Assets/Obj Scenes/paris_detail_roof_01_.tscn<>uid://daaq3swb36vo8::::res://Assets/Obj Scenes/paris_block_short_02_.tscn<>uid://85vj0l5x3a8n::::res://Assets/Obj Scenes/paris_hero_L_01_.tscn<>uid://b65xq26fow5pg::::res://Assets/Obj Scenes/paris_hero_classic_01_.tscn<>uid://dwlkbvcnmeflk::::res://Assets/Obj Scenes/paris_block_med_02_.tscn<>uid://co68uujn3wjvi::::res://Assets/Obj Scenes/paris_detail_chimney_01_.tscn<>uid://m3hncfokrdrb::::res://Assets/Obj Scenes/paris_detail_chimney_02_.tscn<>uid://8x64nph8ag05::::res://Assets/Obj Scenes/paris_hero_classic_tower.tscn<>uid://yb0msdp8jiku::::res://Scenes/light_post.tscn<>uid://duxyjp282nebo::::res://Assets/Obj Scenes/paris_detail_chimney_03_.tscn<>uid://hoejfbofo651::::res://Assets/Obj Scenes/paris_cheese.tscn<>uid://c4e05gkitsd37::::res://Assets/Obj Scenes/paris_hero_palace.tscn<>uid://bxi2l8e5s8qx3::::res://Assets/Obj Scenes/paris_hero_classic_02_.tscn<>uid://c8o43voltdkya::::res://Assets/Obj Scenes/paris_detail_roof_02_paris_detail_roof_02_.tscn<>uid://dpjlvmb4mbfwa::::res://Assets/Obj Scenes/paris_block_med.tscn<>uid://cohi2r15gi6fu::::res://Assets/Obj Scenes/paris_eiffeltower.tscn<>uid://bpmyxtyrehy6y::::res://Assets/Obj Scenes/paris_hero_classic_03_.tscn<>uid://c5cxj2wcjof08::::res://Assets/Obj Scenes/paris_balcony_rd.tscn<>uid://cv8gb0e3o8m2e::::res://Assets/Obj Scenes/paris_detail_cafe_canopy.tscn<>uid://d3ibkdws82a34::::res://Scenes/beam.tscn<>uid://bar780rq3dtf::::res://Assets/Obj Scenes/paris_hero_classic_hotel.tscn<>uid://dilr7q8yvhtfi::::res://Assets/Obj Scenes/pickup_bottle.tscn<>uid://n53piq0b62j4::::res://Assets/Obj Scenes/paris_island_large.tscn<>uid://dgy3x4bgxtxet::::res://Assets/Obj Scenes/paris_island_marais.tscn<>uid://c5jda7dagd4b4::::res://Scenes/jump_container.tscn<>uid://d0tv8ykski4ew::::res://Assets/Obj Scenes/paris_island_latin.tscn<>uid://bow716kmpj75o::::res://Assets/Obj Scenes/water.tscn<>uid://p2s6u10w2glw::::res://Assets/Obj Scenes/distance_lightpost.tscn
+::res://Scripts/::1710828217
 camera.gd::GDScript::-1::1706330133::0::1::::<>Node3D<>::
 pause_menu.gd::GDScript::-1::1707178451::0::1::::<>Control<>::
-player.gd::GDScript::-1::1709510029::0::1::::<>CharacterBody3D<>::
+player.gd::GDScript::-1::1710828217::0::1::::<>CharacterBody3D<>::
 pole.gd::GDScript::-1::1706405223::0::1::::<>Node3D<>::
 test_ball.gd::GDScript::-1::1701905285::0::1::::<>StaticBody3D<>::
 world.gd::GDScript::-1::1706479299::0::1::::<>Node3D<>::
