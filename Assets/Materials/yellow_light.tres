@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://iln1ll38hlg4"]
+
+[ext_resource type="Texture2D" uid="uid://7f8guyw26w7b" path="res://Assets/Textures/Vintage_Lamp_Hanging-5ed26152020b7c4453edc7c333d69683_SlyTIP_LampVintage_Emissive.png" id="1_ovna5"]
+
+[resource]
+emission_enabled = true
+emission_texture = ExtResource("1_ovna5")
+anisotropy = 1.0

@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://c2y5ufkltepco"]
+
+[ext_resource type="Texture2D" uid="uid://dfwnm866dvrkm" path="res://Assets/Textures/SlyTIP_LampModernAwning_DefaultMaterial_Emissive.1001.png" id="1_eqdgv"]
+
+[resource]
+albedo_texture = ExtResource("1_eqdgv")
+emission_enabled = true
+emission_texture = ExtResource("1_eqdgv")

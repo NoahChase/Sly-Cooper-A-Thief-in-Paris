@@ -656,12 +656,12 @@ fit_content = true
 
 [node name="CameraArm" type="SpringArm3D" parent="CameraOrigin"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
-spring_length = 4.5
+spring_length = 5.0
 
 [node name="camera" type="Camera3D" parent="CameraOrigin/CameraArm"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
 attributes = SubResource("CameraAttributesPractical_dlwdf")
-fov = 80.0
+fov = 70.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="CameraOrigin/CameraArm/camera"]
 visible = false
@@ -840,6 +840,9 @@ libraries = {
 [node name="jump_sound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_cbunl")
 volume_db = -17.0
+
+[node name="Coyote Time" type="Timer" parent="."]
+one_shot = true
 
 [connection signal="body_entered" from="CameraOrigin/CameraArm/camera/Area3D" to="CameraOrigin" method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="CameraOrigin/CameraArm/camera/Area3D" to="CameraOrigin" method="_on_area_3d_body_exited"]

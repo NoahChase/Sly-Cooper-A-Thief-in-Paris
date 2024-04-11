@@ -1,0 +1,42 @@
+[gd_scene load_steps=5 format=3 uid="uid://ux0c82y3app5"]
+
+[ext_resource type="Script" path="res://Path.gd" id="1_p6weq"]
+[ext_resource type="PackedScene" uid="uid://ygy8swvq6nna" path="res://Assets/Objects/Modern_Lamp_Post.blend" id="1_ycw61"]
+[ext_resource type="PackedScene" uid="uid://dki2qttdigjub" path="res://Scenes/test_ball.tscn" id="2_6ujht"]
+
+[sub_resource type="Curve3D" id="Curve3D_vuqu2"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -7.64949e-08, 0.875, 0, 0, 0, 0, 0, 0, 0, 0, 3.7411, -0.00692334, 0, -0.25, 0, 0, 0.25, 0, -4.5897e-07, 5.25, -0.125, 0, 0, 0, 0, 0, 0, -5.79176e-07, 6.625, 0),
+"tilts": PackedFloat32Array(0, 0, 0, 0)
+}
+point_count = 4
+
+[node name="Modern_Lamp_Post" type="Node3D"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+script = ExtResource("1_p6weq")
+basis_type = 2
+length = 6.67
+
+[node name="Modern_Lamp_Post" parent="." instance=ExtResource("1_ycw61")]
+
+[node name="Test Ball" parent="." groups=["Point"] instance=ExtResource("2_6ujht")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 1.17406, 3.625, 0)
+
+[node name="Test Ball2" parent="." groups=["Point"] instance=ExtResource("2_6ujht")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 1.18088, 7.09648, 0)
+
+[node name="Test Ball3" parent="." groups=["Point"] instance=ExtResource("2_6ujht")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -0.0294759, 7.39165, 0)
+
+[node name="Path3D" type="Path3D" parent="."]
+transform = Transform3D(-1, -8.74228e-08, 0, 8.74228e-08, -1, 0, 0, 0, 1, 0, 7.375, 0)
+curve = SubResource("Curve3D_vuqu2")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="Path3D"]
+transform = Transform3D(-1, -4.92917e-05, 1.19065e-07, 0, 0.00241551, 0.999997, -4.92919e-05, 0.999997, -0.00241551, -7.64949e-08, 0.875, 0)
+rotation_mode = 4
+use_model_front = true
+loop = false
+
+[node name="Test Ball" parent="Path3D/PathFollow3D" groups=["Path", "Pole"] instance=ExtResource("2_6ujht")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)

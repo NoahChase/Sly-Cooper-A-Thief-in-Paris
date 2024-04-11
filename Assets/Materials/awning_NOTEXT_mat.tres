@@ -1,0 +1,12 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://bha14pdysqjto"]
+
+[ext_resource type="Texture2D" uid="uid://dktn17jhhj8mj" path="res://Assets/Textures/SlyTIP_LampModernAwningNoText_Albedo.png" id="1_ppg7u"]
+[ext_resource type="Texture2D" uid="uid://ra06w2yi8cbu" path="res://Assets/Textures/SlyTIP_LampModernAwningNoText_ROUGHNESS.png" id="2_q67qp"]
+
+[resource]
+albedo_texture = ExtResource("1_ppg7u")
+metallic_specular = 0.2
+metallic_texture = ExtResource("2_q67qp")
+roughness_texture = ExtResource("2_q67qp")
+normal_enabled = true
+normal_texture = ExtResource("2_q67qp")

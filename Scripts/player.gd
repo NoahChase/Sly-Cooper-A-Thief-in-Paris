@@ -1,6 +1,6 @@
 extends CharacterBody3D
 
-const SPEED = 3.25
+const SPEED = 3.4
 var JUMP_VELOCITY = 7.9
 const lerp_val = 0.15
 var air_accel = 0.0
@@ -45,6 +45,8 @@ var air_accel = 0.0
 @onready var sly_anim_tree = $sly_container/sly_cooper.get_node("AnimationTree")
 @onready var sly_container_anim = $sly_container/sly_container_anim
 @onready var current_blendspace
+@onready var coyote_timer = $"Coyote Time"
+
 @export var sens = 0.125
 
 var SPEED_MULT = 1
@@ -77,7 +79,6 @@ func _ready():
 	can_right_stick = true
 	double_jump = true
 
-
 func _input(event):
 	if event is InputEventMouseMotion:
 		rotate_y(deg_to_rad(-event.relative.x * sens))
@@ -105,6 +106,7 @@ func joystick_event():
 			if Input.is_action_pressed("right_stick_left") or Input.is_action_pressed("right_stick_right"):
 				rotate_y(deg_to_rad(value.x*2))
 				if not is_moving or not is_on_floor or state_now == State.AIR:
+					
 					sly_container.rotate_y(deg_to_rad(-value.x*2))
 		if value.y >= 0.0001 or value.y <= 0.0001:
 			if Input.is_action_pressed("right_stick_up") or Input.is_action_pressed("right_stick_down"):
@@ -167,16 +169,22 @@ func _physics_process(delta):
 		#SPEED_MULT = 1
 		double_jump = true
 		sly_anim_tree.set("parameters/Transition/transition_request", floor_anim)
+	
 	if state_now == State.AIR:
-		air_accel = lerpf(air_accel, 0.0, lerp_val/3)
 		can_right_stick = true
-		if double_jump == false:
-			air_accel = lerpf(air_accel + 0.5, 0.0, lerp_val)
-			
 		$"CameraOrigin/State Reader".text = str("[center]AIR")
 		sly_anim_tree.set("parameters/Transition/transition_request", air_anim)
 		SPEED_MULT = 1.4
+		if coyote_timer.is_stopped() and double_jump:
+			coyote_timer.start(1.0)
+		if velocity.y >= 2:
+			#could start a 1 second timer and say air_accel = timer value...
+			air_accel = 1
+		else:
+			air_accel = lerpf(air_accel, 0, lerp_val/3)
+		
 		velocity.y -= gravity * delta * 1.5
+		
 		if area_anim.current_animation == "area_check":
 			target_distance_manager()
 		if Input.is_action_just_pressed("RMB"):
@@ -184,6 +192,7 @@ func _physics_process(delta):
 			if not area_anim.is_playing():
 				area_anim.play("area_expand")
 				area_anim.queue("area_check")
+	
 	if state_now == State.TWEENING:
 		air_accel = lerpf(air_accel, 1, lerp_val)
 		can_right_stick = true
@@ -229,6 +238,9 @@ func _physics_process(delta):
 				else:
 					#make this foot grab an automatic walk, no holding in place. this needs a separate Platform_Type (Ray_V_Feet and Ray_V_Hands)
 					pass
+	elif state_now == State.ON_PLATFORM:
+		#send a signal when the tween is finished and set the state to on_platform
+		pass
 	else:
 		if bottle_number >= 30:
 			ledge_detect()
@@ -278,29 +290,32 @@ func jump():
 			velocity.y = JUMP_VELOCITY + 0.75
 			sly_anim_tree.set("parameters/OneShot/request", 1)
 		if state_now == State.AIR:
-			velocity.y += JUMP_VELOCITY * 0.567
+			if Input.is_action_pressed("SHIFT"):
+				velocity.y += JUMP_VELOCITY
+				sly_anim_tree.set("parameters/OneShot/request", 1)
+			else:
+				velocity.y += JUMP_VELOCITY * 0.567
 		double_jump = false
 	elif not is_on_floor() and double_jump:
-		air_accel = 1
-		####var input_dir = Input.get_vector("A", "D", "W", "S")
-		####direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 		$jump_sound.volume_db = -40
 		$jump_sound.play()
 		#sly_container_anim.play("w_flip")
-		velocity.y += JUMP_VELOCITY * 0.567
+		if Input.is_action_pressed("SHIFT"):
+			velocity.y += JUMP_VELOCITY
+			sly_anim_tree.set("parameters/OneShot/request", 1)
+		else:
+			velocity.y += JUMP_VELOCITY * 0.567
 		if velocity.y > 7.9:
 			velocity.y = 7.9
-
-
-
-func move_input_0_to_1():
-	pass
-	#smoothly lerps player's movement input on direction from 0-1
-	#does not make player stop moving from zero, but retains their velocity and allows their input to influence it again
-func move_input_1_to_0():
-	pass
-	#smoothly lerps player's movement input on direction from 1-0
-	#does not make player stop moving at zero, but retains last known input and continues that at zero
+		if velocity.y < 6:
+			velocity.y = 6
+#	if double_jump == true:
+#		jump
+#	if elif coyote timer > 0 and double_jump == true:
+#		air jump
+#	if not is on floor and coyote timer.is_stopped():
+#		air jump
+#		double_jump = false
 
 
 func manage_target_type():
@@ -417,7 +432,7 @@ func move_to_target():
 				"position:x",
 				platform.global_transform.origin.x,
 				distance / (SPEED * SPEED_MULT),
-			).set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_OUT)
+			).set_trans(Tween.TRANS_LINEAR)
 	
 			y_tween.tween_property(
 				self,
@@ -431,7 +446,7 @@ func move_to_target():
 				"position:z",
 				platform.global_transform.origin.z,
 				distance / (SPEED * SPEED_MULT),
-			).set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_OUT)
+			).set_trans(Tween.TRANS_LINEAR)
 			sly_anim_tree.set("parameters/Transition/transition_request", "not_on_floor")
 			$AnimationPlayer.queue("RESET")
 			

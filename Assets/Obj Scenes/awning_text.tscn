@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://c866mw5ilwftu"]
+
+[ext_resource type="Script" path="res://Jump_Container.gd" id="1_c0uis"]
+[ext_resource type="PackedScene" uid="uid://c0g2x6v7yfm5p" path="res://Assets/Objects/AwningText.blend" id="2_11bfd"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_do8x3"]
+size = Vector3(3.125, 0.07, 1.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_sjodq"]
+size = Vector3(3.25, 0.0295029, 1.5)
+
+[node name="AwningText" type="StaticBody3D"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+script = ExtResource("1_c0uis")
+
+[node name="AwningText" parent="." instance=ExtResource("2_11bfd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.92388, -0.382683, 0, 0.382683, 0.92388, 0, 0.273272, 0.113242)
+shape = SubResource("BoxShape3D_do8x3")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 0.92388, -0.382683, 0, 0.382683, 0.92388, 0, 0.311336, 0.125)
+shape = SubResource("BoxShape3D_sjodq")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]

@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://cdcpporaf0icl"]
+
+[ext_resource type="PackedScene" uid="uid://b3rwhx7k24qqr" path="res://Assets/Objects/Vintage_Lamp_Hanging.blend" id="1_1himq"]
+[ext_resource type="PackedScene" uid="uid://dki2qttdigjub" path="res://Scenes/test_ball.tscn" id="2_7m6op"]
+
+[node name="Vintage_Lamp_Hanging" type="Node3D"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="Vintage_Lamp_Hanging" parent="." instance=ExtResource("1_1himq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, 0, 0)
+
+[node name="Test Ball" parent="." groups=["Point"] instance=ExtResource("2_7m6op")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0.455632, 0.0830323, 0)

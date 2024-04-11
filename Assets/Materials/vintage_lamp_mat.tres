@@ -1,0 +1,35 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://dv6v3l7qvi150"]
+
+[ext_resource type="Texture2D" uid="uid://blji5k4khi4s2" path="res://Assets/Textures/Vintage_Lamp_Hanging_SlyTIP_LampVintaget_BaseColor.png" id="1_f3lni"]
+
+[resource]
+diffuse_mode = 3
+specular_mode = 1
+albedo_texture = ExtResource("1_f3lni")
+metallic = 0.15
+metallic_specular = 0.8
+metallic_texture = ExtResource("1_f3lni")
+metallic_texture_channel = 2
+roughness = 0.38
+roughness_texture = ExtResource("1_f3lni")
+roughness_texture_channel = 2
+normal_enabled = true
+normal_texture = ExtResource("1_f3lni")
+rim_enabled = true
+rim_texture = ExtResource("1_f3lni")
+clearcoat = 0.71
+clearcoat_roughness = 1.0
+clearcoat_texture = ExtResource("1_f3lni")
+ao_enabled = true
+ao_light_affect = 0.37
+heightmap_scale = 0.2
+heightmap_flip_tangent = true
+heightmap_flip_binormal = true
+heightmap_texture = ExtResource("1_f3lni")
+backlight = Color(1, 1, 1, 1)
+refraction_scale = -1.0
+detail_enabled = true
+detail_mask = ExtResource("1_f3lni")
+detail_blend_mode = 1
+detail_albedo = ExtResource("1_f3lni")
+detail_normal = ExtResource("1_f3lni")
