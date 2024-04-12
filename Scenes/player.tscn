@@ -619,49 +619,22 @@ size_flags_horizontal = 4
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_2yoqs")
 
+[node name="Camera_Go_Y_0" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+
+[node name="Camera_Return" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.5, 0)
+
 [node name="CameraOrigin" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
-
-[node name="Jump Counter" type="RichTextLabel" parent="CameraOrigin"]
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -86.0
-offset_top = -42.0
-offset_right = 86.0
-grow_horizontal = 2
-grow_vertical = 0
-size_flags_horizontal = 6
-bbcode_enabled = true
-
-[node name="State Reader" type="RichTextLabel" parent="CameraOrigin"]
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -59.0
-offset_top = -141.0
-offset_right = 59.0
-offset_bottom = -81.0
-grow_horizontal = 2
-grow_vertical = 0
-size_flags_horizontal = 4
-size_flags_vertical = 4
-theme = ExtResource("3_57adr")
-bbcode_enabled = true
-fit_content = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.5, 0)
 
 [node name="CameraArm" type="SpringArm3D" parent="CameraOrigin"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
-spring_length = 5.0
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.4)
+spring_length = 4.5
 
 [node name="camera" type="Camera3D" parent="CameraOrigin/CameraArm"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
 attributes = SubResource("CameraAttributesPractical_dlwdf")
-fov = 70.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="CameraOrigin/CameraArm/camera"]
 visible = false
@@ -718,11 +691,37 @@ libraries = {
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CameraOrigin/CameraArm/camera/Area3D"]
 shape = SubResource("SphereShape3D_mrv5y")
 
-[node name="cam_home" type="Node3D" parent="CameraOrigin/CameraArm"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
+[node name="Jump Counter" type="RichTextLabel" parent="CameraOrigin"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -86.0
+offset_top = -42.0
+offset_right = 86.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 6
+bbcode_enabled = true
 
-[node name="cam_safe" type="Node3D" parent="CameraOrigin/CameraArm"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.5)
+[node name="State Reader" type="RichTextLabel" parent="CameraOrigin"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -59.0
+offset_top = -141.0
+offset_right = 59.0
+offset_bottom = -81.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("3_57adr")
+bbcode_enabled = true
+fit_content = true
 
 [node name="Feet" type="Node3D" parent="."]
 
@@ -843,6 +842,9 @@ volume_db = -17.0
 
 [node name="Coyote Time" type="Timer" parent="."]
 one_shot = true
+
+[node name="Ray_To_Floor" type="RayCast3D" parent="."]
+target_position = Vector3(0, -100, 0)
 
 [connection signal="body_entered" from="CameraOrigin/CameraArm/camera/Area3D" to="CameraOrigin" method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="CameraOrigin/CameraArm/camera/Area3D" to="CameraOrigin" method="_on_area_3d_body_exited"]

@@ -6,7 +6,7 @@
 
 [sub_resource type="Curve3D" id="Curve3D_vuqu2"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -7.64949e-08, 0.875, 0, 0, 0, 0, 0, 0, 0, 0, 3.7411, -0.00692334, 0, -0.25, 0, 0, 0.25, 0, -4.5897e-07, 5.25, -0.125, 0, 0, 0, 0, 0, 0, -5.79176e-07, 6.625, 0),
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -7.64949e-08, 0.875, 0, 0, 0, 0, 0, 0, 0, 0.0091859, 3.74234, -0.00732899, 0, -0.25, 0, 0, 0.25, 0, -4.5897e-07, 5.25, -0.125, 0, 0, 0, 0, 0, 0, -5.79176e-07, 6.625, 0),
 "tilts": PackedFloat32Array(0, 0, 0, 0)
 }
 point_count = 4
@@ -29,7 +29,7 @@ transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 1.18088, 7.09648, 0)
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -0.0294759, 7.39165, 0)
 
 [node name="Path3D" type="Path3D" parent="."]
-transform = Transform3D(-1, -8.74228e-08, 0, 8.74228e-08, -1, 0, 0, 0, 1, 0, 7.375, 0)
+transform = Transform3D(-1, -8.74228e-08, 0, 8.74228e-08, -1, 0, 0, 0, 1, -0.125, 7.375, 0)
 curve = SubResource("Curve3D_vuqu2")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Path3D"]

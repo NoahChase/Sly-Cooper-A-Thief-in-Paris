@@ -83,7 +83,7 @@ func _input(event):
 	if event is InputEventMouseMotion:
 		rotate_y(deg_to_rad(-event.relative.x * sens))
 		camera_origin.rotate_x(deg_to_rad(-event.relative.y * sens))
-		camera_origin.rotation.x = clamp(camera_origin.rotation.x, deg_to_rad(-75), deg_to_rad(35))
+		camera_origin.rotation.x = clamp(camera_origin.rotation.x, deg_to_rad(-45), deg_to_rad(45))
 		if not is_moving or not is_on_floor or state_now == State.AIR:
 			sly_container.rotate_y(deg_to_rad(event.relative.x * sens))
 
@@ -111,7 +111,7 @@ func joystick_event():
 		if value.y >= 0.0001 or value.y <= 0.0001:
 			if Input.is_action_pressed("right_stick_up") or Input.is_action_pressed("right_stick_down"):
 				camera_origin.rotate_x(deg_to_rad(value.y *1.25))
-				camera_origin.rotation.x = clamp(camera_origin.rotation.x, deg_to_rad(-75), deg_to_rad(35))
+				camera_origin.rotation.x = clamp(camera_origin.rotation.x, deg_to_rad(-45), deg_to_rad(45))
 	left_stick_pressure = Input.get_action_strength("left_stick_left") + Input.get_action_strength("left_stick_right") + Input.get_action_strength("left_stick_up") + Input.get_action_strength("left_stick_down")
 	if left_stick_pressure >= 0.85:
 		left_stick_pressure = 1.0
@@ -171,17 +171,18 @@ func _physics_process(delta):
 		sly_anim_tree.set("parameters/Transition/transition_request", floor_anim)
 	
 	if state_now == State.AIR:
+		var camoffset = Vector3(0,-2,0)
 		can_right_stick = true
 		$"CameraOrigin/State Reader".text = str("[center]AIR")
 		sly_anim_tree.set("parameters/Transition/transition_request", air_anim)
 		SPEED_MULT = 1.4
 		if coyote_timer.is_stopped() and double_jump:
 			coyote_timer.start(1.0)
-		if velocity.y >= 2:
+		if velocity.y > 3:
 			#could start a 1 second timer and say air_accel = timer value...
 			air_accel = 1
 		else:
-			air_accel = lerpf(air_accel, 0, lerp_val/3)
+			air_accel = lerpf(air_accel, 0.05, lerp_val/2)
 		
 		velocity.y -= gravity * delta * 1.5
 		
@@ -260,7 +261,15 @@ func _physics_process(delta):
 				target = null
 			target = null
 			target_a = null
-
+	
+	if not is_on_floor() and not state_now == State.TWEENING and not state_now == State.ON_PLATFORM:
+		if velocity.y > 0:
+			camera_origin.position.y = lerp(camera_origin.position.y, (max(2, -velocity.y * delta) - $Camera_Return.position.y), velocity.y * delta/4)
+		else:
+			camera_origin.position.y = lerp(camera_origin.position.y, $Camera_Return.position.y - max(2, -velocity.y * delta), -velocity.y * delta/1.5)
+	elif state_now == State.TWEENING or state_now == State.ON_PLATFORM or is_on_floor():
+		camera_origin.position.y = lerp(camera_origin.position.y, $Camera_Return.position.y - max(2, -velocity.y * delta), delta * 2)
+		
 ### Direction Handling
 	var input_dir = Input.get_vector("A", "D", "W", "S")
 	direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
@@ -279,7 +288,6 @@ func _physics_process(delta):
 		velocity.z = lerp(velocity.z, 0.0, lerp_val * 45 * air_accel * delta)
 
 
-
 func jump():
 	platform_type = Platform_Type.NULL
 	$jump_sound.pitch_scale = randf_range(0.7, 1)
@@ -290,25 +298,15 @@ func jump():
 			velocity.y = JUMP_VELOCITY + 0.75
 			sly_anim_tree.set("parameters/OneShot/request", 1)
 		if state_now == State.AIR:
-			if Input.is_action_pressed("SHIFT"):
-				velocity.y += JUMP_VELOCITY
+			if velocity.y >= 3.407:
+				velocity.y += 3
+			elif velocity.y > 0 and velocity.y < 3.407:
+				velocity.y += JUMP_VELOCITY * 0.5
+			elif velocity.y <= 0:
+				velocity.y += JUMP_VELOCITY - 2
 				sly_anim_tree.set("parameters/OneShot/request", 1)
-			else:
-				velocity.y += JUMP_VELOCITY * 0.567
 		double_jump = false
-	elif not is_on_floor() and double_jump:
-		$jump_sound.volume_db = -40
-		$jump_sound.play()
-		#sly_container_anim.play("w_flip")
-		if Input.is_action_pressed("SHIFT"):
-			velocity.y += JUMP_VELOCITY
-			sly_anim_tree.set("parameters/OneShot/request", 1)
-		else:
-			velocity.y += JUMP_VELOCITY * 0.567
-		if velocity.y > 7.9:
-			velocity.y = 7.9
-		if velocity.y < 6:
-			velocity.y = 6
+		
 #	if double_jump == true:
 #		jump
 #	if elif coyote timer > 0 and double_jump == true:

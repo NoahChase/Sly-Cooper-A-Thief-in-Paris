@@ -1,23 +1,17 @@
-res://Scenes/TEST.tscn
+res://Assets/Obj Scenes/vintage_lamp_post.tscn
 res://Assets/Materials/blur.gdshader
 res://Assets/Materials/sly_cooper.outline.gdshader
 res://Assets/Materials/CobbleStone_01_.tres
 res://Assets/Materials/brick_128_01_.tres
 res://Assets/Materials/Water.tres
+res://Assets/Materials/yellow_light.tres
+res://Assets/Materials/awning_TEXT.tres
+res://Assets/Materials/awning_NOTEXT_mat.tres
+res://Assets/Materials/modern_lamp_mat.tres
+res://Assets/Materials/lamp_modern_light.tres
+res://Assets/Obj Scenes/modern_lamp_post.tscn
 res://Scenes/player.tscn
 res://Scenes/world.tscn
 res://Assets/Obj Scenes/sly_cooper.tscn
-res://Assets/Materials/vintagelamphanging.tres
-res://Assets/Materials/yellow_light.tres
-res://Assets/Materials/modern_lamp_mat.tres
-res://Assets/Materials/lamp_modern_light.tres
-res://Assets/Materials/awning_NOTEXT_mat.tres
-res://Assets/Materials/awning_TEXT.tres
-res://Assets/Obj Scenes/awning_text.tscn
-res://Assets/Obj Scenes/awning_no_text.tscn
-res://Assets/Obj Scenes/modern_lamp_post.tscn
-res://Assets/Obj Scenes/vintage_lamp_post.tscn
-res://Scenes/pipe.tscn
-res://Assets/Obj Scenes/modern_lamp_hanging.tscn
-res://Assets/Obj Scenes/vintage_lamp_hanging.tscn
-res://Jump_Container.gd
+res://Scenes/TEST.tscn
+res://Scripts/player.gd

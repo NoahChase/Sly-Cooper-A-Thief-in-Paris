@@ -1,4 +1,6 @@
 CollisionShape3D
+RayCast3D
+Node3D
 PathFollow3D
 Path3D
 StaticBody3D
@@ -18,9 +20,7 @@ Button
 CenterContainer
 MarginContainer
 ColorRect
-Node3D
 CSGPolygon3D
-RayCast3D
 CollisionPolygon3D
 DirectionalLight3D
 WorldEnvironment
