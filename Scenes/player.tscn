@@ -17,7 +17,8 @@ auto_exposure_enabled = true
 dof_blur_far_enabled = true
 dof_blur_far_distance = 600.0
 dof_blur_far_transition = 300.0
-dof_blur_amount = 0.03
+dof_blur_near_distance = 0.94
+dof_blur_amount = 1.0
 auto_exposure_min_sensitivity = 300.0
 auto_exposure_max_sensitivity = 1700.0
 
@@ -153,7 +154,7 @@ size = Vector3(2, 0.25, 0.25)
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_xkpx8"]
 height = 8.0
-radius = 2.0
+radius = 3.0
 
 [sub_resource type="Animation" id="Animation_w1sja"]
 length = 0.001
@@ -623,18 +624,19 @@ shape = SubResource("CapsuleShape3D_2yoqs")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 
 [node name="Camera_Return" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5, 0)
 
 [node name="CameraOrigin" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5, -0.5)
 
 [node name="CameraArm" type="SpringArm3D" parent="CameraOrigin"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.4)
-spring_length = 4.5
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
+spring_length = 4.0
 
 [node name="camera" type="Camera3D" parent="CameraOrigin/CameraArm"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4)
 attributes = SubResource("CameraAttributesPractical_dlwdf")
+fov = 55.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="CameraOrigin/CameraArm/camera"]
 visible = false

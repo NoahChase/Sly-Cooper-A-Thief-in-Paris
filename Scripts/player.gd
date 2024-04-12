@@ -1,7 +1,7 @@
 extends CharacterBody3D
 
-const SPEED = 3.4
-var JUMP_VELOCITY = 7.9
+const SPEED = 4
+var JUMP_VELOCITY = 6.6
 const lerp_val = 0.15
 var air_accel = 0.0
 @onready var direction
@@ -83,7 +83,7 @@ func _input(event):
 	if event is InputEventMouseMotion:
 		rotate_y(deg_to_rad(-event.relative.x * sens))
 		camera_origin.rotate_x(deg_to_rad(-event.relative.y * sens))
-		camera_origin.rotation.x = clamp(camera_origin.rotation.x, deg_to_rad(-45), deg_to_rad(45))
+		camera_origin.rotation.x = clamp(camera_origin.rotation.x, deg_to_rad(-90), deg_to_rad(45))
 		if not is_moving or not is_on_floor or state_now == State.AIR:
 			sly_container.rotate_y(deg_to_rad(event.relative.x * sens))
 
@@ -111,7 +111,7 @@ func joystick_event():
 		if value.y >= 0.0001 or value.y <= 0.0001:
 			if Input.is_action_pressed("right_stick_up") or Input.is_action_pressed("right_stick_down"):
 				camera_origin.rotate_x(deg_to_rad(value.y *1.25))
-				camera_origin.rotation.x = clamp(camera_origin.rotation.x, deg_to_rad(-45), deg_to_rad(45))
+				camera_origin.rotation.x = clamp(camera_origin.rotation.x, deg_to_rad(-90), deg_to_rad(45))
 	left_stick_pressure = Input.get_action_strength("left_stick_left") + Input.get_action_strength("left_stick_right") + Input.get_action_strength("left_stick_up") + Input.get_action_strength("left_stick_down")
 	if left_stick_pressure >= 0.85:
 		left_stick_pressure = 1.0
@@ -176,13 +176,12 @@ func _physics_process(delta):
 		$"CameraOrigin/State Reader".text = str("[center]AIR")
 		sly_anim_tree.set("parameters/Transition/transition_request", air_anim)
 		SPEED_MULT = 1.4
-		if coyote_timer.is_stopped() and double_jump:
-			coyote_timer.start(1.0)
-		if velocity.y > 3:
+		
+		if coyote_timer.time_left >= 0.1:
 			#could start a 1 second timer and say air_accel = timer value...
 			air_accel = 1
 		else:
-			air_accel = lerpf(air_accel, 0.05, lerp_val/2)
+			air_accel = lerpf(air_accel, 0.05, lerp_val/3)
 		
 		velocity.y -= gravity * delta * 1.5
 		
@@ -264,11 +263,13 @@ func _physics_process(delta):
 	
 	if not is_on_floor() and not state_now == State.TWEENING and not state_now == State.ON_PLATFORM:
 		if velocity.y > 0:
-			camera_origin.position.y = lerp(camera_origin.position.y, (max(2, -velocity.y * delta) - $Camera_Return.position.y), velocity.y * delta/4)
+			camera_origin.position.y = lerp(camera_origin.position.y, (max(2, -velocity.y * delta) - $Camera_Return.position.y), velocity.y * delta/2.8)
 		else:
 			camera_origin.position.y = lerp(camera_origin.position.y, $Camera_Return.position.y - max(2, -velocity.y * delta), -velocity.y * delta/1.5)
 	elif state_now == State.TWEENING or state_now == State.ON_PLATFORM or is_on_floor():
-		camera_origin.position.y = lerp(camera_origin.position.y, $Camera_Return.position.y - max(2, -velocity.y * delta), delta * 2)
+		camera_origin.position.y = lerp(camera_origin.position.y, $Camera_Return.position.y - max(2, -velocity.y * delta), delta * 1.5)
+		if left_stick_pressure > 0.9:
+			camera_origin.position.y = lerp(camera_origin.position.y, $Camera_Return.position.y + 0.1, delta/3)
 		
 ### Direction Handling
 	var input_dir = Input.get_vector("A", "D", "W", "S")
@@ -277,33 +278,35 @@ func _physics_process(delta):
 		if not platform_type == Platform_Type.POLE or platform_type == Platform_Type.ROPE:
 			is_moving = true
 			sly_rot.look_at(position - direction)
-			sly_container.rotate_y(lerp(sly.rotation.y, sly_rot.rotation.y, lerp_val * air_accel * 45 * delta))
+			sly_container.rotate_y(lerp(sly.rotation.y, sly_rot.rotation.y, lerp_val * air_accel * 60 * delta))
 		
-		velocity.x = lerp(velocity.x, direction.x * SPEED * SPEED_MULT * left_stick_pressure, lerp_val * 45 * air_accel * delta)
-		velocity.z = lerp(velocity.z, direction.z * SPEED * SPEED_MULT * left_stick_pressure, lerp_val * 45 * air_accel * delta)
+		velocity.x = lerp(velocity.x, direction.x * SPEED * SPEED_MULT * left_stick_pressure, lerp_val * 60 * air_accel * delta)
+		velocity.z = lerp(velocity.z, direction.z * SPEED * SPEED_MULT * left_stick_pressure, lerp_val * 60 * air_accel * delta)
 		$CameraOrigin/CameraArm/camera/CanvasLayer/RichTextLabel4.text = str(left_stick_pressure)
 	else:
 		is_moving = false
-		velocity.x = lerp(velocity.x, 0.0, lerp_val * 45 * air_accel * delta)
-		velocity.z = lerp(velocity.z, 0.0, lerp_val * 45 * air_accel * delta)
+		velocity.x = lerp(velocity.x, 0.0, lerp_val * 60 * air_accel * delta)
+		velocity.z = lerp(velocity.z, 0.0, lerp_val * 60 * air_accel * delta)
 
 
 func jump():
 	platform_type = Platform_Type.NULL
 	$jump_sound.pitch_scale = randf_range(0.7, 1)
 	if double_jump:
+		if coyote_timer.is_stopped():
+			coyote_timer.start(0.3)
 		$jump_sound.volume_db = -35
 		$jump_sound.play()
 		if state_now == State.FLOOR or state_now == State.TWEENING:
 			velocity.y = JUMP_VELOCITY + 0.75
 			sly_anim_tree.set("parameters/OneShot/request", 1)
 		if state_now == State.AIR:
-			if velocity.y >= 3.407:
-				velocity.y += 3
-			elif velocity.y > 0 and velocity.y < 3.407:
-				velocity.y += JUMP_VELOCITY * 0.5
+			if velocity.y >= 3.3:
+				velocity.y += 3.3
+			elif velocity.y > 0 and velocity.y < 3.3:
+				velocity.y += JUMP_VELOCITY * 0.6
 			elif velocity.y <= 0:
-				velocity.y += JUMP_VELOCITY - 2
+				velocity.y += JUMP_VELOCITY - 1.3
 				sly_anim_tree.set("parameters/OneShot/request", 1)
 		double_jump = false
 		
