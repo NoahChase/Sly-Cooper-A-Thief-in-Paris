@@ -177,11 +177,11 @@ func _physics_process(delta):
 		sly_anim_tree.set("parameters/Transition/transition_request", air_anim)
 		SPEED_MULT = 1.4
 		
-		if coyote_timer.time_left >= 0.1:
+		if coyote_timer.time_left >= 0.25:
 			#could start a 1 second timer and say air_accel = timer value...
 			air_accel = 1
 		else:
-			air_accel = lerpf(air_accel, 0.05, lerp_val/3)
+			air_accel = lerpf(air_accel, 0.025, lerp_val/2.25)
 		
 		velocity.y -= gravity * delta * 1.5
 		
@@ -263,13 +263,13 @@ func _physics_process(delta):
 	
 	if not is_on_floor() and not state_now == State.TWEENING and not state_now == State.ON_PLATFORM:
 		if velocity.y > 0:
-			camera_origin.position.y = lerp(camera_origin.position.y, (max(2, -velocity.y * delta) - $Camera_Return.position.y), velocity.y * delta/2.8)
+			camera_origin.position.y = lerp(camera_origin.position.y, (max(2, -velocity.y * delta) - $Camera_Return.position.y), velocity.y * delta/4)
 		else:
-			camera_origin.position.y = lerp(camera_origin.position.y, $Camera_Return.position.y - max(2, -velocity.y * delta), -velocity.y * delta/1.5)
+			camera_origin.position.y = lerp(camera_origin.position.y, $Camera_Return.position.y - max(velocity.y, -velocity.y * delta), -velocity.y * delta /2)
 	elif state_now == State.TWEENING or state_now == State.ON_PLATFORM or is_on_floor():
 		camera_origin.position.y = lerp(camera_origin.position.y, $Camera_Return.position.y - max(2, -velocity.y * delta), delta * 1.5)
 		if left_stick_pressure > 0.9:
-			camera_origin.position.y = lerp(camera_origin.position.y, $Camera_Return.position.y + 0.1, delta/3)
+			camera_origin.position.y = lerp(camera_origin.position.y, $Camera_Return.position.y + 0.05, delta/4)
 		
 ### Direction Handling
 	var input_dir = Input.get_vector("A", "D", "W", "S")
@@ -293,8 +293,7 @@ func jump():
 	platform_type = Platform_Type.NULL
 	$jump_sound.pitch_scale = randf_range(0.7, 1)
 	if double_jump:
-		if coyote_timer.is_stopped():
-			coyote_timer.start(0.3)
+		coyote_timer.start(0.3)
 		$jump_sound.volume_db = -35
 		$jump_sound.play()
 		if state_now == State.FLOOR or state_now == State.TWEENING:
@@ -535,3 +534,20 @@ func _on_ball_area_body_exited(body):
 func _on_ball_area_body_entered(body):
 	can_ledge = false
 		#print("cl",can_ledge)
+
+
+func _on_area_3d_area_entered(area):
+	if area.is_in_group("Platform"):
+		if target == null:
+			target_a = area
+			print("target_a = ", target_a)
+			can_climb = true
+			target_distance_manager()
+			print("can_climb = ", can_climb)
+		else:
+			print("have target = ", target)
+
+
+func _on_area_3d_area_exited(area):
+	if not area.is_in_group("Player"):
+		can_ledge = true

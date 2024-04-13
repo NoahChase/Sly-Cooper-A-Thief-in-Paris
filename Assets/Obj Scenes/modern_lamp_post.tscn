@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://ux0c82y3app5"]
+[gd_scene load_steps=11 format=3 uid="uid://ux0c82y3app5"]
 
 [ext_resource type="Script" path="res://Path.gd" id="1_p6weq"]
 [ext_resource type="PackedScene" uid="uid://ygy8swvq6nna" path="res://Assets/Objects/Modern_Lamp_Post.blend" id="1_ycw61"]
 [ext_resource type="PackedScene" uid="uid://dki2qttdigjub" path="res://Scenes/test_ball.tscn" id="2_6ujht"]
+[ext_resource type="PackedScene" uid="uid://dgmannm3l1q1s" path="res://Scenes/particle_sparkle.tscn" id="4_x0rpi"]
 
 [sub_resource type="Curve3D" id="Curve3D_vuqu2"]
 _data = {
@@ -10,6 +11,77 @@ _data = {
 "tilts": PackedFloat32Array(0, 0, 0, 0)
 }
 point_count = 4
+
+[sub_resource type="Animation" id="Animation_f7fxm"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Path3D/PathFollow3D:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.5]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Path3D/PathFollow3D2:progress_ratio")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_jb3s3"]
+resource_name = "path_progress"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Path3D/PathFollow3D:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1.4, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.5, 1.0, 0.0, 0.5]
+}
+
+[sub_resource type="Animation" id="Animation_8vypb"]
+resource_name = "snap"
+
+[sub_resource type="Animation" id="Animation_iwuis"]
+resource_name = "twinkle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Path3D/PathFollow3D2:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 1.0, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vt4pe"]
+_data = {
+"RESET": SubResource("Animation_f7fxm"),
+"path_progress": SubResource("Animation_jb3s3"),
+"snap": SubResource("Animation_8vypb"),
+"twinkle": SubResource("Animation_iwuis")
+}
 
 [node name="Modern_Lamp_Post" type="Node3D"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
@@ -33,10 +105,22 @@ transform = Transform3D(-1, -8.74228e-08, 0, 8.74228e-08, -1, 0, 0, 0, 1, -0.125
 curve = SubResource("Curve3D_vuqu2")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Path3D"]
-transform = Transform3D(-0.623659, -0.78169, 0.00320364, 0, 0.00409832, 0.999992, -0.781696, 0.623654, -0.00255595, -7.64949e-08, 0.875, 0)
+transform = Transform3D(-0.999518, -0.0310275, 0.000738834, 0, 0.0238058, 0.999717, -0.031036, 0.999242, -0.0237942, 0.00916055, 3.75807, -0.00802454)
+progress = 2.88037
 rotation_mode = 4
 use_model_front = true
 loop = false
 
 [node name="Test Ball" parent="Path3D/PathFollow3D" groups=["Path", "Pole"] instance=ExtResource("2_6ujht")]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
+
+[node name="PathFollow3D2" type="PathFollow3D" parent="Path3D"]
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, -7.64949e-08, 0.875, 0)
+
+[node name="Particle_Sparkle" parent="Path3D/PathFollow3D2" instance=ExtResource("4_x0rpi")]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "twinkle"
+libraries = {
+"": SubResource("AnimationLibrary_vt4pe")
+}

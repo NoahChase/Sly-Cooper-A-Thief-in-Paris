@@ -1,11 +1,13 @@
+Node
+MeshInstance3D
+PathFollow3D
+AnimationPlayer
+StaticBody3D
+Node3D
+Area3D
 CollisionShape3D
 RayCast3D
-Node3D
-PathFollow3D
 Path3D
-StaticBody3D
-Area3D
-MeshInstance3D
 Timer
 RichTextLabel
 CanvasLayer
@@ -13,7 +15,6 @@ TextureButton
 AudioStreamPlayer
 AudioStreamPlayer3D
 SpotLight3D
-AnimationPlayer
 TextEdit
 VBoxContainer
 Button
@@ -28,5 +29,4 @@ MultiMeshInstance3D
 GPUParticles3D
 Container
 CPUParticles3D
-Node
 OmniLight3D
