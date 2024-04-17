@@ -453,7 +453,7 @@ path_u_distance = 1.0
 path_joined = false
 
 [node name="PathFollow3D2" type="PathFollow3D" parent="Rope2/Path3D"]
-transform = Transform3D(0.788175, -0.00122802, -0.61545, -0.280455, -0.890853, -0.357387, -0.547837, 0.45429, -0.702492, 5.0463, 3.45798, 13.6213)
+transform = Transform3D(0.788168, -0.00124982, -0.615458, -0.280459, -0.890866, -0.357352, -0.547844, 0.454265, -0.702502, 5.0463, 3.45798, 13.6213)
 progress = 42.7451
 
 [node name="Test Ball" parent="Rope2/Path3D/PathFollow3D2" instance=ExtResource("4_apcss")]

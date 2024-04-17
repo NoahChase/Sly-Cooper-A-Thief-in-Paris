@@ -264,8 +264,8 @@ func _physics_process(delta):
 	if not is_on_floor() and not state_now == State.TWEENING and not state_now == State.ON_PLATFORM:
 		if velocity.y > 0:
 			camera_origin.position.y = lerp(camera_origin.position.y, (max(2, -velocity.y * delta) - $Camera_Return.position.y), velocity.y * delta/4)
-		else:
-			camera_origin.position.y = lerp(camera_origin.position.y, $Camera_Return.position.y - max(velocity.y, -velocity.y * delta), -velocity.y * delta /2)
+		elif velocity.y < 0:
+			camera_origin.position.y = lerp(camera_origin.position.y, $Camera_Return.position.y - max(velocity.y, -velocity.y * delta) - 1, -velocity.y * delta /2)
 	elif state_now == State.TWEENING or state_now == State.ON_PLATFORM or is_on_floor():
 		camera_origin.position.y = lerp(camera_origin.position.y, $Camera_Return.position.y - max(2, -velocity.y * delta), delta * 1.5)
 		if left_stick_pressure > 0.9:
