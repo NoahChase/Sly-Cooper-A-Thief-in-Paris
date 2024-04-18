@@ -17,3 +17,4 @@ res://Assets/Obj Scenes/vintage_lamp_post.tscn
 res://Scenes/pole_01_.tscn
 res://Scenes/test_ball.tscn
 res://Scenes/particle_sparkle.tscn
+res://Scripts/player.gd

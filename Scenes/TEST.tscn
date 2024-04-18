@@ -376,6 +376,16 @@ skeleton = NodePath("../..")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Building Measurements/MeshInstance3D/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_ndxmx")
 
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="Building Measurements"]
+transform = Transform3D(1, 0.000593126, -1.76507e-05, -0.000593126, 1, -5.26444e-06, 1.76475e-05, 5.27507e-06, 1, 78, 0.999, 32)
+mesh = SubResource("BoxMesh_wjxmj")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Building Measurements/MeshInstance3D7"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Building Measurements/MeshInstance3D7/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_ndxmx")
+
 [node name="MeshInstance3D5" type="MeshInstance3D" parent="Building Measurements"]
 transform = Transform3D(1, 0.000593126, -1.76507e-05, -0.000593126, 1, -5.26444e-06, 1.76475e-05, 5.27507e-06, 1, 76, 0.999, 39.5)
 mesh = SubResource("BoxMesh_wjxmj")
@@ -397,7 +407,7 @@ skeleton = NodePath("../..")
 shape = SubResource("ConcavePolygonShape3D_ndxmx")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="Building Measurements"]
-transform = Transform3D(1, 0.000593126, -1.76507e-05, -0.000593126, 1, -5.26444e-06, 1.76475e-05, 5.27507e-06, 1, 76, 0.999, 25)
+transform = Transform3D(1, 0.000593126, -1.76507e-05, -0.000593126, 1, -5.26444e-06, 1.76475e-05, 5.27507e-06, 1, 76, 0.999, 26)
 mesh = SubResource("BoxMesh_wjxmj")
 skeleton = NodePath("../..")
 

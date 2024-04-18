@@ -1,9 +1,14 @@
 extends CharacterBody3D
 
 const SPEED = 4
-var JUMP_VELOCITY = 6.6
+var JUMP_VELOCITY = 6.8
 const lerp_val = 0.15
 var air_accel = 0.0
+
+#in-game jump distance = 6
+#in-game jump height = 2
+#in-game double jump height = 3
+
 @onready var direction
 
 @onready var target_a
@@ -181,7 +186,7 @@ func _physics_process(delta):
 			#could start a 1 second timer and say air_accel = timer value...
 			air_accel = 1
 		else:
-			air_accel = lerpf(air_accel, 0.025, lerp_val/2.25)
+			air_accel = lerpf(air_accel, 0.0, lerp_val/2.25)
 		
 		velocity.y -= gravity * delta * 1.5
 		
@@ -278,15 +283,15 @@ func _physics_process(delta):
 		if not platform_type == Platform_Type.POLE or platform_type == Platform_Type.ROPE:
 			is_moving = true
 			sly_rot.look_at(position - direction)
-			sly_container.rotate_y(lerp(sly.rotation.y, sly_rot.rotation.y, lerp_val * air_accel * 60 * delta))
+			sly_container.rotate_y(lerp(sly.rotation.y, sly_rot.rotation.y, lerp_val * air_accel * 80 * delta))
 		
-		velocity.x = lerp(velocity.x, direction.x * SPEED * SPEED_MULT * left_stick_pressure, lerp_val * 60 * air_accel * delta)
-		velocity.z = lerp(velocity.z, direction.z * SPEED * SPEED_MULT * left_stick_pressure, lerp_val * 60 * air_accel * delta)
+		velocity.x = lerp(velocity.x, direction.x * SPEED * SPEED_MULT * left_stick_pressure, lerp_val * 80 * air_accel * delta)
+		velocity.z = lerp(velocity.z, direction.z * SPEED * SPEED_MULT * left_stick_pressure, lerp_val * 80 * air_accel * delta)
 		$CameraOrigin/CameraArm/camera/CanvasLayer/RichTextLabel4.text = str(left_stick_pressure)
 	else:
 		is_moving = false
-		velocity.x = lerp(velocity.x, 0.0, lerp_val * 60 * air_accel * delta)
-		velocity.z = lerp(velocity.z, 0.0, lerp_val * 60 * air_accel * delta)
+		velocity.x = lerp(velocity.x, 0.0, lerp_val * 80 * air_accel * delta)
+		velocity.z = lerp(velocity.z, 0.0, lerp_val * 80 * air_accel * delta)
 
 
 func jump():
@@ -327,7 +332,7 @@ func manage_target_type():
 	if target.is_in_group("Point"):
 		platform_type = Platform_Type.POINT
 		air_anim = "not_on_floor"
-		floor_anim = "on_floor"
+		air_anim = "on_floor"
 	if target.is_in_group("Path"):
 		target.target = self
 		target.is_selected = true
@@ -422,33 +427,36 @@ func move_to_target():
 		var y_tween = create_tween().set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
 		var z_tween = create_tween().set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
 
-		if not anim_player.current_animation == "spin":
-			anim_player.play("spin")
-	
+		if not sly_container_anim.current_animation == "spin":
 			var target_position = platform.global_transform.origin + final_offset
-	
+			
 			x_tween.tween_property(
 				self,
 				"position:x",
 				platform.global_transform.origin.x,
-				distance / (SPEED * SPEED_MULT),
-			).set_trans(Tween.TRANS_LINEAR)
+				distance / (SPEED * SPEED_MULT) / 1.15,
+			).set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN)
 	
 			y_tween.tween_property(
 				self,
 				"position:y",
 				platform.global_transform.origin.y,
 				distance / (SPEED * SPEED_MULT),
-			).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN)
+			).set_trans(Tween.TRANS_QUART)
 	
 			z_tween.tween_property(
 				self,
 				"position:z",
 				platform.global_transform.origin.z,
-				distance / (SPEED * SPEED_MULT),
-			).set_trans(Tween.TRANS_LINEAR)
+				distance / (SPEED * SPEED_MULT) / 1.15,
+			).set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN)
 			sly_anim_tree.set("parameters/Transition/transition_request", "not_on_floor")
 			$AnimationPlayer.queue("RESET")
+			
+			
+			
+			sly_container_anim.play("spin")
+			sly_anim_tree.set("parameters/OneShot/request", 1)
 			
 			if x_tween.is_running() and y_tween.is_running() and z_tween.is_running():
 				state_now = State.TWEENING
