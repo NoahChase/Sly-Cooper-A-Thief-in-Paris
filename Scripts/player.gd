@@ -305,9 +305,9 @@ func jump():
 			velocity.y = JUMP_VELOCITY + 0.75
 			sly_anim_tree.set("parameters/OneShot/request", 1)
 		if state_now == State.AIR:
-			if velocity.y >= 3.3:
+			if velocity.y >= 3:
 				velocity.y += 3.3
-			elif velocity.y > 0 and velocity.y < 3.3:
+			elif velocity.y > 0 and velocity.y < 3:
 				velocity.y += JUMP_VELOCITY * 0.6
 			elif velocity.y <= 0:
 				velocity.y += JUMP_VELOCITY - 1.3
@@ -434,7 +434,7 @@ func move_to_target():
 				self,
 				"position:x",
 				platform.global_transform.origin.x,
-				distance / (SPEED * SPEED_MULT) / 1.15,
+				distance / (SPEED * SPEED_MULT),
 			).set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN)
 	
 			y_tween.tween_property(
@@ -448,14 +448,15 @@ func move_to_target():
 				self,
 				"position:z",
 				platform.global_transform.origin.z,
-				distance / (SPEED * SPEED_MULT) / 1.15,
+				distance / (SPEED * SPEED_MULT),
 			).set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN)
 			sly_anim_tree.set("parameters/Transition/transition_request", "not_on_floor")
 			$AnimationPlayer.queue("RESET")
 			
 			
+			if platform_type == Platform_Type.POINT:
+				sly_container_anim.play("spin")
 			
-			sly_container_anim.play("spin")
 			sly_anim_tree.set("parameters/OneShot/request", 1)
 			
 			if x_tween.is_running() and y_tween.is_running() and z_tween.is_running():

@@ -10,11 +10,14 @@ extends Node3D
 @export var length = 0.0
 @export var start_clamp = 0.01
 @export var end_clamp = 0.99
+var tween = Tween
 
 var speed = 0.001
 
 func _ready():
 	test_ball.mesh.visible = false
+	
+	
 func _process(delta):
 	#make ball only move forward when player is on it so they don't teleport.
 	if test_ball.is_selected:
@@ -22,7 +25,37 @@ func _process(delta):
 			move_ball = false
 			if not target.anim_player.current_animation == "spin":
 				var camera_direction = test_ball.global_transform.origin - target.camera.global_transform.origin
+				
+				### SET THESE when Player is TWEENING (not on platform yet) -this should be same as player's tween function-
+				#var x_tween = create_tween().set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
+				#var y_tween = create_tween().set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
+				#var z_tween = create_tween().set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
+				#var to_target = target.global_transform.origin - global_transform.origin
+				#var distance = to_target.length()
+				#x_tween.tween_property(
+				#target,
+				#"position:x",
+				#test_ball.global_transform.origin.x,
+				#distance / (target.SPEED * target.SPEED_MULT),
+				#).set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN)
+	
+				#y_tween.tween_property(
+				#target,
+				#"position:y",
+				#test_ball.global_transform.origin.y,
+				#distance / (target.SPEED * target.SPEED_MULT),
+				#).set_trans(Tween.TRANS_QUART)
+	
+				#z_tween.tween_property(
+				#target,
+				#"position:z",
+				#test_ball.global_transform.origin.z,
+				#distance / (target.SPEED * target.SPEED_MULT),
+				#).set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN)
+				
+				### Set this when player is on platform (done tweening)
 				target.global_transform.origin = lerp(target.global_transform.origin, test_ball.global_transform.origin, 0.5)
+				
 				target.rotation.x = test_ball.rotation.x
 				target.rotation.z = test_ball.rotation.z
 				speed = 1
