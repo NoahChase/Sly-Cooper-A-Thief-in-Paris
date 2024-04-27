@@ -1,4 +1,4 @@
-[gd_scene load_steps=66 format=3 uid="uid://c26x73kclemty"]
+[gd_scene load_steps=67 format=3 uid="uid://c26x73kclemty"]
 
 [ext_resource type="PackedScene" uid="uid://bx1ae6opo7fgr" path="res://Assets/Temp/SlyCooper_RigNoPhysics.blend" id="1_36eye"]
 [ext_resource type="PackedScene" uid="uid://cx5flnhkxq1c2" path="res://Assets/Temp/SlyCooper_Cane.glb" id="2_g52sn"]
@@ -16106,6 +16106,9 @@ tracks/75/interp = 1
 tracks/75/loop_wrap = true
 tracks/75/keys = PackedFloat32Array(0, 1, 2.98023e-08, 2.98023e-08, 2.98023e-08, 1)
 
+[sub_resource type="Animation" id="Animation_30usr"]
+resource_name = "fall_test"
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_47uis"]
 _data = {
 "T Pose": SubResource("Animation_0ovbn"),
@@ -16113,6 +16116,7 @@ _data = {
 "airtime_02": SubResource("Animation_l5da8"),
 "fall_pose_02": SubResource("Animation_w8dy2"),
 "fall_pose_03": SubResource("Animation_r43ce"),
+"fall_test": SubResource("Animation_30usr"),
 "flip_back": SubResource("Animation_3wiwq"),
 "flip_front": SubResource("Animation_fnsql"),
 "idle": SubResource("Animation_nsrne"),
@@ -16778,8 +16782,7 @@ animation = &"SlyCooper_anims_01_/fall_pose_02"
 animation = &"SlyCooper_anims_01_/idle_pole"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_luv2p"]
-animation = &"SlyCooper_anims_01_/pole_up"
-play_mode = 1
+animation = &"SlyCooper_anims_01_/idle_pole"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_oausa"]
 animation = &"SlyCooper_anims_01_/pole_up"
@@ -16818,7 +16821,7 @@ blend_point_2/pos = 1.0
 animation = &"SlyCooper_anims_01_/spin"
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_ynmj0"]
-graph_offset = Vector2(-455.923, -321.389)
+graph_offset = Vector2(-155.1, -264.4)
 nodes/Jump_State/node = SubResource("AnimationNodeTransition_vr8e7")
 nodes/Jump_State/position = Vector2(320, 520)
 nodes/Jump_or_Move/node = SubResource("AnimationNodeOneShot_jxcra")
@@ -16852,7 +16855,7 @@ nodes/rope_blend/node = SubResource("AnimationNodeBlendSpace1D_rkqbd")
 nodes/rope_blend/position = Vector2(20, -120)
 nodes/spin_anim/node = SubResource("AnimationNodeAnimation_nqka4")
 nodes/spin_anim/position = Vector2(-60, 740)
-node_connections = [&"output", 0, &"Jump_or_Move", &"Move_State", 0, &"floor_blend", &"Move_State", 1, &"airtime_anim", &"Move_State", 2, &"point_anim", &"Move_State", 3, &"rope_blend", &"Move_State", 4, &"pole_blend", &"Move_State", 5, &"ledge_blend", &"Move_State", 6, &"rayvball_anim", &"Jump_State", 0, &"jump_from_floor_anim", &"Jump_State", 1, &"flipfront_anim", &"Jump_State", 3, &"flipback_anim", &"Jump_State", 5, &"spin_anim", &"Jump_State", 6, &"landhard_anim", &"Jump_or_Move", 0, &"TimeScale", &"Jump_or_Move", 1, &"Jump_State", &"TimeScale", 0, &"Move_State"]
+node_connections = [&"output", 0, &"Jump_or_Move", &"Jump_State", 0, &"jump_from_floor_anim", &"Jump_State", 1, &"flipfront_anim", &"Jump_State", 3, &"flipback_anim", &"Jump_State", 5, &"spin_anim", &"Jump_State", 6, &"landhard_anim", &"Jump_or_Move", 0, &"TimeScale", &"Jump_or_Move", 1, &"Jump_State", &"Move_State", 0, &"floor_blend", &"Move_State", 1, &"airtime_anim", &"Move_State", 2, &"point_anim", &"Move_State", 3, &"rope_blend", &"Move_State", 4, &"pole_blend", &"Move_State", 5, &"ledge_blend", &"Move_State", 6, &"rayvball_anim", &"TimeScale", 0, &"Move_State"]
 
 [node name="SlyCooper_RigNoPhysics" instance=ExtResource("1_36eye")]
 

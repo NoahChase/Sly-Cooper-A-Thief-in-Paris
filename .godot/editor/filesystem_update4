@@ -1,4 +1,4 @@
-res://Scenes/sly_cooper_rig_no_physics.tscn
+res://Scenes/player.tscn
 res://Assets/Materials/blur.gdshader
 res://Assets/Materials/sly_cooper.outline.gdshader
 res://Assets/Materials/Sly Head.tres
@@ -11,12 +11,7 @@ res://Assets/Materials/awning_TEXT.tres
 res://Assets/Materials/awning_NOTEXT_mat.tres
 res://Assets/Materials/modern_lamp_mat.tres
 res://Assets/Materials/lamp_modern_light.tres
-res://Scripts/sly_cooper_rig.gd
-res://Scripts/test_ball.gd
-res://Scripts/pole.gd
-res://Scenes/player.tscn
 res://Scenes/world.tscn
 res://Scenes/TEST.tscn
 res://Scripts/player.gd
-res://Assets/Obj Scenes/sly_cooper.tscn
-res://Assets/Temp/idle_standing_anim.res
+res://Scenes/sly_cooper_rig_no_physics.tscn

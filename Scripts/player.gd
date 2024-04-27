@@ -24,13 +24,13 @@ var air_accel = 0.0
 
 @onready var ray_v = $Ray_V_Container/Ray_V
 @onready var ray_h = $Ray_H
-@onready var ray_h2 = $Ray_H2
-@onready var ray_h3 = $Ray_H3
-@onready var ray_h4 = $Ray_H4
-@onready var sly_ray_h1 = $sly_container/sly_cooper/Ray_H
-@onready var sly_ray_h2 = $sly_container/sly_cooper/Ray_H2
-@onready var sly_ray_h3 = $sly_container/sly_cooper/Ray_H3
-@onready var sly_ray_h4 = $sly_container/sly_cooper/Ray_H4
+@onready var ray_h2 = $sly_container/Ray_H5
+@onready var ray_h3 = $sly_container/Ray_H6
+@onready var ray_h4 = $sly_container/Ray_H7
+@onready var sly_ray_h1 = $sly_container/Ray_H
+@onready var sly_ray_h2 = $sly_container/Ray_H2
+@onready var sly_ray_h3 = $sly_container/Ray_H3
+@onready var sly_ray_h4 = $sly_container/Ray_H4
 @onready var ray_v_holder = $Ray_V_Container
 @onready var ray_v_ball = $Ray_V_Container/Ray_V_Ball
 @onready var to_ray_ball = ray_v_ball.global_transform.origin - global_transform.origin
@@ -229,7 +229,9 @@ func _physics_process(delta):
 		if platform_type == Platform_Type.LEDGE:
 			print("physics process! platform type = LEDGE")
 		if platform_type == Platform_Type.Ray_V_Ball:
-			pass
+			print("physics process! platform type = LEDGE")
+			#platform_type = Platform_Type.NULL
+			#return
 		if platform_type == Platform_Type.POLE or platform_type == Platform_Type.ROPE or platform_type == Platform_Type.LEDGE or platform_type == Platform_Type.Ray_V_Ball:
 			if not target == null and not platform_type == Platform_Type.Ray_V_Ball:
 				#platform.global_transform.origin
@@ -260,9 +262,8 @@ func _physics_process(delta):
 		#send a signal when the tween is finished and set the state to on_platform
 		pass
 	else:
-		if bottle_number >= 30:
-			ledge_detect()
-			target_distance_manager()
+		ledge_detect()
+		target_distance_manager()
 		move_and_slide()
 	if platform_type == Platform_Type.NULL:
 			print("physics process! platform type = NULL")
@@ -378,14 +379,7 @@ func manage_target_type():
 func find_target_b():
 	print("finding target b!")
 
-	if distance_to_ball < 1 and can_ledge and velocity.y < -0.5:
-		if target_b == null:
-			if $Ray_V_Container/Ray_V_Ball/Ledge_Col_Anim.current_animation == "check_ledge_final" and can_ledge:
-				if not is_on_floor():
-					$Ray_V_Container/Particle_Sparkle.visible = true
-					$Ray_V_Container/Ray_V_Ball/Ledge_Col_Anim.current_animation = "check_ledge_final"
-					target_b = ray_v_ball
-	elif distance_to_ball < 3.5 and can_ledge and Input.is_action_just_pressed("RMB"):
+	if distance_to_ball < 2 and can_ledge and velocity.y < 0 and state_now == State.AIR:
 		if target_b == null:
 			if $Ray_V_Container/Ray_V_Ball/Ledge_Col_Anim.current_animation == "check_ledge_final" and can_ledge:
 				if not is_on_floor():
@@ -414,7 +408,7 @@ func target_distance_manager():
 		#one with least distance (Hand vs Feet)
 		if distance_a <= distance_b:
 			target = target_a
-		else:
+		elif distance_a> distance_b and not target_a == null:
 			target = target_b
 	print("target = ", target)
 	if not target == null:

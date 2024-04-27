@@ -535,30 +535,6 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector3(1.65864, 0, 0)]
 }
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Ray_H2:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0.944292, 0, 0)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Ray_H3:rotation")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0.520439, 0, 0)]
-}
 
 [sub_resource type="Animation" id="Animation_hmuwk"]
 resource_name = "h_sway"
@@ -575,30 +551,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector3(1.04056, 1.74515, 1.72159), Vector3(1.04056, -1.74515, -1.72159)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Ray_H2:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.45),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(0.777573, 0.604541, 0.777693), Vector3(0.777573, -0.604541, -0.777693)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Ray_H3:rotation")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.45),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(0.445203, 0.279093, 0.587164), Vector3(0.445203, -0.279093, -0.587164)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_kixou"]
@@ -747,24 +699,36 @@ transform = Transform3D(15, 0, 0, 0, 15, -2.27374e-13, 0, 2.27374e-13, 15, 0, -1
 transform = Transform3D(15, 0, 0, 0, 15, -2.62268e-06, 0, 2.62268e-06, 15, 0, -0.725, 4.37114e-08)
 visible = false
 
-[node name="Ray_H" type="RayCast3D" parent="sly_container/sly_cooper"]
-transform = Transform3D(-0.067, -5.83473e-09, 5.13867e-10, 0, -0.00587796, -0.0667416, 5.85732e-09, -0.0667416, 0.00587796, -0.00098944, 0.120232, 4.88425e-05)
-target_position = Vector3(0, 0, -3)
-
-[node name="Ray_H2" type="RayCast3D" parent="sly_container/sly_cooper"]
-transform = Transform3D(-0.067, -4.74492e-09, -3.43424e-09, 1.51336e-23, 0.0392832, -0.0542755, 5.85733e-09, -0.0542755, -0.0392832, -0.000989437, 0.0522851, 0.0271153)
-target_position = Vector3(0, 0, -4.5)
-
-[node name="Ray_H3" type="RayCast3D" parent="sly_container/sly_cooper"]
-transform = Transform3D(-0.067, -2.91262e-09, -5.08181e-09, 0, 0.0581292, -0.0333165, 5.85733e-09, -0.0333165, -0.0581292, -0.000989437, 0.00900004, 0.0268967)
-target_position = Vector3(0, 0, -4)
-
-[node name="Ray_H4" type="RayCast3D" parent="sly_container/sly_cooper"]
-transform = Transform3D(-0.067, -1.5125e-11, -5.85731e-09, 0, 0.0669997, -0.00017301, 5.85733e-09, -0.00017301, -0.0669997, 0.000989431, 0.00625883, 0.0260367)
-target_position = Vector3(0, 0, -4)
-
 [node name="SlyCooper_RigNoPhysics" parent="sly_container" instance=ExtResource("7_o6gr2")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, -0.75, 0)
+
+[node name="Ray_H" type="RayCast3D" parent="sly_container"]
+transform = Transform3D(0.710642, -6.21262e-08, 0.710642, -8.78599e-08, -1.005, 0, 0.710642, -6.21263e-08, -0.710642, -0.317878, 0.20348, 0.375733)
+target_position = Vector3(0, 0, -3)
+
+[node name="Ray_H2" type="RayCast3D" parent="sly_container"]
+transform = Transform3D(0.5025, -4.39299e-08, -0.870355, -8.78599e-08, -1.005, -4.25634e-22, -0.870355, 7.60888e-08, -0.5025, 0.464608, 0.20348, 0.125733)
+target_position = Vector3(0, 0, -3)
+
+[node name="Ray_H3" type="RayCast3D" parent="sly_container"]
+transform = Transform3D(1, -1.50996e-07, 1.50996e-07, -1.50996e-07, -1, 1.06028e-15, 1.50996e-07, -2.386e-14, -1, -0.000517293, 0.20348, 0.474158)
+target_position = Vector3(0, 0, -3)
+
+[node name="Ray_H4" type="RayCast3D" parent="sly_container"]
+transform = Transform3D(0.5025, -4.39299e-08, 0.870355, -8.78599e-08, -1.005, 4.25634e-22, 0.870355, -7.60888e-08, -0.5025, -0.472319, 0.20348, 0.125733)
+target_position = Vector3(0, 0, -3)
+
+[node name="Ray_H5" type="RayCast3D" parent="sly_container"]
+transform = Transform3D(0.710642, -6.21263e-08, -0.710642, -8.78599e-08, -1.005, 0, -0.710642, 6.21262e-08, -0.710642, 0.306917, 0.20348, 0.375733)
+target_position = Vector3(0, 0, -3)
+
+[node name="Ray_H6" type="RayCast3D" parent="sly_container"]
+transform = Transform3D(0.970755, -8.4866e-08, -0.260113, -8.78599e-08, -1.005, -8.1268e-15, -0.260113, 2.27398e-08, -0.970754, 0.331006, 0.20348, 0.355448)
+target_position = Vector3(0, 0, -3)
+
+[node name="Ray_H7" type="RayCast3D" parent="sly_container"]
+transform = Transform3D(0.970755, -8.4866e-08, 0.260113, -8.78599e-08, -1.005, 0, 0.260113, -2.27398e-08, -0.970755, -0.329533, 0.20348, 0.367963)
+target_position = Vector3(0, 0, -3)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -824,20 +788,8 @@ top_level = true
 visible = false
 
 [node name="Ray_H" type="RayCast3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -0.0877308, -0.996144, 0, 0.996144, -0.0877308, 0, 2.02878, 0)
+transform = Transform3D(1, 0, 0, 0, -0.0877307, -0.996144, 0, 0.996144, -0.0877307, 0, 0.77878, -0.470209)
 target_position = Vector3(0, 0, -3)
-
-[node name="Ray_H2" type="RayCast3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.586316, -0.810082, 0, 0.810082, 0.586316, 0, 1, -0.40525)
-target_position = Vector3(0, 0, -4.5)
-
-[node name="Ray_H3" type="RayCast3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.867601, -0.497261, 0, 0.497261, 0.867601, 0, 0.259, -0.369855)
-target_position = Vector3(0, 0, -4)
-
-[node name="Ray_H4" type="RayCast3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.999996, -0.00258224, 0, 0.00258224, 0.999996, -0.00197887, 0.0229255, -0.187433)
-target_position = Vector3(0, 0, -4)
 
 [node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
 libraries = {
