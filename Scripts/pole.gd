@@ -88,7 +88,6 @@ func _on_area_3d_body_exited(body):
 	if body.is_in_group("Player"):
 		target = null
 		move_ball = false
-	
 
 
 func _on_sparklearea_body_entered(body):

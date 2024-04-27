@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://ce1q324v4dg1"]
+
+[ext_resource type="PackedScene" uid="uid://cmljpjp81bcu8" path="res://Assets/Obj Scenes/sly_cooper_rig_no_physics.tscn" id="1_6h2ln"]
+[ext_resource type="PackedScene" uid="uid://cx5flnhkxq1c2" path="res://Assets/Temp/SlyCooper_Cane.glb" id="2_soxop"]
+
+[node name="Sly_Final" type="Node3D"]
+
+[node name="SlyCooper_RigNoPhysics" parent="." instance=ExtResource("1_6h2ln")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+
+[node name="BoneAttachment3D" type="BoneAttachment3D" parent="SlyCooper_RigNoPhysics/metarig/GeneralSkeleton" index="21"]
+transform = Transform3D(0.81309, 0.243684, 0.52868, 0.367952, 0.488618, -0.791116, -0.451105, 0.837777, 0.307626, 0.225421, 0.835271, 0.639548)
+bone_name = "palm.02.R"
+bone_idx = 106
+
+[node name="SlyCooper_Cane" parent="SlyCooper_RigNoPhysics/metarig/GeneralSkeleton/BoneAttachment3D" instance=ExtResource("2_soxop")]
+transform = Transform3D(0.109501, 0.993055, 0.043, -0.975115, 0.115712, -0.189098, -0.192759, -0.0212232, 0.981017, -0.0131751, 0.0811793, 0.00592855)
+
+[editable path="SlyCooper_RigNoPhysics"]

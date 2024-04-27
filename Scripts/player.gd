@@ -40,6 +40,8 @@ var air_accel = 0.0
 @onready var sly_rot = $sly_container/sly_rot_helper
 @onready var sly = $sly_container/sly_cooper
 
+@onready var sly_new = $sly_container/SlyCooper_RigNoPhysics
+
 @onready var camera_origin = $CameraOrigin
 @onready var camera = $CameraOrigin/CameraArm/camera
 @onready var camera_arm = $CameraOrigin/CameraArm
@@ -47,7 +49,7 @@ var air_accel = 0.0
 
 @onready var area_anim = $"Platform Snap Area/Area Col Anim Player"
 @onready var anim_player = $AnimationPlayer
-@onready var sly_anim_tree = $sly_container/sly_cooper.get_node("AnimationTree")
+@onready var sly_anim_tree = $sly_container/SlyCooper_RigNoPhysics.get_node("AnimationTree")
 @onready var sly_container_anim = $sly_container/sly_container_anim
 @onready var current_blendspace
 @onready var coyote_timer = $"Coyote Time"
@@ -76,9 +78,10 @@ enum Platform_Type{NULL, POINT, PATH, POLE, ROPE, LEDGE, Ray_V_Ball}
 
 @onready var floor_anim: String
 @export var air_anim: String
+@export var platform_anim: String
 
 @onready var bottle_number = 30
- 
+@onready var blend_pos = velocity.length()/SPEED
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	can_right_stick = true
@@ -99,11 +102,13 @@ func joystick_event():
 	var value := Vector2.ZERO
 	var raw_value := Vector2.ZERO
 	#make BlendSpace1D a variable of all blend spaces, just like air_anim and floor_anim (so works in all states)
-	sly_anim_tree.set("parameters/BlendSpace1D/blend_position", velocity.length()/SPEED)
-	sly_anim_tree.set("parameters/Hang_BlendSpace/blend_position", velocity.length()/SPEED)
-	sly_anim_tree.set("parameters/Ledge_BlendSpace/blend_position", velocity.length()/SPEED)
+	sly_anim_tree.set("parameters/floor_blend/blend_position", blend_pos)
+	sly_anim_tree.set("parameters/rope_blend/blend_position", blend_pos)
+	sly_anim_tree.set("parameters/pole_blend/blend_position", blend_pos)
+	sly_anim_tree.set("parameters/ledge_blend/blend_position", blend_pos)
 
-	sly_anim_tree.set("parameters/Blend3/blend_amount", -1)
+	#sly_anim_tree.set("parameters/Blend3/blend_amount", -1)
+	
 	if can_right_stick:
 		value.x = Input.get_action_strength("right_stick_left") - Input.get_action_strength("right_stick_right")
 		value.y = Input.get_action_strength("right_stick_up") - Input.get_action_strength("right_stick_down")
@@ -118,14 +123,19 @@ func joystick_event():
 				camera_origin.rotate_x(deg_to_rad(value.y *1.25))
 				camera_origin.rotation.x = clamp(camera_origin.rotation.x, deg_to_rad(-90), deg_to_rad(45))
 	left_stick_pressure = Input.get_action_strength("left_stick_left") + Input.get_action_strength("left_stick_right") + Input.get_action_strength("left_stick_up") + Input.get_action_strength("left_stick_down")
-	if left_stick_pressure >= 0.85:
+	if left_stick_pressure >= 0.45:
+		if state_now == State.FLOOR:
+			sly_anim_tree.set("parameters/TimeScale/scale", 1)
 		left_stick_pressure = 1.0
 	if left_stick_pressure <= 0.35 and left_stick_pressure > 0:
+		if state_now == State.FLOOR:
+			sly_anim_tree.set("parameters/TimeScale/scale", 1.5)
 		left_stick_pressure = 0.35
 
 
 
 func _physics_process(delta):
+	blend_pos = velocity.length()/SPEED
 	$CameraOrigin/CameraArm/camera/CanvasLayer/RichTextLabel3.text = str(Engine.get_frames_per_second())
 	print("physics process start! physics target = ", target)
 	joystick_event()
@@ -173,13 +183,14 @@ func _physics_process(delta):
 		$"CameraOrigin/State Reader".text = str("[center]FLOOR")
 		#SPEED_MULT = 1
 		double_jump = true
-		sly_anim_tree.set("parameters/Transition/transition_request", floor_anim)
+		sly_anim_tree.set("parameters/Move_State/transition_request", floor_anim)
+		
 	
 	if state_now == State.AIR:
 		var camoffset = Vector3(0,-2,0)
 		can_right_stick = true
 		$"CameraOrigin/State Reader".text = str("[center]AIR")
-		sly_anim_tree.set("parameters/Transition/transition_request", air_anim)
+		sly_anim_tree.set("parameters/Move_State/transition_request", air_anim)
 		SPEED_MULT = 1.4
 		
 		if coyote_timer.time_left >= 0.25:
@@ -199,10 +210,11 @@ func _physics_process(delta):
 				area_anim.queue("area_check")
 	
 	if state_now == State.TWEENING:
+
 		air_accel = lerpf(air_accel, 1, lerp_val)
 		can_right_stick = true
-		sly_anim_tree.set("parameters/Transition/transition_request", air_anim)
-		sly_anim_tree.set("parameters/Transition/transition_request", floor_anim)
+		sly_anim_tree.set("parameters/Move_State/transition_request", air_anim)
+		sly_anim_tree.set("parameters/Move_State/transition_request", floor_anim)
 		double_jump = true
 		$"CameraOrigin/State Reader".text = str("[center]TWEENING")
 		if platform_type == Platform_Type.POINT:
@@ -229,6 +241,7 @@ func _physics_process(delta):
 					target.move_forward = false
 					sly_anim_tree.set("parameters/Pole_BlendSpace/blend_position", 0)
 					sly_anim_tree.set("parameters/Rope_BlendSpace/blend_position", 0)
+					
 				if Input.is_action_pressed("S"):
 					target.move_backward = true
 					sly_anim_tree.set("parameters/Pole_BlendSpace/blend_position", -velocity.length()/SPEED)
@@ -253,8 +266,8 @@ func _physics_process(delta):
 		move_and_slide()
 	if platform_type == Platform_Type.NULL:
 			print("physics process! platform type = NULL")
-			air_anim = "not_on_floor"
-			floor_anim = "on_floor"
+			air_anim = "air"
+			floor_anim = "floor"
 			if not target == null and not target.is_in_group("Ray_V_Ball"):
 				if target.is_in_group("Path"):
 					target.move_forward = false
@@ -270,7 +283,7 @@ func _physics_process(delta):
 		if velocity.y > 0:
 			camera_origin.position.y = lerp(camera_origin.position.y, (max(2, -velocity.y * delta) - $Camera_Return.position.y), velocity.y * delta/4)
 		elif velocity.y < 0:
-			camera_origin.position.y = lerp(camera_origin.position.y, $Camera_Return.position.y - max(velocity.y, -velocity.y * delta) - 1, -velocity.y * delta /2)
+			camera_origin.position.y = lerp(camera_origin.position.y, $Camera_Return.position.y - max(velocity.y, -velocity.y * delta) + 1, -velocity.y * delta /4)
 	elif state_now == State.TWEENING or state_now == State.ON_PLATFORM or is_on_floor():
 		camera_origin.position.y = lerp(camera_origin.position.y, $Camera_Return.position.y - max(2, -velocity.y * delta), delta * 1.5)
 		if left_stick_pressure > 0.9:
@@ -303,15 +316,19 @@ func jump():
 		$jump_sound.play()
 		if state_now == State.FLOOR or state_now == State.TWEENING:
 			velocity.y = JUMP_VELOCITY + 0.75
-			sly_anim_tree.set("parameters/OneShot/request", 1)
+			sly_anim_tree.set("parameters/Jump_State/transition_request", "Floor_Jump")
+			sly_anim_tree.set("parameters/Jump_or_Move/request", 1)
+			
 		if state_now == State.AIR:
+			sly_anim_tree.set("parameters/Jump_State/transition_request", "W_Jump")
+			sly_anim_tree.set("parameters/Jump_or_Move/request", 1)
 			if velocity.y >= 3:
 				velocity.y += 3.3
 			elif velocity.y > 0 and velocity.y < 3:
 				velocity.y += JUMP_VELOCITY * 0.6
 			elif velocity.y <= 0:
 				velocity.y += JUMP_VELOCITY - 1.3
-				sly_anim_tree.set("parameters/OneShot/request", 1)
+				
 		double_jump = false
 		
 #	if double_jump == true:
@@ -331,31 +348,31 @@ func manage_target_type():
 		return
 	if target.is_in_group("Point"):
 		platform_type = Platform_Type.POINT
-		air_anim = "not_on_floor"
-		air_anim = "on_floor"
+		air_anim = "point"
+		floor_anim = "point"
 	if target.is_in_group("Path"):
 		target.target = self
 		target.is_selected = true
 	if target.is_in_group("Pole"):
 		platform_type = Platform_Type.POLE
-		air_anim = "on_pole"
-		floor_anim = "on_pole"
+		air_anim = "pole"
+		floor_anim = "pole"
 	if target.is_in_group("Rope"):
 		platform_type = Platform_Type.ROPE
-		air_anim = "on_rope"
-		floor_anim = "on_rope"
+		air_anim = "rope"
+		floor_anim = "rope"
 	if target.is_in_group("Ledge"):
 		platform_type = Platform_Type.LEDGE
-		air_anim = "not_on_floor"
-		floor_anim = "on_ledge"
+		air_anim = "air"
+		floor_anim = "ledge"
 	if target.is_in_group("Ray_V_Ball"):
 		platform_type = Platform_Type.Ray_V_Ball
 		if offset_num == -0.7:
-			air_anim = "is_hanging"
-			floor_anim = "is_hanging"
+			air_anim = "ray_v_ball"
+			floor_anim = "ray_v_ball"
 		else:
-			air_anim = "is_spinning"
-			floor_anim = "is_spinning"
+			air_anim = "air"
+			floor_anim = "air"
 	print("platform type = ", platform_type)
 
 func find_target_b():
@@ -450,21 +467,21 @@ func move_to_target():
 				platform.global_transform.origin.z,
 				distance / (SPEED * SPEED_MULT),
 			).set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN)
-			sly_anim_tree.set("parameters/Transition/transition_request", "not_on_floor")
+			sly_anim_tree.set("parameters/Move_State/transition_request", "air")
 			$AnimationPlayer.queue("RESET")
 			
 			
 			if platform_type == Platform_Type.POINT:
 				sly_container_anim.play("spin")
-			
-			sly_anim_tree.set("parameters/OneShot/request", 1)
+			if target == target_a:
+				sly_anim_tree.set("parameters/Jump_State/transition_request", "Spin")
+				sly_anim_tree.set("parameters/Jump_or_Move/request", 1)
 			
 			if x_tween.is_running() and y_tween.is_running() and z_tween.is_running():
 				state_now = State.TWEENING
 			elif target != null:
 				state_now = State.ON_PLATFORM
-			
-			
+		
 func ledge_detect():
 	var hit_ray_h1 = ray_h.get_collision_point()
 	var hit_ray_h2 = ray_h2.get_collision_point()

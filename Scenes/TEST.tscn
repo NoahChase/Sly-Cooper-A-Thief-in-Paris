@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=3 uid="uid://7ho0gg5xc5fo"]
+[gd_scene load_steps=54 format=3 uid="uid://7ho0gg5xc5fo"]
 
 [ext_resource type="PackedScene" uid="uid://dtn4nhjv25y3a" path="res://Scenes/player.tscn" id="1_1w1bs"]
 [ext_resource type="Material" uid="uid://df56gbi2lxwfe" path="res://Assets/Materials/CobbleStone_01_.tres" id="1_ns6xx"]
@@ -17,6 +17,8 @@
 [ext_resource type="PackedScene" uid="uid://b6eqvg23p0j3d" path="res://Assets/Objects/paris_test_building_02_.blend" id="15_4vaq4"]
 [ext_resource type="PackedScene" uid="uid://bkiy4n0xcltxv" path="res://Assets/Objects/sign_tabac.blend" id="16_k2ckg"]
 [ext_resource type="PackedScene" uid="uid://dki2qttdigjub" path="res://Scenes/test_ball.tscn" id="17_dowrh"]
+[ext_resource type="PackedScene" uid="uid://c26x73kclemty" path="res://Scenes/sly_cooper_rig_no_physics.tscn" id="18_3eo6k"]
+[ext_resource type="PackedScene" uid="uid://ndmd5klymslc" path="res://Assets/Obj Scenes/sly_cooper_rig_glb.tscn" id="19_6m2ii"]
 
 [sub_resource type="Gradient" id="Gradient_ihiiy"]
 interpolation_mode = 2
@@ -584,13 +586,13 @@ transform = Transform3D(2, 0, -4.17233e-07, 0, 2, 0, 4.17233e-07, 0, 2, -13.1529
 transform = Transform3D(-2, 0, 2.42387e-07, 0, 2, 0, -2.42387e-07, 0, -2, -2.39915, 9, -24.355)
 
 [node name="Modern_Lamp_Hanging5" parent="Details" instance=ExtResource("13_r42lk")]
-transform = Transform3D(-2, 0, 2.42387e-07, 0, 2, 0, -2.42387e-07, 0, -2, 77, 6, 32)
+transform = Transform3D(-1.5, 0, 2.26494e-07, 0, 1.5, 0, -2.26494e-07, 0, -1.5, 77, 6, 32)
 
 [node name="Modern_Lamp_Hanging6" parent="Details" instance=ExtResource("13_r42lk")]
-transform = Transform3D(-2, 0, 2.42387e-07, 0, 2, 0, -2.42387e-07, 0, -2, 77, 9, 25)
+transform = Transform3D(-1.5, 0, 2.26494e-07, 0, 1.5, 0, -2.26494e-07, 0, -1.5, 77, 9, 25)
 
 [node name="Modern_Lamp_Hanging7" parent="Details" instance=ExtResource("13_r42lk")]
-transform = Transform3D(-2, 0, 2.42387e-07, 0, 2, 0, -2.42387e-07, 0, -2, 77, 12.5, 18)
+transform = Transform3D(-1.5, 0, 2.26494e-07, 0, 1.5, 0, -2.26494e-07, 0, -1.5, 77, 12.5, 18)
 
 [node name="Modern_Lamp_Hanging8" parent="Details" instance=ExtResource("13_r42lk")]
 transform = Transform3D(-2, 0, 2.42387e-07, 0, 2, 0, -2.42387e-07, 0, -2, 77, 15, 10.5)
@@ -776,3 +778,10 @@ skeleton = NodePath("../..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Buildings/31/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_76ouq")
+
+[node name="SlyCooper_RigNoPhysics" parent="." node_paths=PackedStringArray("playerbody") instance=ExtResource("18_3eo6k")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 70.4972, 0, 40.0223)
+playerbody = NodePath("../Player")
+
+[node name="SlyCooper_RigNoPhysics2" parent="." instance=ExtResource("19_6m2ii")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 68.6289, 0, 42.722)

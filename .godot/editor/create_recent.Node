@@ -1,6 +1,8 @@
 AnimationPlayer
-Node
+AnimationTree
+BoneAttachment3D
 MeshInstance3D
+Node
 PathFollow3D
 StaticBody3D
 Node3D
@@ -28,5 +30,3 @@ WorldEnvironment
 MultiMeshInstance3D
 GPUParticles3D
 Container
-CPUParticles3D
-OmniLight3D

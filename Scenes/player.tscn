@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://dtn4nhjv25y3a"]
+[gd_scene load_steps=47 format=3 uid="uid://dtn4nhjv25y3a"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_te7i4"]
 [ext_resource type="Theme" uid="uid://f5b5fpewrxb6" path="res://Assets/Fonts/handwriting.tres" id="2_7h14n"]
@@ -8,9 +8,10 @@
 [ext_resource type="PackedScene" uid="uid://ckjh4w5mqu7dr" path="res://Assets/Obj Scenes/sly_cooper.tscn" id="3_lw72l"]
 [ext_resource type="Texture2D" uid="uid://cief7ne5hhepl" path="res://Assets/Textures/particle_platform_.png" id="6_7abxt"]
 [ext_resource type="AudioStream" uid="uid://s7c4vbxnk30a" path="res://Assets/Sounds/swoosh-sound-effect-for-fight-scenes-or-transitions-1-149889.mp3" id="7_cbunl"]
+[ext_resource type="PackedScene" uid="uid://c26x73kclemty" path="res://Scenes/sly_cooper_rig_no_physics.tscn" id="7_o6gr2"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_2yoqs"]
-radius = 0.4
+height = 2.5
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_dlwdf"]
 auto_exposure_enabled = true
@@ -94,7 +95,7 @@ length = 0.6
 step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
-tracks/0/enabled = true
+tracks/0/enabled = false
 tracks/0/path = NodePath(".:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
@@ -617,7 +618,7 @@ script = ExtResource("1_te7i4")
 size_flags_horizontal = 4
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25, 0)
 shape = SubResource("CapsuleShape3D_2yoqs")
 
 [node name="Camera_Go_Y_0" type="Node3D" parent="."]
@@ -744,6 +745,7 @@ transform = Transform3D(15, 0, 0, 0, 15, -2.27374e-13, 0, 2.27374e-13, 15, 0, -1
 
 [node name="sly_cooper" parent="sly_container" instance=ExtResource("3_lw72l")]
 transform = Transform3D(15, 0, 0, 0, 15, -2.62268e-06, 0, 2.62268e-06, 15, 0, -0.725, 4.37114e-08)
+visible = false
 
 [node name="Ray_H" type="RayCast3D" parent="sly_container/sly_cooper"]
 transform = Transform3D(-0.067, -5.83473e-09, 5.13867e-10, 0, -0.00587796, -0.0667416, 5.85732e-09, -0.0667416, 0.00587796, -0.00098944, 0.120232, 4.88425e-05)
@@ -760,6 +762,9 @@ target_position = Vector3(0, 0, -4)
 [node name="Ray_H4" type="RayCast3D" parent="sly_container/sly_cooper"]
 transform = Transform3D(-0.067, -1.5125e-11, -5.85731e-09, 0, 0.0669997, -0.00017301, 5.85733e-09, -0.00017301, -0.0669997, 0.000989431, 0.00625883, 0.0260367)
 target_position = Vector3(0, 0, -4)
+
+[node name="SlyCooper_RigNoPhysics" parent="sly_container" instance=ExtResource("7_o6gr2")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, -0.75, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)

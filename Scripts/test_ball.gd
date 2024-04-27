@@ -14,3 +14,15 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
+
+
+
+#on area body entered()
+	#if player.target == self:
+		#if body type == player:
+			#player.is_on_target = true
+
+#on area body exited()
+	#if player.target == self:
+		#if body type == player:
+			#player.is_on_target = false
