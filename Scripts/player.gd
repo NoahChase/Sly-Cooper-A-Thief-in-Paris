@@ -150,7 +150,7 @@ func _physics_process(delta):
 	else:
 		if state_now != State.TWEENING:
 			state_now = State.ON_PLATFORM
-
+	
 ### Delta Input Handler
 
 	if Input.is_action_just_pressed("ui_accept"):
@@ -262,8 +262,8 @@ func _physics_process(delta):
 		#send a signal when the tween is finished and set the state to on_platform
 		pass
 	else:
+		
 		ledge_detect()
-		target_distance_manager()
 		move_and_slide()
 	if platform_type == Platform_Type.NULL:
 			print("physics process! platform type = NULL")
@@ -378,8 +378,8 @@ func manage_target_type():
 
 func find_target_b():
 	print("finding target b!")
-
-	if distance_to_ball < 2 and can_ledge and velocity.y < 0 and state_now == State.AIR:
+	
+	if distance_to_ball < 2 and can_ledge and velocity.y < 1 and state_now == State.AIR:
 		if target_b == null:
 			if $Ray_V_Container/Ray_V_Ball/Ledge_Col_Anim.current_animation == "check_ledge_final" and can_ledge:
 				if not is_on_floor():
@@ -391,6 +391,7 @@ func find_target_b():
 		target_b = null
 	print(distance_to_ball)
 	print("target_b = ", target_b)
+	
 
 func target_distance_manager():
 	find_target_b()
@@ -506,7 +507,8 @@ func ledge_detect():
 		hit_ray_h_final = hit_sly_ray_h3
 	elif sly_ray_h4.is_colliding():
 		hit_ray_h_final = hit_sly_ray_h4
-		
+	
+	
 	ray_v_holder.global_transform.origin = hit_ray_h_final + offset
 	ray_v_ball.global_transform.origin = hit_ray_v
 	$Ray_V_Container/Particle_Sparkle.global_transform.origin = hit_ray_v
@@ -514,7 +516,7 @@ func ledge_detect():
 	to_ray_ball = ray_v_ball.global_transform.origin - global_transform.origin
 	distance_to_ball = to_ray_ball.length()
 		
-	if not $Ray_V_Container/Ray_V_Ball/Ledge_Col_Anim.current_animation == "check_ledge_final" and distance_to_ball <= 3:
+	if not $Ray_V_Container/Ray_V_Ball/Ledge_Col_Anim.current_animation == "check_ledge_final" and distance_to_ball <= 2:
 		$Ray_V_Container/Ray_V_Ball/Ledge_Col_Anim.play("check_ledge")
 		$Ray_V_Container/Ray_V_Ball/Ledge_Col_Anim.queue("check_ledge_final")
 	### should show when you can do a ledge grab, just like the ledge grab Particle_Sparkle
@@ -522,6 +524,9 @@ func ledge_detect():
 		#ray_v_ball.visible = true
 	#else:
 		#ray_v_ball.visible = false
+
+
+
 func _on_platform_snap_area_body_entered(body):
 	if body.is_in_group("Platform"):
 		if target == null:
@@ -532,9 +537,6 @@ func _on_platform_snap_area_body_entered(body):
 			print("can_climb = ", can_climb)
 		else:
 			print("have target = ", target)
-
-
-
 func _on_platform_snap_area_body_exited(body):
 	if body.is_in_group("Platform"):
 		print("Body exited: ", body)
@@ -544,19 +546,7 @@ func _on_platform_snap_area_body_exited(body):
 
 
 
-func _on_ball_area_body_exited(body):
-	if not body.is_in_group("Player"):
-		can_ledge = true
-		#print("cl",can_ledge)
-
-
-
-func _on_ball_area_body_entered(body):
-	can_ledge = false
-		#print("cl",can_ledge)
-
-
-func _on_area_3d_area_entered(area):
+func _on_platform_snap_area_area_entered(area):
 	if area.is_in_group("Platform"):
 		if target == null:
 			target_a = area
@@ -566,8 +556,17 @@ func _on_area_3d_area_entered(area):
 			print("can_climb = ", can_climb)
 		else:
 			print("have target = ", target)
-
-
-func _on_area_3d_area_exited(area):
+func _on_platform_snap_area_area_exited(area):
 	if not area.is_in_group("Player"):
 		can_ledge = true
+
+
+
+func _on_ball_area_body_exited(body):
+	if not body.is_in_group("Player"):
+		can_ledge = true
+		#print("cl",can_ledge)
+func _on_ball_area_body_entered(body):
+	can_ledge = false
+		#print("cl",can_ledge)
+

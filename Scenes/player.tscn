@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://dtn4nhjv25y3a"]
+[gd_scene load_steps=46 format=3 uid="uid://dtn4nhjv25y3a"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_te7i4"]
 [ext_resource type="Theme" uid="uid://f5b5fpewrxb6" path="res://Assets/Fonts/handwriting.tres" id="2_7h14n"]
@@ -12,146 +12,6 @@
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_2yoqs"]
 height = 2.5
-
-[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_dlwdf"]
-auto_exposure_enabled = true
-dof_blur_far_distance = 600.0
-dof_blur_far_transition = 300.0
-dof_blur_near_distance = 0.94
-dof_blur_amount = 1.0
-auto_exposure_min_sensitivity = 300.0
-auto_exposure_max_sensitivity = 1700.0
-
-[sub_resource type="Animation" id="Animation_x27lb"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-
-[sub_resource type="Animation" id="Animation_0e7qf"]
-resource_name = "out_in_out"
-length = 1.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 1.5),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [false, true, false]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_b03u3"]
-_data = {
-"RESET": SubResource("Animation_x27lb"),
-"out_in_out": SubResource("Animation_0e7qf")
-}
-
-[sub_resource type="SphereShape3D" id="SphereShape3D_mrv5y"]
-radius = 4.0
-
-[sub_resource type="Animation" id="Animation_8ebks"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0.723407, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_yva5k"]
-resource_name = "spin"
-length = 0.6
-step = 0.05
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = false
-tracks/0/path = NodePath(".:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.4),
-"transitions": PackedFloat32Array(1.4, 0.6),
-"update": 0,
-"values": [Vector3(0, -3.14159, 0), Vector3(0, 3.14159, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.3, 0.6),
-"transitions": PackedFloat32Array(0.4, 0.4, 1.6),
-"update": 0,
-"values": [Vector3(0, 0.723, 0), Vector3(0, 1.25, 0), Vector3(0, 0.723, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_3fxke"]
-resource_name = "w_flip"
-length = 0.6
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.6),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(0, 3.14159, 0), Vector3(6.28319, 3.14159, 0)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_kwuyl"]
-_data = {
-"RESET": SubResource("Animation_8ebks"),
-"spin": SubResource("Animation_yva5k"),
-"w_flip": SubResource("Animation_3fxke")
-}
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6jg6h"]
-transparency = 1
-albedo_color = Color(0.490196, 0.490196, 0.490196, 0)
-roughness = 0.8
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_n0yqv"]
-radial_segments = 6
-rings = 2
-
-[sub_resource type="BoxMesh" id="BoxMesh_824gw"]
-size = Vector3(2, 0.25, 0.25)
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_xkpx8"]
 height = 6.7
@@ -271,6 +131,203 @@ _data = {
 "RESET": SubResource("Animation_w1sja"),
 "area_check": SubResource("Animation_ycku0"),
 "area_expand": SubResource("Animation_cgtqx")
+}
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_dlwdf"]
+auto_exposure_enabled = true
+dof_blur_far_distance = 600.0
+dof_blur_far_transition = 300.0
+dof_blur_near_distance = 0.94
+dof_blur_amount = 1.0
+auto_exposure_min_sensitivity = 300.0
+auto_exposure_max_sensitivity = 1700.0
+
+[sub_resource type="Animation" id="Animation_x27lb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_0e7qf"]
+resource_name = "out_in_out"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_b03u3"]
+_data = {
+"RESET": SubResource("Animation_x27lb"),
+"out_in_out": SubResource("Animation_0e7qf")
+}
+
+[sub_resource type="Animation" id="Animation_8ebks"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0.723407, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_yva5k"]
+resource_name = "spin"
+length = 0.6
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = false
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1.4, 0.6),
+"update": 0,
+"values": [Vector3(0, -3.14159, 0), Vector3(0, 3.14159, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6),
+"transitions": PackedFloat32Array(0.4, 0.4, 1.6),
+"update": 0,
+"values": [Vector3(0, 0.723, 0), Vector3(0, 1.25, 0), Vector3(0, 0.723, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_3fxke"]
+resource_name = "w_flip"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 3.14159, 0), Vector3(6.28319, 3.14159, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kwuyl"]
+_data = {
+"RESET": SubResource("Animation_8ebks"),
+"spin": SubResource("Animation_yva5k"),
+"w_flip": SubResource("Animation_3fxke")
+}
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gytom"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(1, 1, 1, 0.219608)
+albedo_texture = ExtResource("6_7abxt")
+uv1_scale = Vector3(4, 4, 4)
+uv1_offset = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+billboard_mode = 1
+
+[sub_resource type="BoxMesh" id="BoxMesh_mri13"]
+size = Vector3(0.25, 0.25, 0.25)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_k6s53"]
+radius = 0.13
+
+[sub_resource type="Animation" id="Animation_thl5o"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Ball_Area/Ball_Area_Col:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_dmn75"]
+resource_name = "check_ledge"
+length = 0.01
+step = 0.005
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Ball_Area/Ball_Area_Col:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.005, 0.01),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(0, 0, 0), Vector3(1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_nsx8m"]
+resource_name = "check_ledge_final"
+length = 0.1
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Ball_Area/Ball_Area_Col:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jpcwi"]
+_data = {
+"RESET": SubResource("Animation_thl5o"),
+"check_ledge": SubResource("Animation_dmn75"),
+"check_ledge_final": SubResource("Animation_nsx8m")
 }
 
 [sub_resource type="Animation" id="Animation_3dlou"]
@@ -446,77 +503,17 @@ _data = {
 "walk": SubResource("Animation_yteif")
 }
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gytom"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6jg6h"]
 transparency = 1
-shading_mode = 0
-albedo_color = Color(1, 1, 1, 0.219608)
-albedo_texture = ExtResource("6_7abxt")
-uv1_scale = Vector3(4, 4, 4)
-uv1_offset = Vector3(0.5, 0.5, 0.5)
-uv1_triplanar = true
-billboard_mode = 1
+albedo_color = Color(0.490196, 0.490196, 0.490196, 0)
+roughness = 0.8
 
-[sub_resource type="BoxMesh" id="BoxMesh_mri13"]
-size = Vector3(0.25, 0.25, 0.25)
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_n0yqv"]
+radial_segments = 6
+rings = 2
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_k6s53"]
-radius = 0.13
-
-[sub_resource type="Animation" id="Animation_thl5o"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Ball_Area/Ball_Area_Col:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_dmn75"]
-resource_name = "check_ledge"
-length = 0.01
-step = 0.005
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Ball_Area/Ball_Area_Col:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.005, 0.01),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector3(1, 1, 1), Vector3(0, 0, 0), Vector3(1, 1, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_nsx8m"]
-resource_name = "check_ledge_final"
-length = 0.1
-step = 0.01
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Ball_Area/Ball_Area_Col:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(1, 1, 1), Vector3(1, 1, 1)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_jpcwi"]
-_data = {
-"RESET": SubResource("Animation_thl5o"),
-"check_ledge": SubResource("Animation_dmn75"),
-"check_ledge_final": SubResource("Animation_nsx8m")
-}
+[sub_resource type="BoxMesh" id="BoxMesh_824gw"]
+size = Vector3(2, 0.25, 0.25)
 
 [sub_resource type="Animation" id="Animation_smojd"]
 resource_name = "1move"
@@ -566,18 +563,22 @@ floor_max_angle = 0.959931
 floor_snap_length = 1.0
 script = ExtResource("1_te7i4")
 
-[node name="Pause Menu" parent="." instance=ExtResource("2_s8llo")]
-size_flags_horizontal = 4
-
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25, 0)
 shape = SubResource("CapsuleShape3D_2yoqs")
 
-[node name="Camera_Go_Y_0" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+[node name="Platform Snap Area" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+collision_mask = 3
 
-[node name="Camera_Return" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.5, 0)
+[node name="Platform Snap Col" type="CollisionShape3D" parent="Platform Snap Area"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, -3, 0)
+shape = SubResource("CylinderShape3D_xkpx8")
+
+[node name="Area Col Anim Player" type="AnimationPlayer" parent="Platform Snap Area"]
+libraries = {
+"": SubResource("AnimationLibrary_kf3c4")
+}
 
 [node name="CameraOrigin" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.5, -0.75)
@@ -641,11 +642,6 @@ libraries = {
 "": SubResource("AnimationLibrary_b03u3")
 }
 
-[node name="Area3D" type="Area3D" parent="CameraOrigin/CameraArm/camera"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CameraOrigin/CameraArm/camera/Area3D"]
-shape = SubResource("SphereShape3D_mrv5y")
-
 [node name="Jump Counter" type="RichTextLabel" parent="CameraOrigin"]
 anchors_preset = 7
 anchor_left = 0.5
@@ -678,11 +674,6 @@ theme = ExtResource("3_57adr")
 bbcode_enabled = true
 fit_content = true
 
-[node name="Feet" type="Node3D" parent="."]
-
-[node name="Head" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
-
 [node name="sly_container" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.723407, 0)
 
@@ -703,62 +694,32 @@ visible = false
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, -0.75, 0)
 
 [node name="Ray_H" type="RayCast3D" parent="sly_container"]
-transform = Transform3D(0.710642, -6.21262e-08, 0.710642, -8.78599e-08, -1.005, 0, 0.710642, -6.21263e-08, -0.710642, -0.317878, 0.20348, 0.375733)
-target_position = Vector3(0, 0, -3)
+transform = Transform3D(0.710642, -6.21262e-08, 0.710642, -8.78599e-08, -1.005, 0, 0.710642, -6.21263e-08, -0.710642, -0.317878, 0.45348, 0.375733)
+target_position = Vector3(0, 0, -1.5)
 
 [node name="Ray_H2" type="RayCast3D" parent="sly_container"]
-transform = Transform3D(0.5025, -4.39299e-08, -0.870355, -8.78599e-08, -1.005, -4.25634e-22, -0.870355, 7.60888e-08, -0.5025, 0.464608, 0.20348, 0.125733)
-target_position = Vector3(0, 0, -3)
+transform = Transform3D(0.5025, -4.39299e-08, -0.870355, -8.78599e-08, -1.005, -4.25634e-22, -0.870355, 7.60888e-08, -0.5025, 0.464608, 0.45348, 0.125733)
+target_position = Vector3(0, 0, -1)
 
 [node name="Ray_H3" type="RayCast3D" parent="sly_container"]
-transform = Transform3D(1, -1.50996e-07, 1.50996e-07, -1.50996e-07, -1, 1.06028e-15, 1.50996e-07, -2.386e-14, -1, -0.000517293, 0.20348, 0.474158)
+transform = Transform3D(1, -1.50996e-07, 1.50996e-07, -1.50996e-07, -1, 1.06028e-15, 1.50996e-07, -2.386e-14, -1, -0.001, 0.453, 0.5)
 target_position = Vector3(0, 0, -3)
 
 [node name="Ray_H4" type="RayCast3D" parent="sly_container"]
-transform = Transform3D(0.5025, -4.39299e-08, 0.870355, -8.78599e-08, -1.005, 4.25634e-22, 0.870355, -7.60888e-08, -0.5025, -0.472319, 0.20348, 0.125733)
-target_position = Vector3(0, 0, -3)
+transform = Transform3D(0.5025, -4.39299e-08, 0.870355, -8.78599e-08, -1.005, 4.25634e-22, 0.870355, -7.60888e-08, -0.5025, -0.472319, 0.45348, 0.125733)
+target_position = Vector3(0, 0, -1)
 
 [node name="Ray_H5" type="RayCast3D" parent="sly_container"]
-transform = Transform3D(0.710642, -6.21263e-08, -0.710642, -8.78599e-08, -1.005, 0, -0.710642, 6.21262e-08, -0.710642, 0.306917, 0.20348, 0.375733)
-target_position = Vector3(0, 0, -3)
+transform = Transform3D(0.710642, -6.21263e-08, -0.710642, -8.78599e-08, -1.005, 0, -0.710642, 6.21262e-08, -0.710642, 0.306917, 0.45348, 0.375733)
+target_position = Vector3(0, 0, -1.5)
 
 [node name="Ray_H6" type="RayCast3D" parent="sly_container"]
-transform = Transform3D(0.970755, -8.4866e-08, -0.260113, -8.78599e-08, -1.005, -8.1268e-15, -0.260113, 2.27398e-08, -0.970754, 0.331006, 0.20348, 0.355448)
-target_position = Vector3(0, 0, -3)
+transform = Transform3D(0.970755, -8.4866e-08, -0.260113, -8.78599e-08, -1.005, -8.1268e-15, -0.260113, 2.27398e-08, -0.970754, 0.331006, 0.45348, 0.355448)
+target_position = Vector3(0, 0, -2)
 
 [node name="Ray_H7" type="RayCast3D" parent="sly_container"]
-transform = Transform3D(0.970755, -8.4866e-08, 0.260113, -8.78599e-08, -1.005, 0, 0.260113, -2.27398e-08, -0.970755, -0.329533, 0.20348, 0.367963)
-target_position = Vector3(0, 0, -3)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-visible = false
-material_override = SubResource("StandardMaterial3D_6jg6h")
-mesh = SubResource("CapsuleMesh_n0yqv")
-
-[node name="arms" type="MeshInstance3D" parent="MeshInstance3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.298214, 0)
-visible = false
-mesh = SubResource("BoxMesh_824gw")
-skeleton = NodePath("../..")
-
-[node name="Platform Snap Area" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-collision_mask = 3
-
-[node name="Platform Snap Col" type="CollisionShape3D" parent="Platform Snap Area"]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, -3, 0)
-shape = SubResource("CylinderShape3D_xkpx8")
-
-[node name="Area Col Anim Player" type="AnimationPlayer" parent="Platform Snap Area"]
-libraries = {
-"": SubResource("AnimationLibrary_kf3c4")
-}
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_fejdm")
-}
+transform = Transform3D(0.970755, -8.4866e-08, 0.260113, -8.78599e-08, -1.005, 0, 0.260113, -2.27398e-08, -0.970755, -0.329533, 0.45348, 0.367963)
+target_position = Vector3(0, 0, -2)
 
 [node name="Ray_V_Container" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.273712, 0)
@@ -788,28 +749,57 @@ top_level = true
 visible = false
 
 [node name="Ray_H" type="RayCast3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -0.0877307, -0.996144, 0, 0.996144, -0.0877307, 0, 0.77878, -0.470209)
-target_position = Vector3(0, 0, -3)
+transform = Transform3D(1, 0, 0, 0, -0.0877307, -0.996144, 0, 0.996144, -0.0877307, 0, 2.02878, -0.470209)
+target_position = Vector3(0, 0, -1.5)
+
+[node name="Camera_Go_Y_0" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+
+[node name="Camera_Return" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.5, 0)
+
+[node name="Feet" type="Node3D" parent="."]
+
+[node name="Head" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_fejdm")
+}
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+visible = false
+material_override = SubResource("StandardMaterial3D_6jg6h")
+mesh = SubResource("CapsuleMesh_n0yqv")
+
+[node name="arms" type="MeshInstance3D" parent="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.298214, 0)
+visible = false
+mesh = SubResource("BoxMesh_824gw")
+skeleton = NodePath("../..")
 
 [node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_kixou")
 }
 
+[node name="Coyote Time" type="Timer" parent="."]
+one_shot = true
+
 [node name="jump_sound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_cbunl")
 volume_db = -17.0
 
-[node name="Coyote Time" type="Timer" parent="."]
-one_shot = true
+[node name="Pause Menu" parent="." instance=ExtResource("2_s8llo")]
+size_flags_horizontal = 4
 
 [node name="Ray_To_Floor" type="RayCast3D" parent="."]
 target_position = Vector3(0, -100, 0)
 
-[connection signal="area_entered" from="CameraOrigin/CameraArm/camera/Area3D" to="." method="_on_area_3d_area_entered"]
-[connection signal="area_exited" from="CameraOrigin/CameraArm/camera/Area3D" to="." method="_on_area_3d_area_exited"]
-[connection signal="body_entered" from="CameraOrigin/CameraArm/camera/Area3D" to="CameraOrigin" method="_on_area_3d_body_entered"]
-[connection signal="body_exited" from="CameraOrigin/CameraArm/camera/Area3D" to="CameraOrigin" method="_on_area_3d_body_exited"]
+[connection signal="area_entered" from="Platform Snap Area" to="." method="_on_platform_snap_area_area_entered"]
+[connection signal="area_exited" from="Platform Snap Area" to="." method="_on_platform_snap_area_area_exited"]
 [connection signal="body_entered" from="Platform Snap Area" to="." method="_on_platform_snap_area_body_entered"]
 [connection signal="body_exited" from="Platform Snap Area" to="." method="_on_platform_snap_area_body_exited"]
 [connection signal="body_entered" from="Ray_V_Container/Ray_V_Ball/Ball_Area" to="." method="_on_ball_area_body_entered"]

@@ -586,6 +586,9 @@ transform = Transform3D(-2, 0, 2.42387e-07, 0, 2, 0, -2.42387e-07, 0, -2, -2.399
 [node name="Modern_Lamp_Hanging5" parent="Details" instance=ExtResource("13_r42lk")]
 transform = Transform3D(-1.5, 0, 2.26494e-07, 0, 1.5, 0, -2.26494e-07, 0, -1.5, 77, 6, 32)
 
+[node name="Modern_Lamp_Hanging14" parent="Details" instance=ExtResource("13_r42lk")]
+transform = Transform3D(-1.5, 0, 2.26494e-07, 0, 1.5, 0, -2.26494e-07, 0, -1.5, 72, 3, 37)
+
 [node name="Modern_Lamp_Hanging6" parent="Details" instance=ExtResource("13_r42lk")]
 transform = Transform3D(-1.5, 0, 2.26494e-07, 0, 1.5, 0, -2.26494e-07, 0, -1.5, 77, 9, 25)
 
