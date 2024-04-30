@@ -23,7 +23,7 @@ var air_accel = 0.0
 @export var platform: Node3D = null
 
 @onready var ray_v = $Ray_V_Container/Ray_V
-@onready var ray_h = $Ray_H
+@onready var ray_h = $sly_container/Ray_H8
 @onready var ray_h2 = $sly_container/Ray_H5
 @onready var ray_h3 = $sly_container/Ray_H6
 @onready var ray_h4 = $sly_container/Ray_H7
@@ -54,7 +54,7 @@ var air_accel = 0.0
 @onready var current_blendspace
 @onready var coyote_timer = $"Coyote Time"
 
-@export var sens = 0.125
+@export var sens = 0.15
 
 var SPEED_MULT = 1
 var DIRECTION_MULT
@@ -121,7 +121,7 @@ func joystick_event():
 		if value.y >= 0.0001 or value.y <= 0.0001:
 			if Input.is_action_pressed("right_stick_up") or Input.is_action_pressed("right_stick_down"):
 				camera_origin.rotate_x(deg_to_rad(value.y *1.25))
-				camera_origin.rotation.x = clamp(camera_origin.rotation.x, deg_to_rad(-90), deg_to_rad(45))
+				camera_origin.rotation.x = clamp(camera_origin.rotation.x, deg_to_rad(-80), deg_to_rad(20))
 	left_stick_pressure = Input.get_action_strength("left_stick_left") + Input.get_action_strength("left_stick_right") + Input.get_action_strength("left_stick_up") + Input.get_action_strength("left_stick_down")
 	if left_stick_pressure >= 0.45:
 		if state_now == State.FLOOR:
@@ -262,8 +262,8 @@ func _physics_process(delta):
 		#send a signal when the tween is finished and set the state to on_platform
 		pass
 	else:
-		
 		ledge_detect()
+		target_distance_manager()
 		move_and_slide()
 	if platform_type == Platform_Type.NULL:
 			print("physics process! platform type = NULL")
@@ -297,15 +297,15 @@ func _physics_process(delta):
 		if not platform_type == Platform_Type.POLE or platform_type == Platform_Type.ROPE:
 			is_moving = true
 			sly_rot.look_at(position - direction)
-			sly_container.rotate_y(lerp(sly.rotation.y, sly_rot.rotation.y, lerp_val * air_accel * 80 * delta))
+			sly_container.rotate_y(lerp(sly.rotation.y, sly_rot.rotation.y, lerp_val * air_accel * 45 * delta))
 		
-		velocity.x = lerp(velocity.x, direction.x * SPEED * SPEED_MULT * left_stick_pressure, lerp_val * 80 * air_accel * delta)
-		velocity.z = lerp(velocity.z, direction.z * SPEED * SPEED_MULT * left_stick_pressure, lerp_val * 80 * air_accel * delta)
+		velocity.x = lerp(velocity.x, direction.x * SPEED * SPEED_MULT * left_stick_pressure, lerp_val * 45 * air_accel * delta)
+		velocity.z = lerp(velocity.z, direction.z * SPEED * SPEED_MULT * left_stick_pressure, lerp_val * 45 * air_accel * delta)
 		$CameraOrigin/CameraArm/camera/CanvasLayer/RichTextLabel4.text = str(left_stick_pressure)
 	else:
 		is_moving = false
-		velocity.x = lerp(velocity.x, 0.0, lerp_val * 80 * air_accel * delta)
-		velocity.z = lerp(velocity.z, 0.0, lerp_val * 80 * air_accel * delta)
+		velocity.x = lerp(velocity.x, 0.0, lerp_val * 45 * air_accel * delta)
+		velocity.z = lerp(velocity.z, 0.0, lerp_val * 45 * air_accel * delta)
 
 
 func jump():

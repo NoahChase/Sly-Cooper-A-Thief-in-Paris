@@ -14,5 +14,5 @@ res://Assets/Materials/lamp_modern_light.tres
 res://Scenes/world.tscn
 res://Scenes/TEST.tscn
 res://Scenes/sly_cooper_rig_no_physics.tscn
-res://Scripts/player.gd
 res://Scenes/test_ball.tscn
+res://Scripts/player.gd
