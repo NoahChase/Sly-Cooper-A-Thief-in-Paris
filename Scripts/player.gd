@@ -1,7 +1,7 @@
 extends CharacterBody3D
 
-const SPEED = 4
-var JUMP_VELOCITY = 6.8
+const SPEED = 4.8
+var JUMP_VELOCITY = 7.3
 const lerp_val = 0.15
 var air_accel = 0.0
 
@@ -53,6 +53,7 @@ var air_accel = 0.0
 @onready var sly_container_anim = $sly_container/sly_container_anim
 @onready var current_blendspace
 @onready var coyote_timer = $"Coyote Time"
+@onready var airtime = 0
 
 @export var sens = 0.15
 
@@ -114,22 +115,25 @@ func joystick_event():
 		value.y = Input.get_action_strength("right_stick_up") - Input.get_action_strength("right_stick_down")
 		if value.x >= 0.0001 or value.x <= 0.0001:
 			if Input.is_action_pressed("right_stick_left") or Input.is_action_pressed("right_stick_right"):
-				rotate_y(deg_to_rad(value.x*2))
+				rotate_y(deg_to_rad(value.x*2.25))
 				if not is_moving or not is_on_floor or state_now == State.AIR:
 					
 					sly_container.rotate_y(deg_to_rad(-value.x*2))
 		if value.y >= 0.0001 or value.y <= 0.0001:
 			if Input.is_action_pressed("right_stick_up") or Input.is_action_pressed("right_stick_down"):
-				camera_origin.rotate_x(deg_to_rad(value.y *1.25))
+				camera_origin.rotate_x(deg_to_rad(value.y *1.5))
 				camera_origin.rotation.x = clamp(camera_origin.rotation.x, deg_to_rad(-80), deg_to_rad(20))
 	left_stick_pressure = Input.get_action_strength("left_stick_left") + Input.get_action_strength("left_stick_right") + Input.get_action_strength("left_stick_up") + Input.get_action_strength("left_stick_down")
 	if left_stick_pressure >= 0.45:
 		if state_now == State.FLOOR:
-			sly_anim_tree.set("parameters/TimeScale/scale", 1)
-		left_stick_pressure = 1.0
+			if not SPEED_MULT == 1.8:
+				sly_anim_tree.set("parameters/TimeScale/scale", 1.2)
+			else:
+				sly_anim_tree.set("parameters/TimeScale/scale", 1)
+			left_stick_pressure = 1.0
 	if left_stick_pressure <= 0.35 and left_stick_pressure > 0:
 		if state_now == State.FLOOR:
-			sly_anim_tree.set("parameters/TimeScale/scale", 1.5)
+			sly_anim_tree.set("parameters/TimeScale/scale", 1.7)
 		left_stick_pressure = 0.35
 
 
@@ -187,19 +191,26 @@ func _physics_process(delta):
 		
 	
 	if state_now == State.AIR:
+		airtime = clamp(airtime, 0, 1)
 		var camoffset = Vector3(0,-2,0)
 		can_right_stick = true
 		$"CameraOrigin/State Reader".text = str("[center]AIR")
 		sly_anim_tree.set("parameters/Move_State/transition_request", air_anim)
-		SPEED_MULT = 1.4
+		SPEED_MULT = 1.2
 		
 		if coyote_timer.time_left >= 0.25:
 			#could start a 1 second timer and say air_accel = timer value...
 			air_accel = 1
+			airtime = -1
 		else:
 			air_accel = lerpf(air_accel, 0.0, lerp_val/2.25)
+			airtime += delta
 		
-		velocity.y -= gravity * delta * 1.5
+		sly_anim_tree.set("parameters/Air_Blend/blend_amount", airtime)
+		if velocity.y >= 0:
+			velocity.y -= gravity * delta * 1.75
+		else:
+			velocity.y -= lerpf(velocity.y, gravity * delta * 1.75, lerp_val * 6.85)
 		
 		if area_anim.current_animation == "area_check":
 			target_distance_manager()
@@ -262,7 +273,7 @@ func _physics_process(delta):
 		#send a signal when the tween is finished and set the state to on_platform
 		pass
 	else:
-		ledge_detect()
+		#ledge_detect()
 		target_distance_manager()
 		move_and_slide()
 	if platform_type == Platform_Type.NULL:
@@ -324,11 +335,11 @@ func jump():
 			sly_anim_tree.set("parameters/Jump_State/transition_request", "W_Jump")
 			sly_anim_tree.set("parameters/Jump_or_Move/request", 1)
 			if velocity.y >= 3:
-				velocity.y += 3.3
+				velocity.y += 3.4
 			elif velocity.y > 0 and velocity.y < 3:
-				velocity.y += JUMP_VELOCITY * 0.6
+				velocity.y += JUMP_VELOCITY * 0.65
 			elif velocity.y <= 0:
-				velocity.y += JUMP_VELOCITY - 1.3
+				velocity.y += JUMP_VELOCITY - 1
 				
 		double_jump = false
 		

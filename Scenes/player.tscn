@@ -11,7 +11,6 @@
 [ext_resource type="PackedScene" uid="uid://c26x73kclemty" path="res://Scenes/sly_cooper_rig_no_physics.tscn" id="7_o6gr2"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_2yoqs"]
-height = 2.5
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_xkpx8"]
 height = 6.7
@@ -540,7 +539,7 @@ floor_snap_length = 1.0
 script = ExtResource("1_te7i4")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_2yoqs")
 
 [node name="Platform Snap Area" type="Area3D" parent="."]
@@ -561,7 +560,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.125, -2)
 
 [node name="CameraArm" type="SpringArm3D" parent="CameraOrigin"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.625)
-spring_length = 4.0
+spring_length = 3.5
 
 [node name="camera" type="Camera3D" parent="CameraOrigin/CameraArm"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4)
@@ -675,7 +674,7 @@ transform = Transform3D(15, 0, 0, 0, 15, -2.62268e-06, 0, 2.62268e-06, 15, 0, -0
 visible = false
 
 [node name="SlyCooper_RigNoPhysics" parent="sly_container" instance=ExtResource("7_o6gr2")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, -0.75, 0)
+transform = Transform3D(1.33, 0, 0, 0, 1.33, 0, 0, 0, 1.33, 0, -0.75, 0)
 
 [node name="Ray_H" type="RayCast3D" parent="sly_container"]
 transform = Transform3D(0.710642, -6.21262e-08, 0.710642, -8.78599e-08, -1.005, 0, 0.710642, -6.21263e-08, -0.710642, -0.317878, 0.45348, 0.375733)
@@ -775,6 +774,8 @@ size_flags_horizontal = 4
 
 [node name="Ray_To_Floor" type="RayCast3D" parent="."]
 target_position = Vector3(0, -100, 0)
+
+[node name="Airtime" type="Timer" parent="."]
 
 [connection signal="area_entered" from="Platform Snap Area" to="." method="_on_platform_snap_area_area_entered"]
 [connection signal="area_exited" from="Platform Snap Area" to="." method="_on_platform_snap_area_area_exited"]

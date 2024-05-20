@@ -184,7 +184,7 @@ directional_shadow_split_3 = 0.6
 directional_shadow_blend_splits = true
 
 [node name="Player" parent="." instance=ExtResource("1_1w1bs")]
-transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 73.025, 2.26271, 42.05)
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 73.025, 2.01907, 42.05)
 
 [node name="Floor" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.78005, -0.5, 0)
