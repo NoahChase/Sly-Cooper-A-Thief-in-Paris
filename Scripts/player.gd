@@ -1,7 +1,7 @@
 extends CharacterBody3D
 
 const SPEED = 4.8
-var JUMP_VELOCITY = 7.3
+var JUMP_VELOCITY = 7.5
 const lerp_val = 0.15
 var air_accel = 0.0
 
@@ -207,11 +207,8 @@ func _physics_process(delta):
 			airtime += delta
 		
 		sly_anim_tree.set("parameters/Air_Blend/blend_amount", airtime)
-		if velocity.y >= 0:
-			velocity.y -= gravity * delta * 1.75
-		else:
-			velocity.y -= lerpf(velocity.y, gravity * delta * 1.75, lerp_val * 6.85)
-		
+		velocity.y -= gravity * delta * 1.75
+
 		if area_anim.current_animation == "area_check":
 			target_distance_manager()
 		if Input.is_action_just_pressed("RMB"):
@@ -294,13 +291,19 @@ func _physics_process(delta):
 	if not is_on_floor() and not state_now == State.TWEENING and not state_now == State.ON_PLATFORM:
 		if velocity.y > 0:
 			camera_origin.position.y = lerp(camera_origin.position.y, (max(2, -velocity.y * delta) - $Camera_Return.position.y), velocity.y * delta/4)
+			
 		elif velocity.y < 0:
 			camera_origin.position.y = lerp(camera_origin.position.y, $Camera_Return.position.y - max(velocity.y, -velocity.y * delta) + 1, -velocity.y * delta /4)
+		if velocity.y > 0:
+			sly_new.position.y = lerp(sly_new.position.y, $sly_container/Sly_Return.position.y - 1.25, lerp_val/4)
+		elif velocity.y <= 0:
+			sly_new.position.y = lerp(sly_new.position.y, $sly_container/Sly_Return.position.y, lerp_val/4)
 	elif state_now == State.TWEENING or state_now == State.ON_PLATFORM or is_on_floor():
 		camera_origin.position.y = lerp(camera_origin.position.y, $Camera_Return.position.y - max(2, -velocity.y * delta), delta * 1.5)
+		sly_new.position.y = lerp(sly_new.position.y, $sly_container/Sly_Return.position.y, lerp_val * 1.5)
 		if left_stick_pressure > 0.9:
 			camera_origin.position.y = lerp(camera_origin.position.y, $Camera_Return.position.y + 0.05, delta/4)
-		
+			
 ### Direction Handling
 	var input_dir = Input.get_vector("A", "D", "W", "S")
 	direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
