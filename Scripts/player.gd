@@ -23,14 +23,11 @@ var air_accel = 0.0
 @export var platform: Node3D = null
 
 @onready var ray_v = $Ray_V_Container/Ray_V
-@onready var ray_h = $sly_container/Ray_H8
-@onready var ray_h2 = $sly_container/Ray_H5
-@onready var ray_h3 = $sly_container/Ray_H6
-@onready var ray_h4 = $sly_container/Ray_H7
-@onready var sly_ray_h1 = $sly_container/Ray_H
-@onready var sly_ray_h2 = $sly_container/Ray_H2
-@onready var sly_ray_h3 = $sly_container/Ray_H3
-@onready var sly_ray_h4 = $sly_container/Ray_H4
+@onready var ray_h = $sly_container/Ray_Top
+@onready var ray_h1 = $sly_container/Ray_H
+@onready var ray_h2 = $sly_container/Ray_H2
+@onready var ray_h3 = $sly_container/Ray_H3
+@onready var ray_top = $sly_container/Ray_Top
 @onready var ray_v_holder = $Ray_V_Container
 @onready var ray_v_ball = $Ray_V_Container/Ray_V_Ball
 @onready var to_ray_ball = ray_v_ball.global_transform.origin - global_transform.origin
@@ -191,6 +188,8 @@ func _physics_process(delta):
 		
 	
 	if state_now == State.AIR:
+		ledge_detect()
+		target_distance_manager()
 		airtime = clamp(airtime, 0, 1)
 		var camoffset = Vector3(0,-2,0)
 		can_right_stick = true
@@ -203,16 +202,13 @@ func _physics_process(delta):
 			air_accel = 1
 			airtime = -1
 		else:
-			air_accel = lerpf(air_accel, 0.0, lerp_val/2.25)
+			air_accel = lerpf(air_accel, 0.0, lerp_val/3)
 			airtime += delta
 		
 		sly_anim_tree.set("parameters/Air_Blend/blend_amount", airtime)
 		velocity.y -= gravity * delta * 1.75
 
-		if area_anim.current_animation == "area_check":
-			target_distance_manager()
 		if Input.is_action_just_pressed("RMB"):
-			target_distance_manager()
 			if not area_anim.is_playing():
 				area_anim.play("area_expand")
 				area_anim.queue("area_check")
@@ -237,7 +233,7 @@ func _physics_process(delta):
 		if platform_type == Platform_Type.LEDGE:
 			print("physics process! platform type = LEDGE")
 		if platform_type == Platform_Type.Ray_V_Ball:
-			print("physics process! platform type = LEDGE")
+			print("physics process! platform type = Ray_V_Ball")
 			#platform_type = Platform_Type.NULL
 			#return
 		if platform_type == Platform_Type.POLE or platform_type == Platform_Type.ROPE or platform_type == Platform_Type.LEDGE or platform_type == Platform_Type.Ray_V_Ball:
@@ -270,8 +266,6 @@ func _physics_process(delta):
 		#send a signal when the tween is finished and set the state to on_platform
 		pass
 	else:
-		#ledge_detect()
-		target_distance_manager()
 		move_and_slide()
 	if platform_type == Platform_Type.NULL:
 			print("physics process! platform type = NULL")
@@ -308,7 +302,7 @@ func _physics_process(delta):
 	var input_dir = Input.get_vector("A", "D", "W", "S")
 	direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if direction:
-		if not platform_type == Platform_Type.POLE or platform_type == Platform_Type.ROPE:
+		if platform_type == Platform_Type.POINT or not state_now == State.TWEENING:
 			is_moving = true
 			sly_rot.look_at(position - direction)
 			sly_container.rotate_y(lerp(sly.rotation.y, sly_rot.rotation.y, lerp_val * air_accel * 45 * delta))
@@ -382,26 +376,17 @@ func manage_target_type():
 		floor_anim = "ledge"
 	if target.is_in_group("Ray_V_Ball"):
 		platform_type = Platform_Type.Ray_V_Ball
-		if offset_num == -0.7:
-			air_anim = "ray_v_ball"
-			floor_anim = "ray_v_ball"
-		else:
-			air_anim = "air"
-			floor_anim = "air"
+		air_anim = "ray_v_ball"
+		floor_anim = "ray_v_ball"
 	print("platform type = ", platform_type)
 
 func find_target_b():
 	print("finding target b!")
 	
-	if distance_to_ball < 2 and can_ledge and velocity.y < 1 and state_now == State.AIR:
-		if target_b == null:
-			if $Ray_V_Container/Ray_V_Ball/Ledge_Col_Anim.current_animation == "check_ledge_final" and can_ledge:
-				if not is_on_floor():
-					$Ray_V_Container/Particle_Sparkle.visible = true
-					$Ray_V_Container/Ray_V_Ball/Ledge_Col_Anim.current_animation = "check_ledge_final"
-					target_b = ray_v_ball
+	if distance_to_ball < 3 and velocity.y < 0:
+		if target_b == null and can_ledge:
+			target_b = ray_v_ball
 	else:
-		$Ray_V_Container/Particle_Sparkle.visible = false
 		target_b = null
 	print(distance_to_ball)
 	print("target_b = ", target_b)
@@ -492,36 +477,29 @@ func move_to_target():
 				state_now = State.ON_PLATFORM
 		
 func ledge_detect():
-	var hit_ray_h1 = ray_h.get_collision_point()
+	can_ledge = false
+	var hit_ray_h = ray_h.get_collision_point()
+	var hit_ray_h1 = ray_h1.get_collision_point()
 	var hit_ray_h2 = ray_h2.get_collision_point()
 	var hit_ray_h3 = ray_h3.get_collision_point()
-	var hit_ray_h4 = ray_h4.get_collision_point()
-	var hit_sly_ray_h1 = sly_ray_h1.get_collision_point()
-	var hit_sly_ray_h2 = sly_ray_h2.get_collision_point()
-	var hit_sly_ray_h3 = sly_ray_h3.get_collision_point()
-	var hit_sly_ray_h4 = sly_ray_h4.get_collision_point()
 	var hit_ray_h_final = Vector3()
 	
 	var hit_ray_v = ray_v.get_collision_point()
 	var offset = Vector3(0,60,0)
 	
-	if ray_h.is_colliding():
-		hit_ray_h_final = hit_ray_h1
-	elif ray_h2.is_colliding():
-		hit_ray_h_final = hit_ray_h2
-	elif ray_h3.is_colliding():
-		hit_ray_h_final = hit_ray_h3
-	elif ray_h4.is_colliding():
-		hit_ray_h_final = hit_ray_h4
-	elif sly_ray_h1.is_colliding():
-		hit_ray_h_final = hit_sly_ray_h1
-	elif sly_ray_h2.is_colliding():
-		hit_ray_h_final = hit_sly_ray_h2
-	elif sly_ray_h3.is_colliding():
-		hit_ray_h_final = hit_sly_ray_h3
-	elif sly_ray_h4.is_colliding():
-		hit_ray_h_final = hit_sly_ray_h4
-	
+	if not ray_top.is_colliding():
+		if ray_h.is_colliding():
+			hit_ray_h_final = hit_ray_h
+			can_ledge = true
+		elif ray_h1.is_colliding():
+			hit_ray_h_final = hit_ray_h1
+			can_ledge = true
+		elif ray_h2.is_colliding():
+			hit_ray_h_final = hit_ray_h2
+			can_ledge = true
+		elif ray_h3.is_colliding():
+			hit_ray_h_final = hit_ray_h3
+			can_ledge = true
 	
 	ray_v_holder.global_transform.origin = hit_ray_h_final + offset
 	ray_v_ball.global_transform.origin = hit_ray_v
@@ -529,15 +507,6 @@ func ledge_detect():
 	
 	to_ray_ball = ray_v_ball.global_transform.origin - global_transform.origin
 	distance_to_ball = to_ray_ball.length()
-		
-	if not $Ray_V_Container/Ray_V_Ball/Ledge_Col_Anim.current_animation == "check_ledge_final" and distance_to_ball <= 2:
-		$Ray_V_Container/Ray_V_Ball/Ledge_Col_Anim.play("check_ledge")
-		$Ray_V_Container/Ray_V_Ball/Ledge_Col_Anim.queue("check_ledge_final")
-	### should show when you can do a ledge grab, just like the ledge grab Particle_Sparkle
-	#if can_ledge and distance_to_ball < 3.5:
-		#ray_v_ball.visible = true
-	#else:
-		#ray_v_ball.visible = false
 
 
 
@@ -557,30 +526,4 @@ func _on_platform_snap_area_body_exited(body):
 		can_climb = false
 		#if not body.is_in_group("Path"):
 			#target = null
-
-
-
-func _on_platform_snap_area_area_entered(area):
-	if area.is_in_group("Platform"):
-		if target == null:
-			target_a = area
-			print("target_a = ", target_a)
-			can_climb = true
-			target_distance_manager()
-			print("can_climb = ", can_climb)
-		else:
-			print("have target = ", target)
-func _on_platform_snap_area_area_exited(area):
-	if not area.is_in_group("Player"):
-		can_ledge = true
-
-
-
-func _on_ball_area_body_exited(body):
-	if not body.is_in_group("Player"):
-		can_ledge = true
-		#print("cl",can_ledge)
-func _on_ball_area_body_entered(body):
-	can_ledge = false
-		#print("cl",can_ledge)
 
