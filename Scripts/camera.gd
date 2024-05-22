@@ -59,7 +59,8 @@ func _process(delta):
 	
 	if ray_front.is_colliding():
 		var ray_front_collider = ray_front.get_collider()
-		
+		if not ray_front_collider.is_in_group("Player"):
+			camera.global_transform.origin = ray_front.get_collision_point()
 	else:
 		return_camera_to_position(delta)
 	handle_camera_obstruction(delta)
@@ -95,7 +96,6 @@ func get_colliding_ray():
 				if distance.z < 0:
 					distance.z = distance.z * -1
 				avg_distance = (distance.x + distance.y + distance.z) / 3 + 0.1
-				print("avg distance: ", avg_distance)
 				handling_obstruction = true
 				var raycast_name = raycast.get_name()
 				if raycast_name == "RayCast_Right":

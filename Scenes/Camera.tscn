@@ -65,6 +65,7 @@ target_position = Vector3(0, -4, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="CameraTarget/Camera3D/RayCast_Bottom"]
 transform = Transform3D(1, 0, -9.23706e-14, 0, 1, 4.08562e-14, -7.90479e-14, -6.39488e-14, 1, 0.000429511, -4.00076, -1.74842e-07)
+visible = false
 material_override = SubResource("StandardMaterial3D_myskt")
 mesh = SubResource("SphereMesh_jvdk3")
 
