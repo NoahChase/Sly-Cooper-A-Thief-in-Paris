@@ -43,6 +43,11 @@ var air_accel = 0.0
 @onready var camera = $CameraOrigin/CameraArm/camera
 @onready var camera_arm = $CameraOrigin/CameraArm
 @onready var canvas_animation = $CameraOrigin/CameraArm/camera/CanvasLayer/CanvasAnimation
+@export var camera_target: Node3D
+@export var camera_parent: Node3D
+var camera_T = float()
+var cam_speed = float()
+
 
 @onready var area_anim = $"Platform Snap Area/Area Col Anim Player"
 @onready var anim_player = $AnimationPlayer
@@ -50,6 +55,7 @@ var air_accel = 0.0
 @onready var sly_container_anim = $sly_container/sly_container_anim
 @onready var current_blendspace
 @onready var coyote_timer = $"Coyote Time"
+@onready var camtime = $Camtime
 @onready var airtime = 0
 
 @export var sens = 0.15
@@ -81,17 +87,19 @@ enum Platform_Type{NULL, POINT, PATH, POLE, ROPE, LEDGE, Ray_V_Ball}
 @onready var bottle_number = 30
 @onready var blend_pos = velocity.length()/SPEED
 func _ready():
+	camera_target = camera_parent.camera_target
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-	can_right_stick = true
+	can_right_stick = false
 	double_jump = true
 
 func _input(event):
 	if event is InputEventMouseMotion:
-		rotate_y(deg_to_rad(-event.relative.x * sens))
-		camera_origin.rotate_x(deg_to_rad(-event.relative.y * sens))
-		camera_origin.rotation.x = clamp(camera_origin.rotation.x, deg_to_rad(-90), deg_to_rad(45))
-		if not is_moving or not is_on_floor or state_now == State.AIR:
-			sly_container.rotate_y(deg_to_rad(event.relative.x * sens))
+		pass
+		#rotate_y(deg_to_rad(-event.relative.x * sens))
+		#camera_origin.rotate_x(deg_to_rad(-event.relative.y * sens))
+		#camera_origin.rotation.x = clamp(camera_origin.rotation.x, deg_to_rad(-90), deg_to_rad(45))
+		#if not is_moving or not is_on_floor or state_now == State.AIR:
+			#sly_container.rotate_y(deg_to_rad(event.relative.x * sens))
 
 
 
@@ -136,9 +144,11 @@ func joystick_event():
 
 
 func _physics_process(delta):
+	camera_smooth_follow(delta)
+	
 	blend_pos = velocity.length()/SPEED
 	$CameraOrigin/CameraArm/camera/CanvasLayer/RichTextLabel3.text = str(Engine.get_frames_per_second())
-	print("physics process start! physics target = ", target)
+	#print("physics process start! physics target = ", target)
 	joystick_event()
 
 ### State Handler
@@ -178,7 +188,7 @@ func _physics_process(delta):
 		else:
 			air_accel = 1
 		$"CameraOrigin/Jump Counter".text = str("[center]","double jump is ", double_jump)
-		can_right_stick = true
+		can_right_stick = false
 		var input_dir = Input.get_vector("A", "D", "W", "S")
 		direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 		$"CameraOrigin/State Reader".text = str("[center]FLOOR")
@@ -189,10 +199,9 @@ func _physics_process(delta):
 	
 	if state_now == State.AIR:
 		ledge_detect()
-		target_distance_manager()
 		airtime = clamp(airtime, 0, 1)
 		var camoffset = Vector3(0,-2,0)
-		can_right_stick = true
+		can_right_stick = false
 		$"CameraOrigin/State Reader".text = str("[center]AIR")
 		sly_anim_tree.set("parameters/Move_State/transition_request", air_anim)
 		SPEED_MULT = 1.2
@@ -209,6 +218,7 @@ func _physics_process(delta):
 		velocity.y -= gravity * delta * 1.75
 
 		if Input.is_action_just_pressed("RMB"):
+			target_distance_manager()
 			if not area_anim.is_playing():
 				area_anim.play("area_expand")
 				area_anim.queue("area_check")
@@ -216,7 +226,7 @@ func _physics_process(delta):
 	if state_now == State.TWEENING:
 
 		air_accel = lerpf(air_accel, 1, lerp_val)
-		can_right_stick = true
+		can_right_stick = false
 		sly_anim_tree.set("parameters/Move_State/transition_request", air_anim)
 		sly_anim_tree.set("parameters/Move_State/transition_request", floor_anim)
 		double_jump = true
@@ -268,7 +278,7 @@ func _physics_process(delta):
 	else:
 		move_and_slide()
 	if platform_type == Platform_Type.NULL:
-			print("physics process! platform type = NULL")
+			#print("physics process! platform type = NULL")
 			air_anim = "air"
 			floor_anim = "floor"
 			if not target == null and not target.is_in_group("Ray_V_Ball"):
@@ -289,7 +299,7 @@ func _physics_process(delta):
 		elif velocity.y < 0:
 			camera_origin.position.y = lerp(camera_origin.position.y, $Camera_Return.position.y - max(velocity.y, -velocity.y * delta) + 1, -velocity.y * delta /4)
 		if velocity.y > 0:
-			sly_new.position.y = lerp(sly_new.position.y, $sly_container/Sly_Return.position.y - 1.25, lerp_val/4)
+			sly_new.position.y = lerp(sly_new.position.y, $sly_container/Sly_Return.position.y - 1, lerp_val/4)
 		elif velocity.y <= 0:
 			sly_new.position.y = lerp(sly_new.position.y, $sly_container/Sly_Return.position.y, lerp_val/4)
 	elif state_now == State.TWEENING or state_now == State.ON_PLATFORM or is_on_floor():
@@ -299,13 +309,18 @@ func _physics_process(delta):
 			camera_origin.position.y = lerp(camera_origin.position.y, $Camera_Return.position.y + 0.05, delta/4)
 			
 ### Direction Handling
-	var input_dir = Input.get_vector("A", "D", "W", "S")
-	direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+
+	camera_T = camera_target.global_transform.basis.get_euler().y
+	var horizontal = Input.get_axis("D", "A")
+	var vertical = Input.get_axis("S", "W")
+	var input_dir = Vector3(horizontal, 0, vertical).normalized()
+	direction = (transform.basis * Vector3(horizontal, 0, vertical).rotated(Vector3.UP, camera_T)).normalized()
 	if direction:
 		if platform_type == Platform_Type.POINT or not state_now == State.TWEENING:
 			is_moving = true
 			sly_rot.look_at(position - direction)
 			sly_container.rotate_y(lerp(sly.rotation.y, sly_rot.rotation.y, lerp_val * air_accel * 45 * delta))
+			$sly_container/Sly_Return.rotate_y(lerp(sly.rotation.y, sly_rot.rotation.y, lerp_val * air_accel * 45 * delta))
 		
 		velocity.x = lerp(velocity.x, direction.x * SPEED * SPEED_MULT * left_stick_pressure, lerp_val * 45 * air_accel * delta)
 		velocity.z = lerp(velocity.z, direction.z * SPEED * SPEED_MULT * left_stick_pressure, lerp_val * 45 * air_accel * delta)
@@ -321,6 +336,7 @@ func jump():
 	$jump_sound.pitch_scale = randf_range(0.7, 1)
 	if double_jump:
 		coyote_timer.start(0.3)
+		$Camtime.start(1)
 		$jump_sound.volume_db = -35
 		$jump_sound.play()
 		if state_now == State.FLOOR or state_now == State.TWEENING:
@@ -484,20 +500,25 @@ func ledge_detect():
 	var hit_ray_h3 = ray_h3.get_collision_point()
 	var hit_ray_h_final = Vector3()
 	
+	var ray_h_collider = ray_h.get_collider()
+	var ray_h1_collider = ray_h1.get_collider()
+	var ray_h2_collider = ray_h2.get_collider()
+	var ray_h3_collider = ray_h3.get_collider()
+	
 	var hit_ray_v = ray_v.get_collision_point()
 	var offset = Vector3(0,60,0)
 	
-	if not ray_top.is_colliding():
-		if ray_h.is_colliding():
+	if not ray_top.is_colliding() and not $sly_container/Ray_Top1.is_colliding() and not $sly_container/Ray_Top2.is_colliding() and not $sly_container/Ray_Top3.is_colliding():
+		if ray_h.is_colliding() and not ray_h_collider.is_in_group("Player"):
 			hit_ray_h_final = hit_ray_h
 			can_ledge = true
-		elif ray_h1.is_colliding():
+		elif ray_h1.is_colliding() and not ray_h1_collider.is_in_group("Player"):
 			hit_ray_h_final = hit_ray_h1
 			can_ledge = true
-		elif ray_h2.is_colliding():
+		elif ray_h2.is_colliding() and not ray_h2_collider.is_in_group("Player"):
 			hit_ray_h_final = hit_ray_h2
 			can_ledge = true
-		elif ray_h3.is_colliding():
+		elif ray_h3.is_colliding() and not ray_h3_collider.is_in_group("Player"):
 			hit_ray_h_final = hit_ray_h3
 			can_ledge = true
 	
@@ -507,7 +528,8 @@ func ledge_detect():
 	
 	to_ray_ball = ray_v_ball.global_transform.origin - global_transform.origin
 	distance_to_ball = to_ray_ball.length()
-
+	if can_ledge:
+		target_distance_manager()
 
 
 func _on_platform_snap_area_body_entered(body):
@@ -527,3 +549,24 @@ func _on_platform_snap_area_body_exited(body):
 		#if not body.is_in_group("Path"):
 			#target = null
 
+
+
+func camera_smooth_follow(delta):
+	var cam_offset = Vector3(0, 1.5, 0).rotated(Vector3.UP, camera_T)
+	cam_speed = 250
+	var cam_timer = clamp(delta * cam_speed / 20, 0, 1)
+	
+	var cam_to_player_x = abs(camera_parent.camera.global_transform.origin.x - global_transform.origin.x)
+	var cam_to_player_y = abs(camera_parent.camera.global_transform.origin.y - global_transform.origin.y)
+	var cam_to_player_z = abs(camera_parent.camera.global_transform.origin.z - global_transform.origin.z)
+	var cam_distance = (cam_to_player_x + cam_to_player_y + cam_to_player_z) / 3
+	
+	#print("cam to player z: ", cam_to_player_z)
+	#print("cam distance: ", cam_distance)
+	camera_parent.position.x = lerp(camera_parent.global_transform.origin.x, global_transform.origin.x, cam_timer / 1.5)
+	camera_parent.position.z = lerp(camera_parent.global_transform.origin.z, global_transform.origin.z, cam_timer  / 1.5)
+	if state_now != State.AIR:
+		camera_parent.position.y = lerp(camera_parent.global_transform.origin.y, global_transform.origin.y + 2.25, cam_timer / 4)
+	else:
+		if camtime.time_left <= 0:
+			camera_parent.position.y = lerp(camera_parent.global_transform.origin.y, global_transform.origin.y + 2.25, cam_timer / 4)

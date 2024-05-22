@@ -1,7 +1,8 @@
-[gd_scene load_steps=90 format=3 uid="uid://doumh1ay63eo8"]
+[gd_scene load_steps=91 format=3 uid="uid://doumh1ay63eo8"]
 
 [ext_resource type="Material" uid="uid://df56gbi2lxwfe" path="res://Assets/Materials/CobbleStone_01_.tres" id="1_834md"]
 [ext_resource type="Script" path="res://Scripts/world.gd" id="1_jlnju"]
+[ext_resource type="PackedScene" uid="uid://cagfx1xruo4td" path="res://Scenes/Camera.tscn" id="2_3oq6g"]
 [ext_resource type="PackedScene" uid="uid://dtn4nhjv25y3a" path="res://Scenes/player.tscn" id="2_8rrkt"]
 [ext_resource type="PackedScene" uid="uid://6cwcracmy210" path="res://Assets/Objects/paris_test_building_01_.blend" id="3_815im"]
 [ext_resource type="Material" uid="uid://o6bakigmh5u4" path="res://Assets/Materials/brick_128_01_.tres" id="3_mfag3"]
@@ -372,8 +373,12 @@ shadow_bias = 0.125
 shadow_opacity = 0.5
 shadow_blur = 0.307
 
-[node name="Player" parent="." instance=ExtResource("2_8rrkt")]
-transform = Transform3D(-0.526625, 0, -0.850088, 0, 0.999976, 0, 0.850088, 0, -0.526626, -43.4525, 61.646, -525.646)
+[node name="Camera" parent="." instance=ExtResource("2_3oq6g")]
+transform = Transform3D(0.999992, 0, 0, 0, 0.999976, 0, 0, 0, 0.999992, -42.1196, 63.2763, -525.646)
+
+[node name="Player" parent="." node_paths=PackedStringArray("camera_parent") instance=ExtResource("2_8rrkt")]
+transform = Transform3D(0.999992, 0, 0, 0, 0.999976, 0, 0, 0, 0.999992, -43.4525, 61.646, -525.646)
+camera_parent = NodePath("../Camera")
 
 [node name="Rope" type="Node3D" parent="."]
 transform = Transform3D(0.999616, 0, -0.0277124, 0, 1, 0, 0.0277124, 0, 0.999616, -106.725, 61.9063, -501.898)

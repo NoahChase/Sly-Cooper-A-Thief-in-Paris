@@ -583,6 +583,9 @@ libraries = {
 "": SubResource("AnimationLibrary_kf3c4")
 }
 
+[node name="Camera_Target" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.125, -2)
+
 [node name="CameraOrigin" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.125, -2)
 
@@ -592,6 +595,7 @@ spring_length = 3.5
 
 [node name="camera" type="Camera3D" parent="CameraOrigin/CameraArm"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4)
+visible = false
 attributes = SubResource("CameraAttributesPractical_dlwdf")
 fov = 70.0
 
@@ -692,7 +696,7 @@ libraries = {
 }
 
 [node name="Sly_Return" type="Node3D" parent="sly_container"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.75, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.75, 0.6)
 
 [node name="sly_rot_helper" type="Node3D" parent="sly_container"]
 transform = Transform3D(15, 0, 0, 0, 15, -2.27374e-13, 0, 2.27374e-13, 15, 0, -1.19209e-07, -8.74227e-08)
@@ -709,11 +713,11 @@ transform = Transform3D(1, -1.50996e-07, 1.78814e-07, -1.50996e-07, -1, -7.10543
 target_position = Vector3(0, 0, -1)
 
 [node name="Ray_H1" type="RayCast3D" parent="sly_container"]
-transform = Transform3D(0.5025, -4.39299e-08, -0.870355, -8.78599e-08, -1.005, 0, -0.870355, 7.60888e-08, -0.5025, 0.056917, -0.17152, -0.124267)
+transform = Transform3D(0.260113, -2.27398e-08, -0.970755, -8.78599e-08, -1.005, -4.78354e-16, -0.970755, 8.4866e-08, -0.260113, 0.056917, -0.17152, -0.124267)
 target_position = Vector3(0, 0, -1)
 
 [node name="Ray_H2" type="RayCast3D" parent="sly_container"]
-transform = Transform3D(0.5025, -4.39298e-08, 0.870355, -8.78599e-08, -1.005, 0, 0.870355, -7.60888e-08, -0.5025, -0.067878, -0.17152, -0.124267)
+transform = Transform3D(0.260113, -2.27397e-08, 0.970755, -8.78599e-08, -1.005, 4.78354e-16, 0.970755, -8.4866e-08, -0.260113, -0.067878, -0.17152, -0.124267)
 target_position = Vector3(0, 0, -1)
 
 [node name="Ray_H3" type="RayCast3D" parent="sly_container"]
@@ -721,8 +725,20 @@ transform = Transform3D(-1, 1.50996e-07, -9.13912e-08, -1.50996e-07, -1, -7.1054
 target_position = Vector3(0, 0, -0.75)
 
 [node name="Ray_Top" type="RayCast3D" parent="sly_container"]
-transform = Transform3D(1.005, -8.78598e-08, -2.07069e-07, -8.78599e-08, -1.005, -1.23806e-16, -2.07069e-07, -1.00827e-14, -1.005, 0, 1.375, 0)
-target_position = Vector3(0, 0, -2)
+transform = Transform3D(1.005, -8.78598e-08, -2.07069e-07, -8.78599e-08, -1.005, -1.23806e-16, -2.07069e-07, -1.00827e-14, -1.005, 0, 0.5, 0)
+target_position = Vector3(0, 0, -1.5)
+
+[node name="Ray_Top1" type="RayCast3D" parent="sly_container"]
+transform = Transform3D(0.260113, -2.27398e-08, 0.970755, -8.78599e-08, -1.005, -2.47606e-16, 0.970755, -8.48661e-08, -0.260113, 0, 0.5, 0)
+target_position = Vector3(0, 0, -1.5)
+
+[node name="Ray_Top2" type="RayCast3D" parent="sly_container"]
+transform = Transform3D(0.260113, -2.27398e-08, -0.970756, -8.78599e-08, -1.005, -9.73567e-16, -0.970756, 8.4866e-08, -0.260113, 0, 0.5, 0)
+target_position = Vector3(0, 0, -1.5)
+
+[node name="Ray_Top3" type="RayCast3D" parent="sly_container"]
+transform = Transform3D(-1.005, 8.78598e-08, 1.78814e-07, -8.78599e-08, -1.005, -9.73567e-16, 1.78814e-07, 3.55271e-15, 1.005, 0, 0.5, 0)
+target_position = Vector3(0, 0, -1)
 
 [node name="Ray_V_Container" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.273712, 0)
@@ -778,9 +794,6 @@ libraries = {
 "": SubResource("AnimationLibrary_kixou")
 }
 
-[node name="Coyote Time" type="Timer" parent="."]
-one_shot = true
-
 [node name="jump_sound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_cbunl")
 volume_db = -17.0
@@ -791,7 +804,13 @@ size_flags_horizontal = 4
 [node name="Ray_To_Floor" type="RayCast3D" parent="."]
 target_position = Vector3(0, -100, 0)
 
+[node name="Coyote Time" type="Timer" parent="."]
+one_shot = true
+
 [node name="Airtime" type="Timer" parent="."]
+
+[node name="Camtime" type="Timer" parent="."]
+one_shot = true
 
 [connection signal="area_entered" from="Platform Snap Area" to="." method="_on_platform_snap_area_area_entered"]
 [connection signal="area_exited" from="Platform Snap Area" to="." method="_on_platform_snap_area_area_exited"]

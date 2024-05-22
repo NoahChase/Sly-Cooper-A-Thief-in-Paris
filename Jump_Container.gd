@@ -13,6 +13,7 @@ func _ready():
 func _process(delta):
 	if target != null:
 		target.velocity.y = jump
+		target.camtime.start(0.1)
 		if has_mesh:
 			mesh.anim.play("bounce")
 

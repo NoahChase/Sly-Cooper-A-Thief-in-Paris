@@ -1,7 +1,8 @@
-[gd_scene load_steps=52 format=3 uid="uid://7ho0gg5xc5fo"]
+[gd_scene load_steps=53 format=3 uid="uid://7ho0gg5xc5fo"]
 
 [ext_resource type="PackedScene" uid="uid://dtn4nhjv25y3a" path="res://Scenes/player.tscn" id="1_1w1bs"]
 [ext_resource type="Material" uid="uid://df56gbi2lxwfe" path="res://Assets/Materials/CobbleStone_01_.tres" id="1_ns6xx"]
+[ext_resource type="PackedScene" uid="uid://cagfx1xruo4td" path="res://Scenes/Camera.tscn" id="2_1bjrq"]
 [ext_resource type="PackedScene" uid="uid://bvfox0yrvskwo" path="res://Scenes/pipe.tscn" id="2_w643w"]
 [ext_resource type="PackedScene" uid="uid://42r6gawhab6j" path="res://Scenes/pole_01_.tscn" id="3_avmfw"]
 [ext_resource type="PackedScene" uid="uid://6cwcracmy210" path="res://Assets/Objects/paris_test_building_01_.blend" id="4_febpg"]
@@ -183,8 +184,12 @@ directional_shadow_split_2 = 0.3
 directional_shadow_split_3 = 0.6
 directional_shadow_blend_splits = true
 
-[node name="Player" parent="." instance=ExtResource("1_1w1bs")]
-transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 73.025, 2.01907, 42.05)
+[node name="Camera" parent="." instance=ExtResource("2_1bjrq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 73, 5, 42)
+
+[node name="Player" parent="." node_paths=PackedStringArray("camera_parent") instance=ExtResource("1_1w1bs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 73.025, 2.01907, 42.05)
+camera_parent = NodePath("../Camera")
 
 [node name="Floor" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.78005, -0.5, 0)
@@ -396,6 +401,16 @@ skeleton = NodePath("../..")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Building Measurements/MeshInstance3D17/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_ndxmx")
 
+[node name="MeshInstance3D25" type="MeshInstance3D" parent="Building Measurements"]
+transform = Transform3D(1, 0.000593126, -1.76507e-05, -0.000593126, 1, -5.26444e-06, 1.76475e-05, 5.27507e-06, 1, 60, 0.999, 42)
+mesh = SubResource("BoxMesh_wjxmj")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Building Measurements/MeshInstance3D25"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Building Measurements/MeshInstance3D25/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_ndxmx")
+
 [node name="MeshInstance3D18" type="MeshInstance3D" parent="Building Measurements"]
 transform = Transform3D(1, 0.000593126, -1.76507e-05, -0.000593126, 1, -5.26444e-06, 1.76475e-05, 5.27507e-06, 1, 64, 2.999, 35)
 mesh = SubResource("BoxMesh_wjxmj")
@@ -404,6 +419,16 @@ skeleton = NodePath("../..")
 [node name="StaticBody3D" type="StaticBody3D" parent="Building Measurements/MeshInstance3D18"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Building Measurements/MeshInstance3D18/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_ndxmx")
+
+[node name="MeshInstance3D24" type="MeshInstance3D" parent="Building Measurements"]
+transform = Transform3D(1, 0.000593126, -1.76507e-05, -0.000593126, 1, -5.26444e-06, 1.76475e-05, 5.27507e-06, 1, 64, 0.999, 35)
+mesh = SubResource("BoxMesh_wjxmj")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Building Measurements/MeshInstance3D24"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Building Measurements/MeshInstance3D24/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_ndxmx")
 
 [node name="MeshInstance3D8" type="MeshInstance3D" parent="Building Measurements"]
