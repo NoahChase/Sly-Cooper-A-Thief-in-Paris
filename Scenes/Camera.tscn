@@ -27,7 +27,7 @@ pitch_min = -30
 [node name="CameraTarget" type="Node3D" parent="."]
 
 [node name="Camera3D" type="Camera3D" parent="CameraTarget"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, -4.5)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, -5)
 fov = 65.0
 near = 0.01
 
@@ -82,7 +82,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.5)
 
 [node name="RayCast_Front" type="RayCast3D" parent="CameraTarget"]
 transform = Transform3D(8.74228e-08, 2.18557e-07, -1, -1, -4.37114e-08, -8.74228e-08, -4.37114e-08, 1, 2.18557e-07, 0, 0, 0)
-target_position = Vector3(0, -4.6, 0)
+target_position = Vector3(0, -5, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="CameraTarget/RayCast_Front"]
 visible = false

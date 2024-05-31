@@ -1,10 +1,10 @@
 extends Node3D
 
 @onready var camera = $CameraTarget/Camera3D
-
 @onready var camera_return = $CameraTarget/Camera_Return
 
 @export var camera_target = Node3D
+@export var camera_player = CharacterBody3D
 @export var pitch_max = 50
 @export var pitch_min = -50
 
@@ -39,8 +39,8 @@ func _ready():
 	
 func _input(event):
 	if event is InputEventMouseMotion and Input.get_mouse_mode() !=0:
-		yaw += -event.relative.x * yaw_sens
-		pitch += event.relative.y * pitch_sens
+		yaw += -event.relative.x * yaw_sens * avg_distance
+		pitch += event.relative.y * pitch_sens * avg_distance
 
 func _process(delta):
 	left_stick_pressure = Input.get_action_strength("left_stick_left") + Input.get_action_strength("left_stick_right") + Input.get_action_strength("left_stick_up") + Input.get_action_strength("left_stick_down")
@@ -68,8 +68,8 @@ func _process(delta):
  
 func return_camera_to_position(delta):
 	camera.global_position = camera.global_position.lerp(camera_return.global_transform.origin, 1 - exp(-100 * delta))
-	if right_stick_pressure == 0.0 and left_stick_pressure > 0.25 and handling_obstruction == false:
-		pitch = lerp(pitch, 0.4, 0.008)
+	if right_stick_pressure == 0.0 and left_stick_pressure > 0.5 and handling_obstruction == false and not pitch == pitch_max and camera_player.state_now == camera_player.State.FLOOR:
+		pitch = lerp(pitch, 0.35, 0.008 * left_stick_pressure)
 
 func handle_camera_obstruction(delta):
 	var colliding_ray = get_colliding_ray()

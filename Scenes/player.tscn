@@ -696,7 +696,7 @@ libraries = {
 }
 
 [node name="Sly_Return" type="Node3D" parent="sly_container"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.75, 0.6)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.75, 1.975)
 
 [node name="sly_rot_helper" type="Node3D" parent="sly_container"]
 transform = Transform3D(15, 0, 0, 0, 15, -2.27374e-13, 0, 2.27374e-13, 15, 0, -1.19209e-07, -8.74227e-08)
@@ -713,11 +713,11 @@ transform = Transform3D(1, -1.50996e-07, 1.78814e-07, -1.50996e-07, -1, -7.10543
 target_position = Vector3(0, 0, -1)
 
 [node name="Ray_H1" type="RayCast3D" parent="sly_container"]
-transform = Transform3D(0.260113, -2.27398e-08, -0.970755, -8.78599e-08, -1.005, -4.78354e-16, -0.970755, 8.4866e-08, -0.260113, 0.056917, -0.17152, -0.124267)
+transform = Transform3D(0.5025, -4.39299e-08, -0.870355, -8.78599e-08, -1.005, -1.08051e-15, -0.870355, 7.60888e-08, -0.5025, 0.056917, -0.17152, -0.124267)
 target_position = Vector3(0, 0, -1)
 
 [node name="Ray_H2" type="RayCast3D" parent="sly_container"]
-transform = Transform3D(0.260113, -2.27397e-08, 0.970755, -8.78599e-08, -1.005, 4.78354e-16, 0.970755, -8.4866e-08, -0.260113, -0.067878, -0.17152, -0.124267)
+transform = Transform3D(0.5025, -4.39298e-08, 0.870355, -8.78599e-08, -1.005, 2.16103e-15, 0.870355, -7.60888e-08, -0.5025, -0.067878, -0.17152, -0.124267)
 target_position = Vector3(0, 0, -1)
 
 [node name="Ray_H3" type="RayCast3D" parent="sly_container"]
@@ -729,11 +729,11 @@ transform = Transform3D(1.005, -8.78598e-08, -2.07069e-07, -8.78599e-08, -1.005,
 target_position = Vector3(0, 0, -1.5)
 
 [node name="Ray_Top1" type="RayCast3D" parent="sly_container"]
-transform = Transform3D(0.260113, -2.27398e-08, 0.970755, -8.78599e-08, -1.005, -2.47606e-16, 0.970755, -8.48661e-08, -0.260113, 0, 0.5, 0)
+transform = Transform3D(0.5025, -4.39299e-08, 0.870355, -8.78599e-08, -1.005, -3.71405e-16, 0.870355, -7.60889e-08, -0.5025, 0, 0.5, 0)
 target_position = Vector3(0, 0, -1.5)
 
 [node name="Ray_Top2" type="RayCast3D" parent="sly_container"]
-transform = Transform3D(0.260113, -2.27398e-08, -0.970756, -8.78599e-08, -1.005, -9.73567e-16, -0.970756, 8.4866e-08, -0.260113, 0, 0.5, 0)
+transform = Transform3D(0.5025, -4.39299e-08, -0.870356, -8.78599e-08, -1.005, -2.07094e-15, -0.870356, 7.60888e-08, -0.5025, 0, 0.5, 0)
 target_position = Vector3(0, 0, -1.5)
 
 [node name="Ray_Top3" type="RayCast3D" parent="sly_container"]

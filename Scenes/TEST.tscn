@@ -184,8 +184,10 @@ directional_shadow_split_2 = 0.3
 directional_shadow_split_3 = 0.6
 directional_shadow_blend_splits = true
 
-[node name="Camera" parent="." instance=ExtResource("2_1bjrq")]
+[node name="Camera" parent="." node_paths=PackedStringArray("camera_player") instance=ExtResource("2_1bjrq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 73, 5, 42)
+camera_player = NodePath("../Player")
+pitch_max = 89
 
 [node name="Player" parent="." node_paths=PackedStringArray("camera_parent") instance=ExtResource("1_1w1bs")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 73.025, 2.01907, 42.05)

@@ -1,7 +1,7 @@
+Timer
 MeshInstance3D
 Node3D
 RayCast3D
-Timer
 AudioStreamPlayer
 Camera3D
 SpringArm3D

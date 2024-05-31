@@ -10,6 +10,7 @@ var air_accel = 0.0
 #in-game double jump height = 3
 
 @onready var direction
+@onready var input_dir
 
 @onready var target_a
 @onready var target_b
@@ -86,6 +87,9 @@ enum Platform_Type{NULL, POINT, PATH, POLE, ROPE, LEDGE, Ray_V_Ball}
 
 @onready var bottle_number = 30
 @onready var blend_pos = velocity.length()/SPEED
+
+
+
 func _ready():
 	camera_target = camera_parent.camera_target
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -93,15 +97,7 @@ func _ready():
 	double_jump = true
 
 func _input(event):
-	if event is InputEventMouseMotion:
-		pass
-		#rotate_y(deg_to_rad(-event.relative.x * sens))
-		#camera_origin.rotate_x(deg_to_rad(-event.relative.y * sens))
-		#camera_origin.rotation.x = clamp(camera_origin.rotation.x, deg_to_rad(-90), deg_to_rad(45))
-		#if not is_moving or not is_on_floor or state_now == State.AIR:
-			#sly_container.rotate_y(deg_to_rad(event.relative.x * sens))
-
-
+	pass
 
 func joystick_event():
 	var aim_direction := Input.get_vector("right_stick_left", "right_stick_right", "right_stick_up", "right_stick_down")
@@ -113,22 +109,9 @@ func joystick_event():
 	sly_anim_tree.set("parameters/pole_blend/blend_position", blend_pos)
 	sly_anim_tree.set("parameters/ledge_blend/blend_position", blend_pos)
 
-	#sly_anim_tree.set("parameters/Blend3/blend_amount", -1)
-	
-	if can_right_stick:
-		value.x = Input.get_action_strength("right_stick_left") - Input.get_action_strength("right_stick_right")
-		value.y = Input.get_action_strength("right_stick_up") - Input.get_action_strength("right_stick_down")
-		if value.x >= 0.0001 or value.x <= 0.0001:
-			if Input.is_action_pressed("right_stick_left") or Input.is_action_pressed("right_stick_right"):
-				rotate_y(deg_to_rad(value.x*2.25))
-				if not is_moving or not is_on_floor or state_now == State.AIR:
-					
-					sly_container.rotate_y(deg_to_rad(-value.x*2))
-		if value.y >= 0.0001 or value.y <= 0.0001:
-			if Input.is_action_pressed("right_stick_up") or Input.is_action_pressed("right_stick_down"):
-				camera_origin.rotate_x(deg_to_rad(value.y *1.5))
-				camera_origin.rotation.x = clamp(camera_origin.rotation.x, deg_to_rad(-80), deg_to_rad(20))
 	left_stick_pressure = Input.get_action_strength("left_stick_left") + Input.get_action_strength("left_stick_right") + Input.get_action_strength("left_stick_up") + Input.get_action_strength("left_stick_down")
+	if left_stick_pressure > 1:
+		left_stick_pressure = 1
 	if left_stick_pressure >= 0.45:
 		if state_now == State.FLOOR:
 			if not SPEED_MULT == 1.8:
@@ -142,7 +125,6 @@ func joystick_event():
 		left_stick_pressure = 0.35
 
 
-
 func _physics_process(delta):
 	camera_smooth_follow(delta)
 	
@@ -150,9 +132,8 @@ func _physics_process(delta):
 	$CameraOrigin/CameraArm/camera/CanvasLayer/RichTextLabel3.text = str(Engine.get_frames_per_second())
 	#print("physics process start! physics target = ", target)
 	joystick_event()
-
+	
 ### State Handler
-
 	if target == null:
 		if not is_on_floor():
 			state_now = State.AIR
@@ -161,9 +142,9 @@ func _physics_process(delta):
 	else:
 		if state_now != State.TWEENING:
 			state_now = State.ON_PLATFORM
+			
 	
 ### Delta Input Handler
-
 	if Input.is_action_just_pressed("ui_accept"):
 		if state_now == State.TWEENING:
 			state_now == State.AIR
@@ -179,9 +160,8 @@ func _physics_process(delta):
 	if Input.is_action_pressed("TAB"):
 		canvas_animation.play("out_in_out")
 		$CameraOrigin/CameraArm/camera/CanvasLayer/RichTextLabel.text = str(bottle_number, "/30")
-
+	
 ### State Machine
-
 	if state_now == State.FLOOR:
 		if SPEED_MULT == 1.8:
 			air_accel = lerpf(air_accel, 0.8, lerp_val)
@@ -189,8 +169,8 @@ func _physics_process(delta):
 			air_accel = 1
 		$"CameraOrigin/Jump Counter".text = str("[center]","double jump is ", double_jump)
 		can_right_stick = false
-		var input_dir = Input.get_vector("A", "D", "W", "S")
-		direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+		#input_dir = Input.get_vector("A", "D", "W", "S")
+		#direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 		$"CameraOrigin/State Reader".text = str("[center]FLOOR")
 		#SPEED_MULT = 1
 		double_jump = true
@@ -205,18 +185,15 @@ func _physics_process(delta):
 		$"CameraOrigin/State Reader".text = str("[center]AIR")
 		sly_anim_tree.set("parameters/Move_State/transition_request", air_anim)
 		SPEED_MULT = 1.2
-		
 		if coyote_timer.time_left >= 0.25:
 			#could start a 1 second timer and say air_accel = timer value...
 			air_accel = 1
 			airtime = -1
 		else:
-			air_accel = lerpf(air_accel, 0.0, lerp_val/3)
+			air_accel = lerpf(air_accel, 0.0, lerp_val/3.5)
 			airtime += delta
-		
 		sly_anim_tree.set("parameters/Air_Blend/blend_amount", airtime)
 		velocity.y -= gravity * delta * 1.75
-
 		if Input.is_action_just_pressed("RMB"):
 			target_distance_manager()
 			if not area_anim.is_playing():
@@ -224,7 +201,6 @@ func _physics_process(delta):
 				area_anim.queue("area_check")
 	
 	if state_now == State.TWEENING:
-
 		air_accel = lerpf(air_accel, 1, lerp_val)
 		can_right_stick = false
 		sly_anim_tree.set("parameters/Move_State/transition_request", air_anim)
@@ -291,29 +267,13 @@ func _physics_process(delta):
 				target = null
 			target = null
 			target_a = null
+			
 	
-	if not is_on_floor() and not state_now == State.TWEENING and not state_now == State.ON_PLATFORM:
-		if velocity.y > 0:
-			camera_origin.position.y = lerp(camera_origin.position.y, (max(2, -velocity.y * delta) - $Camera_Return.position.y), velocity.y * delta/4)
-			
-		elif velocity.y < 0:
-			camera_origin.position.y = lerp(camera_origin.position.y, $Camera_Return.position.y - max(velocity.y, -velocity.y * delta) + 1, -velocity.y * delta /4)
-		if velocity.y > 0:
-			sly_new.position.y = lerp(sly_new.position.y, $sly_container/Sly_Return.position.y - 1, lerp_val/4)
-		elif velocity.y <= 0:
-			sly_new.position.y = lerp(sly_new.position.y, $sly_container/Sly_Return.position.y, lerp_val/4)
-	elif state_now == State.TWEENING or state_now == State.ON_PLATFORM or is_on_floor():
-		camera_origin.position.y = lerp(camera_origin.position.y, $Camera_Return.position.y - max(2, -velocity.y * delta), delta * 1.5)
-		sly_new.position.y = lerp(sly_new.position.y, $sly_container/Sly_Return.position.y, lerp_val * 1.5)
-		if left_stick_pressure > 0.9:
-			camera_origin.position.y = lerp(camera_origin.position.y, $Camera_Return.position.y + 0.05, delta/4)
-			
 ### Direction Handling
-
 	camera_T = camera_target.global_transform.basis.get_euler().y
 	var horizontal = Input.get_axis("D", "A")
 	var vertical = Input.get_axis("S", "W")
-	var input_dir = Vector3(horizontal, 0, vertical).normalized()
+	input_dir = Vector3(horizontal, 0, vertical).normalized()
 	direction = (transform.basis * Vector3(horizontal, 0, vertical).rotated(Vector3.UP, camera_T)).normalized()
 	if direction:
 		if platform_type == Platform_Type.POINT or not state_now == State.TWEENING:
@@ -321,7 +281,6 @@ func _physics_process(delta):
 			sly_rot.look_at(position - direction)
 			sly_container.rotate_y(lerp(sly.rotation.y, sly_rot.rotation.y, lerp_val * air_accel * 45 * delta))
 			$sly_container/Sly_Return.rotate_y(lerp(sly.rotation.y, sly_rot.rotation.y, lerp_val * air_accel * 45 * delta))
-		
 		velocity.x = lerp(velocity.x, direction.x * SPEED * SPEED_MULT * left_stick_pressure, lerp_val * 45 * air_accel * delta)
 		velocity.z = lerp(velocity.z, direction.z * SPEED * SPEED_MULT * left_stick_pressure, lerp_val * 45 * air_accel * delta)
 		$CameraOrigin/CameraArm/camera/CanvasLayer/RichTextLabel4.text = str(left_stick_pressure)
@@ -329,7 +288,7 @@ func _physics_process(delta):
 		is_moving = false
 		velocity.x = lerp(velocity.x, 0.0, lerp_val * 45 * air_accel * delta)
 		velocity.z = lerp(velocity.z, 0.0, lerp_val * 45 * air_accel * delta)
-
+		
 
 func jump():
 	platform_type = Platform_Type.NULL
@@ -356,14 +315,6 @@ func jump():
 				
 		double_jump = false
 		
-#	if double_jump == true:
-#		jump
-#	if elif coyote timer > 0 and double_jump == true:
-#		air jump
-#	if not is on floor and coyote timer.is_stopped():
-#		air jump
-#		double_jump = false
-
 
 func manage_target_type():
 	#SPEED_MULT = 0
@@ -395,6 +346,7 @@ func manage_target_type():
 		air_anim = "ray_v_ball"
 		floor_anim = "ray_v_ball"
 	print("platform type = ", platform_type)
+	
 
 func find_target_b():
 	print("finding target b!")
@@ -429,6 +381,7 @@ func target_distance_manager():
 	print("target = ", target)
 	if not target == null:
 		move_to_target()
+		
 
 func move_to_target():
 	print("moving to target!")
@@ -449,28 +402,23 @@ func move_to_target():
 		var final_offset = Vector3(0,offset_num,0)
 		var to_target = platform.global_transform.origin - global_transform.origin
 		var distance = to_target.length()
-		
 		var x_tween = create_tween().set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
 		var y_tween = create_tween().set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
 		var z_tween = create_tween().set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
-
 		if not sly_container_anim.current_animation == "spin":
 			var target_position = platform.global_transform.origin + final_offset
-			
 			x_tween.tween_property(
 				self,
 				"position:x",
 				platform.global_transform.origin.x,
 				distance / (SPEED * SPEED_MULT),
 			).set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN)
-	
 			y_tween.tween_property(
 				self,
 				"position:y",
 				platform.global_transform.origin.y,
 				distance / (SPEED * SPEED_MULT),
 			).set_trans(Tween.TRANS_QUART)
-	
 			z_tween.tween_property(
 				self,
 				"position:z",
@@ -479,8 +427,6 @@ func move_to_target():
 			).set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN)
 			sly_anim_tree.set("parameters/Move_State/transition_request", "air")
 			$AnimationPlayer.queue("RESET")
-			
-			
 			if platform_type == Platform_Type.POINT:
 				sly_container_anim.play("spin")
 			if target == target_a:
@@ -492,6 +438,7 @@ func move_to_target():
 			elif target != null:
 				state_now = State.ON_PLATFORM
 		
+
 func ledge_detect():
 	can_ledge = false
 	var hit_ray_h = ray_h.get_collision_point()
@@ -530,7 +477,7 @@ func ledge_detect():
 	distance_to_ball = to_ray_ball.length()
 	if can_ledge:
 		target_distance_manager()
-
+		
 
 func _on_platform_snap_area_body_entered(body):
 	if body.is_in_group("Platform"):
@@ -548,25 +495,20 @@ func _on_platform_snap_area_body_exited(body):
 		can_climb = false
 		#if not body.is_in_group("Path"):
 			#target = null
-
-
+			
 
 func camera_smooth_follow(delta):
 	var cam_offset = Vector3(0, 1.5, 0).rotated(Vector3.UP, camera_T)
 	cam_speed = 250
 	var cam_timer = clamp(delta * cam_speed / 20, 0, 1)
-	
 	var cam_to_player_x = abs(camera_parent.camera.global_transform.origin.x - global_transform.origin.x)
 	var cam_to_player_y = abs(camera_parent.camera.global_transform.origin.y - global_transform.origin.y)
 	var cam_to_player_z = abs(camera_parent.camera.global_transform.origin.z - global_transform.origin.z)
 	var cam_distance = (cam_to_player_x + cam_to_player_y + cam_to_player_z) / 3
-	
-	#print("cam to player z: ", cam_to_player_z)
-	#print("cam distance: ", cam_distance)
 	camera_parent.position.x = lerp(camera_parent.global_transform.origin.x, global_transform.origin.x, cam_timer / 1.5)
 	camera_parent.position.z = lerp(camera_parent.global_transform.origin.z, global_transform.origin.z, cam_timer  / 1.5)
 	if state_now != State.AIR:
-		camera_parent.position.y = lerp(camera_parent.global_transform.origin.y, global_transform.origin.y + 2.25, cam_timer / 4)
+		camera_parent.position.y = lerp(camera_parent.global_transform.origin.y, global_transform.origin.y + 3, cam_timer / 4)
 	else:
 		if camtime.time_left <= 0:
-			camera_parent.position.y = lerp(camera_parent.global_transform.origin.y, global_transform.origin.y + 2.25, cam_timer / 4)
+			camera_parent.position.y = lerp(camera_parent.global_transform.origin.y, global_transform.origin.y + 3, cam_timer / 4)
