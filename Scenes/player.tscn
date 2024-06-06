@@ -1,14 +1,36 @@
-[gd_scene load_steps=47 format=3 uid="uid://dtn4nhjv25y3a"]
+[gd_scene load_steps=48 format=3 uid="uid://dtn4nhjv25y3a"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_te7i4"]
 [ext_resource type="Theme" uid="uid://f5b5fpewrxb6" path="res://Assets/Fonts/handwriting.tres" id="2_7h14n"]
 [ext_resource type="PackedScene" uid="uid://d14wkv5cix3g2" path="res://Scenes/pause_menu.tscn" id="2_s8llo"]
+[ext_resource type="Shader" path="res://Assets/Materials/sly_cooper.outline.gdshader" id="2_wn362"]
 [ext_resource type="PackedScene" uid="uid://dgmannm3l1q1s" path="res://Scenes/particle_sparkle.tscn" id="2_yoffi"]
 [ext_resource type="Theme" uid="uid://bpcolnmuv3ess" path="res://Assets/Fonts/menu.tres" id="3_57adr"]
-[ext_resource type="PackedScene" uid="uid://ckjh4w5mqu7dr" path="res://Assets/Obj Scenes/sly_cooper.tscn" id="3_lw72l"]
 [ext_resource type="Texture2D" uid="uid://cief7ne5hhepl" path="res://Assets/Textures/particle_platform_.png" id="6_7abxt"]
 [ext_resource type="AudioStream" uid="uid://s7c4vbxnk30a" path="res://Assets/Sounds/swoosh-sound-effect-for-fight-scenes-or-transitions-1-149889.mp3" id="7_cbunl"]
 [ext_resource type="PackedScene" uid="uid://c26x73kclemty" path="res://Scenes/sly_cooper_rig_no_physics.tscn" id="7_o6gr2"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lt3pn"]
+diffuse_mode = 3
+specular_mode = 1
+albedo_color = Color(1, 0.964706, 0, 1)
+metallic = 0.47
+metallic_specular = 0.62
+roughness = 0.05
+emission = Color(1, 1, 1, 1)
+emission_operator = 1
+rim_enabled = true
+rim_tint = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5o1mb"]
+render_priority = 0
+shader = ExtResource("2_wn362")
+shader_parameter/shadow_color = Color(0, 0, 0, 1)
+shader_parameter/shadow_thickness = 4.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_rlbuh"]
+radius = 0.125
+height = 0.25
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_2yoqs"]
 
@@ -285,6 +307,8 @@ _data = {
 "w_flip": SubResource("Animation_3fxke")
 }
 
+[sub_resource type="SphereMesh" id="SphereMesh_lynav"]
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gytom"]
 transparency = 1
 shading_mode = 0
@@ -360,164 +384,32 @@ _data = {
 [sub_resource type="Animation" id="Animation_3dlou"]
 resource_name = "A_Flip"
 length = 0.6
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("MeshInstance3D:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.6),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0, 0, 6.28319)]
-}
 
 [sub_resource type="Animation" id="Animation_i5f4v"]
 resource_name = "D_Flip"
 length = 0.6
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("MeshInstance3D:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.6),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0, 0, -6.28319)]
-}
 
 [sub_resource type="Animation" id="Animation_wqmor"]
 length = 0.001
 step = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("MeshInstance3D:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(1, 1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("MeshInstance3D:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("MeshInstance3D:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 1, 0)]
-}
 
 [sub_resource type="Animation" id="Animation_5pv83"]
 resource_name = "S_Flip"
 length = 0.6
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("MeshInstance3D:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.6),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(6.28319, 0, 0)]
-}
 
 [sub_resource type="Animation" id="Animation_mk5sx"]
 resource_name = "flip"
 length = 0.6
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("MeshInstance3D:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.6),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(-6.28319, 0, 0)]
-}
 
 [sub_resource type="Animation" id="Animation_wgnat"]
 resource_name = "spin"
 length = 0.4
 step = 0.025
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("MeshInstance3D:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.175, 0.225, 0.3, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector3(1, 1, 1), Vector3(1, 1.1, 1), Vector3(1, 0.9, 1), Vector3(1, 0.9, 1), Vector3(1, 1.1, 1), Vector3(1, 1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("MeshInstance3D:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.4),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0, 6.28319, 0)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("MeshInstance3D:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4),
-"transitions": PackedFloat32Array(0.435275, 0.482968, 1),
-"update": 0,
-"values": [Vector3(0, 1, 0), Vector3(0, 2, 0), Vector3(0, 1, 0)]
-}
 
 [sub_resource type="Animation" id="Animation_yteif"]
 resource_name = "walk"
 length = 0.4
 step = 0.025
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("MeshInstance3D:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.05, 0.175, 0.4),
-"transitions": PackedFloat32Array(0.450625, 0.435275, 0.435275, 0.450625),
-"update": 0,
-"values": [Vector3(1, 1, 1), Vector3(1, 0.975, 1), Vector3(1, 1.075, 1), Vector3(1, 1, 1)]
-}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_fejdm"]
 _data = {
@@ -529,18 +421,6 @@ _data = {
 "spin": SubResource("Animation_wgnat"),
 "walk": SubResource("Animation_yteif")
 }
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6jg6h"]
-transparency = 1
-albedo_color = Color(0.490196, 0.490196, 0.490196, 0)
-roughness = 0.8
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_n0yqv"]
-radial_segments = 6
-rings = 2
-
-[sub_resource type="BoxMesh" id="BoxMesh_824gw"]
-size = Vector3(2, 0.25, 0.25)
 
 [sub_resource type="Animation" id="Animation_smojd"]
 resource_name = "1move"
@@ -565,6 +445,16 @@ floor_constant_speed = true
 floor_max_angle = 0.959931
 floor_snap_length = 1.0
 script = ExtResource("1_te7i4")
+
+[node name="Pause Menu" parent="." instance=ExtResource("2_s8llo")]
+size_flags_horizontal = 4
+
+[node name="Basis_Offset" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.125, 0)
+visible = false
+material_override = SubResource("StandardMaterial3D_lt3pn")
+material_overlay = SubResource("ShaderMaterial_5o1mb")
+mesh = SubResource("SphereMesh_rlbuh")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -696,14 +586,14 @@ libraries = {
 }
 
 [node name="Sly_Return" type="Node3D" parent="sly_container"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.75, 1.975)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.75, -2.025)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="sly_container/Sly_Return"]
+visible = false
+mesh = SubResource("SphereMesh_lynav")
 
 [node name="sly_rot_helper" type="Node3D" parent="sly_container"]
 transform = Transform3D(15, 0, 0, 0, 15, -2.27374e-13, 0, 2.27374e-13, 15, 0, -1.19209e-07, -8.74227e-08)
-
-[node name="sly_cooper" parent="sly_container" instance=ExtResource("3_lw72l")]
-transform = Transform3D(15, 0, 0, 0, 15, -2.62268e-06, 0, 2.62268e-06, 15, 0, -0.725, 4.37114e-08)
-visible = false
 
 [node name="SlyCooper_RigNoPhysics" parent="sly_container" instance=ExtResource("7_o6gr2")]
 transform = Transform3D(1.33, 0, 0, 0, 1.33, 0, 0, 0, 1.33, 0, -0.75, 0)
@@ -744,7 +634,7 @@ target_position = Vector3(0, 0, -1)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.273712, 0)
 
 [node name="Ray_V" type="RayCast3D" parent="Ray_V_Container"]
-target_position = Vector3(0, -60, 0)
+target_position = Vector3(0, -4.75, 0)
 
 [node name="Ray_V_Ball" type="MeshInstance3D" parent="Ray_V_Container" groups=["Ray_V_Ball"]]
 visible = false
@@ -772,45 +662,30 @@ visible = false
 [node name="Head" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 
+[node name="Ray_To_Floor" type="RayCast3D" parent="."]
+target_position = Vector3(0, -100, 0)
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_fejdm")
 }
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-visible = false
-material_override = SubResource("StandardMaterial3D_6jg6h")
-mesh = SubResource("CapsuleMesh_n0yqv")
-
-[node name="arms" type="MeshInstance3D" parent="MeshInstance3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.298214, 0)
-visible = false
-mesh = SubResource("BoxMesh_824gw")
-skeleton = NodePath("../..")
 
 [node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_kixou")
 }
 
-[node name="jump_sound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("7_cbunl")
-volume_db = -17.0
-
-[node name="Pause Menu" parent="." instance=ExtResource("2_s8llo")]
-size_flags_horizontal = 4
-
-[node name="Ray_To_Floor" type="RayCast3D" parent="."]
-target_position = Vector3(0, -100, 0)
-
 [node name="Coyote Time" type="Timer" parent="."]
+one_shot = true
+
+[node name="Camtime" type="Timer" parent="."]
 one_shot = true
 
 [node name="Airtime" type="Timer" parent="."]
 
-[node name="Camtime" type="Timer" parent="."]
-one_shot = true
+[node name="jump_sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_cbunl")
+volume_db = -17.0
 
 [connection signal="area_entered" from="Platform Snap Area" to="." method="_on_platform_snap_area_area_entered"]
 [connection signal="area_exited" from="Platform Snap Area" to="." method="_on_platform_snap_area_area_exited"]

@@ -4,17 +4,19 @@ res://Assets/Materials/sly_cooper.outline.gdshader
 res://Assets/Materials/Sly Head.tres
 res://Assets/Materials/Sly Body.tres
 res://Assets/Materials/CobbleStone_01_.tres
-res://Assets/Materials/brick_128_01_.tres
-res://Assets/Materials/Water.tres
-res://Assets/Materials/yellow_light.tres
 res://Assets/Materials/awning_TEXT.tres
 res://Assets/Materials/awning_NOTEXT_mat.tres
 res://Assets/Materials/modern_lamp_mat.tres
 res://Assets/Materials/lamp_modern_light.tres
-res://Scripts/player.gd
-res://Scenes/world.tscn
+res://Assets/Materials/yellow_light.tres
+res://Assets/Materials/brick_128_01_.tres
+res://Assets/Materials/Water.tres
 res://Scenes/TEST.tscn
+res://Scenes/world.tscn
+res://Scenes/Camera.tscn
 res://Scenes/sly_cooper_rig_no_physics.tscn
 res://Scenes/test_ball.tscn
-res://Scenes/Camera.tscn
-res://Scripts/Camera.gd
+res://Scenes/light_post.tscn
+res://Assets/Obj Scenes/paris_hero_castle_01.tscn
+res://Assets/Obj Scenes/paris_hero_notre_dame.tscn
+res://Scripts/player.gd

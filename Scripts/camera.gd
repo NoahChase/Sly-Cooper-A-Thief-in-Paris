@@ -42,7 +42,7 @@ func _input(event):
 		yaw += -event.relative.x * yaw_sens * avg_distance
 		pitch += event.relative.y * pitch_sens * avg_distance
 
-func _process(delta):
+func _physics_process(delta):
 	left_stick_pressure = Input.get_action_strength("left_stick_left") + Input.get_action_strength("left_stick_right") + Input.get_action_strength("left_stick_up") + Input.get_action_strength("left_stick_down")
 	right_stick_pressure = Input.get_action_strength("right_stick_left") + Input.get_action_strength("right_stick_right") + Input.get_action_strength("right_stick_up") + Input.get_action_strength("right_stick_down")
 	camera_target.rotation.y = lerpf(camera_target.rotation.y, yaw, delta * 20)
@@ -54,13 +54,13 @@ func _process(delta):
 	var cam_input_y = Input.get_axis("right_stick_up", "right_stick_down")
 	var camerainput = Vector2(cam_input_x, cam_input_y)
 	
-	yaw += camerainput.x * (yaw_sens / 1.5) * 30 * avg_distance
-	pitch += camerainput.y * (pitch_sens / 1.5) * 20  * avg_distance
+	yaw += camerainput.x * (yaw_sens) * 30 * avg_distance
+	pitch += camerainput.y * (pitch_sens) * 20  * avg_distance
 	
 	if ray_front.is_colliding():
 		var ray_front_collider = ray_front.get_collider()
 		if not ray_front_collider.is_in_group("Player"):
-			camera.global_transform.origin = ray_front.get_collision_point()
+			camera.global_transform.origin = lerp(camera.global_transform.origin, ray_front.get_collision_point(), 0.15)
 	else:
 		return_camera_to_position(delta)
 	handle_camera_obstruction(delta)
@@ -68,7 +68,7 @@ func _process(delta):
  
 func return_camera_to_position(delta):
 	camera.global_position = camera.global_position.lerp(camera_return.global_transform.origin, 1 - exp(-100 * delta))
-	if right_stick_pressure == 0.0 and left_stick_pressure > 0.5 and handling_obstruction == false and not pitch == pitch_max and camera_player.state_now == camera_player.State.FLOOR:
+	if right_stick_pressure == 0.0 and left_stick_pressure > 0.5 and handling_obstruction == false and pitch >= -0.05 and pitch <= 0.995 and camera_player.state_now == camera_player.State.FLOOR:
 		pitch = lerp(pitch, 0.35, 0.008 * left_stick_pressure)
 
 func handle_camera_obstruction(delta):
@@ -95,7 +95,7 @@ func get_colliding_ray():
 					distance.y = distance.y * -1
 				if distance.z < 0:
 					distance.z = distance.z * -1
-				avg_distance = (distance.x + distance.y + distance.z) / 3 + 0.1
+				avg_distance = (distance.x + distance.y + distance.z) / 3
 				handling_obstruction = true
 				var raycast_name = raycast.get_name()
 				if raycast_name == "RayCast_Right":

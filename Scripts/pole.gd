@@ -14,7 +14,7 @@ var speed = 0.001
 
 func _ready():
 	test_ball.mesh.visible = false
-func _process(delta):
+func _physics_process(delta):
 	#make ball only move forward when player is on it so they don't teleport.
 	if test_ball.is_selected:
 		if not target == null:
@@ -22,7 +22,7 @@ func _process(delta):
 			if not target.anim_player.current_animation == "spin":
 				var to_target = target.global_transform.origin - test_ball.global_transform.origin
 				var distance = to_target.length()
-				var camera_direction = test_ball.global_transform.origin - target.get_node("CameraOrigin/CameraArm/camera").global_transform.origin
+				var camera_direction = test_ball.global_transform.origin - target.camera_parent.camera.global_transform.origin
 				target.global_transform.origin = lerp(target.global_transform.origin, test_ball.global_transform.origin, 0.5)
 				target.rotation.x = test_ball.rotation.x
 				target.rotation.z = test_ball.rotation.z

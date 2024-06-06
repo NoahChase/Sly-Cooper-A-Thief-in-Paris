@@ -18,14 +18,14 @@ func _ready():
 	test_ball.mesh.visible = false
 	
 	
-func _process(delta):
+func _physics_process(delta):
 	#make ball only move forward when player is on it so they don't teleport.
 	if test_ball.is_selected:
 		if not target == null:
 			move_ball = false
 			if not target.anim_player.current_animation == "spin":
-				var camera_direction = test_ball.global_transform.origin - target.camera.global_transform.origin
-				
+				var camera_direction = test_ball.global_transform.origin - target.camera_parent.camera.global_transform.origin
+								
 				### SET THESE when Player is TWEENING (not on platform yet) -this should be same as player's tween function-
 				#var x_tween = create_tween().set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
 				#var y_tween = create_tween().set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
@@ -56,8 +56,8 @@ func _process(delta):
 				### Set this when player is on platform (done tweening)
 				target.global_transform.origin = lerp(target.global_transform.origin, test_ball.global_transform.origin, 0.5)
 				
-				target.rotation.x = test_ball.rotation.x
-				target.rotation.z = test_ball.rotation.z
+				#target.rotation.x = test_ball.rotation.x
+				#target.rotation.z = test_ball.rotation.z
 				speed = 1
 				
 				if basis_type == 1:

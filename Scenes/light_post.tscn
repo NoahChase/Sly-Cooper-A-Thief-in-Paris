@@ -113,15 +113,16 @@ shape = SubResource("CylinderShape3D_s35hx")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.25, 0)
 light_color = Color(0.666667, 0.584314, 0.431373, 1)
 light_energy = 0.25
+light_bake_mode = 1
 shadow_bias = 0.25
 shadow_normal_bias = 3.0
 shadow_blur = 3.97
 distance_fade_enabled = true
-distance_fade_begin = 100.0
+distance_fade_begin = 45.0
 distance_fade_shadow = 20.0
-distance_fade_length = 50.0
-omni_range = 50.0
-omni_attenuation = 0.420449
+distance_fade_length = 45.0
+omni_range = 30.0
+omni_attenuation = 0.901252
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="LIGHTPOST"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.20876, 0)

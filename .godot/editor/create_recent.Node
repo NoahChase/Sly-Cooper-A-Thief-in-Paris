@@ -1,6 +1,10 @@
-Timer
 MeshInstance3D
+CSGPolygon3D
+PathFollow3D
+Path3D
 Node3D
+VoxelGI
+Timer
 RayCast3D
 AudioStreamPlayer
 Camera3D
@@ -9,11 +13,9 @@ AnimationPlayer
 AnimationTree
 BoneAttachment3D
 Node
-PathFollow3D
 StaticBody3D
 Area3D
 CollisionShape3D
-Path3D
 RichTextLabel
 CanvasLayer
 TextureButton
@@ -25,8 +27,6 @@ Button
 CenterContainer
 MarginContainer
 ColorRect
-CSGPolygon3D
 CollisionPolygon3D
 DirectionalLight3D
 WorldEnvironment
-MultiMeshInstance3D

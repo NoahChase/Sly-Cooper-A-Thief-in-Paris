@@ -13,6 +13,7 @@ config_version=5
 config/name="Sly Parkour"
 run/main_scene="res://Scenes/TEST.tscn"
 config/features=PackedStringArray("4.1", "Forward Plus")
+run/max_fps=60
 boot_splash/bg_color=Color(0, 0, 0, 1)
 boot_splash/image="res://Title_AI_Enhanced.png"
 boot_splash/fullsize=false
