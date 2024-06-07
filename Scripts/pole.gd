@@ -23,7 +23,8 @@ func _physics_process(delta):
 				var to_target = target.global_transform.origin - test_ball.global_transform.origin
 				var distance = to_target.length()
 				var camera_direction = test_ball.global_transform.origin - target.camera_parent.camera.global_transform.origin
-				target.global_transform.origin = lerp(target.global_transform.origin, test_ball.global_transform.origin, 0.5)
+				if target.state_now == target.State.ON_PLATFORM:
+					target.global_transform.origin = test_ball.global_transform.origin
 				target.rotation.x = test_ball.rotation.x
 				target.rotation.z = test_ball.rotation.z
 				speed = 1

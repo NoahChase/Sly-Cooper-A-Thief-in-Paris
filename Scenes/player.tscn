@@ -451,7 +451,6 @@ size_flags_horizontal = 4
 
 [node name="Basis_Offset" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.125, 0)
-visible = false
 material_override = SubResource("StandardMaterial3D_lt3pn")
 material_overlay = SubResource("ShaderMaterial_5o1mb")
 mesh = SubResource("SphereMesh_rlbuh")

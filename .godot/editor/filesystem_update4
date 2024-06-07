@@ -11,12 +11,13 @@ res://Assets/Materials/lamp_modern_light.tres
 res://Assets/Materials/yellow_light.tres
 res://Assets/Materials/brick_128_01_.tres
 res://Assets/Materials/Water.tres
+res://Scripts/player.gd
 res://Scenes/TEST.tscn
 res://Scenes/world.tscn
 res://Scenes/Camera.tscn
 res://Scenes/sly_cooper_rig_no_physics.tscn
 res://Scenes/test_ball.tscn
 res://Scenes/light_post.tscn
-res://Assets/Obj Scenes/paris_hero_castle_01.tscn
-res://Assets/Obj Scenes/paris_hero_notre_dame.tscn
-res://Scripts/player.gd
+res://Path.gd
+res://Scripts/pole.gd
+res://Scripts/Camera.gd

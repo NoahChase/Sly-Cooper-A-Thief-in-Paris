@@ -54,7 +54,8 @@ func _physics_process(delta):
 				#).set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN)
 				
 				### Set this when player is on platform (done tweening)
-				target.global_transform.origin = lerp(target.global_transform.origin, test_ball.global_transform.origin, 0.5)
+				if target.state_now == target.State.ON_PLATFORM:
+					target.global_transform.origin = test_ball.global_transform.origin
 				
 				#target.rotation.x = test_ball.rotation.x
 				#target.rotation.z = test_ball.rotation.z

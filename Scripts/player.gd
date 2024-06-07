@@ -17,6 +17,8 @@ var air_accel = 0.0
 @onready var target_b
 @onready var target_type
 @onready var target
+@onready var distance_to_target = 0
+@onready var to_target
 
 @onready var feet = $Feet
 @onready var head = $Head
@@ -134,19 +136,20 @@ func _physics_process(delta):
 	joystick_event()
 	
 ### State Handler
+	if not target == null:
+		distance_to_target = feet.global_transform.origin.y - platform.global_transform.origin.y
+		
+	
 	if target == null:
 		if not is_on_floor():
 			state_now = State.AIR
 		else:
 			state_now = State.FLOOR
-	else:
-		if state_now != State.TWEENING:
-			state_now = State.ON_PLATFORM
 			
 	
 ### Delta Input Handler
 	if Input.is_action_just_pressed("ui_accept"):
-		if state_now == State.TWEENING:
+		if state_now == State.ON_PLATFORM:
 			state_now == State.AIR
 			jump()
 		else:
@@ -161,13 +164,14 @@ func _physics_process(delta):
 		canvas_animation.play("out_in_out")
 		$CameraOrigin/CameraArm/camera/CanvasLayer/RichTextLabel.text = str(bottle_number, "/30")
 	
+	#$"CameraOrigin/Jump Counter".text = str("[center]","double jump is ", double_jump, distance_to_target)
+	$"CameraOrigin/Jump Counter".text = str(distance_to_target)
 ### State Machine
 	if state_now == State.FLOOR:
 		if SPEED_MULT == 1.8:
 			air_accel = lerpf(air_accel, 0.8, lerp_val)
 		else:
 			air_accel = 1
-		$"CameraOrigin/Jump Counter".text = str("[center]","double jump is ", double_jump)
 		can_right_stick = false
 		$"CameraOrigin/State Reader".text = str("[center]FLOOR")
 		double_jump = true
@@ -203,12 +207,26 @@ func _physics_process(delta):
 				area_anim.queue("area_check")
 	
 	if state_now == State.TWEENING:
+		$"CameraOrigin/State Reader".text = str("[center]TWEENING")
+		if distance_to_target <= 0:
+			state_now = State.ON_PLATFORM
 		air_accel = lerpf(air_accel, 1, lerp_val)
 		can_right_stick = false
 		sly_anim_tree.set("parameters/Move_State/transition_request", air_anim)
 		sly_anim_tree.set("parameters/Move_State/transition_request", floor_anim)
 		double_jump = true
-		$"CameraOrigin/State Reader".text = str("[center]TWEENING")
+		
+			#platform_type = Platform_Type.NULL
+			#return
+		
+	elif state_now == State.ON_PLATFORM:
+		air_accel = lerpf(air_accel, 1, lerp_val)
+		can_right_stick = false
+		sly_anim_tree.set("parameters/Move_State/transition_request", air_anim)
+		sly_anim_tree.set("parameters/Move_State/transition_request", floor_anim)
+		double_jump = true
+		$"CameraOrigin/State Reader".text = str("[center]ON_PLATFORM", distance_to_target)
+		#send a signal when the tween is finished and set the state to on_platform
 		if platform_type == Platform_Type.POINT:
 			sly_anim_tree.set("parameters/BlendSpace1D/blend_position", 0)
 			print("physics process! platform type = POINT")
@@ -222,8 +240,6 @@ func _physics_process(delta):
 			print("physics process! platform type = LEDGE")
 		if platform_type == Platform_Type.Ray_V_Ball:
 			print("physics process! platform type = Ray_V_Ball")
-			#platform_type = Platform_Type.NULL
-			#return
 		if platform_type == Platform_Type.POLE or platform_type == Platform_Type.ROPE or platform_type == Platform_Type.LEDGE or platform_type == Platform_Type.Ray_V_Ball:
 			if not target == null and not platform_type == Platform_Type.Ray_V_Ball:
 				#platform.global_transform.origin
@@ -235,7 +251,7 @@ func _physics_process(delta):
 					target.move_forward = false
 					sly_anim_tree.set("parameters/Pole_BlendSpace/blend_position", 0)
 					sly_anim_tree.set("parameters/Rope_BlendSpace/blend_position", 0)
-					
+				
 				if Input.is_action_pressed("S"):
 					target.move_backward = true
 					sly_anim_tree.set("parameters/Pole_BlendSpace/blend_position", -velocity.length()/SPEED)
@@ -250,9 +266,6 @@ func _physics_process(delta):
 				else:
 					#make this foot grab an automatic walk, no holding in place. this needs a separate Platform_Type (Ray_V_Feet and Ray_V_Hands)
 					pass
-	elif state_now == State.ON_PLATFORM:
-		#send a signal when the tween is finished and set the state to on_platform
-		pass
 	else:
 		move_and_slide()
 	if platform_type == Platform_Type.NULL:
@@ -287,7 +300,7 @@ func _physics_process(delta):
 	input_dir = Vector3(horizontal, 0, vertical).normalized()
 	direction = (transform.basis * Vector3(horizontal, 0, vertical).rotated(Vector3.UP, camera_T)).normalized()
 	if direction:
-		if platform_type == Platform_Type.POINT or platform_type == Platform_Type.ROPE or not state_now == State.TWEENING:
+		if not state_now == State.TWEENING and not platform_type == Platform_Type.Ray_V_Ball and not platform_type == Platform_Type.POLE:
 			is_moving = true
 			sly_rot.look_at(position - direction)
 			sly_container.rotate_y(lerp(sly_new.rotation.y, sly_rot.rotation.y, lerp_val * air_accel * 80 * delta))
@@ -309,7 +322,7 @@ func jump():
 		$Camtime.start(1)
 		$jump_sound.volume_db = -35
 		$jump_sound.play()
-		if state_now == State.FLOOR or state_now == State.TWEENING:
+		if state_now == State.FLOOR or state_now == State.ON_PLATFORM:
 			velocity.y = JUMP_VELOCITY + 0.75
 			sly_anim_tree.set("parameters/Jump_State/transition_request", "Floor_Jump")
 			sly_anim_tree.set("parameters/Jump_or_Move/request", 1)
@@ -394,6 +407,7 @@ func target_distance_manager():
 		
 
 func move_to_target():
+	state_now = State.TWEENING
 	print("moving to target!")
 	if target != null:
 		var to_feet = feet.global_transform.origin - target.global_transform.origin
@@ -410,8 +424,8 @@ func move_to_target():
 				offset_num = -0.7
 		manage_target_type()
 		var final_offset = Vector3(0,offset_num,0)
-		var to_target = platform.global_transform.origin - global_transform.origin
-		var distance = to_target.length()
+		var tween_to_target = platform.global_transform.origin - global_transform.origin
+		var tween_distance_to_target = tween_to_target.length()
 		var x_tween = create_tween().set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
 		var y_tween = create_tween().set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
 		var z_tween = create_tween().set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
@@ -421,19 +435,19 @@ func move_to_target():
 				self,
 				"position:x",
 				platform.global_transform.origin.x,
-				distance / (SPEED * SPEED_MULT),
+				tween_distance_to_target / (SPEED * SPEED_MULT),
 			).set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN)
 			y_tween.tween_property(
 				self,
 				"position:y",
 				platform.global_transform.origin.y,
-				distance / (SPEED * SPEED_MULT),
+				tween_distance_to_target / (SPEED * SPEED_MULT),
 			).set_trans(Tween.TRANS_QUART)
 			z_tween.tween_property(
 				self,
 				"position:z",
 				platform.global_transform.origin.z,
-				distance / (SPEED * SPEED_MULT),
+				tween_distance_to_target / (SPEED * SPEED_MULT),
 			).set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN)
 			sly_anim_tree.set("parameters/Move_State/transition_request", "air")
 			$AnimationPlayer.queue("RESET")
@@ -442,12 +456,7 @@ func move_to_target():
 			if target == target_a:
 				sly_anim_tree.set("parameters/Jump_State/transition_request", "Spin")
 				sly_anim_tree.set("parameters/Jump_or_Move/request", 1)
-			
-			if x_tween.is_running() and y_tween.is_running() and z_tween.is_running():
-				state_now = State.TWEENING
-			elif target != null:
-				state_now = State.ON_PLATFORM
-		
+	
 
 func ledge_detect():
 	can_ledge = false
@@ -517,11 +526,10 @@ func camera_smooth_follow(delta):
 	var cam_distance = (cam_to_player_x + cam_to_player_y + cam_to_player_z) / 3
 	var tform = sly_new.global_transform.origin + sly_new.global_transform.basis.z * 1
 	joystick_event()
-	$Basis_Offset.global_transform.origin.x = lerp($Basis_Offset.global_transform.origin.x, tform.x, lerp_val / 6 * true_left_stick_pressure)
-	$Basis_Offset.global_transform.origin.z = lerp($Basis_Offset.global_transform.origin.z, tform.z, lerp_val / 6 * true_left_stick_pressure)
-	
-	camera_parent.position.x = lerp(camera_parent.global_transform.origin.x, $Basis_Offset.global_transform.origin.x, cam_timer / 1.5)
-	camera_parent.position.z = lerp(camera_parent.global_transform.origin.z, $Basis_Offset.global_transform.origin.z, cam_timer  / 1.5)
+	$Basis_Offset.global_transform.origin.x = lerp($Basis_Offset.global_transform.origin.x, tform.x, cam_timer / 20 * true_left_stick_pressure)
+	$Basis_Offset.global_transform.origin.z = lerp($Basis_Offset.global_transform.origin.z, tform.z, cam_timer / 20 * true_left_stick_pressure)
+	camera_parent.position.x = $Basis_Offset.global_transform.origin.x
+	camera_parent.position.z = $Basis_Offset.global_transform.origin.z
 	if state_now != State.AIR:
 		camera_parent.position.y = lerp(camera_parent.global_transform.origin.y, global_transform.origin.y + 2.25, cam_timer / 5)
 	else:
