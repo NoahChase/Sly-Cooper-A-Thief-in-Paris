@@ -243,14 +243,15 @@ func _physics_process(delta):
 		if platform_type == Platform_Type.POLE or platform_type == Platform_Type.ROPE or platform_type == Platform_Type.LEDGE or platform_type == Platform_Type.Ray_V_Ball:
 			if not target == null and not platform_type == Platform_Type.Ray_V_Ball:
 				#platform.global_transform.origin
-				if Input.is_action_pressed("W"):
+				if Input.is_action_pressed("W") or Input.is_action_pressed("A") or Input.is_action_pressed("D"):
 					target.move_forward = true
 					sly_anim_tree.set("parameters/Pole_BlendSpace/blend_position", velocity.length()/SPEED)
 					sly_anim_tree.set("parameters/Rope_BlendSpace/blend_position", velocity.length()/SPEED)
-				if Input.is_action_just_released("W"):
-					target.move_forward = false
-					sly_anim_tree.set("parameters/Pole_BlendSpace/blend_position", 0)
-					sly_anim_tree.set("parameters/Rope_BlendSpace/blend_position", 0)
+				if Input.is_action_just_released("W") or Input.is_action_just_released("A") or Input.is_action_just_released("D"):
+					if not Input.is_action_pressed("W") or Input.is_action_pressed("A") or Input.is_action_pressed("D"):
+						target.move_forward = false
+						sly_anim_tree.set("parameters/Pole_BlendSpace/blend_position", 0)
+						sly_anim_tree.set("parameters/Rope_BlendSpace/blend_position", 0)
 				
 				if Input.is_action_pressed("S"):
 					target.move_backward = true
@@ -303,15 +304,25 @@ func _physics_process(delta):
 		if not state_now == State.TWEENING and not platform_type == Platform_Type.Ray_V_Ball and not platform_type == Platform_Type.POLE:
 			is_moving = true
 			sly_rot.look_at(position - direction)
-			sly_container.rotate_y(lerp(sly_new.rotation.y, sly_rot.rotation.y, lerp_val * air_accel * 80 * delta))
+			sly_container.rotate_y(lerp(sly_new.rotation.y, sly_rot.rotation.y, lerp_val * air_accel * 100 * delta))
+			var acceleration = 40
+			if state_now == State.AIR:
+				acceleration = 80
+			else:
+				acceleration = 40
+			velocity.x = lerp(velocity.x, direction.x * SPEED * SPEED_MULT * left_stick_pressure, lerp_val * acceleration * air_accel * delta)
+			velocity.z = lerp(velocity.z, direction.z * SPEED * SPEED_MULT * left_stick_pressure, lerp_val * acceleration * air_accel * delta)
+			### Rotates Sly's Tail to Direction
+			$sly_container/SlyCooper_RigNoPhysics.ball_target.global_rotation.y = sly_rot.rotation.y + sly_container.global_rotation.y
+			$sly_container/SlyCooper_RigNoPhysics.get_node("Ball Tail Root/Ball Anim").play("walk")
 			#$sly_container/Sly_Return.rotate_y(lerp(sly_new.rotation.y, sly_rot.rotation.y, lerp_val * air_accel * 80 * delta))
-		velocity.x = lerp(velocity.x, direction.x * SPEED * SPEED_MULT * left_stick_pressure, lerp_val * 80 * air_accel * delta)
-		velocity.z = lerp(velocity.z, direction.z * SPEED * SPEED_MULT * left_stick_pressure, lerp_val * 80 * air_accel * delta)
+		
 		$CameraOrigin/CameraArm/camera/CanvasLayer/RichTextLabel4.text = str(left_stick_pressure)
 	else:
 		is_moving = false
 		velocity.x = lerp(velocity.x, 0.0, lerp_val * 45 * air_accel * delta)
 		velocity.z = lerp(velocity.z, 0.0, lerp_val * 45 * air_accel * delta)
+		$sly_container/SlyCooper_RigNoPhysics.get_node("Ball Tail Root/Ball Anim").play("rotate")
 		
 
 func jump():
@@ -319,7 +330,7 @@ func jump():
 	$jump_sound.pitch_scale = randf_range(0.7, 1)
 	if double_jump:
 		coyote_timer.start(0.3)
-		$Camtime.start(1)
+		$Camtime.start(1.25)
 		$jump_sound.volume_db = -35
 		$jump_sound.play()
 		if state_now == State.FLOOR or state_now == State.ON_PLATFORM:
@@ -329,6 +340,7 @@ func jump():
 		if state_now == State.AIR:
 			sly_anim_tree.set("parameters/Jump_State/transition_request", "W_Jump")
 			sly_anim_tree.set("parameters/Jump_or_Move/request", 1)
+			#$sly_container/SlyCooper_RigNoPhysics.get_node("Ball Tail Root/Ball Anim").play("handle flip")
 			if velocity.y >= 3:
 				velocity.y += 3
 			elif velocity.y > 0 and velocity.y < 3:
@@ -515,7 +527,7 @@ func _on_platform_snap_area_body_exited(body):
 		#if not body.is_in_group("Path"):
 			#target = null
 			
-
+	
 func camera_smooth_follow(delta):
 	var cam_offset = Vector3(0, 1.5, 0).rotated(Vector3.UP, camera_T)
 	cam_speed = 350
@@ -524,14 +536,14 @@ func camera_smooth_follow(delta):
 	var cam_to_player_y = abs(camera_parent.camera.global_transform.origin.y - global_transform.origin.y)
 	var cam_to_player_z = abs(camera_parent.camera.global_transform.origin.z - global_transform.origin.z)
 	var cam_distance = (cam_to_player_x + cam_to_player_y + cam_to_player_z) / 3
-	var tform = sly_new.global_transform.origin + sly_new.global_transform.basis.z * 1
+	var tform = sly_new.global_transform.origin + sly_new.global_transform.basis.z * 0.75
 	joystick_event()
-	$Basis_Offset.global_transform.origin.x = lerp($Basis_Offset.global_transform.origin.x, tform.x, cam_timer / 20 * true_left_stick_pressure)
-	$Basis_Offset.global_transform.origin.z = lerp($Basis_Offset.global_transform.origin.z, tform.z, cam_timer / 20 * true_left_stick_pressure)
+	$Basis_Offset.global_transform.origin.x = lerp($Basis_Offset.global_transform.origin.x, tform.x, cam_timer / 15)
+	$Basis_Offset.global_transform.origin.z = lerp($Basis_Offset.global_transform.origin.z, tform.z, cam_timer / 15)
 	camera_parent.position.x = $Basis_Offset.global_transform.origin.x
 	camera_parent.position.z = $Basis_Offset.global_transform.origin.z
 	if state_now != State.AIR:
-		camera_parent.position.y = lerp(camera_parent.global_transform.origin.y, global_transform.origin.y + 2.25, cam_timer / 5)
+		camera_parent.position.y = lerp(camera_parent.global_transform.origin.y, global_transform.origin.y + 1.85, cam_timer / 6)
 	else:
 		if camtime.time_left <= 0:
-			camera_parent.position.y = lerp(camera_parent.global_transform.origin.y, global_transform.origin.y + 2.25, cam_timer / 3)
+			camera_parent.position.y = lerp(camera_parent.global_transform.origin.y, global_transform.origin.y + 1.85, cam_timer / 2)

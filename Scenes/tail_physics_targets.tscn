@@ -1,0 +1,227 @@
+[gd_scene load_steps=16 format=3 uid="uid://lg8txphoii5x"]
+
+[ext_resource type="Script" path="res://Tail Script.gd" id="1_pm4oy"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4phyk"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0.443137)
+
+[sub_resource type="BoxMesh" id="BoxMesh_aseun"]
+size = Vector3(0.25, 0.25, 0.25)
+
+[sub_resource type="SphereMesh" id="SphereMesh_koipr"]
+radius = 0.1
+height = 0.2
+
+[sub_resource type="BoxMesh" id="BoxMesh_gr31d"]
+size = Vector3(0.4, 0.05, 0.05)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1bwks"]
+transparency = 1
+albedo_color = Color(1, 0, 0, 0.431373)
+
+[sub_resource type="PrismMesh" id="PrismMesh_y2hy2"]
+size = Vector3(0.5, 1.5, 0.125)
+
+[sub_resource type="SphereMesh" id="SphereMesh_b0wen"]
+radius = 0.1
+height = 0.2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pia8y"]
+transparency = 1
+albedo_color = Color(1, 0, 0, 0.431373)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_prn1e"]
+transparency = 1
+albedo_color = Color(1, 0, 0, 0.431373)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6rowp"]
+transparency = 1
+albedo_color = Color(1, 0, 0, 0.431373)
+
+[sub_resource type="Animation" id="Animation_6w3q6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Motion Instantiater:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Motion Instantiater:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_no1ht"]
+resource_name = "position"
+length = 3.0
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Motion Instantiater:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.75, 1.5, 2, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 2, 0), Vector3(0, 0, 0), Vector3(0, -2, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_fdfmt"]
+resource_name = "rotation"
+length = 3.0
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Motion Instantiater:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.75, 1.5, 2.25, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, -1.0472, 0), Vector3(0, 0, 0), Vector3(0, 1.0472, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3f4nc"]
+_data = {
+"RESET": SubResource("Animation_6w3q6"),
+"position": SubResource("Animation_no1ht"),
+"rotation": SubResource("Animation_fdfmt")
+}
+
+[node name="Tail Physics Targets" type="Node3D"]
+script = ExtResource("1_pm4oy")
+
+[node name="Motion Instantiater" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_4phyk")
+mesh = SubResource("BoxMesh_aseun")
+
+[node name="Tail Root" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.999854, 0, -1.4013e-45, 0, 0.999979, 1.4013e-45, 1.4013e-45, -1.4013e-45, 0.999854, 1.4013e-45, -1.4013e-45, -1.4013e-45)
+mesh = SubResource("SphereMesh_koipr")
+
+[node name="Arms" type="MeshInstance3D" parent="Tail Root"]
+mesh = SubResource("BoxMesh_gr31d")
+
+[node name="connector" type="MeshInstance3D" parent="Tail Root/Arms"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.200003, 1.4013e-45, -8.40779e-45)
+visible = false
+material_override = SubResource("StandardMaterial3D_1bwks")
+mesh = SubResource("PrismMesh_y2hy2")
+
+[node name="Tail 1" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.999846, 2.8026e-45, -5.60519e-45, -2.8026e-45, 0.999976, 5.60519e-45, 5.60519e-45, -5.60519e-45, 0.999846, 0.199974, -7.00649e-45, -8.40779e-45)
+mesh = SubResource("SphereMesh_b0wen")
+
+[node name="Arms" type="MeshInstance3D" parent="Tail 1"]
+mesh = SubResource("BoxMesh_gr31d")
+
+[node name="connector" type="MeshInstance3D" parent="Tail 1/Arms"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.999999, 0, 2.38221e-44)
+visible = false
+material_override = SubResource("StandardMaterial3D_pia8y")
+mesh = SubResource("PrismMesh_y2hy2")
+
+[node name="Tail 2" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.99985, 8.40779e-45, -1.12104e-44, -8.40779e-45, 0.999975, 1.12104e-44, 1.12104e-44, -1.12104e-44, 0.99985, 0.399947, -1.26117e-44, -1.26117e-44)
+mesh = SubResource("SphereMesh_b0wen")
+
+[node name="Arms" type="MeshInstance3D" parent="Tail 2"]
+mesh = SubResource("BoxMesh_gr31d")
+
+[node name="connector" type="MeshInstance3D" parent="Tail 2/Arms"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 3.08286e-44)
+visible = false
+material_override = SubResource("StandardMaterial3D_prn1e")
+mesh = SubResource("PrismMesh_y2hy2")
+
+[node name="Tail 3" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.999847, 0, -1.96182e-44, 0, 0.999971, 4.2039e-45, 1.96182e-44, -4.2039e-45, 0.999847, 0.599921, -2.10195e-44, -1.4013e-44)
+mesh = SubResource("SphereMesh_b0wen")
+
+[node name="Arms" type="MeshInstance3D" parent="Tail 3"]
+mesh = SubResource("BoxMesh_gr31d")
+
+[node name="connector" type="MeshInstance3D" parent="Tail 3/Arms"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 3.78351e-44)
+visible = false
+material_override = SubResource("StandardMaterial3D_6rowp")
+mesh = SubResource("PrismMesh_y2hy2")
+
+[node name="Tail 4" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.999846, 0, -2.8026e-44, 0, 0.999971, 4.2039e-45, 2.8026e-44, -4.2039e-45, 0.999846, 0.799894, -2.94273e-44, -1.54143e-44)
+mesh = SubResource("SphereMesh_b0wen")
+
+[node name="Arms" type="MeshInstance3D" parent="Tail 4"]
+mesh = SubResource("BoxMesh_gr31d")
+
+[node name="connector" type="MeshInstance3D" parent="Tail 4/Arms"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 3.78351e-44)
+visible = false
+material_override = SubResource("StandardMaterial3D_6rowp")
+mesh = SubResource("PrismMesh_y2hy2")
+
+[node name="Tail 5" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.999843, 0, -3.64338e-44, 0, 0.999971, 4.2039e-45, 3.64338e-44, -4.2039e-45, 0.999843, 0.999869, -3.78351e-44, -1.68156e-44)
+mesh = SubResource("SphereMesh_b0wen")
+
+[node name="Arms" type="MeshInstance3D" parent="Tail 5"]
+mesh = SubResource("BoxMesh_gr31d")
+
+[node name="connector" type="MeshInstance3D" parent="Tail 5/Arms"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 3.78351e-44)
+visible = false
+material_override = SubResource("StandardMaterial3D_6rowp")
+mesh = SubResource("PrismMesh_y2hy2")
+
+[node name="Tail 6" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.999841, 0, -4.48416e-44, 0, 0.999971, 4.2039e-45, 4.48416e-44, -4.2039e-45, 0.999841, 1.19984, -4.62428e-44, -1.82169e-44)
+visible = false
+mesh = SubResource("SphereMesh_b0wen")
+
+[node name="Arms" type="MeshInstance3D" parent="Tail 6"]
+mesh = SubResource("BoxMesh_gr31d")
+
+[node name="connector" type="MeshInstance3D" parent="Tail 6/Arms"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 3.78351e-44)
+material_override = SubResource("StandardMaterial3D_6rowp")
+mesh = SubResource("PrismMesh_y2hy2")
+
+[node name="Tail 7" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.999837, 0, -5.32493e-44, 0, 0.999971, 4.2039e-45, 5.32493e-44, -4.2039e-45, 0.999837, 1.39982, -5.46506e-44, -1.96182e-44)
+visible = false
+mesh = SubResource("SphereMesh_b0wen")
+
+[node name="Arms" type="MeshInstance3D" parent="Tail 7"]
+mesh = SubResource("BoxMesh_gr31d")
+
+[node name="connector" type="MeshInstance3D" parent="Tail 7/Arms"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 3.78351e-44)
+material_override = SubResource("StandardMaterial3D_6rowp")
+mesh = SubResource("PrismMesh_y2hy2")
+
+[node name="Motion Instantiater Animation Player" type="AnimationPlayer" parent="."]
+autoplay = "rotation"
+libraries = {
+"": SubResource("AnimationLibrary_3f4nc")
+}

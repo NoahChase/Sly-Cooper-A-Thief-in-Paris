@@ -1,7 +1,297 @@
-[gd_scene load_steps=69 format=3 uid="uid://c26x73kclemty"]
+[gd_scene load_steps=82 format=3 uid="uid://c26x73kclemty"]
 
 [ext_resource type="PackedScene" uid="uid://bx1ae6opo7fgr" path="res://Assets/Temp/SlyCooper_RigNoPhysics.blend" id="1_36eye"]
+[ext_resource type="Script" path="res://Scripts/sly_cooper_mesh.gd" id="2_cje2a"]
 [ext_resource type="PackedScene" uid="uid://cx5flnhkxq1c2" path="res://Assets/Temp/SlyCooper_Cane.glb" id="2_g52sn"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ngjs4"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0.188235)
+
+[sub_resource type="BoxMesh" id="BoxMesh_27i8l"]
+size = Vector3(0.11, 0.11, 0.11)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ng7sp"]
+size = Vector3(0.1, 0.1, 0.1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ddew8"]
+size = Vector3(0.01, 0.2, 0.01)
+
+[sub_resource type="BoxMesh" id="BoxMesh_2k55v"]
+size = Vector3(0.01, 0.2, 0.01)
+
+[sub_resource type="BoxMesh" id="BoxMesh_or1m0"]
+size = Vector3(0.01, 0.2, 0.01)
+
+[sub_resource type="BoxMesh" id="BoxMesh_bahrc"]
+size = Vector3(0.01, 0.2, 0.01)
+
+[sub_resource type="Animation" id="Animation_1t0xk"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Ball Tail Target:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Ball Tail 1/Node3D/cnt:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -0.05, -0.15)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Ball Tail 8/Node3D/cnt:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -0.1, -0.15)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Ball Tail 7/Node3D/cnt:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -0.15, -0.15)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Ball Tail 6/Node3D/cnt:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -0.2, -0.15)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Ball Tail 5/Node3D/cnt:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -0.1, -0.15)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Ball Tail 4/Node3D/cnt:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -0.1, -0.15)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Ball Tail 3/Node3D/cnt:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -0.1, -0.275)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Ball Tail 2/Node3D/cnt:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -0.05, -0.275)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Ball Tail 2/Node3D/cnt:rotation")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.261799, -4.2039e-45, -8.40779e-45)]
+}
+
+[sub_resource type="Animation" id="Animation_fynnk"]
+resource_name = "handle flip"
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Ball Tail 1/Node3D/cnt:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, -0.05, -0.15), Vector3(4.61175e-05, -0.175153, -0.150476), Vector3(4.61175e-05, -0.175153, -0.150476), Vector3(0, -0.05, -0.15)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Ball Tail 8/Node3D/cnt:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, -0.1, -0.15), Vector3(0, -0.225, -0.15), Vector3(0, -0.225, -0.15), Vector3(0, -0.1, -0.15)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Ball Tail 7/Node3D/cnt:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, -0.15, -0.15), Vector3(0, -0.275, -0.15), Vector3(0, -0.275, -0.15), Vector3(0, -0.15, -0.15)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Ball Tail 6/Node3D/cnt:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, -0.2, -0.15), Vector3(0, -0.324, -0.15), Vector3(0, -0.324, -0.15), Vector3(0, -0.2, -0.15)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Ball Tail 5/Node3D/cnt:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, -0.1, -0.15), Vector3(0, -0.351, -0.15), Vector3(0, -0.351, -0.15), Vector3(0, -0.1, -0.15)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Ball Tail 4/Node3D/cnt:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, -0.15, -0.15), Vector3(0, -0.276, -0.15), Vector3(0, -0.276, -0.15), Vector3(0, -0.15, -0.15)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Ball Tail 3/Node3D/cnt:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, -0.1, -0.275), Vector3(0, -0.099, -0.275), Vector3(0, -0.099, -0.275), Vector3(0, -0.1, -0.275)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Ball Tail 2/Node3D/cnt:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, -0.05, -0.275), Vector3(0, -0.176, -0.275), Vector3(0, -0.176, -0.275), Vector3(0, -0.05, -0.275)]
+}
+
+[sub_resource type="Animation" id="Animation_p2tqm"]
+resource_name = "rotate"
+length = 3.0
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Ball Tail Target:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.5, 1.5, 2, 3, 4.1, 5.9, 6.9, 8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0.261799, 0), Vector3(-0.174533, 0.261799, 0), Vector3(0, -0.174533, 0), Vector3(-0.261799, -0.261799, 0), Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_sjm8c"]
+resource_name = "walk"
+length = 0.5
+loop_mode = 1
+step = 0.025
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Ball Tail Target:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.125, 0.375, 0.5),
+"transitions": PackedFloat32Array(-2, -2, -2, -2),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-0.261799, 0, 0), Vector3(0.261799, 0, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ycwhl"]
+_data = {
+"RESET": SubResource("Animation_1t0xk"),
+"handle flip": SubResource("Animation_fynnk"),
+"rotate": SubResource("Animation_p2tqm"),
+"walk": SubResource("Animation_sjm8c")
+}
 
 [sub_resource type="Animation" id="Animation_0ovbn"]
 resource_name = "T Pose"
@@ -16734,7 +17024,7 @@ animation = &"SlyCooper_anims_01_/flip_back"
 animation = &"SlyCooper_anims_01_/flip_front"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_0ok2k"]
-animation = &"idle_standing_anim/idle_standing"
+animation = &"SlyCooper_anims_01_/idle"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_yar82"]
 animation = &"SlyCooper_anims_01_/run_02"
@@ -16826,7 +17116,7 @@ blend_point_2/pos = 1.0
 animation = &"SlyCooper_anims_01_/spin"
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_ynmj0"]
-graph_offset = Vector2(-372.222, -71.9247)
+graph_offset = Vector2(-230.404, 57.9461)
 nodes/Air_Blend/node = SubResource("AnimationNodeBlend2_4kipy")
 nodes/Air_Blend/position = Vector2(-260, -360)
 nodes/Animation/node = SubResource("AnimationNodeAnimation_77dv6")
@@ -16867,43 +17157,154 @@ nodes/spin_anim/position = Vector2(-60, 740)
 node_connections = [&"output", 0, &"Jump_or_Move", &"Air_Blend", 0, &"airtime_anim", &"Air_Blend", 1, &"Animation", &"Jump_State", 0, &"jump_from_floor_anim", &"Jump_State", 1, &"flipfront_anim", &"Jump_State", 3, &"flipback_anim", &"Jump_State", 5, &"spin_anim", &"Jump_State", 6, &"landhard_anim", &"Jump_or_Move", 0, &"TimeScale", &"Jump_or_Move", 1, &"Jump_State", &"Move_State", 0, &"floor_blend", &"Move_State", 1, &"Air_Blend", &"Move_State", 2, &"point_anim", &"Move_State", 3, &"rope_blend", &"Move_State", 4, &"pole_blend", &"Move_State", 5, &"ledge_blend", &"Move_State", 6, &"rayvball_anim", &"TimeScale", 0, &"Move_State"]
 
 [node name="SlyCooper_RigNoPhysics" instance=ExtResource("1_36eye")]
+script = ExtResource("2_cje2a")
 
-[node name="Camera" parent="." index="0"]
+[node name="Ball Tail Root" type="Node3D" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.92294e-07, 0.786554, -0.0275863)
 visible = false
 
-[node name="Sun" parent="." index="1"]
+[node name="Ball Tail Target" type="MeshInstance3D" parent="Ball Tail Root" index="0"]
+transform = Transform3D(0.999831, 0, 0, 0, 0.99983, 0, 0, 0, 0.999813, -0.00390451, 0.101948, 0.00701865)
+material_override = SubResource("StandardMaterial3D_ngjs4")
+mesh = SubResource("BoxMesh_27i8l")
+
+[node name="Ball Tail 1" type="MeshInstance3D" parent="Ball Tail Root" index="1"]
+transform = Transform3D(0.999833, 0, 0, 0, 0.999826, 0, 0, 0, 0.999813, -0.00390257, 0.101949, 0.00702449)
+mesh = SubResource("BoxMesh_ng7sp")
+skeleton = NodePath("../../metarig/GeneralSkeleton/BoneAttachment3D2")
+
+[node name="Node3D" type="Node3D" parent="Ball Tail Root/Ball Tail 1" index="0"]
+
+[node name="cnt" type="MeshInstance3D" parent="Ball Tail Root/Ball Tail 1/Node3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 0.999999, 0, 0, 0, 1, 0, -0.05, -0.15)
+mesh = SubResource("BoxMesh_ddew8")
+skeleton = NodePath("../../../Ball Tail 8")
+
+[node name="Ball Tail 8" type="MeshInstance3D" parent="Ball Tail Root" index="2"]
+transform = Transform3D(0.999838, 0, 0, 0, 0.999835, 0, 0, 0, 0.999845, -0.00779285, 0.153976, -0.135595)
+mesh = SubResource("BoxMesh_ng7sp")
+skeleton = NodePath("")
+
+[node name="Node3D" type="Node3D" parent="Ball Tail Root/Ball Tail 8" index="0"]
+
+[node name="cnt" type="MeshInstance3D" parent="Ball Tail Root/Ball Tail 8/Node3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, -0.15)
+mesh = SubResource("BoxMesh_2k55v")
+skeleton = NodePath("../../../Ball Tail 7")
+
+[node name="Ball Tail 7" type="MeshInstance3D" parent="Ball Tail Root" index="3"]
+transform = Transform3D(0.999845, 0, 0, 0, 0.999834, 0, 0, 0, 0.999852, -0.0119909, 0.156002, -0.278319)
+mesh = SubResource("BoxMesh_ng7sp")
+skeleton = NodePath("")
+
+[node name="Node3D" type="Node3D" parent="Ball Tail Root/Ball Tail 7" index="0"]
+
+[node name="cnt" type="MeshInstance3D" parent="Ball Tail Root/Ball Tail 7/Node3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.15, -0.15)
+mesh = SubResource("BoxMesh_or1m0")
+skeleton = NodePath("../../../Ball Tail 6")
+
+[node name="Ball Tail 6" type="MeshInstance3D" parent="Ball Tail Root" index="4"]
+transform = Transform3D(0.999852, 0, 0, 0, 0.999835, 0, 0, 0, 0.99986, -0.0169605, 0.108003, -0.421368)
+mesh = SubResource("BoxMesh_ng7sp")
+skeleton = NodePath("")
+
+[node name="Node3D" type="Node3D" parent="Ball Tail Root/Ball Tail 6" index="0"]
+
+[node name="cnt" type="MeshInstance3D" parent="Ball Tail Root/Ball Tail 6/Node3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, -0.15)
+mesh = SubResource("BoxMesh_bahrc")
+skeleton = NodePath("")
+
+[node name="Ball Tail 5" type="MeshInstance3D" parent="Ball Tail Root" index="5"]
+transform = Transform3D(0.999858, 0, 0, 0, 0.999837, 0, 0, 0, 0.999852, -0.0223292, 0.00997865, -0.564697)
+mesh = SubResource("BoxMesh_ng7sp")
+skeleton = NodePath("")
+
+[node name="Node3D" type="Node3D" parent="Ball Tail Root/Ball Tail 5" index="0"]
+
+[node name="cnt" type="MeshInstance3D" parent="Ball Tail Root/Ball Tail 5/Node3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, -0.15)
+mesh = SubResource("BoxMesh_bahrc")
+skeleton = NodePath("")
+
+[node name="Ball Tail 4" type="MeshInstance3D" parent="Ball Tail Root" index="6"]
+transform = Transform3D(0.999858, 0, 0, 0, 0.999839, 0, 0, 0, 0.999859, -0.0273024, 0.0119429, -0.707926)
+mesh = SubResource("BoxMesh_ng7sp")
+skeleton = NodePath("")
+
+[node name="Node3D" type="Node3D" parent="Ball Tail Root/Ball Tail 4" index="0"]
+
+[node name="cnt" type="MeshInstance3D" parent="Ball Tail Root/Ball Tail 4/Node3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.999999, 0, -0.1, -0.15)
+mesh = SubResource("BoxMesh_bahrc")
+skeleton = NodePath("")
+
+[node name="Ball Tail 3" type="MeshInstance3D" parent="Ball Tail Root" index="7"]
+transform = Transform3D(0.999829, 0, 0, 0, 0.999828, 0, 0, 0, 0.99984, -0.0320458, 0.0139142, -0.851073)
+mesh = SubResource("BoxMesh_ng7sp")
+skeleton = NodePath("")
+
+[node name="Node3D" type="Node3D" parent="Ball Tail Root/Ball Tail 3" index="0"]
+
+[node name="cnt" type="MeshInstance3D" parent="Ball Tail Root/Ball Tail 3/Node3D" index="0"]
+transform = Transform3D(1, 0, 6.96361e-06, 0, 1, 0, -6.96361e-06, 0, 1, 0, -0.1, -0.275)
+mesh = SubResource("BoxMesh_bahrc")
+skeleton = NodePath("")
+
+[node name="Ball Tail 2" type="MeshInstance3D" parent="Ball Tail Root" index="8"]
+transform = Transform3D(0.999854, 0, 0, 0, 0.99984, 0, 0, 0, 0.999856, -0.0362926, 0.0158965, -1.11902)
+mesh = SubResource("BoxMesh_ng7sp")
+skeleton = NodePath("")
+
+[node name="Node3D" type="Node3D" parent="Ball Tail Root/Ball Tail 2" index="0"]
+
+[node name="cnt" type="MeshInstance3D" parent="Ball Tail Root/Ball Tail 2/Node3D" index="0"]
+transform = Transform3D(1, 7.00649e-45, -4.2039e-45, -8.40779e-45, 0.965926, -0.258818, 1.4013e-45, 0.258819, 0.965925, 0, -0.05, -0.275)
+mesh = SubResource("BoxMesh_bahrc")
+skeleton = NodePath("")
+
+[node name="Ball Anim" type="AnimationPlayer" parent="Ball Tail Root" index="9"]
+libraries = {
+"": SubResource("AnimationLibrary_ycwhl")
+}
+
+[node name="Camera" parent="." index="1"]
 visible = false
 
-[node name="Circle" parent="." index="2"]
+[node name="Sun" parent="." index="2"]
 visible = false
 
-[node name="Cube" parent="." index="3"]
+[node name="Circle" parent="." index="3"]
+visible = false
+
+[node name="Cube" parent="." index="4"]
 visible = false
 
 [node name="GeneralSkeleton" parent="metarig" index="0"]
-bones/10/position = Vector3(0.0414961, 0.820717, 0.000668917)
-bones/10/rotation = Quaternion(-0.0642525, 0.0265855, 0.0278938, 0.997189)
-bones/11/rotation = Quaternion(0.0918838, -0.0174337, -0.0317379, 0.995111)
-bones/12/rotation = Quaternion(0.032943, -0.00853762, -0.00778482, 0.99939)
-bones/13/rotation = Quaternion(0.0329551, -0.00855248, -0.00751159, 0.999392)
-bones/14/rotation = Quaternion(0.0751338, 0.000257453, 0.00628848, 0.997154)
-bones/15/rotation = Quaternion(0.0751088, 0.000590706, 0.00437052, 0.997166)
-bones/72/rotation = Quaternion(0.561634, 0.434688, 0.475581, -0.519072)
-bones/73/rotation = Quaternion(0.0849928, 0.95532, -0.282934, -0.00938925)
-bones/74/rotation = Quaternion(0.410174, -0.684794, 0.34695, 0.492383)
-bones/75/rotation = Quaternion(-0.0945912, 0.871467, -0.0997278, 0.4708)
-bones/95/rotation = Quaternion(0.598263, -0.39123, -0.489522, -0.49939)
-bones/96/rotation = Quaternion(-0.154581, 0.951663, -0.251801, -0.0838932)
-bones/97/rotation = Quaternion(0.289629, 0.723443, -0.218742, 0.58728)
-bones/98/rotation = Quaternion(-0.0217091, -0.883434, -0.0458251, 0.465803)
-bones/130/rotation = Quaternion(0.0216144, 0.203156, 0.97012, 0.130873)
-bones/131/rotation = Quaternion(0.00162341, 0.869003, -0.486541, 0.0900535)
-bones/132/rotation = Quaternion(0.14768, 0.505142, -0.850189, 0.0141574)
-bones/133/rotation = Quaternion(5.81835e-05, 0.998561, 0.0536353, -1.1967e-05)
-bones/136/rotation = Quaternion(-0.0514629, 0.390576, 0.914917, 0.0879201)
-bones/137/rotation = Quaternion(-0.00060693, 0.754366, -0.654979, -0.0439813)
-bones/138/rotation = Quaternion(-0.00568971, 0.76722, -0.636992, -0.0747144)
-bones/139/rotation = Quaternion(6.64949e-06, 0.999592, 0.0285503, -6.21921e-06)
+bones/10/position = Vector3(-0.00644852, 0.912415, 0.0107516)
+bones/10/rotation = Quaternion(-0.0427801, -0.0412458, -0.00418641, 0.998224)
+bones/11/rotation = Quaternion(0.0135078, -0.00413377, 0.0115783, 0.999833)
+bones/12/rotation = Quaternion(0.0355343, -0.00689674, 0.0161091, 0.999215)
+bones/13/rotation = Quaternion(0.0356482, -0.00643307, 0.016188, 0.999213)
+bones/14/rotation = Quaternion(0.0330082, -0.00011893, -0.0141166, 0.999355)
+bones/15/rotation = Quaternion(0.0330081, -0.000118876, -0.0141167, 0.999355)
+bones/72/rotation = Quaternion(0.543276, 0.445584, 0.551747, -0.449312)
+bones/73/rotation = Quaternion(0.198485, 0.842835, -0.488992, -0.105453)
+bones/74/rotation = Quaternion(0.0868503, -0.71343, 0.00881197, 0.695268)
+bones/75/rotation = Quaternion(-0.0380404, 0.54486, 0.00575852, 0.837644)
+bones/95/rotation = Quaternion(0.500893, -0.482242, -0.580279, -0.424059)
+bones/96/rotation = Quaternion(-0.0907227, 0.876021, -0.4723, 0.035898)
+bones/97/rotation = Quaternion(0.0921776, 0.713945, -0.0142775, 0.693961)
+bones/98/rotation = Quaternion(-0.0787861, -0.543456, 0.0821413, 0.831686)
+bones/130/rotation = Quaternion(0.122586, 0.124685, 0.984007, -0.0340116)
+bones/131/rotation = Quaternion(-0.0281229, 0.987503, -0.154588, 0.0122386)
+bones/132/rotation = Quaternion(-0.0190264, 0.717808, -0.695536, 0.0248893)
+bones/133/rotation = Quaternion(-4.60981e-09, 1, 0, -8.56108e-09)
+bones/136/rotation = Quaternion(-0.0986014, 0.0282041, 0.993459, -0.0502117)
+bones/137/rotation = Quaternion(0.00883535, 0.980351, -0.179419, -0.0814985)
+bones/138/rotation = Quaternion(-0.0315055, 0.615016, -0.787125, 0.0345977)
+bones/139/rotation = Quaternion(4.74964e-08, 0.99997, 0.00775708, -1.65276e-07)
 
 [node name="Cane_LowPoly" parent="metarig/GeneralSkeleton" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00541937, -0.00215471, 0.0017447)
@@ -16911,83 +17312,130 @@ visible = false
 bone_idx = 6
 
 [node name="TeethUpper_LowPoly" parent="metarig/GeneralSkeleton" index="1"]
-transform = Transform3D(0.999594, 0.0133868, -0.0251402, -0.0235887, 0.883782, -0.467304, 0.0159627, 0.467708, 0.883739, 0.036943, 1.16796, 0.0531573)
+transform = Transform3D(0.993711, -0.0498011, -0.100293, 0.0272332, 0.976249, -0.214934, 0.108615, 0.210851, 0.971465, -0.0184965, 1.26171, 0.0493934)
 bone_idx = 20
 
 [node name="TeethLower_LowPoly" parent="metarig/GeneralSkeleton" index="2"]
-transform = Transform3D(-0.999594, -0.0251402, 0.0133868, 0.0235887, -0.467304, 0.883782, -0.0159627, 0.883739, 0.467708, 0.0367163, 1.14913, 0.0395279)
+transform = Transform3D(-0.993711, -0.100293, -0.0498011, -0.0272332, -0.214934, 0.976249, -0.108615, 0.971465, 0.210851, -0.0170252, 1.23993, 0.0413934)
 bone_idx = 23
 
 [node name="EyeHLightBot_L" parent="metarig/GeneralSkeleton" index="3"]
-transform = Transform3D(0.999594, -0.0251402, -0.0133868, -0.0235887, -0.467304, -0.883782, 0.0159627, 0.883739, -0.467708, 0.0370011, 1.17088, 0.0538295)
+transform = Transform3D(0.993711, -0.100293, 0.0498011, 0.0272332, -0.214934, -0.976249, 0.108615, 0.971465, -0.210851, -0.0185633, 1.2647, 0.0492554)
 bone_idx = 32
 
 [node name="EyeHLightTop_L" parent="metarig/GeneralSkeleton" index="4"]
-transform = Transform3D(0.999594, -0.0251402, -0.0133868, -0.0235887, -0.467304, -0.883782, 0.0159627, 0.883739, -0.467708, 0.0370011, 1.17088, 0.0538295)
+transform = Transform3D(0.993711, -0.100293, 0.0498011, 0.0272332, -0.214934, -0.976249, 0.108615, 0.971465, -0.210851, -0.0185633, 1.2647, 0.0492554)
 bone_idx = 34
 
 [node name="Iris_L" parent="metarig/GeneralSkeleton" index="5"]
-transform = Transform3D(0.999594, -0.0251402, -0.0133868, -0.0235887, -0.467304, -0.883782, 0.0159627, 0.883739, -0.467708, 0.0370011, 1.17088, 0.0538301)
+transform = Transform3D(0.993711, -0.100293, 0.0498011, 0.0272332, -0.214934, -0.976249, 0.108615, 0.971465, -0.210851, -0.0185634, 1.2647, 0.0492559)
 bone_idx = 35
 
 [node name="Pupil_L" parent="metarig/GeneralSkeleton" index="6"]
-transform = Transform3D(0.999594, -0.0251402, -0.0133868, -0.0235887, -0.467304, -0.883782, 0.0159627, 0.883739, -0.467708, 0.0370011, 1.17088, 0.0538301)
+transform = Transform3D(0.993711, -0.100293, 0.0498011, 0.0272332, -0.214934, -0.976249, 0.108615, 0.971465, -0.210851, -0.0185634, 1.2647, 0.0492559)
 bone_idx = 36
 
 [node name="EyeHLightBot_R" parent="metarig/GeneralSkeleton" index="7"]
-transform = Transform3D(0.999594, -0.0251402, -0.0133868, -0.0235887, -0.467304, -0.883782, 0.0159627, 0.883739, -0.467708, 0.0370011, 1.17088, 0.0538295)
+transform = Transform3D(0.993711, -0.100293, 0.0498011, 0.0272332, -0.214934, -0.976249, 0.108615, 0.971465, -0.210851, -0.0185633, 1.2647, 0.0492554)
 bone_idx = 39
 
 [node name="EyeHLightTop_R" parent="metarig/GeneralSkeleton" index="8"]
-transform = Transform3D(0.999594, -0.0251402, -0.0133868, -0.0235887, -0.467304, -0.883782, 0.0159627, 0.883739, -0.467708, 0.0370011, 1.17088, 0.0538295)
+transform = Transform3D(0.993711, -0.100293, 0.0498011, 0.0272332, -0.214934, -0.976249, 0.108615, 0.971465, -0.210851, -0.0185633, 1.2647, 0.0492554)
 bone_idx = 41
 
 [node name="Iris_R" parent="metarig/GeneralSkeleton" index="9"]
-transform = Transform3D(0.999594, -0.0251402, -0.0133868, -0.0235887, -0.467304, -0.883782, 0.0159627, 0.883739, -0.467708, 0.0370011, 1.17088, 0.0538295)
+transform = Transform3D(0.993711, -0.100293, 0.0498011, 0.0272332, -0.214934, -0.976249, 0.108615, 0.971465, -0.210851, -0.0185633, 1.2647, 0.0492554)
 bone_idx = 42
 
 [node name="Pupil_R" parent="metarig/GeneralSkeleton" index="10"]
-transform = Transform3D(0.999594, -0.0251402, -0.0133868, -0.0235887, -0.467304, -0.883782, 0.0159627, 0.883739, -0.467708, 0.0370011, 1.17088, 0.0538295)
+transform = Transform3D(0.993711, -0.100293, 0.0498011, 0.0272332, -0.214934, -0.976249, 0.108615, 0.971465, -0.210851, -0.0185633, 1.2647, 0.0492554)
 bone_idx = 43
 
 [node name="Hat_LowPoly" parent="metarig/GeneralSkeleton" index="11"]
-transform = Transform3D(0.999594, 0.0133868, -0.0251402, -0.0235887, 0.883782, -0.467304, 0.0159627, 0.467708, 0.883739, 0.0124702, -0.126157, -0.32671)
+transform = Transform3D(0.993711, -0.0498011, -0.100293, 0.0272332, 0.976249, -0.214934, 0.108615, 0.210851, 0.971465, 0.0202813, -0.0865684, 0.0326744)
 bone_idx = 45
 
 [node name="EyeWhite_lowPoly" parent="metarig/GeneralSkeleton" index="12"]
-transform = Transform3D(0.999594, 0.0133868, -0.0251402, -0.0235887, 0.883782, -0.467304, 0.0159627, 0.467708, 0.883739, 0.0370011, 1.17088, 0.0538295)
+transform = Transform3D(0.993711, -0.0498011, -0.100293, 0.0272332, 0.976249, -0.214934, 0.108615, 0.210851, 0.971465, -0.0185633, 1.2647, 0.0492554)
 bone_idx = 71
 
 [node name="EyeWhite_lowPoly" parent="metarig/GeneralSkeleton/EyeWhite_lowPoly" index="0"]
 transform = Transform3D(0.084569, -1.86265e-09, 0, -3.72529e-09, 0.081723, 0.0217545, 0, -0.0217545, 0.081723, -1.49012e-08, 0, 0)
 
 [node name="Belt_LowPoly" parent="metarig/GeneralSkeleton" index="13"]
-transform = Transform3D(0.99703, -0.0590472, 0.0494371, 0.0522145, 0.990187, 0.129627, -0.0566061, -0.126661, 0.99033, 0.017734, 1.24037, -0.0307664)
+transform = Transform3D(0.996563, 0.0118869, -0.0819868, -0.00482894, 0.996305, 0.0857536, 0.0827032, -0.0850629, 0.992937, -0.00325635, 1.33368, -0.00311655)
 bone_idx = 121
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="metarig/GeneralSkeleton" index="21"]
-transform = Transform3D(0.733436, -0.598992, 0.321375, 0.190771, -0.272399, -0.943083, 0.652441, 0.752999, -0.0855171, -0.477578, 0.969534, 0.309111)
+transform = Transform3D(-0.213147, -0.189662, 0.958435, 0.0647617, -0.981562, -0.179836, 0.974871, 0.0237384, 0.221499, -0.332557, 0.713169, 0.147404)
 bone_name = "f_middle.01.R"
 bone_idx = 107
 
 [node name="SlyCooper_Cane" parent="metarig/GeneralSkeleton/BoneAttachment3D" index="0" instance=ExtResource("2_g52sn")]
-transform = Transform3D(0.104169, 0.993361, -0.0488197, -0.650064, 0.105155, 0.752569, 0.752706, -0.0466583, 0.656701, 0.00303784, 0.0180846, 0.0239757)
+transform = Transform3D(-0.0741766, 0.997191, 0.0105936, 0.972284, 0.0746772, -0.221549, -0.221718, -0.00613263, -0.975093, -0.0786485, -0.0181565, 0.0274268)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="5"]
+[node name="SkeletonIK3D" type="SkeletonIK3D" parent="metarig/GeneralSkeleton" index="22"]
+process_priority = 1
+root_bone = &"Tail.001"
+tip_bone = &"Tail.008"
+target_node = NodePath("../../../Ball Tail Root/Ball Tail 1/Node3D/cnt")
+
+[node name="Tail 2 IK" type="SkeletonIK3D" parent="metarig/GeneralSkeleton" index="23"]
+process_priority = 1
+root_bone = &"Tail.008"
+tip_bone = &"Tail.007"
+target_node = NodePath("../../../Ball Tail Root/Ball Tail 8/Node3D/cnt")
+
+[node name="Tail 3 IK" type="SkeletonIK3D" parent="metarig/GeneralSkeleton" index="24"]
+process_priority = 1
+root_bone = &"Tail.007"
+tip_bone = &"Tail.006"
+target_node = NodePath("../../../Ball Tail Root/Ball Tail 7/Node3D/cnt")
+
+[node name="Tail 4 IK" type="SkeletonIK3D" parent="metarig/GeneralSkeleton" index="25"]
+process_priority = 1
+root_bone = &"Tail.006"
+tip_bone = &"Tail.005"
+target_node = NodePath("../../../Ball Tail Root/Ball Tail 6/Node3D/cnt")
+
+[node name="Tail 5 IK" type="SkeletonIK3D" parent="metarig/GeneralSkeleton" index="26"]
+process_priority = 1
+root_bone = &"Tail.005"
+tip_bone = &"Tail.004"
+target_node = NodePath("../../../Ball Tail Root/Ball Tail 4/Node3D/cnt")
+
+[node name="Tail 6 IK" type="SkeletonIK3D" parent="metarig/GeneralSkeleton" index="27"]
+process_priority = 1
+root_bone = &"Tail.004"
+tip_bone = &"Tail.003"
+target_node = NodePath("../../../Ball Tail Root/Ball Tail 3/Node3D/cnt")
+
+[node name="Tail 7 IK" type="SkeletonIK3D" parent="metarig/GeneralSkeleton" index="28"]
+process_priority = 1
+root_bone = &"Tail.003"
+tip_bone = &"Tail.002"
+target_node = NodePath("../../../Ball Tail Root/Ball Tail 2/Node3D/cnt")
+
+[node name="BoneAttachment3D2" type="BoneAttachment3D" parent="metarig/GeneralSkeleton" index="29"]
+transform = Transform3D(0.999521, 0.02998, -0.00767734, -0.029255, 0.996239, 0.0815655, 0.0100938, -0.0813018, 0.996638, -0.0039539, 0.888472, -0.0207061)
+bone_name = "Tail.001"
+bone_idx = 122
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="6"]
 playback_default_blend_time = 0.25
 libraries = {
 "SlyCooper_anims_01_": SubResource("AnimationLibrary_47uis"),
 "idle_standing_anim": SubResource("AnimationLibrary_7ltvf")
 }
 
-[node name="AnimationTree" type="AnimationTree" parent="." index="6"]
+[node name="AnimationTree" type="AnimationTree" parent="." index="7"]
 tree_root = SubResource("AnimationNodeBlendTree_ynmj0")
 anim_player = NodePath("../AnimationPlayer")
 active = true
 parameters/Air_Blend/blend_amount = 0.18
-parameters/Jump_State/current_state = "Floor_Jump"
+parameters/Jump_State/current_state = "W_Jump"
 parameters/Jump_State/transition_request = ""
-parameters/Jump_State/current_index = 0
+parameters/Jump_State/current_index = 1
 parameters/Jump_or_Move/active = false
 parameters/Jump_or_Move/internal_active = false
 parameters/Jump_or_Move/request = 0
@@ -16995,7 +17443,7 @@ parameters/Move_State/current_state = "floor"
 parameters/Move_State/transition_request = ""
 parameters/Move_State/current_index = 0
 parameters/TimeScale/scale = 1.0
-parameters/floor_blend/blend_position = 0.349286
+parameters/floor_blend/blend_position = 0.0
 parameters/ledge_blend/blend_position = -0.000839651
 parameters/pole_blend/blend_position = -0.983207
 parameters/rope_blend/blend_position = 1.0

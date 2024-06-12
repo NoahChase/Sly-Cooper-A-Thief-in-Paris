@@ -56,20 +56,33 @@ func _physics_process(delta):
 	
 	yaw += camerainput.x * (yaw_sens) * 30 * avg_distance
 	pitch += camerainput.y * (pitch_sens) * 20  * avg_distance
+	$CameraTarget/Camera3D/CanvasLayer/RichTextLabel.text = str(pitch)
 	
-	if ray_front.is_colliding():
+	if $CameraTarget/RayCast_Out.is_colliding():
+		var ray_out_collider = $CameraTarget/RayCast_Out.get_collider()
+		var ray_out_distance = ray_out_collider.position - camera_target.global_position
+		if not ray_out_collider.is_in_group("Player"):
+			camera.global_transform.origin = lerp(camera.global_transform.origin, $CameraTarget/Camera_Return_Back.global_transform.origin, 0.025)
+			#pitch = lerp(pitch, 0.6, .012)
+	elif ray_front.is_colliding():
 		var ray_front_collider = ray_front.get_collider()
 		if not ray_front_collider.is_in_group("Player"):
 			camera.global_transform.origin = lerp(camera.global_transform.origin, ray_front.get_collision_point(), 0.15)
 	else:
 		return_camera_to_position(delta)
+	
 	handle_camera_obstruction(delta)
 	
  
 func return_camera_to_position(delta):
-	camera.global_position = camera.global_position.lerp(camera_return.global_transform.origin, 1 - exp(-100 * delta))
-	if right_stick_pressure == 0.0 and left_stick_pressure > 0.5 and handling_obstruction == false and pitch >= -0.05 and pitch <= 0.995 and camera_player.state_now == camera_player.State.FLOOR:
-		pitch = lerp(pitch, 0.35, 0.008 * left_stick_pressure)
+	camera.global_position = camera.global_position.lerp(camera_return.global_transform.origin, 0.015)
+	if right_stick_pressure == 0.0 and left_stick_pressure > 0.5 and handling_obstruction == false and camera_player.state_now == camera_player.State.FLOOR:
+		var cam_reset_speed
+		if pitch >= 0.4:
+			cam_reset_speed = 0.007
+		elif pitch <= 0.4:
+			cam_reset_speed = 0.01
+		pitch = lerp(pitch, 0.35, cam_reset_speed)
 
 func handle_camera_obstruction(delta):
 	var colliding_ray = get_colliding_ray()
@@ -78,7 +91,8 @@ func handle_camera_obstruction(delta):
 	if colliding_ray == "left":
 		yaw = lerp(yaw, yaw + 3 * delta * (1 - avg_distance), 0.125)
 	if colliding_ray == "top":
-		pitch = lerp(pitch, pitch - 4 * delta, 0.125)
+		if pitch > -0.18:
+			pitch = lerp(pitch, pitch - 4 * delta, 0.125)
 	if colliding_ray == "bottom":
 		pitch = lerp(pitch, pitch + 4 * delta * distance.y, 0.125)
 		
