@@ -22,6 +22,7 @@ var air_accel = 0.0
 
 @onready var feet = $Feet
 @onready var head = $Head
+@onready var colshape = $CollisionShape3D
 @onready var offset_num
 
 @export var platform: Node3D = null
@@ -120,10 +121,10 @@ func joystick_event():
 		if not SPEED_MULT == 1.8:
 			if left_stick_pressure >= 0.45:
 				sly_anim_tree.set("parameters/TimeScale/scale", 1.1)
-				left_stick_pressure = 1.0
+				#left_stick_pressure = 1.0
 			if left_stick_pressure <= 0.35 and left_stick_pressure > 0:
 				sly_anim_tree.set("parameters/TimeScale/scale", 1.5)
-				left_stick_pressure = 0.35
+				#left_stick_pressure = 0.35
 		else:
 			left_stick_pressure = 1
 			sly_anim_tree.set("parameters/TimeScale/scale", 1)
@@ -245,25 +246,21 @@ func _physics_process(delta):
 				#platform.global_transform.origin
 				if Input.is_action_pressed("W") or Input.is_action_pressed("A") or Input.is_action_pressed("D"):
 					target.move_forward = true
-					sly_anim_tree.set("parameters/Pole_BlendSpace/blend_position", velocity.length()/SPEED)
-					sly_anim_tree.set("parameters/Rope_BlendSpace/blend_position", velocity.length()/SPEED)
+					
 				if Input.is_action_just_released("W") or Input.is_action_just_released("A") or Input.is_action_just_released("D"):
 					if not Input.is_action_pressed("W") or Input.is_action_pressed("A") or Input.is_action_pressed("D"):
 						target.move_forward = false
-						sly_anim_tree.set("parameters/Pole_BlendSpace/blend_position", 0)
-						sly_anim_tree.set("parameters/Rope_BlendSpace/blend_position", 0)
+						
 				
 				if Input.is_action_pressed("S"):
 					target.move_backward = true
-					sly_anim_tree.set("parameters/Pole_BlendSpace/blend_position", -velocity.length()/SPEED)
-					sly_anim_tree.set("parameters/Rope_BlendSpace/blend_position", velocity.length()/SPEED)
+					
 				if Input.is_action_just_released("S"):
 					target.move_backward = false
-					sly_anim_tree.set("parameters/Pole_BlendSpace/blend_position", 0)
-					sly_anim_tree.set("parameters/Rope_BlendSpace/blend_position", 0)
+					
 			elif platform_type == Platform_Type.Ray_V_Ball and offset_num != 0.6:
 				if offset_num != 0.6:
-					sly_anim_tree.set("parameters/Hang_BlendSpace/blend_position", 0)
+					sly_anim_tree.set("parameters/Hang_BlendSpace/blend_position", left_stick_pressure)
 				else:
 					#make this foot grab an automatic walk, no holding in place. this needs a separate Platform_Type (Ray_V_Feet and Ray_V_Hands)
 					pass
@@ -286,13 +283,13 @@ func _physics_process(delta):
 			
 	
 ### Adjust Sly on Jump
-	if not is_on_floor() and not state_now == State.TWEENING and not state_now == State.ON_PLATFORM:
-		if velocity.y > 0:
-			sly_new.position.y = lerp(sly_new.position.y, $sly_container/Sly_Return.position.y - 1, lerp_val/6)
-		elif velocity.y <= 0:
-			sly_new.position.y = lerp(sly_new.position.y, $sly_container/Sly_Return.position.y, lerp_val/6)
-	elif state_now == State.TWEENING or state_now == State.ON_PLATFORM or is_on_floor():
-		sly_new.position.y = lerp(sly_new.position.y, $sly_container/Sly_Return.position.y, lerp_val * 1.5)
+#	if not is_on_floor() and not state_now == State.TWEENING and not state_now == State.ON_PLATFORM:
+#		if velocity.y > 0:
+#			sly_new.position.y = lerp(sly_new.position.y, $sly_container/Sly_Return.position.y - 1, lerp_val/6)
+#		elif velocity.y <= 0:
+#			sly_new.position.y = lerp(sly_new.position.y, $sly_container/Sly_Return.position.y, lerp_val/6)
+#	elif state_now == State.TWEENING or state_now == State.ON_PLATFORM or is_on_floor():
+#		sly_new.position.y = lerp(sly_new.position.y, $sly_container/Sly_Return.position.y, lerp_val * 1.5)
 	
 ### Direction Handling
 	camera_T = camera_target.global_transform.basis.get_euler().y
@@ -301,21 +298,20 @@ func _physics_process(delta):
 	input_dir = Vector3(horizontal, 0, vertical).normalized()
 	direction = (transform.basis * Vector3(horizontal, 0, vertical).rotated(Vector3.UP, camera_T)).normalized()
 	if direction:
-		if not state_now == State.TWEENING and not platform_type == Platform_Type.Ray_V_Ball and not platform_type == Platform_Type.POLE:
+		if not state_now == State.TWEENING and not platform_type == Platform_Type.Ray_V_Ball and not platform_type == Platform_Type.POLE and not platform_type == Platform_Type.ROPE:
 			is_moving = true
 			sly_rot.look_at(position - direction)
-			sly_container.rotate_y(lerp(sly_new.rotation.y, sly_rot.rotation.y, lerp_val * air_accel * 100 * delta))
 			var acceleration = 40
 			if state_now == State.AIR:
 				acceleration = 80
 			else:
-				acceleration = 40
+				acceleration = 50
+			sly_container.rotate_y(lerp(sly_new.rotation.y, sly_rot.rotation.y, lerp_val * air_accel * acceleration * delta))
 			velocity.x = lerp(velocity.x, direction.x * SPEED * SPEED_MULT * left_stick_pressure, lerp_val * acceleration * air_accel * delta)
 			velocity.z = lerp(velocity.z, direction.z * SPEED * SPEED_MULT * left_stick_pressure, lerp_val * acceleration * air_accel * delta)
 			### Rotates Sly's Tail to Direction
 			$sly_container/SlyCooper_RigNoPhysics.ball_target.global_rotation.y = sly_rot.rotation.y + sly_container.global_rotation.y
 			$sly_container/SlyCooper_RigNoPhysics.get_node("Ball Tail Root/Ball Anim").play("walk")
-			#$sly_container/Sly_Return.rotate_y(lerp(sly_new.rotation.y, sly_rot.rotation.y, lerp_val * air_accel * 80 * delta))
 		
 		$CameraOrigin/CameraArm/camera/CanvasLayer/RichTextLabel4.text = str(left_stick_pressure)
 	else:
@@ -437,6 +433,8 @@ func move_to_target():
 		manage_target_type()
 		var final_offset = Vector3(0,offset_num,0)
 		var tween_to_target = platform.global_transform.origin - global_transform.origin
+		if platform_type == Platform_Type.ROPE:
+			tween_to_target = platform.global_transform.origin - $"Movement Offset".global_transform.origin
 		var tween_distance_to_target = tween_to_target.length()
 		var x_tween = create_tween().set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
 		var y_tween = create_tween().set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
@@ -537,6 +535,10 @@ func camera_smooth_follow(delta):
 	var cam_to_player_z = abs(camera_parent.camera.global_transform.origin.z - global_transform.origin.z)
 	var cam_distance = (cam_to_player_x + cam_to_player_y + cam_to_player_z) / 3
 	var tform = sly_new.global_transform.origin + sly_new.global_transform.basis.z * 0.75
+	var offsetform = sly_new.global_transform.origin + sly_new.global_transform.basis.z * 2
+	$"Movement Offset".global_transform.origin.x = offsetform.x
+	$"Movement Offset".global_transform.origin.y = offsetform.y
+	$"Movement Offset".global_transform.origin.z = offsetform.z
 	joystick_event()
 	$Basis_Offset.global_transform.origin.x = lerp($Basis_Offset.global_transform.origin.x, tform.x, cam_timer / 15)
 	$Basis_Offset.global_transform.origin.z = lerp($Basis_Offset.global_transform.origin.z, tform.z, cam_timer / 15)

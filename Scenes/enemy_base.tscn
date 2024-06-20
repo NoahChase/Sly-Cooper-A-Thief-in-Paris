@@ -1,0 +1,48 @@
+[gd_scene load_steps=9 format=3 uid="uid://bt011r4ktd2pf"]
+
+[ext_resource type="Shader" path="res://Assets/Materials/sly_cooper.outline.gdshader" id="1_djitq"]
+[ext_resource type="Script" path="res://Scripts/enemy_base.gd" id="1_lo52x"]
+[ext_resource type="PackedScene" uid="uid://cdbpqojj3jrrm" path="res://Scenes/spotlight_detection.tscn" id="2_apxjc"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_vkojx"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_my1ha"]
+albedo_color = Color(0.678431, 0.678431, 0.678431, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4po7g"]
+render_priority = 0
+shader = ExtResource("1_djitq")
+shader_parameter/shadow_color = Color(0, 0, 0, 1)
+shader_parameter/shadow_thickness = 3.0
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_ojuh4"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_2utah"]
+size = Vector3(2, 0.25, 0.25)
+
+[node name="Enemy Base" type="CharacterBody3D" groups=["Enemy"]]
+script = ExtResource("1_lo52x")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_vkojx")
+
+[node name="Body" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+material_override = SubResource("StandardMaterial3D_my1ha")
+material_overlay = SubResource("ShaderMaterial_4po7g")
+mesh = SubResource("CapsuleMesh_ojuh4")
+
+[node name="Arms" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.125, 0)
+mesh = SubResource("BoxMesh_2utah")
+
+[node name="Spotlight Detection" parent="." instance=ExtResource("2_apxjc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -0.625)
+is_spotlight = true
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." groups=["Enemy"]]
+path_height_offset = 0.99
+
+[node name="Wait Timer" type="Timer" parent="."]
+one_shot = true

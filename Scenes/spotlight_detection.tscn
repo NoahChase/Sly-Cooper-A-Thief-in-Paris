@@ -1,0 +1,82 @@
+[gd_scene load_steps=8 format=3 uid="uid://cdbpqojj3jrrm"]
+
+[ext_resource type="Script" path="res://Scripts/spotlight_detection.gd" id="1_ahlui"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_hl1wj"]
+points = PackedVector3Array(-5.80925, 5.25344, -1.8738, 6.07653, 5.32294, 0.758971, 5.8101, 5.2542, 1.8729, 0.17842, -5.00943, -0.17842, -1.8738, 5.25344, 5.80925, 0.758971, 5.32294, -6.07653, 2.80035, 5.23412, 5.41355, 4.64345, 5.20745, -3.8998, -5.41283, 5.2323, 2.79938, -3.16727, 5.22386, -5.2173, -0.17842, -5.00943, 0.17842, -6.07653, 5.32294, 0.758972, 0.758972, 5.32294, 6.07653, 5.81009, 5.2542, -1.8729, 4.08347, 4.62144, 4.08236, -3.8998, 5.20745, 4.64345, 3.16822, 5.22543, -5.2177, -4.08331, 4.62222, -4.08331, -0.758972, 5.32294, -6.07653, -0.17842, -5.00943, -0.17842, 0.17842, -5.00943, 0.17842, 5.21731, 5.22387, 3.16728, -5.21731, 5.22387, -3.16728, 6.07653, 5.32294, -0.758972, -0.17938, 4.32773, 5.5822, -5.5822, 4.32773, -0.17938, 1.61221, 4.66438, -5.55517, -1.6134, 4.66555, -5.55539, -3.16728, 5.22387, 5.21731, 5.21731, 5.22386, -3.16727, -4.08331, 4.62222, 4.08331, 1.43027, 3.93782, 5.18348)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_blsrq"]
+top_radius = 7.079
+bottom_radius = 0.0
+height = 12.5
+radial_segments = 24
+rings = 1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lvkpg"]
+diffuse_mode = 3
+specular_mode = 1
+albedo_color = Color(0.988235, 1, 0.603922, 1)
+metallic = 0.26
+metallic_specular = 1.0
+clearcoat_enabled = true
+clearcoat_roughness = 0.62
+
+[sub_resource type="SphereMesh" id="SphereMesh_1lccf"]
+radius = 0.125
+height = 0.25
+
+[sub_resource type="BoxMesh" id="BoxMesh_bfkpc"]
+size = Vector3(0.5, 0.5, 0.5)
+
+[sub_resource type="SphereMesh" id="SphereMesh_em3xp"]
+radius = 0.125
+height = 0.25
+
+[node name="Spotlight Detection" type="Node3D"]
+script = ExtResource("1_ahlui")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Area3D"]
+light_color = Color(0.98, 0.98, 0.9408, 1)
+light_volumetric_fog_energy = 16.0
+light_specular = 0.25
+shadow_enabled = true
+distance_fade_enabled = true
+distance_fade_shadow = 30.0
+distance_fade_length = 30.0
+spot_range = 15.0
+spot_attenuation = 1.03526e-05
+spot_angle = 30.0
+spot_angle_attenuation = 0.05
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1.2, 0, 0, 0, -6.11959e-08, 1.2, 0, -1.4, -5.24537e-08, 0, 0, -6.99841)
+shape = SubResource("ConvexPolygonShape3D_hl1wj")
+
+[node name="Spotlight Mesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, -6.28354)
+visible = false
+mesh = SubResource("CylinderMesh_blsrq")
+
+[node name="TestMesh" type="MeshInstance3D" parent="."]
+visible = false
+material_override = SubResource("StandardMaterial3D_lvkpg")
+mesh = SubResource("SphereMesh_1lccf")
+
+[node name="Look At Player" type="Node3D" parent="."]
+
+[node name="Look At Reference" type="MeshInstance3D" parent="Look At Player"]
+visible = false
+mesh = SubResource("BoxMesh_bfkpc")
+
+[node name="Ray Follow Player" type="RayCast3D" parent="Look At Player"]
+target_position = Vector3(0, 0, -15.5)
+
+[node name="Return Origin" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
+visible = false
+mesh = SubResource("SphereMesh_em3xp")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]

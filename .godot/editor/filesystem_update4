@@ -15,3 +15,5 @@ res://Scenes/Camera.tscn
 res://Scenes/sly_cooper_rig_no_physics.tscn
 res://Scenes/TEST.tscn
 res://Scenes/world.tscn
+res://Scenes/spotlight_detection.tscn
+res://Scenes/enemy_base.tscn

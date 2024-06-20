@@ -8,7 +8,7 @@ uniform sampler2D SCREEN_TEXTURE : hint_screen_texture, filter_linear_mipmap;
 uniform sampler2D NORMAL_TEXTURE : hint_normal_roughness_texture, filter_nearest;
 
 
-uniform vec3 shadow_color : source_color = vec3(0.0);
+uniform vec3 shadow_color : source_color = vec3(1.5);
 uniform float shadow_thickness = 1;
 
 vec2 getDepth(vec2 screen_uv, sampler2D depth_texture, mat4 inv_projection_matrix){
