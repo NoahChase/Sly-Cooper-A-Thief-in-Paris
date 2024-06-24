@@ -1,7 +1,7 @@
 extends CharacterBody3D
 
 const SPEED = 4.5
-var JUMP_VELOCITY = 6.33
+var JUMP_VELOCITY = 8.75
 const lerp_val = 0.15
 var air_accel = 0.0
 
@@ -193,11 +193,11 @@ func _physics_process(delta):
 			air_accel = 1
 			airtime = -1
 		else:
-			air_accel = lerpf(air_accel, 0.0, lerp_val / 3)
+			air_accel = lerpf(air_accel, 0.125, lerp_val / 3)
 			airtime += delta
 			
 		
-		velocity.y -= gravity * delta * (2 - air_accel)
+		velocity.y -= gravity * delta * 2
 		
 		sly_anim_tree.set("parameters/Air_Blend/blend_amount", airtime)
 		
@@ -338,9 +338,9 @@ func jump():
 			sly_anim_tree.set("parameters/Jump_or_Move/request", 1)
 			#$sly_container/SlyCooper_RigNoPhysics.get_node("Ball Tail Root/Ball Anim").play("handle flip")
 			if velocity.y >= 3:
-				velocity.y += 3
+				velocity.y += 2.25
 			elif velocity.y > 0 and velocity.y < 3:
-				velocity.y += JUMP_VELOCITY * 0.6
+				velocity.y += JUMP_VELOCITY * 0.5
 			elif velocity.y <= 0:
 				velocity.y += JUMP_VELOCITY - 3
 				
@@ -534,7 +534,7 @@ func camera_smooth_follow(delta):
 	var cam_to_player_y = abs(camera_parent.camera.global_transform.origin.y - global_transform.origin.y)
 	var cam_to_player_z = abs(camera_parent.camera.global_transform.origin.z - global_transform.origin.z)
 	var cam_distance = (cam_to_player_x + cam_to_player_y + cam_to_player_z) / 3
-	var tform = sly_new.global_transform.origin + sly_new.global_transform.basis.z * 0.75
+	var tform = sly_new.global_transform.origin + sly_new.global_transform.basis.z * 1
 	var offsetform = sly_new.global_transform.origin + sly_new.global_transform.basis.z * 2
 	$"Movement Offset".global_transform.origin.x = offsetform.x
 	$"Movement Offset".global_transform.origin.y = offsetform.y
@@ -545,7 +545,7 @@ func camera_smooth_follow(delta):
 	camera_parent.position.x = $Basis_Offset.global_transform.origin.x
 	camera_parent.position.z = $Basis_Offset.global_transform.origin.z
 	if state_now != State.AIR:
-		camera_parent.position.y = lerp(camera_parent.global_transform.origin.y, global_transform.origin.y + 1.85, cam_timer / 6)
+		camera_parent.position.y = lerp(camera_parent.global_transform.origin.y, global_transform.origin.y + 1.85, cam_timer / 5)
 	else:
 		if camtime.time_left <= 0:
-			camera_parent.position.y = lerp(camera_parent.global_transform.origin.y, global_transform.origin.y + 1.85, cam_timer / 2)
+			camera_parent.position.y = lerp(camera_parent.global_transform.origin.y, global_transform.origin.y + 1.85, cam_timer / 5)
