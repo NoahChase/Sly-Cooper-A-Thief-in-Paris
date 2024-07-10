@@ -1,4 +1,3 @@
-@tool
 extends Node3D
 
 @export var tail_targets = Node3D
@@ -67,8 +66,6 @@ func _process(delta):
 	ball_4.global_position = lerp(ball_4.global_position, ball_5_cnt.global_position + ball_1.position, 0.1125)
 	ball_3.global_position = lerp(ball_3.global_position, ball_4_cnt.global_position + ball_1.position, 0.15)
 	ball_2.global_position = lerp(ball_2.global_position, ball_3_cnt.global_position + ball_1.position, 0.3)
-	
-	
 	
 	
 	

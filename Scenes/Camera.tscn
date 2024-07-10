@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://cagfx1xruo4td"]
+[gd_scene load_steps=7 format=3 uid="uid://cagfx1xruo4td"]
 
 [ext_resource type="Script" path="res://Scripts/Camera.gd" id="1_stgif"]
+[ext_resource type="Theme" uid="uid://bpcolnmuv3ess" path="res://Assets/Fonts/menu.tres" id="2_hwvlj"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_myskt"]
 transparency = 1
@@ -68,11 +69,21 @@ transform = Transform3D(-1.10049e-07, -1.28156e-07, 1, 0.965926, -0.258819, 7.31
 target_position = Vector3(0, -4.67, 0)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="CameraTarget/Camera3D"]
-visible = false
 
 [node name="RichTextLabel" type="RichTextLabel" parent="CameraTarget/Camera3D/CanvasLayer"]
-offset_right = 282.0
-offset_bottom = 143.0
+offset_left = 20.0
+offset_top = 126.0
+offset_right = 302.0
+offset_bottom = 269.0
+theme = ExtResource("2_hwvlj")
+theme_override_colors/default_color = Color(0.690196, 0.623529, 0.231373, 1)
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="CameraTarget/Camera3D/CanvasLayer"]
+offset_left = 30.0
+offset_top = 30.0
+offset_right = 294.0
+offset_bottom = 148.0
+theme = ExtResource("2_hwvlj")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="CameraTarget"]
 visible = false

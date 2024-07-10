@@ -5,7 +5,7 @@ extends Node3D
 @onready var look_at_player = $"Look At Player"
 @onready var player_detected = false
 @onready var target
-
+@onready var enemy_has_target = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -24,17 +24,16 @@ func _physics_process(delta):
 				player_detected = false
 	else:
 		player_detected = false
-		
 	
 	if player_detected:
-		if is_spotlight:
-			spotlight.light_energy = lerp(spotlight.light_energy, 2.0, 0.05)
+		#if is_spotlight:
+			#spotlight.light_energy = lerp(spotlight.light_energy, 2.0, 0.05)
 		$TestMesh.visible = false
-		$TestMesh.global_transform.origin = lerp($TestMesh.global_transform.origin, ray_follow_player.get_collision_point(), 0.1)
+		$TestMesh.global_transform.origin = lerp($TestMesh.global_transform.origin, ray_follow_player.get_collision_point(), 0.25)
 		$Area3D.look_at($TestMesh.global_transform.origin)
 	else:
-		if is_spotlight:
-			spotlight.light_energy = lerp(spotlight.light_energy, 1.0, 0.05)
+		#if is_spotlight:
+			#spotlight.light_energy = lerp(spotlight.light_energy, 1.0, 0.05)
 		$Area3D.look_at($"Return Origin".global_transform.origin)
 		
 func _on_area_3d_body_entered(body):
@@ -43,4 +42,5 @@ func _on_area_3d_body_entered(body):
 
 func _on_area_3d_body_exited(body):
 	if body.is_in_group("Player"):
-		target = null
+		if not enemy_has_target:
+			target = null

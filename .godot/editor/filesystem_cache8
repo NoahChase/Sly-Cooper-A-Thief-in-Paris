@@ -1,6 +1,6 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1719257161
-export_presets.cfg::TextFile::-1::1716954314::0::1::::<><>::
+::res://::1720642067
+export_presets.cfg::TextFile::-1::1719259329::0::1::::<><>::
 icon.svg::CompressedTexture2D::3185188914393438761::1701222441::1701222449::1::::<><>::
 Jump_Container.gd::GDScript::-1::1716329883::0::1::::<>Node3D<>::
 openxr_action_map.tres::OpenXRActionMap::4363284295891596465::1706397775::0::1::::<><>::
@@ -25,24 +25,26 @@ menu.tres::Theme::3444252477682472886::1706482972::0::1::::<><>::uid://cou66ovll
 orange-garden.regular.otf::FontFile::7898387964261001461::1705879067::1705879067::1::::<><>::
 qwigley.regular.ttf::FontFile::2799088331118571033::1705879067::1705879067::1::::<><>::
 TheComicStruves-WyVAE.ttf::FontFile::1383951161266270469::1706482881::1706482882::1::::<><>::
-::res://Assets/Materials/::1719203066
-awning_NOTEXT_mat.tres::StandardMaterial3D::2879373812594307352::1719187179::0::1::::<><>::uid://dktn17jhhj8mj::::res://Assets/Textures/SlyTIP_LampModernAwningNoText_Albedo.png<>uid://ra06w2yi8cbu::::res://Assets/Textures/SlyTIP_LampModernAwningNoText_ROUGHNESS.png
-awning_TEXT.tres::StandardMaterial3D::9197732149981444141::1719187179::0::1::::<><>::uid://bmri68bme6nxc::::res://Assets/Textures/SlyTIP_LampModernAwningText_BaseColor.png<>uid://td08tt7asxp2::::res://Assets/Textures/SlyTIP_LampModernAwningText_ROUGHNESS.png
-blur.gdshader::Shader::-1::1719203066::0::1::::<><>::
-brick_128_01_.tres::StandardMaterial3D::1046700776181968757::1719187179::0::1::::<><>::uid://bk36dcjogpnkv::::res://Assets/Textures/bricks_small_128.png
-CobbleStone_01_.tres::StandardMaterial3D::7574030609554619342::1719187179::0::1::::<><>::uid://btpnsmyomibhc::::res://Assets/Textures/detailcobble.png<>uid://dls4nwel275h::::res://Assets/Textures/detailcobble_NORMAL.png<>uid://b3st0raort8vl::::res://Assets/Textures/cobblestest.png
-lamp_modern_light.tres::StandardMaterial3D::6719342715961752510::1719187179::0::1::::<><>::uid://dfwnm866dvrkm::::res://Assets/Textures/SlyTIP_LampModernAwning_DefaultMaterial_Emissive.1001.png
+::res://Assets/Materials/::1720642053
+awning_NOTEXT_mat.tres::StandardMaterial3D::2879373812594307352::1720640534::0::1::::<><>::uid://dktn17jhhj8mj::::res://Assets/Textures/SlyTIP_LampModernAwningNoText_Albedo.png<>uid://ra06w2yi8cbu::::res://Assets/Textures/SlyTIP_LampModernAwningNoText_ROUGHNESS.png
+awning_TEXT.tres::StandardMaterial3D::9197732149981444141::1720640534::0::1::::<><>::uid://bmri68bme6nxc::::res://Assets/Textures/SlyTIP_LampModernAwningText_BaseColor.png<>uid://td08tt7asxp2::::res://Assets/Textures/SlyTIP_LampModernAwningText_ROUGHNESS.png
+blur.gdshader::Shader::-1::1720642053::0::1::::<><>::
+brick_128_01_.tres::StandardMaterial3D::1046700776181968757::1720640534::0::1::::<><>::uid://bk36dcjogpnkv::::res://Assets/Textures/bricks_small_128.png
+CobbleStone_01_.tres::StandardMaterial3D::7574030609554619342::1720640534::0::1::::<><>::uid://btpnsmyomibhc::::res://Assets/Textures/detailcobble.png<>uid://dls4nwel275h::::res://Assets/Textures/detailcobble_NORMAL.png<>uid://b3st0raort8vl::::res://Assets/Textures/cobblestest.png
+lamp_modern_light.tres::StandardMaterial3D::6719342715961752510::1720640534::0::1::::<><>::uid://dfwnm866dvrkm::::res://Assets/Textures/SlyTIP_LampModernAwning_DefaultMaterial_Emissive.1001.png
 Metal.tres::StandardMaterial3D::499493974802975739::1705811190::0::1::::<><>::
-modern_lamp_mat.tres::StandardMaterial3D::7143903605768206298::1719187179::0::1::::<><>::uid://bmri68bme6nxc::::res://Assets/Textures/SlyTIP_LampModernAwningText_BaseColor.png<>uid://td08tt7asxp2::::res://Assets/Textures/SlyTIP_LampModernAwningText_ROUGHNESS.png
-Sly Body.tres::StandardMaterial3D::8688668437532823545::1719187179::0::1::::<><>::uid://lstxo14t2uo::::res://Assets/Temp/SlyCooper_RigNoPhysics_Sly_Body.png
-Sly Head.tres::StandardMaterial3D::7410435121238094113::1719187179::0::1::::<><>::uid://dqgll65yok0qu::::res://Assets/Temp/SlyCooper_RigNoPhysics_Sly_Head_Paint.png
-sly_cooper.outline.gdshader::Shader::-1::1719203066::0::1::::<><>::
+modern_lamp_mat.tres::StandardMaterial3D::7143903605768206298::1720640534::0::1::::<><>::uid://bmri68bme6nxc::::res://Assets/Textures/SlyTIP_LampModernAwningText_BaseColor.png<>uid://td08tt7asxp2::::res://Assets/Textures/SlyTIP_LampModernAwningText_ROUGHNESS.png
+Sly Body.tres::StandardMaterial3D::8688668437532823545::1720640534::0::1::::<><>::uid://lstxo14t2uo::::res://Assets/Temp/SlyCooper_RigNoPhysics_Sly_Body.png
+Sly Head.tres::StandardMaterial3D::7410435121238094113::1720640534::0::1::::<><>::uid://dqgll65yok0qu::::res://Assets/Temp/SlyCooper_RigNoPhysics_Sly_Head_Paint.png
+sly_cooper.outline.gdshader::Shader::-1::1720642053::0::1::::<><>::
 vintage_lamp_mat.tres::StandardMaterial3D::8698549164877237389::1712798693::0::1::::<><>::uid://blji5k4khi4s2
-Water.tres::Shader::1576208034141649025::1719203066::0::1::::<><>::
-yellow_light.tres::StandardMaterial3D::585055252012687133::1719187179::0::1::::<><>::uid://7f8guyw26w7b::::res://Assets/Textures/Vintage_Lamp_Hanging-5ed26152020b7c4453edc7c333d69683_SlyTIP_LampVintage_Emissive.png
-::res://Assets/Obj Scenes/::1717647354
+Water.tres::Shader::1576208034141649025::1720642053::0::1::::<><>::
+yellow_light.tres::StandardMaterial3D::585055252012687133::1720640534::0::1::::<><>::uid://7f8guyw26w7b::::res://Assets/Textures/Vintage_Lamp_Hanging-5ed26152020b7c4453edc7c333d69683_SlyTIP_LampVintage_Emissive.png
+::res://Assets/Obj Scenes/::1720642050
 awning_no_text.tscn::PackedScene::3441987288885960966::1712804676::0::1::::<><>::res://Jump_Container.gd<>uid://chpait53vp25u
 awning_text.tscn::PackedScene::7154973776356632846::1712804676::0::1::::<><>::res://Jump_Container.gd<>uid://c0g2x6v7yfm5p
+bullet.tscn::PackedScene::6811021256432823267::1720642050::0::1::::<><>::res://Assets/Materials/sly_cooper.outline.gdshader<>res://Scripts/projectile.gd
+coin.tscn::PackedScene::8282953445986602743::1720642009::0::1::::<><>::res://Assets/Materials/sly_cooper.outline.gdshader<>res://Scripts/coin.gd<>uid://vtp7w0oiqsyk::::res://Assets/Sounds/coin-and-money-bag-3-185264.mp3<>uid://cief7ne5hhepl::::res://Assets/Textures/particle_platform_.png
 distance_lightpost.tscn::PackedScene::1109720211209219068::1717564579::0::1::::<><>::
 jump_mesh.gd::GDScript::-1::1705980195::0::1::::<>Node3D<>::
 modern_lamp_hanging.tscn::PackedScene::2779335248712017270::1714066396::0::1::::<><>::uid://csmfdqf5ds1t6
@@ -158,11 +160,13 @@ sly_cooper_anims.glb::PackedScene::7952758362046983176::1702420557::1702424101::
 sly_final.tscn::PackedScene::150243926517067402::1714065892::0::1::::<><>::uid://cmljpjp81bcu8
 Vintage_Lamp_Hanging.blend::PackedScene::4388152259737609289::1712790094::1712796327::1::::<><>::uid://dv6v3l7qvi150
 Vintage_Lamp_Post.blend::PackedScene::9207193152423987895::1712790094::1712798914::1::::<><>::uid://dv6v3l7qvi150
-::res://Assets/Sounds/::1710652337
+::res://Assets/Sounds/::1720471163
+592479__baconation__coin-flip-6.mp3::AudioStreamMP3::1600286852639655847::1720469989::1720469993::1::::<><>::
 bottle-break-39916.mp3::AudioStreamMP3::1673271781186675554::1705879822::1705879822::1::::<><>::
 bottle-clink-101000.mp3::AudioStreamMP3::2023566878703161757::1705873618::1705873618::1::::<><>::
+coin-and-money-bag-3-185264.mp3::AudioStreamMP3::1514157988803520130::1720471161::1720471163::1::::<><>::
 swoosh-sound-effect-for-fight-scenes-or-transitions-1-149889.mp3::AudioStreamMP3::1329633601221241474::1710652331::1710652337::1::::<><>::
-::res://Assets/Temp/::1718253158
+::res://Assets/Temp/::1720640739
 idletest.glb::PackedScene::7157674381039531399::1714271115::1714271115::1::::<><>::
 idletestanim.res::AnimationLibrary::2733838488771326458::1714271115::0::1::::<><>::
 idletest_Ch36_1001_Diffuse.png::CompressedTexture2D::1504809283852198261::1714271115::1714271115::1::::<><>::
@@ -189,6 +193,11 @@ sly_anim_template_01_Ch36_1001_Normal.png::CompressedTexture2D::2677445193534091
 sly_anim_template_01_Ch36_1001_Specular.png::CompressedTexture2D::3713505320936495111::1714065236::1714065237::1::::<><>::
 sly_tail_test.gd::GDScript::-1::1718056113::0::1::::<>Node3D<>::
 world.VoxelGI_data.res::VoxelGIData::5127666703391517415::1717383195::0::1::::<><>::
+::res://Assets/Temp/Floating.fbm/::1720578718
+Ch36_1001_Diffuse.png::CompressedTexture2D::6994373276790924347::1720578651::1720578717::1::::<><>::
+Ch36_1001_Glossiness.png::CompressedTexture2D::3377557310864652195::1720578651::1720578715::1::::<><>::
+Ch36_1001_Normal.png::CompressedTexture2D::5556274495823512989::1720578651::1720578718::1::::<><>::
+Ch36_1001_Specular.png::CompressedTexture2D::8087848415502970577::1720578651::1720578713::1::::<><>::
 ::res://Assets/Temp/textures/::1713999895
 b8.png::CompressedTexture2D::7842779583665872740::1713999883::1713999895::1::::<><>::
 blocky.png::CompressedTexture2D::1897243599909608720::1713999883::1713999895::1::::<><>::
@@ -211,35 +220,42 @@ sly_cooper_logo_vector_by_enverse-d6l9esg.png::CompressedTexture2D::916234419347
 Vintage_Lamp_Hanging-5ed26152020b7c4453edc7c333d69683_SlyTIP_LampVintage_Emissive.png::CompressedTexture2D::2258380349291272065::1712790941::1712798694::1::::<><>::
 Vintage_Lamp_Hanging_SlyTIP_LampVintaget_BaseColor.png::CompressedTexture2D::3177617243754160547::1712791428::1712798695::1::::<><>::
 ::res://Exports/::1706494449
-::res://Scenes/::1719203057
+::res://Scenes/::1720642009
 beam.tscn::PackedScene::9141143462327250045::1706331542::0::1::::<><>::uid://dki2qttdigjub
-Camera.tscn::PackedScene::4785573694071524365::1719200517::0::1::::<><>::res://Scripts/Camera.gd
-enemy_base.tscn::PackedScene::3773244167296840887::1719200519::0::1::::<><>::res://Assets/Materials/sly_cooper.outline.gdshader<>res://Scripts/enemy_base.gd<>uid://cdbpqojj3jrrm::::res://Scenes/spotlight_detection.tscn
+Camera.tscn::PackedScene::4785573694071524365::1720642007::0::1::::<><>::res://Scripts/Camera.gd<>uid://bpcolnmuv3ess::::res://Assets/Fonts/menu.tres
+enemy_base.tscn::PackedScene::3773244167296840887::1720642008::0::1::::<><>::res://Assets/Materials/sly_cooper.outline.gdshader<>res://Scripts/enemy_base.gd<>uid://cdbpqojj3jrrm::::res://Scenes/spotlight_detection.tscn<>uid://dbadbi78di6xc::::res://Scenes/loot_spawner.tscn<>uid://cbcysjgxx2vcq::::res://Scenes/gun.tscn
+gun.tscn::PackedScene::4848648801704851152::1720642009::0::1::::<><>::res://Scripts/gun.gd
 head.gd::GDScript::-1::1703038130::0::1::::<>Node3D<>::
 jump_container.tscn::PackedScene::6897269912681798379::1705989812::0::1::::<><>::res://Jump_Container.gd
 light_post.tscn::PackedScene::1688136930193566976::1717977907::0::1::::<><>::res://Scripts/pole.gd<>uid://dki2qttdigjub
-particle_sparkle.tscn::PackedScene::7605191563906116166::1713657159::0::1::::<><>::uid://cief7ne5hhepl
+loot_spawner.tscn::PackedScene::7229635302613811356::1720642009::0::1::::<><>::res://Scripts/Loot Spawner.gd
+particle_sparkle.tscn::PackedScene::7605191563906116166::1720642009::0::1::::<><>::uid://cief7ne5hhepl::::res://Assets/Textures/particle_platform_.png
 path_3d.tscn::PackedScene::4630826020479669185::1701820236::0::1::::<><>::uid://dki2qttdigjub
 pause_menu.tscn::PackedScene::9045393721752773455::1710808834::0::1::::<><>::res://Scripts/pause_menu.gd<>res://Assets/Materials/blur.gdshader<>uid://f4rns2nupn67
 pipe.tscn::PackedScene::3871600750980867746::1712803655::0::1::::<><>::res://Path.gd<>uid://dki2qttdigjub
-player.tscn::PackedScene::8521471381673810200::1719200517::0::1::::<><>::res://Scripts/player.gd<>uid://f5b5fpewrxb6::::res://Assets/Fonts/handwriting.tres<>uid://d14wkv5cix3g2::::res://Scenes/pause_menu.tscn<>res://Assets/Materials/sly_cooper.outline.gdshader<>uid://dgmannm3l1q1s::::res://Scenes/particle_sparkle.tscn<>uid://bpcolnmuv3ess::::res://Assets/Fonts/menu.tres<>uid://cief7ne5hhepl::::res://Assets/Textures/particle_platform_.png<>uid://s7c4vbxnk30a::::res://Assets/Sounds/swoosh-sound-effect-for-fight-scenes-or-transitions-1-149889.mp3<>uid://c26x73kclemty::::res://Scenes/sly_cooper_rig_no_physics.tscn
+player.tscn::PackedScene::8521471381673810200::1720642006::0::1::::<><>::res://Scripts/player.gd<>uid://f5b5fpewrxb6::::res://Assets/Fonts/handwriting.tres<>uid://d14wkv5cix3g2::::res://Scenes/pause_menu.tscn<>res://Assets/Materials/sly_cooper.outline.gdshader<>uid://dgmannm3l1q1s::::res://Scenes/particle_sparkle.tscn<>uid://bpcolnmuv3ess::::res://Assets/Fonts/menu.tres<>uid://cief7ne5hhepl::::res://Assets/Textures/particle_platform_.png<>uid://s7c4vbxnk30a::::res://Assets/Sounds/swoosh-sound-effect-for-fight-scenes-or-transitions-1-149889.mp3<>uid://c26x73kclemty::::res://Scenes/sly_cooper_rig_no_physics.tscn
 pole_01_.tscn::PackedScene::2092302529499671515::1713657159::0::1::::<><>::uid://dki2qttdigjub
 rope_container.tscn::PackedScene::3454047329922350505::1703133014::0::1::::<><>::res://Scripts/pole.gd
-sly_cooper_rig_no_physics.tscn::PackedScene::6733390978435105374::1719200517::0::1::::<><>::uid://bx1ae6opo7fgr::::res://Assets/Temp/SlyCooper_RigNoPhysics.blend<>res://Scripts/sly_cooper_mesh.gd<>uid://cx5flnhkxq1c2::::res://Assets/Temp/SlyCooper_Cane.glb
+sly_cooper_rig_no_physics.tscn::PackedScene::6733390978435105374::1720642007::0::1::::<><>::uid://bx1ae6opo7fgr::::res://Assets/Temp/SlyCooper_RigNoPhysics.blend<>res://Scripts/sly_cooper_mesh.gd<>uid://cx5flnhkxq1c2::::res://Assets/Temp/SlyCooper_Cane.glb
 smoke_particles.tscn::PackedScene::5372042744473746059::1705808891::0::1::::<><>::
-spotlight_detection.tscn::PackedScene::4986412353325186298::1719200519::0::1::::<><>::res://Scripts/spotlight_detection.gd
+spotlight_detection.tscn::PackedScene::4986412353325186298::1720642008::0::1::::<><>::res://Scripts/spotlight_detection.gd
 tail_physics_targets.tscn::PackedScene::786502368934402163::1718052043::0::1::::<><>::res://Tail Script.gd
-TEST.tscn::PackedScene::2261388649244646896::1719203057::0::1::::<><>::uid://dtn4nhjv25y3a::::res://Scenes/player.tscn<>uid://df56gbi2lxwfe::::res://Assets/Materials/CobbleStone_01_.tres<>uid://cagfx1xruo4td::::res://Scenes/Camera.tscn<>uid://bvfox0yrvskwo::::res://Scenes/pipe.tscn<>uid://42r6gawhab6j::::res://Scenes/pole_01_.tscn<>uid://6cwcracmy210::::res://Assets/Objects/paris_test_building_01_.blend<>res://Path.gd<>uid://b44k8u50ali18::::res://Assets/Obj Scenes/paris_detail_window_up.tscn<>uid://dnrakpid2nwcd::::res://Assets/Objects/paris_detail_hotel_window.blend<>uid://c4e05gkitsd37::::res://Assets/Obj Scenes/paris_hero_palace.tscn<>uid://c866mw5ilwftu::::res://Assets/Obj Scenes/awning_text.tscn<>uid://bpbla7dmp0k8e::::res://Assets/Obj Scenes/awning_no_text.tscn<>uid://ux0c82y3app5::::res://Assets/Obj Scenes/modern_lamp_post.tscn<>uid://wtjc1d2f3x48::::res://Assets/Obj Scenes/vintage_lamp_post.tscn<>uid://bfulil1mgwmm5::::res://Assets/Obj Scenes/modern_lamp_hanging.tscn<>uid://cdcpporaf0icl::::res://Assets/Obj Scenes/vintage_lamp_hanging.tscn<>uid://b6eqvg23p0j3d::::res://Assets/Objects/paris_test_building_02_.blend<>uid://bkiy4n0xcltxv::::res://Assets/Objects/sign_tabac.blend<>uid://dki2qttdigjub::::res://Scenes/test_ball.tscn<>uid://cdbpqojj3jrrm::::res://Scenes/spotlight_detection.tscn<>uid://bt011r4ktd2pf::::res://Scenes/enemy_base.tscn
+TEST.tscn::PackedScene::2261388649244646896::1720642007::0::1::::<><>::uid://dtn4nhjv25y3a::::res://Scenes/player.tscn<>uid://df56gbi2lxwfe::::res://Assets/Materials/CobbleStone_01_.tres<>uid://cagfx1xruo4td::::res://Scenes/Camera.tscn<>uid://c4bkr35iddx3h::::res://Assets/Obj Scenes/bullet.tscn<>uid://bvfox0yrvskwo::::res://Scenes/pipe.tscn<>uid://42r6gawhab6j::::res://Scenes/pole_01_.tscn<>uid://6cwcracmy210::::res://Assets/Objects/paris_test_building_01_.blend<>res://Path.gd<>uid://b44k8u50ali18::::res://Assets/Obj Scenes/paris_detail_window_up.tscn<>uid://dnrakpid2nwcd::::res://Assets/Objects/paris_detail_hotel_window.blend<>uid://c4e05gkitsd37::::res://Assets/Obj Scenes/paris_hero_palace.tscn<>uid://c866mw5ilwftu::::res://Assets/Obj Scenes/awning_text.tscn<>uid://bpbla7dmp0k8e::::res://Assets/Obj Scenes/awning_no_text.tscn<>uid://ux0c82y3app5::::res://Assets/Obj Scenes/modern_lamp_post.tscn<>uid://wtjc1d2f3x48::::res://Assets/Obj Scenes/vintage_lamp_post.tscn<>uid://bfulil1mgwmm5::::res://Assets/Obj Scenes/modern_lamp_hanging.tscn<>uid://cdcpporaf0icl::::res://Assets/Obj Scenes/vintage_lamp_hanging.tscn<>uid://b6eqvg23p0j3d::::res://Assets/Objects/paris_test_building_02_.blend<>uid://bkiy4n0xcltxv::::res://Assets/Objects/sign_tabac.blend<>uid://dki2qttdigjub::::res://Scenes/test_ball.tscn<>uid://cdbpqojj3jrrm::::res://Scenes/spotlight_detection.tscn<>uid://bt011r4ktd2pf::::res://Scenes/enemy_base.tscn<>uid://dqalbei8y4y12::::res://Assets/Obj Scenes/coin.tscn<>uid://dbadbi78di6xc::::res://Scenes/loot_spawner.tscn
 test_ball.tscn::PackedScene::7879334468441458589::1717977907::0::1::::<><>::res://Scripts/test_ball.gd<>uid://dgmannm3l1q1s
-world.tscn::PackedScene::8183935888303569885::1719200519::0::1::::<><>::uid://df56gbi2lxwfe::::res://Assets/Materials/CobbleStone_01_.tres<>res://Scripts/world.gd<>uid://cagfx1xruo4td::::res://Scenes/Camera.tscn<>uid://dtn4nhjv25y3a::::res://Scenes/player.tscn<>uid://6cwcracmy210::::res://Assets/Objects/paris_test_building_01_.blend<>uid://o6bakigmh5u4::::res://Assets/Materials/brick_128_01_.tres<>res://Scripts/pole.gd<>uid://dki2qttdigjub::::res://Scenes/test_ball.tscn<>uid://42r6gawhab6j::::res://Scenes/pole_01_.tscn<>uid://da80mi2ik886t::::res://Assets/Objects/paris_mini_block_01.blend<>uid://bno5ojo0o7i4a::::res://Assets/Obj Scenes/paris_block_small.tscn<>uid://bt3ekofpw6fik::::res://Assets/Obj Scenes/paris_block_lg.tscn<>uid://chto78kaa1o1b::::res://Assets/Obj Scenes/paris_hero_small.tscn<>uid://dsyi4350ncm1r::::res://Assets/Obj Scenes/paris_hero_crop_01.tscn<>uid://d7njdyf5igcb::::res://Assets/Obj Scenes/paris_hero_long_01_.tscn<>uid://5ylccc58c6sc::::res://Assets/Obj Scenes/paris_hero_short_01_.tscn<>uid://egsxno8ntieb::::res://Assets/Obj Scenes/paris_hero_notre_dame.tscn<>uid://cd4oe3t6lkxjk::::res://Assets/Obj Scenes/paris_hero_castle_01.tscn<>uid://b2ktqggsdu4kk::::res://Assets/Obj Scenes/paris_block_short_01_.tscn<>uid://vlqq6ccb03sa::::res://Assets/Obj Scenes/paris_hero_long_02_.tscn<>uid://cossj8gfb8uod::::res://Assets/Obj Scenes/paris_church_tower.tscn<>uid://b0mvb4707i6vp::::res://Assets/Obj Scenes/paris_detail_roof_01_.tscn<>uid://daaq3swb36vo8::::res://Assets/Obj Scenes/paris_block_short_02_.tscn<>uid://85vj0l5x3a8n::::res://Assets/Obj Scenes/paris_hero_L_01_.tscn<>uid://b65xq26fow5pg::::res://Assets/Obj Scenes/paris_hero_classic_01_.tscn<>uid://dwlkbvcnmeflk::::res://Assets/Obj Scenes/paris_block_med_02_.tscn<>uid://co68uujn3wjvi::::res://Assets/Obj Scenes/paris_detail_chimney_01_.tscn<>uid://m3hncfokrdrb::::res://Assets/Obj Scenes/paris_detail_chimney_02_.tscn<>uid://8x64nph8ag05::::res://Assets/Obj Scenes/paris_hero_classic_tower.tscn<>uid://yb0msdp8jiku::::res://Scenes/light_post.tscn<>uid://duxyjp282nebo::::res://Assets/Obj Scenes/paris_detail_chimney_03_.tscn<>uid://hoejfbofo651::::res://Assets/Obj Scenes/paris_cheese.tscn<>uid://c4e05gkitsd37::::res://Assets/Obj Scenes/paris_hero_palace.tscn<>uid://bxi2l8e5s8qx3::::res://Assets/Obj Scenes/paris_hero_classic_02_.tscn<>uid://c8o43voltdkya::::res://Assets/Obj Scenes/paris_detail_roof_02_paris_detail_roof_02_.tscn<>uid://dpjlvmb4mbfwa::::res://Assets/Obj Scenes/paris_block_med.tscn<>uid://cohi2r15gi6fu::::res://Assets/Obj Scenes/paris_eiffeltower.tscn<>uid://bpmyxtyrehy6y::::res://Assets/Obj Scenes/paris_hero_classic_03_.tscn<>uid://c5cxj2wcjof08::::res://Assets/Obj Scenes/paris_balcony_rd.tscn<>uid://cv8gb0e3o8m2e::::res://Assets/Obj Scenes/paris_detail_cafe_canopy.tscn<>uid://d3ibkdws82a34::::res://Scenes/beam.tscn<>uid://bar780rq3dtf::::res://Assets/Obj Scenes/paris_hero_classic_hotel.tscn<>uid://dilr7q8yvhtfi::::res://Assets/Obj Scenes/pickup_bottle.tscn<>uid://n53piq0b62j4::::res://Assets/Obj Scenes/paris_island_large.tscn<>uid://dgy3x4bgxtxet::::res://Assets/Obj Scenes/paris_island_marais.tscn<>uid://c5jda7dagd4b4::::res://Scenes/jump_container.tscn<>uid://d0tv8ykski4ew::::res://Assets/Obj Scenes/paris_island_latin.tscn<>uid://bow716kmpj75o::::res://Assets/Obj Scenes/water.tscn<>uid://p2s6u10w2glw::::res://Assets/Obj Scenes/distance_lightpost.tscn<>uid://b3rwhx7k24qqr::::res://Assets/Objects/Vintage_Lamp_Hanging.blend
-::res://Scripts/::1719199161
-Camera.gd::GDScript::-1::1718223685::0::1::::<>Node3D<>::
-enemy_base.gd::GDScript::-1::1718860214::0::1::::<>CharacterBody3D<>::
+world.tscn::PackedScene::8183935888303569885::1720642008::0::1::::<><>::uid://df56gbi2lxwfe::::res://Assets/Materials/CobbleStone_01_.tres<>res://Scripts/world.gd<>uid://cagfx1xruo4td::::res://Scenes/Camera.tscn<>uid://dtn4nhjv25y3a::::res://Scenes/player.tscn<>uid://6cwcracmy210::::res://Assets/Objects/paris_test_building_01_.blend<>uid://o6bakigmh5u4::::res://Assets/Materials/brick_128_01_.tres<>res://Scripts/pole.gd<>uid://dki2qttdigjub::::res://Scenes/test_ball.tscn<>uid://42r6gawhab6j::::res://Scenes/pole_01_.tscn<>uid://da80mi2ik886t::::res://Assets/Objects/paris_mini_block_01.blend<>uid://bno5ojo0o7i4a::::res://Assets/Obj Scenes/paris_block_small.tscn<>uid://bt3ekofpw6fik::::res://Assets/Obj Scenes/paris_block_lg.tscn<>uid://chto78kaa1o1b::::res://Assets/Obj Scenes/paris_hero_small.tscn<>uid://dsyi4350ncm1r::::res://Assets/Obj Scenes/paris_hero_crop_01.tscn<>uid://d7njdyf5igcb::::res://Assets/Obj Scenes/paris_hero_long_01_.tscn<>uid://5ylccc58c6sc::::res://Assets/Obj Scenes/paris_hero_short_01_.tscn<>uid://egsxno8ntieb::::res://Assets/Obj Scenes/paris_hero_notre_dame.tscn<>uid://cd4oe3t6lkxjk::::res://Assets/Obj Scenes/paris_hero_castle_01.tscn<>uid://b2ktqggsdu4kk::::res://Assets/Obj Scenes/paris_block_short_01_.tscn<>uid://vlqq6ccb03sa::::res://Assets/Obj Scenes/paris_hero_long_02_.tscn<>uid://cossj8gfb8uod::::res://Assets/Obj Scenes/paris_church_tower.tscn<>uid://b0mvb4707i6vp::::res://Assets/Obj Scenes/paris_detail_roof_01_.tscn<>uid://daaq3swb36vo8::::res://Assets/Obj Scenes/paris_block_short_02_.tscn<>uid://85vj0l5x3a8n::::res://Assets/Obj Scenes/paris_hero_L_01_.tscn<>uid://b65xq26fow5pg::::res://Assets/Obj Scenes/paris_hero_classic_01_.tscn<>uid://dwlkbvcnmeflk::::res://Assets/Obj Scenes/paris_block_med_02_.tscn<>uid://co68uujn3wjvi::::res://Assets/Obj Scenes/paris_detail_chimney_01_.tscn<>uid://m3hncfokrdrb::::res://Assets/Obj Scenes/paris_detail_chimney_02_.tscn<>uid://8x64nph8ag05::::res://Assets/Obj Scenes/paris_hero_classic_tower.tscn<>uid://yb0msdp8jiku::::res://Scenes/light_post.tscn<>uid://duxyjp282nebo::::res://Assets/Obj Scenes/paris_detail_chimney_03_.tscn<>uid://hoejfbofo651::::res://Assets/Obj Scenes/paris_cheese.tscn<>uid://c4e05gkitsd37::::res://Assets/Obj Scenes/paris_hero_palace.tscn<>uid://bxi2l8e5s8qx3::::res://Assets/Obj Scenes/paris_hero_classic_02_.tscn<>uid://c8o43voltdkya::::res://Assets/Obj Scenes/paris_detail_roof_02_paris_detail_roof_02_.tscn<>uid://dpjlvmb4mbfwa::::res://Assets/Obj Scenes/paris_block_med.tscn<>uid://cohi2r15gi6fu::::res://Assets/Obj Scenes/paris_eiffeltower.tscn<>uid://bpmyxtyrehy6y::::res://Assets/Obj Scenes/paris_hero_classic_03_.tscn<>uid://c5cxj2wcjof08::::res://Assets/Obj Scenes/paris_balcony_rd.tscn<>uid://cv8gb0e3o8m2e::::res://Assets/Obj Scenes/paris_detail_cafe_canopy.tscn<>uid://d3ibkdws82a34::::res://Scenes/beam.tscn<>uid://bar780rq3dtf::::res://Assets/Obj Scenes/paris_hero_classic_hotel.tscn<>uid://dilr7q8yvhtfi::::res://Assets/Obj Scenes/pickup_bottle.tscn<>uid://n53piq0b62j4::::res://Assets/Obj Scenes/paris_island_large.tscn<>uid://dgy3x4bgxtxet::::res://Assets/Obj Scenes/paris_island_marais.tscn<>uid://c5jda7dagd4b4::::res://Scenes/jump_container.tscn<>uid://d0tv8ykski4ew::::res://Assets/Obj Scenes/paris_island_latin.tscn<>uid://bow716kmpj75o::::res://Assets/Obj Scenes/water.tscn<>uid://p2s6u10w2glw::::res://Assets/Obj Scenes/distance_lightpost.tscn<>uid://b3rwhx7k24qqr::::res://Assets/Objects/Vintage_Lamp_Hanging.blend
+::res://Scripts/::1720642007
+Camera.gd::GDScript::-1::1720577522::0::1::::<>Node3D<>::
+coin.gd::GDScript::-1::1720472920::0::1::::<>Node3D<>::
+enemy_base.gd::GDScript::-1::1720581148::0::1::::<>CharacterBody3D<>::
+Global.gd::GDScript::-1::1720478260::0::1::::<>Node<>::
+gun.gd::GDScript::-1::1720475252::0::1::::<>Node3D<>::
+Loot Spawner.gd::GDScript::-1::1720398767::0::1::::<>Node3D<>::
 pause_menu.gd::GDScript::-1::1707178451::0::1::::<>Control<>::
-player.gd::GDScript::-1::1719199161::0::1::::<>CharacterBody3D<>::
+player.gd::GDScript::-1::1720640193::0::1::::<>CharacterBody3D<>::
 pole.gd::GDScript::-1::1717717401::0::1::::<>Node3D<>::
-sly_cooper_mesh.gd::GDScript::-1::1718665740::0::1::::<>Node3D<>::
+projectile.gd::GDScript::-1::1720642007::0::1::::<>Node3D<>::
+sly_cooper_mesh.gd::GDScript::-1::1720575203::0::1::::<>Node3D<>::
 sly_cooper_rig.gd::GDScript::-1::1714172897::0::1::::<>Node3D<>::
-spotlight_detection.gd::GDScript::-1::1718848595::0::1::::<>Node3D<>::
+spotlight_detection.gd::GDScript::-1::1720581192::0::1::::<>Node3D<>::
 test_ball.gd::GDScript::-1::1714169964::0::1::::<>StaticBody3D<>::
 world.gd::GDScript::-1::1706479299::0::1::::<>Node3D<>::

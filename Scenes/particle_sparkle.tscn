@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dgmannm3l1q1s"]
+[gd_scene load_steps=14 format=3 uid="uid://dgmannm3l1q1s"]
 
 [ext_resource type="Texture2D" uid="uid://cief7ne5hhepl" path="res://Assets/Textures/particle_platform_.png" id="1_6fjma"]
 
@@ -7,6 +7,7 @@ transparency = 1
 shading_mode = 0
 specular_mode = 2
 disable_ambient_light = true
+vertex_color_use_as_albedo = true
 albedo_color = Color(1, 1, 1, 0.109804)
 albedo_texture = ExtResource("1_6fjma")
 disable_receive_shadows = true
@@ -15,6 +16,18 @@ grow_amount = -6.472
 proximity_fade_distance = 10.0
 distance_fade_mode = 1
 distance_fade_min_distance = 20.0
+
+[sub_resource type="Gradient" id="Gradient_2ag0k"]
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_6vyht"]
+gradient = SubResource("Gradient_2ag0k")
+
+[sub_resource type="Gradient" id="Gradient_djijk"]
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_1jaum"]
+gradient = SubResource("Gradient_djijk")
 
 [sub_resource type="Curve" id="Curve_fju07"]
 _data = [Vector2(0, 0.273684), 0.0, 0.0, 0, 0, Vector2(0.5, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.273684), 0.0, 0.0, 0, 0]
@@ -35,6 +48,8 @@ tangential_accel_max = 0.1
 damping_min = 0.05
 damping_max = 0.05
 scale_curve = SubResource("CurveTexture_5a2ch")
+color_ramp = SubResource("GradientTexture1D_1jaum")
+color_initial_ramp = SubResource("GradientTexture1D_6vyht")
 
 [sub_resource type="QuadMesh" id="QuadMesh_u156o"]
 

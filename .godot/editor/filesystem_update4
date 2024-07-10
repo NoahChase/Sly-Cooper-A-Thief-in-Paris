@@ -17,3 +17,10 @@ res://Scenes/TEST.tscn
 res://Scenes/world.tscn
 res://Scenes/spotlight_detection.tscn
 res://Scenes/enemy_base.tscn
+res://Assets/Obj Scenes/bullet.tscn
+res://Assets/Obj Scenes/coin.tscn
+res://Scenes/loot_spawner.tscn
+res://Scenes/particle_sparkle.tscn
+res://Scenes/gun.tscn
+res://Scripts/projectile.gd
+res://Scripts/enemy_base.gd

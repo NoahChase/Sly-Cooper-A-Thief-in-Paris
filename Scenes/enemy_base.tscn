@@ -1,8 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://bt011r4ktd2pf"]
+[gd_scene load_steps=14 format=3 uid="uid://bt011r4ktd2pf"]
 
 [ext_resource type="Shader" path="res://Assets/Materials/sly_cooper.outline.gdshader" id="1_djitq"]
 [ext_resource type="Script" path="res://Scripts/enemy_base.gd" id="1_lo52x"]
 [ext_resource type="PackedScene" uid="uid://cdbpqojj3jrrm" path="res://Scenes/spotlight_detection.tscn" id="2_apxjc"]
+[ext_resource type="PackedScene" uid="uid://dbadbi78di6xc" path="res://Scenes/loot_spawner.tscn" id="4_tdcbf"]
+[ext_resource type="PackedScene" uid="uid://cbcysjgxx2vcq" path="res://Scenes/gun.tscn" id="5_a14l1"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_vkojx"]
 
@@ -20,7 +22,21 @@ shader_parameter/shadow_thickness = 3.0
 [sub_resource type="BoxMesh" id="BoxMesh_2utah"]
 size = Vector3(2, 0.25, 0.25)
 
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_bjcjf"]
+height = 2.25
+radius = 0.625
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_srccj"]
+render_priority = 0
+shader = ExtResource("1_djitq")
+shader_parameter/shadow_color = Color(0, 0, 0, 1)
+shader_parameter/shadow_thickness = 3.0
+
+[sub_resource type="PrismMesh" id="PrismMesh_ohrbu"]
+size = Vector3(0.25, 0.5, 0.25)
+
 [node name="Enemy Base" type="CharacterBody3D" groups=["Enemy"]]
+safe_margin = 0.01
 script = ExtResource("1_lo52x")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -37,8 +53,11 @@ mesh = SubResource("CapsuleMesh_ojuh4")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.125, 0)
 mesh = SubResource("BoxMesh_2utah")
 
+[node name="Gun" parent="." instance=ExtResource("5_a14l1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -0.869608)
+
 [node name="Spotlight Detection" parent="." instance=ExtResource("2_apxjc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -0.625)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -0.5)
 is_spotlight = true
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." groups=["Enemy"]]
@@ -46,3 +65,21 @@ path_height_offset = 0.99
 
 [node name="Wait Timer" type="Timer" parent="."]
 one_shot = true
+
+[node name="Close Detection Area" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Close Detection Area"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0300481)
+shape = SubResource("CylinderShape3D_bjcjf")
+
+[node name="nose" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 1.25, -0.625)
+material_overlay = SubResource("ShaderMaterial_srccj")
+mesh = SubResource("PrismMesh_ohrbu")
+
+[node name="Loot Spawner" parent="." instance=ExtResource("4_tdcbf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.05773, 0.940986)
+
+[connection signal="body_entered" from="Close Detection Area" to="." method="_on_close_detection_area_body_entered"]
+[connection signal="body_exited" from="Close Detection Area" to="." method="_on_close_detection_area_body_exited"]

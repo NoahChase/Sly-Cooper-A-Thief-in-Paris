@@ -444,6 +444,7 @@ _data = {
 floor_constant_speed = true
 floor_max_angle = 0.959931
 floor_snap_length = 1.0
+safe_margin = 0.01
 script = ExtResource("1_te7i4")
 
 [node name="Pause Menu" parent="." instance=ExtResource("2_s8llo")]

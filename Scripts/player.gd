@@ -63,7 +63,7 @@ var cam_speed = float()
 @onready var coyote_timer = $"Coyote Time"
 @onready var camtime = $Camtime
 @onready var airtime = 0
-
+@onready var cam_y_follow = true
 @export var sens = 0.15
 
 var SPEED_MULT = 1
@@ -92,7 +92,11 @@ enum Platform_Type{NULL, POINT, PATH, POLE, ROPE, LEDGE, Ray_V_Ball}
 @export var platform_anim: String
 
 @onready var bottle_number = 30
+@onready var coins = 0
 @onready var blend_pos = velocity.length()/SPEED
+
+
+@onready var player_hit = false
 
 func _ready():
 	camera_target = camera_parent.camera_target
@@ -155,6 +159,13 @@ func _physics_process(delta):
 			jump()
 		else:
 			jump()
+	if Input.is_action_just_pressed("LALT") or Input.is_action_just_pressed("L2"):
+		if state_now == State.ON_PLATFORM:
+			state_now == State.AIR
+			high_jump()
+		else:
+			high_jump()
+	
 	if Input.is_action_pressed("SHIFT"):
 		if is_on_floor() or target!= null:
 			SPEED_MULT = 1.8
@@ -177,7 +188,11 @@ func _physics_process(delta):
 		$"CameraOrigin/State Reader".text = str("[center]FLOOR")
 		double_jump = true
 		sly_anim_tree.set("parameters/Move_State/transition_request", floor_anim)
-		
+		if player_hit:
+			if coyote_timer.is_stopped():
+				coyote_timer.start(0.3)
+			if coyote_timer.time_left <= 0.1:
+				player_hit = false
 	
 	if state_now == State.AIR:
 		ledge_detect()
@@ -268,7 +283,10 @@ func _physics_process(delta):
 		move_and_slide()
 	if platform_type == Platform_Type.NULL:
 			#print("physics process! platform type = NULL")
-			air_anim = "air"
+			if player_hit:
+				air_anim = "flail"
+			else:
+				air_anim = "air"
 			floor_anim = "floor"
 			if not target == null and not target.is_in_group("Ray_V_Ball"):
 				if target.is_in_group("Path"):
@@ -322,6 +340,7 @@ func _physics_process(delta):
 		
 
 func jump():
+	cam_y_follow = false
 	platform_type = Platform_Type.NULL
 	$jump_sound.pitch_scale = randf_range(0.7, 1)
 	if double_jump:
@@ -346,6 +365,22 @@ func jump():
 				
 		double_jump = false
 		
+
+func high_jump():
+	cam_y_follow = true
+	platform_type = Platform_Type.NULL
+	$jump_sound.pitch_scale = randf_range(0.7, 1)
+	if state_now == State.FLOOR or state_now == State.TWEENING or state_now == State.ON_PLATFORM:
+		if Global.power_ups >= 1:
+			coyote_timer.start(0.3)
+			$Camtime.start(1.25)
+			$jump_sound.volume_db = -35
+			$jump_sound.play()
+			velocity.y = JUMP_VELOCITY * 1.645
+			sly_anim_tree.set("parameters/Jump_State/transition_request", "Floor_Jump")
+			sly_anim_tree.set("parameters/Jump_or_Move/request", 1)
+			double_jump = false
+			Global.power_ups -= 1
 
 func manage_target_type():
 	#SPEED_MULT = 0
@@ -544,8 +579,8 @@ func camera_smooth_follow(delta):
 	$Basis_Offset.global_transform.origin.z = lerp($Basis_Offset.global_transform.origin.z, tform.z, cam_timer / 15)
 	camera_parent.position.x = $Basis_Offset.global_transform.origin.x
 	camera_parent.position.z = $Basis_Offset.global_transform.origin.z
-	if state_now != State.AIR:
+	if state_now != State.AIR or cam_y_follow == true:
 		camera_parent.position.y = lerp(camera_parent.global_transform.origin.y, global_transform.origin.y + 1.85, cam_timer / 5)
 	else:
 		if camtime.time_left <= 0:
-			camera_parent.position.y = lerp(camera_parent.global_transform.origin.y, global_transform.origin.y + 1.85, cam_timer / 5)
+			camera_parent.position.y = lerp(camera_parent.global_transform.origin.y, global_transform.origin.y + 1.85, cam_timer / 2)

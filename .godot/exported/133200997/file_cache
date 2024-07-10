@@ -1,8 +1,8 @@
 res://Assets/Fonts/handwriting.tres::3880ce99d9f45d2597d89544a5735429::1705879526::res://.godot/exported/133200997/export-b73a6ee715dc431d614ac99554297ea8-handwriting.res
-res://Assets/Materials/brick_128_01_.tres::adccc959e2567c245e4cbbeebab8c689::1716407736::res://.godot/exported/133200997/export-f045a6e66127161cd29d70a4df0f106e-brick_128_01_.res
-res://Assets/Materials/CobbleStone_01_.tres::1f827b30e79ee172f534bb1ba0c89c62::1716407736::res://.godot/exported/133200997/export-5a14c8c2062913dd757a59d4c8e29d7f-CobbleStone_01_.res
+res://Assets/Materials/brick_128_01_.tres::adccc959e2567c245e4cbbeebab8c689::1719257168::res://.godot/exported/133200997/export-f045a6e66127161cd29d70a4df0f106e-brick_128_01_.res
+res://Assets/Materials/CobbleStone_01_.tres::1f827b30e79ee172f534bb1ba0c89c62::1719257168::res://.godot/exported/133200997/export-5a14c8c2062913dd757a59d4c8e29d7f-CobbleStone_01_.res
 res://Assets/Materials/Metal.tres::8d033e7cd0c66ece2ed493d1bade518c::1705811190::res://.godot/exported/133200997/export-8f9f1935fc3233b2c4564734890b839f-Metal.res
-res://Assets/Materials/Water.tres::5269ebcf2e2c91d6d74e8b0fbb410136::1716410473::res://.godot/exported/133200997/export-4cd8b2edaafb9b039d5bc76d4e6a9554-Water.res
+res://Assets/Materials/Water.tres::5269ebcf2e2c91d6d74e8b0fbb410136::1719258769::res://.godot/exported/133200997/export-4cd8b2edaafb9b039d5bc76d4e6a9554-Water.res
 res://Assets/Obj Scenes/paris_balcony_rd.tscn::cf2767e4520f504d60b806387138f626::1705808891::res://.godot/exported/133200997/export-3e9b83bf4b06af0f37b927f57ac32cd8-paris_balcony_rd.scn
 res://Assets/Obj Scenes/paris_bld_hero_01_.tscn::e810e57c8e0e23753443f4c48c46d03b::1702363551::res://.godot/exported/133200997/export-ada86ad69203058877fafc0939c19628-paris_bld_hero_01_.scn
 res://Assets/Obj Scenes/paris_block_end_01_.tscn::6ff1345ec005f37d3522e2cf81116f72::1701803634::res://.godot/exported/133200997/export-69fd1ab115e917245083e4609ff9006a-paris_block_end_01_.scn
@@ -26,8 +26,8 @@ res://Assets/Obj Scenes/paris_detail_roof_01_.tscn::d00f693002a9a4e8194b1d6c1605
 res://Assets/Obj Scenes/paris_detail_roof_02_paris_detail_roof_02_.tscn::2393445e61c71f2645603f73cbf386c6::1703652369::res://.godot/exported/133200997/export-98854fbb669bcf86d5d18f7f0b274404-paris_detail_roof_02_paris_detail_roof_02_.scn
 res://Assets/Obj Scenes/paris_detail_roof_03_.tscn::debd277394202885eabc47b3dc92701d::1704070166::res://.godot/exported/133200997/export-30ac89ea9858aab5f8d8521818e001ba-paris_detail_roof_03_.scn
 res://Assets/Obj Scenes/paris_detail_roof_04_.tscn::20a6fcf56223b0ae467dff6612a1a4dc::1704070166::res://.godot/exported/133200997/export-8053500740a0dfa1118f21fbb167dfee-paris_detail_roof_04_.scn
-res://Assets/Obj Scenes/paris_eiffeltower.tscn::437a0537cc56f33d13294809762309ff::1703669038::res://.godot/exported/133200997/export-3af4d7a0794994ea8fd497f51142d2c9-paris_eiffeltower.scn
-res://Assets/Obj Scenes/paris_hero_castle_01.tscn::bca169e3052331f4effc40d12b5a8406::1706047611::res://.godot/exported/133200997/export-fa93e2ebe4a31259dd417b630fccdc93-paris_hero_castle_01.scn
+res://Assets/Obj Scenes/paris_eiffeltower.tscn::a61564ef23a1725029ff27d1f93fae7b::1717565415::res://.godot/exported/133200997/export-3af4d7a0794994ea8fd497f51142d2c9-paris_eiffeltower.scn
+res://Assets/Obj Scenes/paris_hero_castle_01.tscn::e76297bc7d3cca4792929f07f41c652d::1717647354::res://.godot/exported/133200997/export-fa93e2ebe4a31259dd417b630fccdc93-paris_hero_castle_01.scn
 res://Assets/Obj Scenes/paris_hero_classic_01_.tscn::7783dddebefc648dc1feb0b2ca0af623::1706341719::res://.godot/exported/133200997/export-2f0bc20abfebff65c0df7dd61791a729-paris_hero_classic_01_.scn
 res://Assets/Obj Scenes/paris_hero_classic_02_.tscn::49a17a04be2f28b6f39d3d7387a46306::1706392656::res://.godot/exported/133200997/export-97c9d46c9dfc90da8fc675ed6d62316b-paris_hero_classic_02_.scn
 res://Assets/Obj Scenes/paris_hero_classic_03_.tscn::065a072730fed88f747a6391dbae7289::1706474637::res://.godot/exported/133200997/export-8c310dfefa669f839253d889455774be-paris_hero_classic_03_.scn
@@ -37,7 +37,7 @@ res://Assets/Obj Scenes/paris_hero_crop_01.tscn::1c9c43bca99cd334322ddcf2fc07cc2
 res://Assets/Obj Scenes/paris_hero_long_01_.tscn::1cbd85a9c968ef80f90f1898b7290d4a::1704938334::res://.godot/exported/133200997/export-d1e6f7baa72d96673050fb2e9476e4d4-paris_hero_long_01_.scn
 res://Assets/Obj Scenes/paris_hero_long_02_.tscn::4c91258490efe3065660e017baa1e273::1704938531::res://.godot/exported/133200997/export-488d56f623a48b669e7ece866c54e4f2-paris_hero_long_02_.scn
 res://Assets/Obj Scenes/paris_hero_L_01_.tscn::304f9ea8410328a244981e334fd96f20::1706326048::res://.godot/exported/133200997/export-9948336fa523546c6fdae2a8eb552f07-paris_hero_L_01_.scn
-res://Assets/Obj Scenes/paris_hero_notre_dame.tscn::526d210417e460389bc742932e6428de::1706047611::res://.godot/exported/133200997/export-133a3bf88fcdaab05289878e17d43450-paris_hero_notre_dame.scn
+res://Assets/Obj Scenes/paris_hero_notre_dame.tscn::bd9e3aa290b9ac17b2bbca943bdfe3ba::1717647354::res://.godot/exported/133200997/export-133a3bf88fcdaab05289878e17d43450-paris_hero_notre_dame.scn
 res://Assets/Obj Scenes/paris_hero_palace.tscn::1a3d311cc8af917852bdce7815ac7e26::1706392656::res://.godot/exported/133200997/export-3c12581c8e8327dee9e3e6dac2eb4daf-paris_hero_palace.scn
 res://Assets/Obj Scenes/paris_hero_short_01_.tscn::fb2ca619e22c630359bed213cb8819a8::1705801694::res://.godot/exported/133200997/export-c2d57059525b3c4d1c591196775b0f4f-paris_hero_short_01_.scn
 res://Assets/Obj Scenes/paris_hero_small.tscn::a0f7b160498a6c009819d6ddfeb159e5::1705801543::res://.godot/exported/133200997/export-f34db919752c98cd13eed805be37b08f-paris_hero_small.scn
@@ -46,33 +46,33 @@ res://Assets/Obj Scenes/paris_island_latin.tscn::4cf786ed4f6fcebaa949ab8820d12e8
 res://Assets/Obj Scenes/paris_island_marais.tscn::933fab680547b25c6459481c521b41ca::1706331542::res://.godot/exported/133200997/export-817b80cded12995e6067a3dd0e7c706d-paris_island_marais.scn
 res://Assets/Obj Scenes/paris_island_marais_cameracol.tscn::5eef9ef2c382a210906fa04233ae5a16::1706327014::res://.godot/exported/133200997/export-a0d77ae8b66c266ad0520ff1ea68df93-paris_island_marais_cameracol.scn
 res://Assets/Obj Scenes/pickup_bottle.tscn::2e67c39afa9f894200e2ae8bccbf3f24::1710808834::res://.godot/exported/133200997/export-3450125ec38aa3ca6ac4cb20fe8133df-pickup_bottle.scn
-res://Assets/Obj Scenes/distance_lightpost.tscn::fe1181cb6f3af7fbd8ff863ebf332b12::1709002563::res://.godot/exported/133200997/export-4b4dc17d9a1c96450dcf4adedb49e017-distance_lightpost.scn
-res://Assets/Obj Scenes/sly_cooper.tscn::43df7745263e57b413ac4ef4ad9c9d84::1714187520::res://.godot/exported/133200997/export-0a298a0cc7117bb2d606164aa11c3868-sly_cooper.scn
-res://Assets/Obj Scenes/water.tscn::f1cedace3e02a99c21c027fa3a6c25aa::1709071247::res://.godot/exported/133200997/export-011dc0223100e09405c112564afc7f6e-water.scn
+res://Assets/Obj Scenes/distance_lightpost.tscn::74182b2cbafc334aca270af90cb37a65::1717564579::res://.godot/exported/133200997/export-4b4dc17d9a1c96450dcf4adedb49e017-distance_lightpost.scn
+res://Assets/Obj Scenes/sly_cooper.tscn::43df7745263e57b413ac4ef4ad9c9d84::1717376320::res://.godot/exported/133200997/export-0a298a0cc7117bb2d606164aa11c3868-sly_cooper.scn
+res://Assets/Obj Scenes/water.tscn::fde3f5d60385589ab540e99cb2f9c345::1717385379::res://.godot/exported/133200997/export-011dc0223100e09405c112564afc7f6e-water.scn
 res://Scenes/beam.tscn::85d7df0bec18718afdbb6a1592734a36::1706331542::res://.godot/exported/133200997/export-68d5de326a2261c18297492f23fe32ce-beam.scn
 res://Scenes/jump_container.tscn::1045d9e866d2c4cd22a8c3392d96d768::1705989812::res://.godot/exported/133200997/export-0e15c82241fcf1c6d1b6f3babcd0db31-jump_container.scn
-res://Scenes/light_post.tscn::84c6e80a78d27025edadc2ab08cbb1ae::1710213051::res://.godot/exported/133200997/export-1863da22fe7110e8a826dbaf2bf85c4f-light_post.scn
+res://Scenes/light_post.tscn::935f2c6fd112261d4d14f9218bbc61cc::1717977907::res://.godot/exported/133200997/export-1863da22fe7110e8a826dbaf2bf85c4f-light_post.scn
 res://Scenes/particle_sparkle.tscn::772903e56ab8ec964ee121e8ac68fb8b::1713657159::res://.godot/exported/133200997/export-7aa18e06ccc1814ae2657dddfa9c805f-particle_sparkle.scn
 res://Scenes/path_3d.tscn::1f8f781ec9f0542b95835a9fd0014f8e::1701820236::res://.godot/exported/133200997/export-b6d5c1b08583f5ca641387afb655f7bf-path_3d.scn
 res://Scenes/pipe.tscn::eb15f393a6c444f4938a3557b7171c9e::1712803655::res://.godot/exported/133200997/export-d76b012cc99c39f3eae4e882e5c10822-pipe.scn
-res://Scenes/player.tscn::0831c7b439273dca73e6a32babf62345::1716410459::res://.godot/exported/133200997/export-1753c997600d68ab5d20ae99fddb15c6-player.scn
+res://Scenes/player.tscn::c5fd2688b74164ab805a5d0d65b50317::1719258547::res://.godot/exported/133200997/export-1753c997600d68ab5d20ae99fddb15c6-player.scn
 res://Scenes/pole_01_.tscn::ed5a8d2d0934f8a51e9b73110b4618db::1713657159::res://.godot/exported/133200997/export-adfa11f0224c6bbad9a16a069ef2553d-pole_01_.scn
 res://Scenes/rope_container.tscn::7ccac069734d412fae3b701f9d53c063::1703133014::res://.godot/exported/133200997/export-0b3ac7e6a7b8a21a0de98a5174c4fdc5-rope_container.scn
 res://Scenes/smoke_particles.tscn::4dce18e2372066f65e4f944e78a88628::1705808891::res://.godot/exported/133200997/export-ee9498e280570acff9654794ff49b056-smoke_particles.scn
-res://Scenes/TEST.tscn::98d924348ababb1439573c16aba483de::1716410459::res://.godot/exported/133200997/export-53f66415250742c61ec8070ed7eaa805-TEST.scn
-res://Scenes/test_ball.tscn::7fa6c0572447b870609ed0638027a4ac::1716410460::res://.godot/exported/133200997/export-99c50e81d65acfe0cbca85004378e8fe-test_ball.scn
-res://Scenes/world.tscn::ffbfee1de83b833a0125c8321b1a0da1::1716410459::res://.godot/exported/133200997/export-0271e18ecf37a36b455ad0b215994549-world.scn
+res://Scenes/TEST.tscn::c2bc80b9259894500f84c3d5626645e8::1719258548::res://.godot/exported/133200997/export-53f66415250742c61ec8070ed7eaa805-TEST.scn
+res://Scenes/test_ball.tscn::7fa6c0572447b870609ed0638027a4ac::1717977907::res://.godot/exported/133200997/export-99c50e81d65acfe0cbca85004378e8fe-test_ball.scn
+res://Scenes/world.tscn::45025222c1d0c5fbe1e8584b3b79ce9b::1719258549::res://.godot/exported/133200997/export-0271e18ecf37a36b455ad0b215994549-world.scn
 res://openxr_action_map.tres::91f995aad85dfefb9acaa0a13b026f01::1706397775::res://.godot/exported/133200997/export-a9d757fdde490682a87dc1ad8c7d3357-openxr_action_map.res
 res://Assets/Fonts/menu.tres::2741e8e89689c48918d31c7607469855::1706482972::res://.godot/exported/133200997/export-4d31b5480eb16001d4342151997a4321-menu.res
 res://Scenes/pause_menu.tscn::a0b84c076da0f0523dc043e6da76f8dc::1710808834::res://.godot/exported/133200997/export-e3d0420ddeb812b15edf3553f5556843-pause_menu.scn
-res://Assets/Materials/awning_NOTEXT_mat.tres::21756809dda7edfbba5b643f26809b18::1716407736::res://.godot/exported/133200997/export-49af75c6f711345c91f678434f4eef28-awning_NOTEXT_mat.res
-res://Assets/Materials/awning_TEXT.tres::23708e90e915226093a52555e9af9d51::1716407736::res://.godot/exported/133200997/export-ebd429ac6850ec092fba7771d187fb06-awning_TEXT.res
-res://Assets/Materials/lamp_modern_light.tres::11421936f37b82b4e56debb43dd0a609::1716407736::res://.godot/exported/133200997/export-0befc808210f020c4f18e0b24cd18127-lamp_modern_light.res
-res://Assets/Materials/modern_lamp_mat.tres::599a7e12e63eca98e5606294b7e13c2e::1716407736::res://.godot/exported/133200997/export-946877ad0cfecac6e9760eddee5534e9-modern_lamp_mat.res
-res://Assets/Materials/Sly Body.tres::eaed158f9fce722ad4807c6f73b74a34::1716407736::res://.godot/exported/133200997/export-33f5e6959d825a7b320dee60bf9e9ea2-Sly Body.res
-res://Assets/Materials/Sly Head.tres::d22a20a48861a44389af53d2a1cf4b5f::1716407736::res://.godot/exported/133200997/export-3198d5754e8be1746d8d19c3d83eecb5-Sly Head.res
+res://Assets/Materials/awning_NOTEXT_mat.tres::21756809dda7edfbba5b643f26809b18::1719257168::res://.godot/exported/133200997/export-49af75c6f711345c91f678434f4eef28-awning_NOTEXT_mat.res
+res://Assets/Materials/awning_TEXT.tres::23708e90e915226093a52555e9af9d51::1719257168::res://.godot/exported/133200997/export-ebd429ac6850ec092fba7771d187fb06-awning_TEXT.res
+res://Assets/Materials/lamp_modern_light.tres::11421936f37b82b4e56debb43dd0a609::1719257168::res://.godot/exported/133200997/export-0befc808210f020c4f18e0b24cd18127-lamp_modern_light.res
+res://Assets/Materials/modern_lamp_mat.tres::599a7e12e63eca98e5606294b7e13c2e::1719257168::res://.godot/exported/133200997/export-946877ad0cfecac6e9760eddee5534e9-modern_lamp_mat.res
+res://Assets/Materials/Sly Body.tres::eaed158f9fce722ad4807c6f73b74a34::1719257168::res://.godot/exported/133200997/export-33f5e6959d825a7b320dee60bf9e9ea2-Sly Body.res
+res://Assets/Materials/Sly Head.tres::d22a20a48861a44389af53d2a1cf4b5f::1719257167::res://.godot/exported/133200997/export-3198d5754e8be1746d8d19c3d83eecb5-Sly Head.res
 res://Assets/Materials/vintage_lamp_mat.tres::bab5eea3fd12bebdaec94142f1c3d4cc::1712798693::res://.godot/exported/133200997/export-7a73b22d04ed0df9ddaa8e4fa649ccd6-vintage_lamp_mat.res
-res://Assets/Materials/yellow_light.tres::d762b9fb71099fabef3a5f8f8fb6824a::1716407736::res://.godot/exported/133200997/export-6d5f34ae9ede4be7c2350a55b8068aaa-yellow_light.res
+res://Assets/Materials/yellow_light.tres::d762b9fb71099fabef3a5f8f8fb6824a::1719257168::res://.godot/exported/133200997/export-6d5f34ae9ede4be7c2350a55b8068aaa-yellow_light.res
 res://Assets/Obj Scenes/awning_no_text.tscn::cdee9aa5c1b51d454b32bcc157b5e7ae::1712804676::res://.godot/exported/133200997/export-995aff0d6f81593c8fbf03dc155de114-awning_no_text.scn
 res://Assets/Obj Scenes/awning_text.tscn::bd5c1cfb55b808d126ff85eae31a1774::1712804676::res://.godot/exported/133200997/export-6d07502ce3f37363faaf336b2a5e9c00-awning_text.scn
 res://Assets/Obj Scenes/modern_lamp_hanging.tscn::2d4a357f328eb4e22c5ea5693b550e28::1714066396::res://.godot/exported/133200997/export-9a5666eedfcc62cf45341700c06b19a4-modern_lamp_hanging.scn
@@ -83,5 +83,8 @@ res://Assets/Obj Scenes/sly_cooper_rig_no_physics.tscn::94dc73bef027cb7520bc0c4c
 res://Assets/Obj Scenes/vintage_lamp_hanging.tscn::2c202c3d231bcc11f405f0a2f3fd79ef::1712804286::res://.godot/exported/133200997/export-6a0590c81cc934bc4ba16e70c3db0116-vintage_lamp_hanging.scn
 res://Assets/Obj Scenes/vintage_lamp_post.tscn::3cb99092d4967ae368bd50d14f5f6388::1714078113::res://.godot/exported/133200997/export-42b0407204bce4641649e9c50bea22f2-vintage_lamp_post.scn
 res://Assets/Objects/sly_final.tscn::abd44912b2d6da5f410f98c8e00d82a1::1714065892::res://.godot/exported/133200997/export-eecb1fb6b71968e7f792cf4ece4a8233-sly_final.scn
-res://Scenes/Camera.tscn::87ef451053255c625c91072f8ba1ff73::1716410460::res://.godot/exported/133200997/export-1bf530f38ae93399c20da63f258369ca-Camera.scn
-res://Scenes/sly_cooper_rig_no_physics.tscn::e230170c9741c0e812de9f829de6384f::1716410460::res://.godot/exported/133200997/export-9bbb96fe5d14462c9a564a31686c37a4-sly_cooper_rig_no_physics.scn
+res://Scenes/Camera.tscn::72c4e233382a0796edc86057afed7d2e::1719258547::res://.godot/exported/133200997/export-1bf530f38ae93399c20da63f258369ca-Camera.scn
+res://Scenes/sly_cooper_rig_no_physics.tscn::b8b2e9596eda6a00d51a58f8c3c6826c::1719258547::res://.godot/exported/133200997/export-9bbb96fe5d14462c9a564a31686c37a4-sly_cooper_rig_no_physics.scn
+res://Scenes/enemy_base.tscn::aa53cf78b7570e2bd3d9f3b2f469a655::1719258549::res://.godot/exported/133200997/export-1e22950320d95263783dd389992c1309-enemy_base.scn
+res://Scenes/spotlight_detection.tscn::182971b1987f8770f17df2ef5a854d9f::1719258549::res://.godot/exported/133200997/export-28471178e3ec5a0e1f78cfb700b163d9-spotlight_detection.scn
+res://Scenes/tail_physics_targets.tscn::c11cdae249db65d32ef50562fddf8843::1718052043::res://.godot/exported/133200997/export-0c6db3484e3983b44bbea03045bc5396-tail_physics_targets.scn

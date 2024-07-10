@@ -45,8 +45,8 @@ func _input(event):
 func _physics_process(delta):
 	left_stick_pressure = Input.get_action_strength("left_stick_left") + Input.get_action_strength("left_stick_right") + Input.get_action_strength("left_stick_up") + Input.get_action_strength("left_stick_down")
 	right_stick_pressure = Input.get_action_strength("right_stick_left") + Input.get_action_strength("right_stick_right") + Input.get_action_strength("right_stick_up") + Input.get_action_strength("right_stick_down")
-	camera_target.rotation.y = lerpf(camera_target.rotation.y, yaw, delta * 20)
-	camera_target.rotation.x = lerpf(camera_target.rotation.x, pitch, delta * 20)
+	camera_target.rotation.y = lerpf(camera_target.rotation.y, yaw, delta * 25)
+	camera_target.rotation.x = lerpf(camera_target.rotation.x, pitch, delta * 25)
 	
 	pitch = clamp(pitch, deg_to_rad(pitch_min), deg_to_rad(pitch_max))
 	
@@ -56,7 +56,7 @@ func _physics_process(delta):
 	
 	yaw += camerainput.x * (yaw_sens) * 30 * avg_distance
 	pitch += camerainput.y * (pitch_sens) * 20  * avg_distance
-	$CameraTarget/Camera3D/CanvasLayer/RichTextLabel.text = str(pitch)
+	$CameraTarget/Camera3D/CanvasLayer/RichTextLabel2.text = str("H", Global.health, "    P", Global.power_ups, "    $", Global.coins)
 	
 	if $CameraTarget/RayCast_Out.is_colliding():
 		var ray_out_collider = $CameraTarget/RayCast_Out.get_collider()
