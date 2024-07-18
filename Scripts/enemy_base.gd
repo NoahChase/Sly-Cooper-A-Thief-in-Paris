@@ -13,6 +13,7 @@ const JUMP_VELOCITY = 4.25
 @onready var nav_distance = 0
 @onready var SPEED_MULT = 1
 @onready var body_found_target = false
+@onready var target_in_range = false
 
 @export var nav_parent: Node3D = null
 
@@ -26,17 +27,24 @@ func _ready():
 	new_nav_point = nav_parent.get_node("Point 1")
 
 func _process(delta):
-	if spotlight.player_detected == true:
+	if spotlight.player_detected:
+		print("enemy chase 1")
 		target = spotlight.target
 		### If distance is close, do close combat state, else chase
 		state = CHASE
-	elif body_found_target == true:
+	elif body_found_target:
 		#spotlight.enemy_has_target = true
+		print("enemy chase 2")
 		spotlight.target = target
 		### If distance is close, do close combat state, else chase
 		state = CHASE
 	else:
-		state = IDLE
+		if not target_in_range:
+			print("enemy idle")
+			state = IDLE
+		elif state == CHASE:
+			spotlight.target = target
+			state = CHASE
 	
 
 func _physics_process(delta):
@@ -51,8 +59,7 @@ func _physics_process(delta):
 	
 	if state == CHASE:
 		### Movement
-		if spotlight.player_detected == false:
-			state = IDLE
+		$Arms.visible = true
 		SPEED_MULT = 2.5
 		$"Gun".shoot = true
 		$"Gun".look_at(spotlight.get_node("TestMesh").global_transform.origin)
@@ -60,6 +67,7 @@ func _physics_process(delta):
 		nav_agent.target_position = target.global_position
 		### Fire Gun While Chasing
 	if state == IDLE:
+		$Arms.visible = false
 		$"Gun".shoot = false
 		SPEED_MULT = 1
 		var target_rotation = global_transform.looking_at(nav_agent.get_next_path_position(), Vector3.UP).basis
@@ -97,3 +105,23 @@ func _on_close_detection_area_body_exited(body):
 	if body.is_in_group("Player"):
 		body_found_target = false
 		#target = null
+
+
+func _on_med_detection_area_body_entered(body):
+	
+	if body.is_in_group("Player"):
+		target = body
+		print("med found player body")
+		target_in_range = true
+		print("target_in_range")
+		#spotlight.player_detected = true
+		#body_found_target = true
+		
+
+
+func _on_med_detection_area_body_exited(body):
+	if body.is_in_group("Player"):
+		target_in_range = false
+		body_found_target = false
+		spotlight.target = null
+		target != body

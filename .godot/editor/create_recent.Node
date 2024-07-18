@@ -1,3 +1,5 @@
+CollisionShape3D
+Area3D
 Timer
 VoxelGI
 LightmapGI
@@ -9,8 +11,6 @@ GPUParticles3D
 AudioStreamPlayer
 RayCast3D
 CharacterBody3D
-CollisionShape3D
-Area3D
 SkeletonIK3D
 Node
 NavigationRegion3D

@@ -19,3 +19,4 @@ func _physics_process(delta):
 			var bullet = bullet_scene.instantiate()
 			self.add_child(bullet)
 			bullet.global_position = global_position
+

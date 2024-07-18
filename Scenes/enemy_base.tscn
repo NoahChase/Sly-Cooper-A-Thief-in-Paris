@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bt011r4ktd2pf"]
+[gd_scene load_steps=15 format=3 uid="uid://bt011r4ktd2pf"]
 
 [ext_resource type="Shader" path="res://Assets/Materials/sly_cooper.outline.gdshader" id="1_djitq"]
 [ext_resource type="Script" path="res://Scripts/enemy_base.gd" id="1_lo52x"]
@@ -22,10 +22,6 @@ shader_parameter/shadow_thickness = 3.0
 [sub_resource type="BoxMesh" id="BoxMesh_2utah"]
 size = Vector3(2, 0.25, 0.25)
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_bjcjf"]
-height = 2.25
-radius = 0.625
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_srccj"]
 render_priority = 0
 shader = ExtResource("1_djitq")
@@ -34,6 +30,13 @@ shader_parameter/shadow_thickness = 3.0
 
 [sub_resource type="PrismMesh" id="PrismMesh_ohrbu"]
 size = Vector3(0.25, 0.5, 0.25)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_bjcjf"]
+height = 2.25
+radius = 0.625
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_rwtcm"]
+radius = 20.0
 
 [node name="Enemy Base" type="CharacterBody3D" groups=["Enemy"]]
 safe_margin = 0.01
@@ -53,12 +56,20 @@ mesh = SubResource("CapsuleMesh_ojuh4")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.125, 0)
 mesh = SubResource("BoxMesh_2utah")
 
+[node name="nose" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 1.25, -0.625)
+material_overlay = SubResource("ShaderMaterial_srccj")
+mesh = SubResource("PrismMesh_ohrbu")
+
 [node name="Gun" parent="." instance=ExtResource("5_a14l1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -0.869608)
 
 [node name="Spotlight Detection" parent="." instance=ExtResource("2_apxjc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -0.5)
 is_spotlight = true
+
+[node name="Loot Spawner" parent="." instance=ExtResource("4_tdcbf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.05773, 0.940986)
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." groups=["Enemy"]]
 path_height_offset = 0.99
@@ -73,13 +84,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0300481)
 shape = SubResource("CylinderShape3D_bjcjf")
 
-[node name="nose" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 1.25, -0.625)
-material_overlay = SubResource("ShaderMaterial_srccj")
-mesh = SubResource("PrismMesh_ohrbu")
+[node name="Med Detection Area" type="Area3D" parent="."]
 
-[node name="Loot Spawner" parent="." instance=ExtResource("4_tdcbf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.05773, 0.940986)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Med Detection Area"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("SphereShape3D_rwtcm")
 
 [connection signal="body_entered" from="Close Detection Area" to="." method="_on_close_detection_area_body_entered"]
 [connection signal="body_exited" from="Close Detection Area" to="." method="_on_close_detection_area_body_exited"]
+[connection signal="body_entered" from="Med Detection Area" to="." method="_on_med_detection_area_body_entered"]
+[connection signal="body_exited" from="Med Detection Area" to="." method="_on_med_detection_area_body_exited"]
