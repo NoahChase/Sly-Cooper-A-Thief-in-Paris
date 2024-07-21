@@ -69,7 +69,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -0.5)
 is_spotlight = true
 
 [node name="Loot Spawner" parent="." instance=ExtResource("4_tdcbf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.05773, 0.940986)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.985492, 1.25693)
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." groups=["Enemy"]]
 path_height_offset = 0.99

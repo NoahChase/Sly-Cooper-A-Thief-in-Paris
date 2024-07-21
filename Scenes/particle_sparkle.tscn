@@ -8,7 +8,7 @@ shading_mode = 0
 specular_mode = 2
 disable_ambient_light = true
 vertex_color_use_as_albedo = true
-albedo_color = Color(1, 1, 1, 0.109804)
+albedo_color = Color(1, 1, 1, 0.176471)
 albedo_texture = ExtResource("1_6fjma")
 disable_receive_shadows = true
 billboard_mode = 1
@@ -18,13 +18,13 @@ distance_fade_mode = 1
 distance_fade_min_distance = 20.0
 
 [sub_resource type="Gradient" id="Gradient_2ag0k"]
-colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 0)
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 0.913725)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_6vyht"]
 gradient = SubResource("Gradient_2ag0k")
 
 [sub_resource type="Gradient" id="Gradient_djijk"]
-colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 0)
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 0.521569)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_1jaum"]
 gradient = SubResource("Gradient_djijk")

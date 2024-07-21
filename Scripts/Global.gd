@@ -18,12 +18,13 @@ func _process(delta):
 		get_tree().quit()
 	if power_ups <= 0:
 		pass
+	if coins >= 50:
+		if power_ups < max_power_ups:
+			power_ups += 1
+			coins -= 50
 	if coins >= 100:
 		if health < max_health:
 			health += 1
-			coins -= 100
-		if power_ups < max_power_ups:
-			power_ups += 1
 			coins -= 100
 	if health > max_health: health = max_health
 	if power_ups > max_power_ups: power_ups = max_power_ups

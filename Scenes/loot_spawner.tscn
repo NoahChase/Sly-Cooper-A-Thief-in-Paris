@@ -1,6 +1,27 @@
-[gd_scene load_steps=2 format=3 uid="uid://dbadbi78di6xc"]
+[gd_scene load_steps=7 format=3 uid="uid://dbadbi78di6xc"]
 
 [ext_resource type="Script" path="res://Scripts/Loot Spawner.gd" id="1_vg5gx"]
+[ext_resource type="Shader" path="res://Assets/Materials/sly_cooper.outline.gdshader" id="2_ingdp"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_p74ks"]
+radius = 0.75
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xmvcq"]
+transparency = 1
+shading_mode = 0
+diffuse_mode = 3
+specular_mode = 1
+albedo_color = Color(1, 1, 1, 0.0117647)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_q3qho"]
+render_priority = 0
+shader = ExtResource("2_ingdp")
+shader_parameter/shadow_color = Color(0, 0, 0, 1)
+shader_parameter/shadow_thickness = 1.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_yt7ux"]
+radius = 0.75
+height = 1.5
 
 [node name="Loot Spawner" type="Node3D"]
 script = ExtResource("1_vg5gx")
@@ -8,4 +29,17 @@ script = ExtResource("1_vg5gx")
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
 
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_p74ks")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+visible = false
+material_override = SubResource("StandardMaterial3D_xmvcq")
+material_overlay = SubResource("ShaderMaterial_q3qho")
+mesh = SubResource("SphereMesh_yt7ux")
+
 [connection signal="spawn_loot" from="." to="." method="_on_spawn_loot"]
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]

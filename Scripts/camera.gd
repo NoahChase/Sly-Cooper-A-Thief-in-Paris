@@ -79,7 +79,7 @@ func return_camera_to_position(delta):
 	if right_stick_pressure == 0.0 and left_stick_pressure > 0.5 and handling_obstruction == false and camera_player.state_now == camera_player.State.FLOOR:
 		var cam_reset_speed
 		if pitch >= 0.4:
-			cam_reset_speed = 0.007
+			cam_reset_speed = 0.005
 		elif pitch <= 0.4:
 			cam_reset_speed = 0.01
 		pitch = lerp(pitch, 0.35, cam_reset_speed)

@@ -1,6 +1,7 @@
 extends Node3D
 
 @onready var shoot
+@onready var hp = 1
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass
@@ -11,15 +12,16 @@ func _process(delta):
 	position -= transform.basis.z * 25 * delta
 	if $Timer.is_stopped():
 		$Timer.start(10)
-	if $Timer.time_left < 0.1:
+	if $Timer.time_left == 0.0:
 		queue_free()
 	
 
 
 func _on_area_3d_body_entered(body):
-	if body.is_in_group("Player"):
+	if body.is_in_group("Player") and hp == 1:
 		print("player hit")
 		Global.health -= 1
+		hp = 0
 
 		var player_position = body.global_transform.origin
 		var bullet_position = self.global_transform.origin

@@ -1,12 +1,13 @@
+MeshInstance3D
+AudioStreamPlayer3D
+Timer
 CollisionShape3D
 Area3D
-Timer
 VoxelGI
 LightmapGI
 RichTextLabel
 AnimationPlayer
 Node3D
-MeshInstance3D
 GPUParticles3D
 AudioStreamPlayer
 RayCast3D
@@ -28,5 +29,4 @@ SpringArm3D
 AnimationTree
 StaticBody3D
 TextureButton
-AudioStreamPlayer3D
 TextEdit

@@ -19,6 +19,7 @@ var air_accel = 0.0
 @onready var target
 @onready var distance_to_target = 0
 @onready var to_target
+@onready var is_pickpocketing = false
 
 @onready var feet = $Feet
 @onready var head = $Head
@@ -193,6 +194,11 @@ func _physics_process(delta):
 				coyote_timer.start(0.3)
 			if coyote_timer.time_left <= 0.1:
 				player_hit = false
+		
+		if Input.is_action_pressed("RMB"):
+			is_pickpocketing = true
+		else:
+			is_pickpocketing = false
 	
 	if state_now == State.AIR:
 		ledge_detect()

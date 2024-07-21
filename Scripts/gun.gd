@@ -2,6 +2,7 @@ extends Node3D
 
 @onready var anim = $AnimationPlayer
 
+var hp = 1
 var shoot = true
 
 func _ready():
@@ -14,7 +15,13 @@ func _physics_process(delta):
 		if not anim.current_animation == "recoil":
 			anim.queue("recoil")
 			anim.queue("reset")
-		if anim.current_animation == "recoil":
+		if anim.current_animation == "reset":
+			hp = 1
+		if anim.current_animation == "recoil" and hp == 1:
+			hp = 0
+		if hp == 0:
+			$"Gun Audio".pitch_scale = randf_range(0.75, 1)
+			$"Gun Audio".play()
 			var bullet_scene : PackedScene = load("res://Assets/Obj Scenes/bullet.tscn")
 			var bullet = bullet_scene.instantiate()
 			self.add_child(bullet)
