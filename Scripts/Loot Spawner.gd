@@ -7,6 +7,7 @@ extends Node3D
 
 var coin_rng = RandomNumberGenerator.new()
 var coin_rng_int
+var hp = 1
 
 signal spawn_loot(pos)
 
@@ -16,10 +17,12 @@ func _ready():
 func _physics_process(delta):
 	if not target == null:
 		#spawn_loot.emit(global_position)
-		if target.is_pickpocketing:
-			if $Timer.time_left == 0:
-				spawn_loot.emit(global_position)
-				$Timer.start(3)
+		if target.is_pickpocketing and hp == 1:
+			spawn_loot.emit(global_position)
+		if not target.is_pickpocketing:
+			hp = 1
+	else: hp = 1
+			
 		
 
 func _on_spawn_loot(pos):
@@ -30,6 +33,7 @@ func _on_spawn_loot(pos):
 		self.add_child(coin)
 		coin.position = pos
 		coin.add_to_group("spawned_by_this_node")
+	hp = 0
 
 
 func _on_area_3d_body_entered(body):

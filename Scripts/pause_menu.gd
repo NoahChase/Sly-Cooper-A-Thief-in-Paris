@@ -6,6 +6,7 @@ extends Control
 func _ready():
 	pause()
 	animation_player.play("RESET")
+	
 
 func play():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED

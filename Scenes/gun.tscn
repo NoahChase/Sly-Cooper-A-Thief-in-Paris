@@ -33,34 +33,6 @@ tracks/1/keys = {
 "values": [Vector3(0, 0, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_fmuts"]
-resource_name = "recoil"
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("mesh:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(0.2),
-"update": 0,
-"values": [Vector3(0, 0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("mesh:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(0.2),
-"update": 0,
-"values": [Vector3(0, 0, 0)]
-}
-
 [sub_resource type="Animation" id="Animation_nhbrr"]
 resource_name = "reset"
 length = 2.0
@@ -89,26 +61,54 @@ tracks/1/keys = {
 "values": [Vector3(0, 0, 0), Vector3(0, 0, 0.125), Vector3(0, 0, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_fmuts"]
+resource_name = "shoot"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("mesh:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(0.2),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("mesh:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(0.2),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_y4384"]
 _data = {
 "RESET": SubResource("Animation_gxafh"),
-"recoil": SubResource("Animation_fmuts"),
-"reset": SubResource("Animation_nhbrr")
+"reset": SubResource("Animation_nhbrr"),
+"shoot": SubResource("Animation_fmuts")
 }
 
-[node name="Gun" type="Node3D"]
+[node name="Gun" type="Node3D" groups=["gun"]]
 script = ExtResource("1_cq23w")
 
 [node name="mesh" type="Node3D" parent="."]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="mesh"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="mesh" groups=["gun"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.25)
 layers = 2
 cast_shadow = 0
 mesh = SubResource("BoxMesh_x4w3g")
 skeleton = NodePath("../..")
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="mesh"]
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="mesh" groups=["gun"]]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, -0.200556, 0)
 layers = 2
 cast_shadow = 0
@@ -124,3 +124,6 @@ libraries = {
 stream = ExtResource("2_2f87u")
 volume_db = -5.0
 pitch_scale = 0.9
+
+[node name="muzzle" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.625)

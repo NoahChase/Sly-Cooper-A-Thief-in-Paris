@@ -681,6 +681,9 @@ libraries = {
 [node name="Coyote Time" type="Timer" parent="."]
 one_shot = true
 
+[node name="Pickpocket Time" type="Timer" parent="."]
+one_shot = true
+
 [node name="Camtime" type="Timer" parent="."]
 one_shot = true
 

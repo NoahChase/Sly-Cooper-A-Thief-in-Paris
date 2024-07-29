@@ -35,7 +35,6 @@ one_shot = true
 shape = SubResource("SphereShape3D_p74ks")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-visible = false
 material_override = SubResource("StandardMaterial3D_xmvcq")
 material_overlay = SubResource("ShaderMaterial_q3qho")
 mesh = SubResource("SphereMesh_yt7ux")

@@ -73,6 +73,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.985492, 1.25693)
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." groups=["Enemy"]]
 path_height_offset = 0.99
+avoidance_enabled = true
+radius = 2.0
+use_3d_avoidance = true
 
 [node name="Wait Timer" type="Timer" parent="."]
 one_shot = true

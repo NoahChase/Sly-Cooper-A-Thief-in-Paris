@@ -1,5 +1,10 @@
 extends CharacterBody3D
 
+#### Redo Processing for Movement (add bool can_move parameter to direction)
+#### Redo Animation OneShot Processing (one space where these are all updated and prioritized)
+#### Check if animation is playing, change can_move to false or true
+
+
 const SPEED = 4.5
 var JUMP_VELOCITY = 8.75
 const lerp_val = 0.15
@@ -58,6 +63,7 @@ var cam_speed = float()
 
 @onready var area_anim = $"Platform Snap Area/Area Col Anim Player"
 @onready var anim_player = $AnimationPlayer
+@onready var sly_anim_player = $sly_container/SlyCooper_RigNoPhysics.get_node("AnimationPlayer")
 @onready var sly_anim_tree = $sly_container/SlyCooper_RigNoPhysics.get_node("AnimationTree")
 @onready var sly_container_anim = $sly_container/sly_container_anim
 @onready var current_blendspace
@@ -134,6 +140,15 @@ func joystick_event():
 			left_stick_pressure = 1
 			sly_anim_tree.set("parameters/TimeScale/scale", 1)
 
+
+func _process(delta):
+	if state_now == State.FLOOR and Input.is_action_just_pressed("RMB"):
+		pickpocket()
+	
+	if $"Pickpocket Time".time_left <= 0.01:
+		is_pickpocketing = false
+
+
 func _physics_process(delta):
 	camera_smooth_follow(delta)
 	blend_pos = velocity.length()/SPEED
@@ -152,7 +167,6 @@ func _physics_process(delta):
 		else:
 			state_now = State.FLOOR
 			
-	
 ### Delta Input Handler
 	if Input.is_action_just_pressed("ui_accept"):
 		if state_now == State.ON_PLATFORM:
@@ -195,10 +209,6 @@ func _physics_process(delta):
 			if coyote_timer.time_left <= 0.1:
 				player_hit = false
 		
-		if Input.is_action_pressed("RMB"):
-			is_pickpocketing = true
-		else:
-			is_pickpocketing = false
 	
 	if state_now == State.AIR:
 		ledge_detect()
@@ -321,7 +331,7 @@ func _physics_process(delta):
 	var vertical = Input.get_axis("S", "W")
 	input_dir = Vector3(horizontal, 0, vertical).normalized()
 	direction = (transform.basis * Vector3(horizontal, 0, vertical).rotated(Vector3.UP, camera_T)).normalized()
-	if direction:
+	if direction and not is_pickpocketing:
 		if not state_now == State.TWEENING and not platform_type == Platform_Type.Ray_V_Ball and not platform_type == Platform_Type.POLE and not platform_type == Platform_Type.ROPE:
 			is_moving = true
 			sly_rot.look_at(position - direction)
@@ -330,9 +340,10 @@ func _physics_process(delta):
 				acceleration = 80
 			else:
 				acceleration = 50
-			sly_container.rotate_y(lerp(sly_new.rotation.y, sly_rot.rotation.y, lerp_val * air_accel * acceleration * delta))
-			velocity.x = lerp(velocity.x, direction.x * SPEED * SPEED_MULT * left_stick_pressure, lerp_val * acceleration * air_accel * delta)
-			velocity.z = lerp(velocity.z, direction.z * SPEED * SPEED_MULT * left_stick_pressure, lerp_val * acceleration * air_accel * delta)
+			if not is_pickpocketing:
+				sly_container.rotate_y(lerp(sly_new.rotation.y, sly_rot.rotation.y, lerp_val * air_accel * acceleration * delta))
+				velocity.x = lerp(velocity.x, direction.x * SPEED * SPEED_MULT * left_stick_pressure, lerp_val * acceleration * air_accel * delta)
+				velocity.z = lerp(velocity.z, direction.z * SPEED * SPEED_MULT * left_stick_pressure, lerp_val * acceleration * air_accel * delta)
 			### Rotates Sly's Tail to Direction
 			$sly_container/SlyCooper_RigNoPhysics.ball_target.global_rotation.y = sly_rot.rotation.y + sly_container.global_rotation.y
 			$sly_container/SlyCooper_RigNoPhysics.get_node("Ball Tail Root/Ball Anim").play("walk")
@@ -387,6 +398,12 @@ func high_jump():
 			sly_anim_tree.set("parameters/Jump_or_Move/request", 1)
 			double_jump = false
 			Global.power_ups -= 1
+
+func pickpocket():
+	$"Pickpocket Time".start(1)
+	is_pickpocketing = true
+	sly_anim_tree.set("parameters/Jump_State/transition_request", "Fight")
+	sly_anim_tree.set("parameters/Jump_or_Move/request", 1)
 
 func manage_target_type():
 	#SPEED_MULT = 0
