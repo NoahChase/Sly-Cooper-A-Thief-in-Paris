@@ -27,7 +27,7 @@ func _physics_process(delta):
 
 func _on_spawn_loot(pos):
 	var coin_scene : PackedScene = load("res://Assets/Obj Scenes/coin.tscn")
-	coin_rng_int = coin_rng.randi_range(2, 6)
+	coin_rng_int = coin_rng.randi_range(2, 5)
 	for i in range(coin_rng_int):
 		var coin = coin_scene.instantiate()
 		self.add_child(coin)

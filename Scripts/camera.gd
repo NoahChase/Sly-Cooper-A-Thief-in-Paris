@@ -5,8 +5,8 @@ extends Node3D
 
 @export var camera_target = Node3D
 @export var camera_player = CharacterBody3D
-@export var pitch_max = 50
-@export var pitch_min = -50
+@export var pitch_max = 89
+@export var pitch_min = -30
 
 var right_stick_pressure
 var left_stick_pressure
@@ -95,7 +95,8 @@ func handle_camera_obstruction(delta):
 			pitch = lerp(pitch, pitch - 4 * delta, 0.125)
 	if colliding_ray == "bottom":
 		pitch = lerp(pitch, pitch + 4 * delta * distance.y, 0.125)
-		
+	if colliding_ray == "back":
+		pitch = lerp(pitch, pitch + 3 * delta * (1 - avg_distance), 0.125)
 
 func get_colliding_ray():
 	for raycast in raycasts:
@@ -128,6 +129,8 @@ func get_colliding_ray():
 					return "top"
 				if raycast_name == "RayCast_Bottom":
 					return "bottom"
+				if raycast_name == "RayCast_Back":
+					return "back"
 		else:
 			handling_obstruction = false
 			distance = Vector3(1.0,1.0,1.0)

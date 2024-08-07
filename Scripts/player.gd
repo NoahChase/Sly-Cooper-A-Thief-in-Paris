@@ -5,8 +5,8 @@ extends CharacterBody3D
 #### Check if animation is playing, change can_move to false or true
 
 
-const SPEED = 4.5
-var JUMP_VELOCITY = 8.75
+const SPEED = 4
+var JUMP_VELOCITY = 7.75
 const lerp_val = 0.15
 var air_accel = 0.0
 
@@ -129,13 +129,13 @@ func joystick_event():
 	if left_stick_pressure > 1:
 		left_stick_pressure = 1
 	if state_now == State.FLOOR:
-		if not SPEED_MULT == 1.8:
-			if left_stick_pressure >= 0.45:
+		if not SPEED_MULT == 1.7:
+			if left_stick_pressure >= 0.5:
 				sly_anim_tree.set("parameters/TimeScale/scale", 1.1)
-				#left_stick_pressure = 1.0
-			if left_stick_pressure <= 0.35 and left_stick_pressure > 0:
+				left_stick_pressure = 1.0
+			if left_stick_pressure <= 0.5 and left_stick_pressure > 0:
 				sly_anim_tree.set("parameters/TimeScale/scale", 1.5)
-				#left_stick_pressure = 0.35
+				left_stick_pressure = 0.5
 		else:
 			left_stick_pressure = 1
 			sly_anim_tree.set("parameters/TimeScale/scale", 1)
@@ -183,7 +183,7 @@ func _physics_process(delta):
 	
 	if Input.is_action_pressed("SHIFT"):
 		if is_on_floor() or target!= null:
-			SPEED_MULT = 1.8
+			SPEED_MULT = 1.7
 	else:
 		if is_on_floor() or target!= null:
 			SPEED_MULT = 1
@@ -195,7 +195,7 @@ func _physics_process(delta):
 	$"CameraOrigin/Jump Counter".text = str(distance_to_target)
 ### State Machine
 	if state_now == State.FLOOR:
-		if SPEED_MULT == 1.8:
+		if SPEED_MULT == 1.7:
 			air_accel = lerpf(air_accel, 0.8, lerp_val)
 		else:
 			air_accel = 1
@@ -219,12 +219,12 @@ func _physics_process(delta):
 		$"CameraOrigin/State Reader".text = str("[center]AIR")
 		sly_anim_tree.set("parameters/Move_State/transition_request", air_anim)
 		SPEED_MULT = 1.2
-		if coyote_timer.time_left >= 0.25:
+		if coyote_timer.time_left >= 0.3:
 			#could start a 1 second timer and say air_accel = timer value...
 			air_accel = 1
 			airtime = -1
 		else:
-			air_accel = lerpf(air_accel, 0.125, lerp_val / 3)
+			air_accel = lerpf(air_accel, 0.05, lerp_val / 4)
 			airtime += delta
 			
 		
@@ -266,6 +266,7 @@ func _physics_process(delta):
 			print("physics process! platform type = PATH")
 		if platform_type == Platform_Type.POLE:
 			print("physics process! platform type = POLE")
+			$sly_container/SlyCooper_RigNoPhysics.get_node("Ball Tail Root/Ball Anim").play("pole")
 		if platform_type == Platform_Type.ROPE:
 			print("physics process! platform type = ROPE")
 		if platform_type == Platform_Type.LEDGE:
@@ -373,12 +374,12 @@ func jump():
 			sly_anim_tree.set("parameters/Jump_State/transition_request", "W_Jump")
 			sly_anim_tree.set("parameters/Jump_or_Move/request", 1)
 			#$sly_container/SlyCooper_RigNoPhysics.get_node("Ball Tail Root/Ball Anim").play("handle flip")
-			if velocity.y >= 3:
-				velocity.y += 2.25
-			elif velocity.y > 0 and velocity.y < 3:
-				velocity.y += JUMP_VELOCITY * 0.5
-			elif velocity.y <= 0:
-				velocity.y += JUMP_VELOCITY - 3
+			if velocity.y > 4:
+				velocity.y += JUMP_VELOCITY * 0.25
+			elif velocity.y >= 0 and velocity.y <= 4:
+				velocity.y += JUMP_VELOCITY * 0.55
+			elif velocity.y < 0:
+				velocity.y += JUMP_VELOCITY - 2.5
 				
 		double_jump = false
 		

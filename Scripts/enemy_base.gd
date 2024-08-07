@@ -3,7 +3,7 @@ extends CharacterBody3D
 enum {IDLE, CHASE, SEARCH, SHOOT, HIT, STUNNED}
 
 const SPEED = 1.5
-const JUMP_VELOCITY = 4.25
+const JUMP_VELOCITY = 4
 
 @onready var spotlight = $"Spotlight Detection"
 @onready var nav_agent = $NavigationAgent3D
@@ -69,7 +69,7 @@ func _physics_process(delta):
 	if state == IDLE:
 		$Arms.visible = false
 		$"Gun".shoot = false
-		SPEED_MULT = 1
+		SPEED_MULT = 0.9
 		var target_rotation = global_transform.looking_at(nav_agent.get_next_path_position(), Vector3.UP).basis
 		global_transform.basis = global_transform.basis.slerp(target_rotation, 2 * delta)
 		nav_agent.target_position = new_nav_point.global_position

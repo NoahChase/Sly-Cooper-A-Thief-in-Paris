@@ -1,11 +1,11 @@
 extends Node
 
-const max_health = 6
-const max_power_ups = 3
+const max_health = 3
+const max_power_ups = 12
 
 var coins = 0
-var health = 6
-var power_ups = 3
+var health = 3
+var power_ups = 12
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -18,7 +18,7 @@ func _process(delta):
 		get_tree().quit()
 	if power_ups <= 0:
 		pass
-	if coins >= 50:
+	if coins >= 50 and health == max_health:
 		if power_ups < max_power_ups:
 			power_ups += 1
 			coins -= 50
