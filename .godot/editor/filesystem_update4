@@ -1,4 +1,4 @@
-res://Scenes/Camera.tscn
+res://Scenes/player.tscn
 res://Assets/Materials/blur.gdshader
 res://Assets/Materials/sly_cooper.outline.gdshader
 res://Assets/Materials/Sly Head.tres
@@ -9,23 +9,14 @@ res://Assets/Materials/awning_NOTEXT_mat.tres
 res://Assets/Materials/modern_lamp_mat.tres
 res://Assets/Materials/lamp_modern_light.tres
 res://Assets/Materials/yellow_light.tres
-res://Assets/Materials/brick_128_01_.tres
-res://Assets/Materials/Water.tres
 res://Assets/Materials/sand_noise.tres
-res://Scenes/player.tscn
+res://Assets/Materials/Water.tres
+res://Assets/Materials/brick_128_01_.tres
+res://Scripts/player.gd
+res://Scenes/Camera.tscn
 res://Scenes/sly_cooper_rig_no_physics.tscn
 res://Scenes/TEST.tscn
 res://Scenes/test_level_01.tscn
 res://Scenes/world.tscn
-res://Scenes/spotlight_detection.tscn
 res://Scenes/enemy_base.tscn
-res://Assets/Obj Scenes/bullet.tscn
-res://Scenes/gun.tscn
-res://Assets/Obj Scenes/coin.tscn
-res://Scenes/loot_spawner.tscn
-res://Scenes/particle_sparkle.tscn
-res://Scripts/Camera.gd
-res://Scripts/Global.gd
-res://Scripts/player.gd
-res://Scripts/enemy_base.gd
-res://Scripts/sly_cooper_mesh.gd
+res://Scenes/spotlight_detection.tscn

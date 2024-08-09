@@ -42,6 +42,7 @@ var air_accel = 0.0
 @onready var ray_top = $sly_container/Ray_Top
 @onready var ray_v_holder = $Ray_V_Container
 @onready var ray_v_ball = $Ray_V_Container/Ray_V_Ball
+@onready var ray_wall_top = $"sly_container/Wall Top"
 @onready var to_ray_ball = ray_v_ball.global_transform.origin - global_transform.origin
 @onready var distance_to_ball = to_ray_ball.length()
 
@@ -83,15 +84,17 @@ var DIRECTION_MULT
 
 var can_climb = false
 var can_ledge = true
+var can_wall = false
+var can_wall_timer = true
 
 var is_moving = false
 var is_on_point = false
 
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
-enum State{FLOOR, AIR, TWEENING, ON_PLATFORM}
+enum State{FLOOR, WALL, AIR, TWEENING, ON_PLATFORM}
 @export var state_now := State.FLOOR
-enum Platform_Type{NULL, POINT, PATH, POLE, ROPE, LEDGE, Ray_V_Ball}
+enum Platform_Type{NULL, POINT, PATH, POLE, ROPE, LEDGE, Ray_V_Ball, WALL}
 @export var platform_type := Platform_Type.NULL
 
 @onready var floor_anim: String
@@ -157,17 +160,19 @@ func _physics_process(delta):
 	joystick_event()
 	
 ### State Handler
+	wall_detect()
 	if not target == null:
 		distance_to_target = feet.global_transform.origin.y - platform.global_transform.origin.y
 		
 	
 	if target == null:
-		if not is_on_floor():
+		if not can_wall and not is_on_floor():
 			state_now = State.AIR
 		else:
 			state_now = State.FLOOR
 			
 ### Delta Input Handler
+	
 	if Input.is_action_just_pressed("ui_accept"):
 		if state_now == State.ON_PLATFORM:
 			state_now == State.AIR
@@ -195,6 +200,7 @@ func _physics_process(delta):
 	$"CameraOrigin/Jump Counter".text = str(distance_to_target)
 ### State Machine
 	if state_now == State.FLOOR:
+		can_wall = true
 		if SPEED_MULT == 1.7:
 			air_accel = lerpf(air_accel, 0.8, lerp_val)
 		else:
@@ -209,6 +215,10 @@ func _physics_process(delta):
 			if coyote_timer.time_left <= 0.1:
 				player_hit = false
 		
+	if state_now == State.WALL:
+		self.visible = false
+		#timer starts (if timer stops line of code goes with gravity line)
+		#jump counter reset
 	
 	if state_now == State.AIR:
 		ledge_detect()
@@ -371,15 +381,20 @@ func jump():
 			sly_anim_tree.set("parameters/Jump_State/transition_request", "Floor_Jump")
 			sly_anim_tree.set("parameters/Jump_or_Move/request", 1)
 		if state_now == State.AIR:
-			sly_anim_tree.set("parameters/Jump_State/transition_request", "W_Jump")
+			if can_wall:
+				sly_anim_tree.set("parameters/Jump_State/transition_request", "Floor_Jump")
+				velocity.y += JUMP_VELOCITY
+			else:
+				sly_anim_tree.set("parameters/Jump_State/transition_request", "W_Jump")
+				if velocity.y > 4:
+					velocity.y += JUMP_VELOCITY * 0.25
+				elif velocity.y >= 0 and velocity.y <= 4:
+					velocity.y += JUMP_VELOCITY * 0.55
+				elif velocity.y < 0:
+					velocity.y += JUMP_VELOCITY - 2.5
 			sly_anim_tree.set("parameters/Jump_or_Move/request", 1)
 			#$sly_container/SlyCooper_RigNoPhysics.get_node("Ball Tail Root/Ball Anim").play("handle flip")
-			if velocity.y > 4:
-				velocity.y += JUMP_VELOCITY * 0.25
-			elif velocity.y >= 0 and velocity.y <= 4:
-				velocity.y += JUMP_VELOCITY * 0.55
-			elif velocity.y < 0:
-				velocity.y += JUMP_VELOCITY - 2.5
+			
 				
 		double_jump = false
 		
@@ -410,6 +425,10 @@ func manage_target_type():
 	#SPEED_MULT = 0
 	print("managing target type")
 	if target == null:
+		if can_wall:
+			platform_type = Platform_Type.WALL
+			air_anim = "pole"
+			floor_anim = "pole"
 		platform_type = Platform_Type.NULL
 		return
 	if target.is_in_group("Point"):
@@ -567,6 +586,35 @@ func ledge_detect():
 		target_distance_manager()
 		
 
+
+
+func wall_detect():
+	if not ray_h.is_colliding() and not ray_wall_top.is_colliding():
+		can_wall = false
+		can_wall_timer = true
+	else:
+		if $"Wall Time".is_stopped() and can_wall_timer == true and Input.is_action_pressed("ui_accept"):
+			$"Wall Time".start(0.65)
+			can_wall = true
+			double_jump = true
+		if $"Wall Time".time_left >= 0.01 and Input.is_action_just_released("ui_accept"):
+			can_wall = true
+			can_wall_timer = false
+			jump()
+			$"Wall Time".stop()
+		if $"Wall Time".time_left < 0.01:
+			can_wall = false
+			can_wall_timer = false
+	
+	if can_wall:
+		if velocity.y >= -4.5:
+			velocity.y = 4.5
+		else:
+			velocity.y += 4.5
+	
+
+
+
 func _on_platform_snap_area_body_entered(body):
 	if body.is_in_group("Platform"):
 		if target == null:
@@ -606,5 +654,5 @@ func camera_smooth_follow(delta):
 	if state_now != State.AIR or cam_y_follow == true:
 		camera_parent.position.y = lerp(camera_parent.global_transform.origin.y, global_transform.origin.y + 1.85, cam_timer / 5)
 	else:
-		if camtime.time_left <= 0:
+		if can_wall == true or camtime.time_left <= 0:
 			camera_parent.position.y = lerp(camera_parent.global_transform.origin.y, global_transform.origin.y + 1.85, cam_timer / 2)

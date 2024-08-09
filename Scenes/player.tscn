@@ -634,6 +634,10 @@ target_position = Vector3(0, 0, -1.25)
 transform = Transform3D(-1.005, 8.78598e-08, 1.78814e-07, -8.78599e-08, -1.005, -9.73567e-16, 1.78814e-07, 3.55271e-15, 1.005, 0, 0.375, 0)
 target_position = Vector3(0, 0, -1)
 
+[node name="Wall Top" type="RayCast3D" parent="sly_container"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0625, 0)
+target_position = Vector3(0, 0, 0.8)
+
 [node name="Ray_V_Container" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.273712, 0)
 
@@ -683,6 +687,9 @@ libraries = {
 one_shot = true
 
 [node name="Pickpocket Time" type="Timer" parent="."]
+one_shot = true
+
+[node name="Wall Time" type="Timer" parent="."]
 one_shot = true
 
 [node name="Camtime" type="Timer" parent="."]
