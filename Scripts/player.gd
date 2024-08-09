@@ -596,11 +596,11 @@ func wall_detect():
 		if $"Wall Time".is_stopped() and can_wall_timer == true and Input.is_action_pressed("ui_accept"):
 			$"Wall Time".start(0.65)
 			can_wall = true
-			double_jump = true
 		if $"Wall Time".time_left >= 0.01 and Input.is_action_just_released("ui_accept"):
 			can_wall = true
 			can_wall_timer = false
 			jump()
+			double_jump = true
 			$"Wall Time".stop()
 		if $"Wall Time".time_left < 0.01:
 			can_wall = false
