@@ -20,3 +20,5 @@ res://Scenes/test_level_01.tscn
 res://Scenes/world.tscn
 res://Scenes/enemy_base.tscn
 res://Scenes/spotlight_detection.tscn
+res://Scenes/light_post.tscn
+res://Jump_Container.gd

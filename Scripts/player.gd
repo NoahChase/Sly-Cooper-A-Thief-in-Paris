@@ -174,11 +174,11 @@ func _physics_process(delta):
 ### Delta Input Handler
 	
 	if Input.is_action_just_pressed("ui_accept"):
-		if state_now == State.ON_PLATFORM:
-			state_now == State.AIR
-			jump()
-		else:
-			jump()
+#		if state_now == State.ON_PLATFORM:
+#			state_now == State.AIR
+#			jump()
+#		else:
+		jump()
 	if Input.is_action_just_pressed("LALT") or Input.is_action_just_pressed("L2"):
 		if state_now == State.ON_PLATFORM:
 			state_now == State.AIR
@@ -201,6 +201,7 @@ func _physics_process(delta):
 ### State Machine
 	if state_now == State.FLOOR:
 		can_wall = true
+		can_wall_timer = true
 		if SPEED_MULT == 1.7:
 			air_accel = lerpf(air_accel, 0.8, lerp_val)
 		else:
@@ -300,7 +301,7 @@ func _physics_process(delta):
 				if Input.is_action_just_released("S"):
 					target.move_backward = false
 					
-			elif platform_type == Platform_Type.Ray_V_Ball and offset_num != 0.6:
+			elif platform_type == Platform_Type.Ray_V_Ball:
 				if offset_num != 0.6:
 					sly_anim_tree.set("parameters/Hang_BlendSpace/blend_position", left_stick_pressure)
 				else:
@@ -507,7 +508,7 @@ func move_to_target():
 			if to_feet.length() <= to_head.length():
 				offset_num = 0.6
 			else:
-				offset_num = -0.7
+				offset_num = 0.6
 		manage_target_type()
 		var final_offset = Vector3(0,offset_num,0)
 		var tween_to_target = platform.global_transform.origin - global_transform.origin
@@ -589,16 +590,22 @@ func ledge_detect():
 
 
 func wall_detect():
+	
+	if is_on_floor() or state_now == State.ON_PLATFORM:
+		$"Wall Cooldown".stop()
+		can_wall_timer = true
+		
+	
 	if not ray_h.is_colliding() and not ray_wall_top.is_colliding():
 		can_wall = false
 		can_wall_timer = true
+	
 	else:
-		if $"Wall Time".is_stopped() and can_wall_timer == true and Input.is_action_pressed("ui_accept") and double_jump:
+		if $"Wall Time".is_stopped() and can_wall_timer == true and Input.is_action_pressed("ui_accept") and $"Wall Cooldown".time_left <= 0:
 			$"Wall Time".start(0.65)
 			can_wall = true
+			$"Wall Cooldown".start(10)
 		if $"Wall Time".time_left >= 0.01 and Input.is_action_just_released("ui_accept"):
-			can_wall = true
-			can_wall_timer = false
 			jump()
 			double_jump = true
 			$"Wall Time".stop()

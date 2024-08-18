@@ -692,6 +692,9 @@ one_shot = true
 [node name="Wall Time" type="Timer" parent="."]
 one_shot = true
 
+[node name="Wall Cooldown" type="Timer" parent="."]
+one_shot = true
+
 [node name="Camtime" type="Timer" parent="."]
 one_shot = true
 
