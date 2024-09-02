@@ -160,7 +160,7 @@ func _physics_process(delta):
 	joystick_event()
 	
 ### State Handler
-	wall_detect()
+	#wall_detect()
 	if not target == null:
 		distance_to_target = feet.global_transform.origin.y - platform.global_transform.origin.y
 		
@@ -200,8 +200,8 @@ func _physics_process(delta):
 	$"CameraOrigin/Jump Counter".text = str(distance_to_target)
 ### State Machine
 	if state_now == State.FLOOR:
-		can_wall = true
-		can_wall_timer = true
+		#can_wall = true
+		#can_wall_timer = true
 		if SPEED_MULT == 1.7:
 			air_accel = lerpf(air_accel, 0.8, lerp_val)
 		else:

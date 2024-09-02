@@ -1,4 +1,4 @@
-[gd_scene load_steps=91 format=3 uid="uid://c26x73kclemty"]
+[gd_scene load_steps=94 format=3 uid="uid://c26x73kclemty"]
 
 [ext_resource type="PackedScene" uid="uid://bx1ae6opo7fgr" path="res://Assets/Temp/SlyCooper_RigNoPhysics.blend" id="1_36eye"]
 [ext_resource type="Script" path="res://Scripts/sly_cooper_mesh.gd" id="2_cje2a"]
@@ -492,6 +492,104 @@ tracks/24/path = NodePath("metarig/GeneralSkeleton:LeftHand")
 tracks/24/interp = 1
 tracks/24/loop_wrap = true
 tracks/24/keys = PackedFloat32Array(0, 1, -0.111689, 0.69024, 0.474762, 0.534504)
+tracks/25/type = "rotation_3d"
+tracks/25/imported = false
+tracks/25/enabled = true
+tracks/25/path = NodePath("metarig/GeneralSkeleton:f_index.01.R")
+tracks/25/interp = 1
+tracks/25/loop_wrap = true
+tracks/25/keys = PackedFloat32Array(0, 1, 0.38268, -6.88346e-09, 2.85117e-09, 0.923881)
+tracks/26/type = "rotation_3d"
+tracks/26/imported = false
+tracks/26/enabled = true
+tracks/26/path = NodePath("metarig/GeneralSkeleton:f_index.02.R")
+tracks/26/interp = 1
+tracks/26/loop_wrap = true
+tracks/26/keys = PackedFloat32Array(0, 1, 0.258818, 5.26836e-09, -9.12506e-09, 0.965926)
+tracks/27/type = "rotation_3d"
+tracks/27/imported = false
+tracks/27/enabled = true
+tracks/27/path = NodePath("metarig/GeneralSkeleton:f_index.03.R")
+tracks/27/interp = 1
+tracks/27/loop_wrap = true
+tracks/27/keys = PackedFloat32Array(0, 1, 0.382685, 6.88344e-09, -2.85121e-09, 0.923879)
+tracks/28/type = "rotation_3d"
+tracks/28/imported = false
+tracks/28/enabled = true
+tracks/28/path = NodePath("metarig/GeneralSkeleton:f_middle.01.R")
+tracks/28/interp = 1
+tracks/28/loop_wrap = true
+tracks/28/keys = PackedFloat32Array(0, 1, 0.38268, -6.88346e-09, 2.8512e-09, 0.923881)
+tracks/29/type = "rotation_3d"
+tracks/29/imported = false
+tracks/29/enabled = true
+tracks/29/path = NodePath("metarig/GeneralSkeleton:f_middle.02.R")
+tracks/29/interp = 1
+tracks/29/loop_wrap = true
+tracks/29/keys = PackedFloat32Array(0, 1, 0.258818, -9.64173e-10, -3.59834e-09, 0.965926)
+tracks/30/type = "rotation_3d"
+tracks/30/imported = false
+tracks/30/enabled = true
+tracks/30/path = NodePath("metarig/GeneralSkeleton:f_middle.03.R")
+tracks/30/interp = 1
+tracks/30/loop_wrap = true
+tracks/30/keys = PackedFloat32Array(0, 1, 0.382685, 1.42561e-09, 3.44172e-09, 0.923879)
+tracks/31/type = "rotation_3d"
+tracks/31/imported = false
+tracks/31/enabled = true
+tracks/31/path = NodePath("metarig/GeneralSkeleton:f_ring.01.R")
+tracks/31/interp = 1
+tracks/31/loop_wrap = true
+tracks/31/keys = PackedFloat32Array(0, 1, 0.38268, -6.88346e-09, 2.8512e-09, 0.923881)
+tracks/32/type = "rotation_3d"
+tracks/32/imported = false
+tracks/32/enabled = true
+tracks/32/path = NodePath("metarig/GeneralSkeleton:f_ring.02.R")
+tracks/32/interp = 1
+tracks/32/loop_wrap = true
+tracks/32/keys = PackedFloat32Array(0, 1, 0.258818, -9.64173e-10, -3.59834e-09, 0.965926)
+tracks/33/type = "rotation_3d"
+tracks/33/imported = false
+tracks/33/enabled = true
+tracks/33/path = NodePath("metarig/GeneralSkeleton:f_ring.03.R")
+tracks/33/interp = 1
+tracks/33/loop_wrap = true
+tracks/33/keys = PackedFloat32Array(0, 1, 0.382685, 1.42561e-09, 3.44172e-09, 0.923879)
+tracks/34/type = "rotation_3d"
+tracks/34/imported = false
+tracks/34/enabled = true
+tracks/34/path = NodePath("metarig/GeneralSkeleton:f_pinky.01.R")
+tracks/34/interp = 1
+tracks/34/loop_wrap = true
+tracks/34/keys = PackedFloat32Array(0, 1, 0.38268, -6.88346e-09, 2.8512e-09, 0.923881)
+tracks/35/type = "rotation_3d"
+tracks/35/imported = false
+tracks/35/enabled = true
+tracks/35/path = NodePath("metarig/GeneralSkeleton:f_pinky.02.R")
+tracks/35/interp = 1
+tracks/35/loop_wrap = true
+tracks/35/keys = PackedFloat32Array(0, 1, 0.258818, -9.64173e-10, -3.59834e-09, 0.965926)
+tracks/36/type = "rotation_3d"
+tracks/36/imported = false
+tracks/36/enabled = true
+tracks/36/path = NodePath("metarig/GeneralSkeleton:f_pinky.03.R")
+tracks/36/interp = 1
+tracks/36/loop_wrap = true
+tracks/36/keys = PackedFloat32Array(0, 1, 0.382685, 1.42561e-09, 3.44172e-09, 0.923879)
+tracks/37/type = "rotation_3d"
+tracks/37/imported = false
+tracks/37/enabled = true
+tracks/37/path = NodePath("metarig/GeneralSkeleton:thumb.02.R")
+tracks/37/interp = 1
+tracks/37/loop_wrap = true
+tracks/37/keys = PackedFloat32Array(0, 1, -1.86265e-09, -2.77556e-17, 1.49012e-08, 1)
+tracks/38/type = "rotation_3d"
+tracks/38/imported = false
+tracks/38/enabled = true
+tracks/38/path = NodePath("metarig/GeneralSkeleton:thumb.03.R")
+tracks/38/interp = 1
+tracks/38/loop_wrap = true
+tracks/38/keys = PackedFloat32Array(0, 1, 0.157557, -0.205333, 0.588019, 0.766321)
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_w2aqj"]
 _data = {
@@ -4394,6 +4492,107 @@ tracks/76/keys = {
 [sub_resource type="Animation" id="Animation_1ktnm"]
 resource_name = "godot air pose"
 length = 0.001
+
+[sub_resource type="Animation" id="Animation_fo6gq"]
+resource_name = "hand_closed"
+tracks/0/type = "rotation_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("metarig/GeneralSkeleton:f_index.01.R")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0.38268, -6.88346e-09, 2.85117e-09, 0.923881)
+tracks/1/type = "rotation_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("metarig/GeneralSkeleton:f_index.02.R")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 0.500002, 2.30825e-08, -4.72355e-09, 0.866024)
+tracks/2/type = "rotation_3d"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("metarig/GeneralSkeleton:f_index.03.R")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = PackedFloat32Array(0, 1, 0.500002, 1.29048e-08, -7.45061e-09, 0.866024)
+tracks/3/type = "rotation_3d"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("metarig/GeneralSkeleton:f_middle.01.R")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = PackedFloat32Array(0, 1, 0.38268, -6.88346e-09, 2.8512e-09, 0.923881)
+tracks/4/type = "rotation_3d"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("metarig/GeneralSkeleton:f_middle.02.R")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = PackedFloat32Array(0, 1, 0.500002, -1.56987e-08, 2.61134e-09, 0.866024)
+tracks/5/type = "rotation_3d"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("metarig/GeneralSkeleton:f_middle.03.R")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = PackedFloat32Array(0, 1, 0.500002, 1.29048e-08, -7.45061e-09, 0.866024)
+tracks/6/type = "rotation_3d"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("metarig/GeneralSkeleton:f_ring.01.R")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = PackedFloat32Array(0, 1, 0.38268, -6.88346e-09, 2.8512e-09, 0.923881)
+tracks/7/type = "rotation_3d"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("metarig/GeneralSkeleton:f_ring.02.R")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = PackedFloat32Array(0, 1, 0.500002, -1.56987e-08, 2.61134e-09, 0.866024)
+tracks/8/type = "rotation_3d"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("metarig/GeneralSkeleton:f_ring.03.R")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = PackedFloat32Array(0, 1, 0.500002, 1.29048e-08, -7.45061e-09, 0.866024)
+tracks/9/type = "rotation_3d"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("metarig/GeneralSkeleton:f_pinky.01.R")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = PackedFloat32Array(0, 1, 0.38268, -6.88346e-09, 2.8512e-09, 0.923881)
+tracks/10/type = "rotation_3d"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("metarig/GeneralSkeleton:f_pinky.02.R")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = PackedFloat32Array(0, 1, 0.500002, -1.56987e-08, 2.61134e-09, 0.866024)
+tracks/11/type = "rotation_3d"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("metarig/GeneralSkeleton:f_pinky.03.R")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = PackedFloat32Array(0, 1, 0.500002, 1.29048e-08, -7.45061e-09, 0.866024)
+tracks/12/type = "rotation_3d"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("metarig/GeneralSkeleton:thumb.02.R")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = PackedFloat32Array(0, 1, -1.86265e-09, -2.77556e-17, 1.49012e-08, 1)
+tracks/13/type = "rotation_3d"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("metarig/GeneralSkeleton:thumb.03.R")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = PackedFloat32Array(0, 1, 0.239104, -0.0990568, 0.126075, 0.957665)
 
 [sub_resource type="Animation" id="Animation_nsrne"]
 resource_name = "idle"
@@ -16903,6 +17102,7 @@ _data = {
 "flip_back": SubResource("Animation_3wiwq"),
 "flip_front": SubResource("Animation_fnsql"),
 "godot air pose": SubResource("Animation_1ktnm"),
+"hand_closed": SubResource("Animation_fo6gq"),
 "idle": SubResource("Animation_nsrne"),
 "idle_fight": SubResource("Animation_fuwmh"),
 "idle_pole": SubResource("Animation_nu7mr"),
@@ -17450,6 +17650,8 @@ _data = {
 "idle_standing": SubResource("Animation_mxdmm")
 }
 
+[sub_resource type="AnimationNodeAdd2" id="AnimationNodeAdd2_48xj3"]
+
 [sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_4kipy"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_24ce6"]
@@ -17554,6 +17756,9 @@ blend_point_3/pos = 0.45
 min_space = 0.0
 max_space = 2.0
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_m63n5"]
+animation = &"SlyCooper_anims_01_/hand_closed"
+
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_v7ug6"]
 animation = &"SlyCooper_anims_01_/jump_from_ground"
 
@@ -17625,7 +17830,9 @@ blend_point_2/pos = 1.0
 animation = &"SlyCooper_anims_01_/spin"
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_ynmj0"]
-graph_offset = Vector2(-347.957, -128.629)
+graph_offset = Vector2(-368.756, -67.2144)
+nodes/Add2/node = SubResource("AnimationNodeAdd2_48xj3")
+nodes/Add2/position = Vector2(700, -300)
 nodes/Air_Blend/node = SubResource("AnimationNodeBlend2_4kipy")
 nodes/Air_Blend/position = Vector2(-20, -420)
 nodes/Animation/node = SubResource("AnimationNodeAnimation_77dv6")
@@ -17650,6 +17857,8 @@ nodes/flipfront_anim/node = SubResource("AnimationNodeAnimation_pegbb")
 nodes/flipfront_anim/position = Vector2(-60, 740)
 nodes/floor_blend/node = SubResource("AnimationNodeBlendSpace1D_b6qxb")
 nodes/floor_blend/position = Vector2(-20, -560)
+nodes/hold_cane/node = SubResource("AnimationNodeAnimation_m63n5")
+nodes/hold_cane/position = Vector2(340, -320)
 nodes/jump_from_floor_anim/node = SubResource("AnimationNodeAnimation_v7ug6")
 nodes/jump_from_floor_anim/position = Vector2(-140, 620)
 nodes/landhard_anim/node = SubResource("AnimationNodeAnimation_gpg5e")
@@ -17669,7 +17878,7 @@ nodes/rope_blend/node = SubResource("AnimationNodeBlendSpace1D_rkqbd")
 nodes/rope_blend/position = Vector2(20, -120)
 nodes/spin_anim/node = SubResource("AnimationNodeAnimation_nqka4")
 nodes/spin_anim/position = Vector2(-40, 940)
-node_connections = [&"output", 0, &"Jump_or_Move", &"Air_Blend", 0, &"airtime_anim", &"Air_Blend", 1, &"Animation", &"Jump_State", 0, &"jump_from_floor_anim", &"Jump_State", 1, &"flipfront_anim", &"Jump_State", 3, &"flipback_anim", &"Jump_State", 5, &"spin_anim", &"Jump_State", 6, &"landhard_anim", &"Jump_State", 7, &"Animation 2", &"Jump_or_Move", 0, &"TimeScale", &"Jump_or_Move", 1, &"Jump_State", &"Move_State", 0, &"floor_blend", &"Move_State", 1, &"Air_Blend", &"Move_State", 2, &"point_anim", &"Move_State", 3, &"rope_blend", &"Move_State", 4, &"pole_blend", &"Move_State", 5, &"ledge_blend", &"Move_State", 6, &"ledge_grab", &"Move_State", 7, &"flail_anim", &"TimeScale", 0, &"Move_State"]
+node_connections = [&"output", 0, &"Add2", &"Add2", 0, &"Jump_or_Move", &"Add2", 1, &"hold_cane", &"Air_Blend", 0, &"airtime_anim", &"Air_Blend", 1, &"Animation", &"Jump_State", 0, &"jump_from_floor_anim", &"Jump_State", 1, &"flipfront_anim", &"Jump_State", 3, &"flipback_anim", &"Jump_State", 5, &"spin_anim", &"Jump_State", 6, &"landhard_anim", &"Jump_State", 7, &"Animation 2", &"Jump_or_Move", 0, &"TimeScale", &"Jump_or_Move", 1, &"Jump_State", &"Move_State", 0, &"floor_blend", &"Move_State", 1, &"Air_Blend", &"Move_State", 2, &"point_anim", &"Move_State", 3, &"rope_blend", &"Move_State", 4, &"pole_blend", &"Move_State", 5, &"ledge_blend", &"Move_State", 6, &"ledge_grab", &"Move_State", 7, &"flail_anim", &"TimeScale", 0, &"Move_State"]
 
 [node name="SlyCooper_RigNoPhysics" instance=ExtResource("1_36eye")]
 script = ExtResource("2_cje2a")
@@ -17800,15 +18009,17 @@ visible = false
 bones/0/position = Vector3(0, -1.07908, 0.0578878)
 bones/1/position = Vector3(0, -1, 0)
 bones/10/position = Vector3(-0.00391416, 0.297588, 0.000336398)
-bones/10/rotation = Quaternion(-0.130526, 0, 0, 0.991445)
+bones/10/rotation = Quaternion(-0.0500517, -0.0155755, 0.0357865, 0.997984)
 bones/10/scale = Vector3(0.999999, 1, 1)
 bones/11/position = Vector3(-0.0190629, 0.185329, 0.0558959)
-bones/11/rotation = Quaternion(0.258819, 2.99925e-06, -9.81094e-06, 0.965926)
+bones/11/rotation = Quaternion(0.345374, -0.0686849, 0.038209, 0.935168)
 bones/11/scale = Vector3(0.999999, 0.999999, 1)
+bones/12/position = Vector3(0.00170817, 0.126351, -0.00938925)
 bones/12/rotation = Quaternion(0.158801, -0.0114298, -0.0255747, 0.986913)
 bones/12/scale = Vector3(1, 0.999999, 1)
 bones/13/rotation = Quaternion(-0.208717, 0.0645371, 0.0736596, 0.97306)
 bones/13/scale = Vector3(0.999999, 0.999999, 1)
+bones/14/rotation = Quaternion(0.00248581, 0.00414446, -0.0144328, 0.999884)
 bones/14/scale = Vector3(1, 1, 0.999998)
 bones/15/rotation = Quaternion(-0.355249, -0.0143481, 0.00468402, 0.93465)
 bones/15/scale = Vector3(1, 1, 0.999998)
@@ -17832,10 +18043,39 @@ bones/97/scale = Vector3(0.999999, 0.999993, 1)
 bones/98/rotation = Quaternion(-0.0400222, -0.204283, 0.185492, 0.960343)
 bones/98/scale = Vector3(1, 0.999995, 1)
 bones/99/scale = Vector3(1, 0.999998, 1)
+bones/100/rotation = Quaternion(0.38268, -6.88346e-09, 2.85117e-09, 0.923881)
+bones/100/scale = Vector3(1, 0.999993, 1.00001)
+bones/101/rotation = Quaternion(0.258818, 5.26836e-09, -9.12506e-09, 0.965926)
+bones/101/scale = Vector3(1, 0.999982, 1.00002)
+bones/102/rotation = Quaternion(0.382685, 6.88344e-09, -2.85121e-09, 0.923879)
+bones/102/scale = Vector3(1, 0.999978, 1.00002)
+bones/104/rotation = Quaternion(-1.86265e-09, -2.77556e-17, 1.49012e-08, 1)
+bones/104/scale = Vector3(1, 0.999987, 1.00001)
+bones/105/rotation = Quaternion(0.157557, -0.205333, 0.588019, 0.766321)
+bones/105/scale = Vector3(0.999994, 1, 1)
+bones/107/rotation = Quaternion(0.38268, -6.88346e-09, 2.8512e-09, 0.923881)
+bones/107/scale = Vector3(1, 0.999994, 1.00001)
+bones/108/rotation = Quaternion(0.258818, -9.64173e-10, -3.59834e-09, 0.965926)
+bones/108/scale = Vector3(1, 0.999984, 1.00002)
+bones/109/rotation = Quaternion(0.382685, 1.42561e-09, 3.44172e-09, 0.923879)
+bones/109/scale = Vector3(1, 0.99998, 1.00002)
+bones/111/rotation = Quaternion(0.38268, -6.88346e-09, 2.8512e-09, 0.923881)
+bones/111/scale = Vector3(1, 0.999994, 1.00001)
+bones/112/rotation = Quaternion(0.258818, -9.64173e-10, -3.59834e-09, 0.965926)
+bones/112/scale = Vector3(1, 0.999984, 1.00002)
+bones/113/rotation = Quaternion(0.382685, 1.42561e-09, 3.44172e-09, 0.923879)
+bones/113/scale = Vector3(1, 0.99998, 1.00002)
+bones/115/rotation = Quaternion(0.38268, -6.88346e-09, 2.8512e-09, 0.923881)
+bones/115/scale = Vector3(1, 0.999994, 1.00001)
+bones/116/rotation = Quaternion(0.258818, -9.64173e-10, -3.59834e-09, 0.965926)
+bones/116/scale = Vector3(1, 0.999984, 1.00002)
+bones/117/rotation = Quaternion(0.382685, 1.42561e-09, 3.44172e-09, 0.923879)
+bones/117/scale = Vector3(1, 0.99998, 1.00002)
 bones/118/scale = Vector3(1, 0.999998, 1)
 bones/130/rotation = Quaternion(-0.0217066, 0.517255, 0.854803, 0.035873)
 bones/131/rotation = Quaternion(-0.256349, -0.656527, 0.689855, -0.165403)
 bones/132/rotation = Quaternion(0.0416268, 0.992171, -0.117638, -0.00497667)
+bones/133/rotation = Quaternion(0.0305084, 0.988634, -0.133271, -0.0625394)
 bones/134/scale = Vector3(0.999999, 0.999999, 1)
 bones/135/rotation = Quaternion(-0.381338, -0.0320628, 5.43846e-07, 0.92388)
 bones/135/scale = Vector3(1, 0.999997, 1)
@@ -17846,72 +18086,72 @@ bones/139/rotation = Quaternion(7.75249e-06, 0.92388, 0.382683, 4.12277e-07)
 bones/141/rotation = Quaternion(-0.124363, 0.00943051, -0.0675758, 0.989888)
 
 [node name="Cane_LowPoly" parent="metarig/GeneralSkeleton" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00541937, -0.752155, -0.248256)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00541937, -0.00215471, 0.0017447)
 visible = false
 bone_idx = 6
 
 [node name="TeethUpper_LowPoly" parent="metarig/GeneralSkeleton" index="1"]
-transform = Transform3D(0.999997, 2.05057e-05, 7.15571e-07, -1.74007e-05, 0.866023, -0.499998, -1.08726e-05, 0.499999, 0.866022, 4.36407e-06, 0.417171, -0.070067)
+transform = Transform3D(0.992053, -0.0982517, -0.0785576, 0.0149624, 0.712207, -0.701804, 0.124904, 0.695055, 0.70802, -0.0594032, 0.815454, 0.171383)
 bone_idx = 20
 
 [node name="TeethLower_LowPoly" parent="metarig/GeneralSkeleton" index="2"]
-transform = Transform3D(-0.999997, 7.15571e-07, 2.05057e-05, 1.74007e-05, -0.499998, 0.866023, 1.08726e-05, 0.866022, 0.499999, 3.88902e-06, 0.398853, -0.0843824)
+transform = Transform3D(-0.992053, -0.0785576, -0.0982517, -0.0149624, -0.701804, 0.712207, -0.124904, 0.70802, 0.695055, -0.0568868, 0.801331, 0.153088)
 bone_idx = 23
 
 [node name="EyeHLightBot_L" parent="metarig/GeneralSkeleton" index="3"]
-transform = Transform3D(0.999997, 7.15571e-07, -2.05057e-05, -1.74007e-05, -0.499998, -0.866023, -1.08726e-05, 0.866022, -0.499999, 4.4331e-06, 0.420061, -0.0692877)
+transform = Transform3D(0.992053, -0.0785576, 0.0982517, 0.0149624, -0.701804, -0.712207, 0.124904, 0.70802, -0.695055, -0.0596268, 0.818054, 0.172847)
 bone_idx = 32
 
 [node name="EyeHLightTop_L" parent="metarig/GeneralSkeleton" index="4"]
-transform = Transform3D(0.999997, 7.15571e-07, -2.05057e-05, -1.74007e-05, -0.499998, -0.866023, -1.08726e-05, 0.866022, -0.499999, 4.41819e-06, 0.420061, -0.0692877)
+transform = Transform3D(0.992053, -0.0785576, 0.0982517, 0.0149624, -0.701804, -0.712207, 0.124904, 0.70802, -0.695055, -0.0596268, 0.818054, 0.172847)
 bone_idx = 34
 
 [node name="Iris_L" parent="metarig/GeneralSkeleton" index="5"]
-transform = Transform3D(0.999997, 7.15571e-07, -2.05057e-05, -1.74007e-05, -0.499998, -0.866023, -1.08726e-05, 0.866022, -0.499999, 4.43682e-06, 0.420061, -0.0692872)
+transform = Transform3D(0.992053, -0.0785576, 0.0982517, 0.0149624, -0.701804, -0.712207, 0.124904, 0.70802, -0.695055, -0.0596269, 0.818054, 0.172848)
 bone_idx = 35
 
 [node name="Pupil_L" parent="metarig/GeneralSkeleton" index="6"]
-transform = Transform3D(0.999997, 7.15571e-07, -2.05057e-05, -1.74007e-05, -0.499998, -0.866023, -1.08726e-05, 0.866022, -0.499999, 4.43682e-06, 0.420061, -0.0692872)
+transform = Transform3D(0.992053, -0.0785576, 0.0982517, 0.0149624, -0.701804, -0.712207, 0.124904, 0.70802, -0.695055, -0.0596269, 0.818054, 0.172848)
 bone_idx = 36
 
 [node name="EyeHLightBot_R" parent="metarig/GeneralSkeleton" index="7"]
-transform = Transform3D(0.999997, 7.15571e-07, -2.05057e-05, -1.74007e-05, -0.499998, -0.866023, -1.08726e-05, 0.866022, -0.499999, 4.40702e-06, 0.42006, -0.0692878)
+transform = Transform3D(0.992053, -0.0785576, 0.0982517, 0.0149624, -0.701804, -0.712207, 0.124904, 0.70802, -0.695055, -0.0596268, 0.818054, 0.172847)
 bone_idx = 39
 
 [node name="EyeHLightTop_R" parent="metarig/GeneralSkeleton" index="8"]
-transform = Transform3D(0.999997, 7.15571e-07, -2.05057e-05, -1.74007e-05, -0.499998, -0.866023, -1.08726e-05, 0.866022, -0.499999, 4.41261e-06, 0.420061, -0.0692877)
+transform = Transform3D(0.992053, -0.0785576, 0.0982517, 0.0149624, -0.701804, -0.712207, 0.124904, 0.70802, -0.695055, -0.0596268, 0.818054, 0.172848)
 bone_idx = 41
 
 [node name="Iris_R" parent="metarig/GeneralSkeleton" index="9"]
-transform = Transform3D(0.999997, 7.15571e-07, -2.05057e-05, -1.74007e-05, -0.499998, -0.866023, -1.08726e-05, 0.866022, -0.499999, 4.4331e-06, 0.42006, -0.0692878)
+transform = Transform3D(0.992053, -0.0785576, 0.0982517, 0.0149624, -0.701804, -0.712207, 0.124904, 0.70802, -0.695055, -0.0596268, 0.818054, 0.172847)
 bone_idx = 42
 
 [node name="Pupil_R" parent="metarig/GeneralSkeleton" index="10"]
-transform = Transform3D(0.999997, 7.15571e-07, -2.05057e-05, -1.74007e-05, -0.499998, -0.866023, -1.08726e-05, 0.866022, -0.499999, 4.4331e-06, 0.42006, -0.0692878)
+transform = Transform3D(0.992053, -0.0785576, 0.0982517, 0.0149624, -0.701804, -0.712207, 0.124904, 0.70802, -0.695055, -0.0596268, 0.818054, 0.172847)
 bone_idx = 43
 
 [node name="Hat_LowPoly" parent="metarig/GeneralSkeleton" index="11"]
-transform = Transform3D(0.999997, 2.05057e-05, 7.15571e-07, -1.74007e-05, 0.866023, -0.499998, -1.08726e-05, 0.499999, 0.866022, -2.25817e-05, -0.862293, -0.497391)
+transform = Transform3D(0.992053, -0.0982517, -0.0785576, 0.0149624, 0.712207, -0.701804, 0.124904, 0.695055, 0.70802, 0.0492736, -0.315129, -0.556357)
 bone_idx = 45
 
 [node name="EyeWhite_lowPoly" parent="metarig/GeneralSkeleton" index="12"]
-transform = Transform3D(0.999997, 2.05057e-05, 7.15571e-07, -1.74007e-05, 0.866023, -0.499998, -1.08726e-05, 0.499999, 0.866022, 4.42335e-06, 0.420061, -0.0692878)
+transform = Transform3D(0.992053, -0.0982517, -0.0785576, 0.0149624, 0.712207, -0.701804, 0.124904, 0.695055, 0.70802, -0.0596268, 0.818054, 0.172847)
 bone_idx = 71
 
 [node name="EyeWhite_lowPoly" parent="metarig/GeneralSkeleton/EyeWhite_lowPoly" index="0"]
 transform = Transform3D(0.084569, -1.86265e-09, 0, -3.72529e-09, 0.081723, 0.0217545, 0, -0.0217545, 0.081723, -1.49012e-08, 0, 0)
 
 [node name="Belt_LowPoly" parent="metarig/GeneralSkeleton" index="13"]
-transform = Transform3D(0.999999, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, -2.57572e-14, 0.590971, -0.280285)
+transform = Transform3D(0.996952, -0.0698696, -0.0346705, 0.0729878, 0.992428, 0.0987868, 0.0275057, -0.101016, 0.994504, -0.0300902, 0.971522, -0.0143711)
 bone_idx = 121
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="metarig/GeneralSkeleton" index="21"]
-transform = Transform3D(0.995103, 0.0426177, 0.0891334, 0.0987678, -0.451975, -0.886535, 0.00250348, 0.891001, -0.45398, -0.156759, 0.0567803, 0.0776366)
+transform = Transform3D(0.669917, 0.123542, 0.732082, 0.459382, -0.843597, -0.278023, 0.583245, 0.522548, -0.621899, -0.555194, 0.681998, 0.50188)
 bone_name = "f_middle.01.R"
 bone_idx = 107
 
 [node name="SlyCooper_Cane" parent="metarig/GeneralSkeleton/BoneAttachment3D" index="0" instance=ExtResource("2_g52sn")]
-transform = Transform3D(-0.0741766, 0.997191, 0.0105936, 0.972284, 0.0746772, -0.221549, -0.221718, -0.00613263, -0.975093, -0.0786485, -0.0181565, 0.0274268)
+transform = Transform3D(-0.231017, 0.915371, -0.329747, 0.75774, 0.381858, 0.529167, 0.610295, -0.127616, -0.781827, -0.071712, -0.0290478, 0.033608)
 
 [node name="SkeletonIK3D" type="SkeletonIK3D" parent="metarig/GeneralSkeleton" index="22"]
 process_priority = 1
@@ -17956,7 +18196,7 @@ tip_bone = &"Tail.002"
 target_node = NodePath("../../../Ball Tail Root/Ball Tail 2/Node3D/cnt")
 
 [node name="BoneAttachment3D2" type="BoneAttachment3D" parent="metarig/GeneralSkeleton" index="29"]
-transform = Transform3D(0.999999, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, -7.99361e-15, 0.149575, -0.219561)
+transform = Transform3D(0.996952, -0.0698696, -0.0346705, 0.0729878, 0.992428, 0.0987868, 0.0275057, -0.101016, 0.994504, 0.00272436, 0.527306, -0.0249953)
 bone_name = "Tail.001"
 bone_idx = 122
 
@@ -17972,6 +18212,7 @@ libraries = {
 tree_root = SubResource("AnimationNodeBlendTree_ynmj0")
 anim_player = NodePath("../AnimationPlayer")
 active = true
+parameters/Add2/add_amount = 1.0
 parameters/Air_Blend/blend_amount = 0.18
 parameters/Jump_State/current_state = "Spin"
 parameters/Jump_State/transition_request = ""
@@ -17979,11 +18220,11 @@ parameters/Jump_State/current_index = 5
 parameters/Jump_or_Move/active = false
 parameters/Jump_or_Move/internal_active = false
 parameters/Jump_or_Move/request = 0
-parameters/Move_State/current_state = "ray_v_ball"
+parameters/Move_State/current_state = "air"
 parameters/Move_State/transition_request = ""
-parameters/Move_State/current_index = 6
+parameters/Move_State/current_index = 1
 parameters/TimeScale/scale = 1.0
-parameters/floor_blend/blend_position = 1.99669
+parameters/floor_blend/blend_position = -0.016
 parameters/ledge_blend/blend_position = -0.000839651
 parameters/pole_blend/blend_position = -0.983207
 parameters/rope_blend/blend_position = -0.000801921

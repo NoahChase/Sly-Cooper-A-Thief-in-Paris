@@ -20,6 +20,8 @@ func _physics_process(delta):
 			var ray_follow_collider = ray_follow_player.get_collider()
 			if ray_follow_collider.is_in_group("Player") and not target == null:
 				player_detected = true
+			elif ray_follow_collider.is_in_group("Enemy") and not target == null:
+				player_detected = true
 			else:
 				player_detected = false
 	else:
@@ -28,7 +30,7 @@ func _physics_process(delta):
 	if player_detected:
 		#if is_spotlight:
 			#spotlight.light_energy = lerp(spotlight.light_energy, 2.0, 0.05)
-		$TestMesh.visible = false
+		#$TestMesh.visible = false
 		$TestMesh.global_transform.origin = lerp($TestMesh.global_transform.origin, ray_follow_player.get_collision_point(), 0.25)
 		$Area3D.look_at($TestMesh.global_transform.origin)
 	else:

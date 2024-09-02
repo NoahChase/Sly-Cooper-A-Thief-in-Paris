@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bt011r4ktd2pf"]
+[gd_scene load_steps=21 format=3 uid="uid://bt011r4ktd2pf"]
 
 [ext_resource type="Shader" path="res://Assets/Materials/sly_cooper.outline.gdshader" id="1_djitq"]
 [ext_resource type="Script" path="res://Scripts/enemy_base.gd" id="1_lo52x"]
@@ -6,7 +6,14 @@
 [ext_resource type="PackedScene" uid="uid://dbadbi78di6xc" path="res://Scenes/loot_spawner.tscn" id="4_tdcbf"]
 [ext_resource type="PackedScene" uid="uid://cbcysjgxx2vcq" path="res://Scenes/gun.tscn" id="5_a14l1"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kxay5"]
+shading_mode = 0
+albedo_color = Color(0.878431, 0.827451, 0.239216, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_ycxtf"]
+
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_vkojx"]
+radius = 0.55
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_my1ha"]
 albedo_color = Color(0.678431, 0.678431, 0.678431, 1)
@@ -35,12 +42,32 @@ size = Vector3(0.25, 0.5, 0.25)
 height = 2.25
 radius = 0.625
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_moonc"]
+radius = 8.0
+
 [sub_resource type="SphereShape3D" id="SphereShape3D_rwtcm"]
-radius = 20.0
+radius = 25.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d6pqw"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0.419608)
+
+[sub_resource type="SphereMesh" id="SphereMesh_pwtfd"]
+radius = 100.0
+height = 100.0
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_g0dd4"]
+radius = 45.0
 
 [node name="Enemy Base" type="CharacterBody3D" groups=["Enemy"]]
 safe_margin = 0.01
 script = ExtResource("1_lo52x")
+
+[node name="searchmesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.625, 0)
+visible = false
+material_override = SubResource("StandardMaterial3D_kxay5")
+mesh = SubResource("SphereMesh_ycxtf")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -62,7 +89,7 @@ material_overlay = SubResource("ShaderMaterial_srccj")
 mesh = SubResource("PrismMesh_ohrbu")
 
 [node name="Gun" parent="." instance=ExtResource("5_a14l1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -0.869608)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -0.619608)
 
 [node name="Spotlight Detection" parent="." instance=ExtResource("2_apxjc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -0.5)
@@ -87,13 +114,32 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0300481)
 shape = SubResource("CylinderShape3D_bjcjf")
 
+[node name="Melee Area" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Melee Area"]
+shape = SubResource("SphereShape3D_moonc")
+
 [node name="Med Detection Area" type="Area3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Med Detection Area"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("SphereShape3D_rwtcm")
 
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Med Detection Area"]
+visible = false
+material_override = SubResource("StandardMaterial3D_d6pqw")
+mesh = SubResource("SphereMesh_pwtfd")
+
+[node name="Far Detection Area" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Far Detection Area"]
+shape = SubResource("SphereShape3D_g0dd4")
+
 [connection signal="body_entered" from="Close Detection Area" to="." method="_on_close_detection_area_body_entered"]
 [connection signal="body_exited" from="Close Detection Area" to="." method="_on_close_detection_area_body_exited"]
+[connection signal="body_entered" from="Melee Area" to="." method="_on_melee_area_body_entered"]
+[connection signal="body_exited" from="Melee Area" to="." method="_on_melee_area_body_exited"]
 [connection signal="body_entered" from="Med Detection Area" to="." method="_on_med_detection_area_body_entered"]
 [connection signal="body_exited" from="Med Detection Area" to="." method="_on_med_detection_area_body_exited"]
+[connection signal="body_entered" from="Far Detection Area" to="." method="_on_far_detection_area_body_entered"]
+[connection signal="body_exited" from="Far Detection Area" to="." method="_on_far_detection_area_body_exited"]

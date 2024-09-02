@@ -1,10 +1,10 @@
 extends Node
 
-const max_health = 3
+const max_health = 6
 const max_power_ups = 12
 
 var coins = 0
-var health = 3
+var health = 6
 var power_ups = 12
 
 # Called when the node enters the scene tree for the first time.
