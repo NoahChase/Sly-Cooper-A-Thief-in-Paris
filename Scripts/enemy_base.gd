@@ -36,7 +36,8 @@ func _process(delta):
 		#print("enemy chase 1")
 		target = spotlight.target
 		if target.is_in_group("Player"):
-			hear_enemy_target()
+			if enemies.size() > 0:
+				hear_enemy_target()
 			do_chase()
 	
 
@@ -49,20 +50,16 @@ func _physics_process(delta):
 		if nav_distance.length() < 2:
 			gen_nav_rng()
 	if state == CHASE:
-		### Movement
 		$searchmesh.visible = false
 		$Arms.visible = true
 		SPEED_MULT = 2
 		$"Gun".shoot = true
 		$"Gun".look_at(spotlight.get_node("TestMesh").global_transform.origin)
-		
 		if not spotlight.player_detected:
 			spotlight.target = target
 			spotlight.player_detected = true
-		
 		rotate_y(deg_to_rad(spotlight.look_at_player.rotation.y * 4))
 		nav_agent.target_position = target.global_position
-		### Fire Gun While Chasing
 	if state == SEARCH:
 		$searchmesh.visible = true
 		SPEED_MULT = 3
@@ -73,11 +70,13 @@ func _physics_process(delta):
 		var search_nav_distance = global_transform.origin - target.global_transform.origin
 		if search_nav_distance.length() < 5:
 			do_idle()
-			hear_enemy_in_range()
+			if enemies_in_range.size() > 0:
+				hear_enemy_in_range()
 		elif search_nav_distance.length() > 40:
 			do_idle()
 	if state == IDLE:
-		hear_enemy_target()
+		if enemies.size() > 0:
+			hear_enemy_target()
 		if not target == null:
 			if target_in_range and target.SPEED_MULT == 1.7:
 				do_chase()
