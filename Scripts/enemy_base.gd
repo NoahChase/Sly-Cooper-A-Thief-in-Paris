@@ -32,13 +32,14 @@ func _ready():
 	new_nav_point = nav_parent.get_node("Point 1")
 
 func _process(delta):
-	if spotlight.player_detected:
+	if spotlight.player_detected and state != CHASE:
 		#print("enemy chase 1")
 		target = spotlight.target
 		if target.is_in_group("Player"):
+			hear_enemy_target()
 			do_chase()
 	
-	
+
 func _physics_process(delta):
 	var direction = Vector3()
 	if not is_on_floor():
@@ -55,7 +56,9 @@ func _physics_process(delta):
 		$"Gun".shoot = true
 		$"Gun".look_at(spotlight.get_node("TestMesh").global_transform.origin)
 		
-		spotlight.player_detected = true
+		if not spotlight.player_detected:
+			spotlight.target = target
+			spotlight.player_detected = true
 		
 		rotate_y(deg_to_rad(spotlight.look_at_player.rotation.y * 4))
 		nav_agent.target_position = target.global_position
@@ -68,8 +71,11 @@ func _physics_process(delta):
 		rotate_y(deg_to_rad(spotlight.look_at_player.rotation.y * 4))
 		nav_agent.target_position = target.global_position
 		var search_nav_distance = global_transform.origin - target.global_transform.origin
-		if search_nav_distance.length() < 2:
-			state == IDLE
+		if search_nav_distance.length() < 5:
+			do_idle()
+			hear_enemy_in_range()
+		elif search_nav_distance.length() > 40:
+			do_idle()
 	if state == IDLE:
 		hear_enemy_target()
 		if not target == null:
@@ -82,12 +88,10 @@ func _physics_process(delta):
 		var target_rotation = global_transform.looking_at(nav_agent.get_next_path_position(), Vector3.UP).basis
 		global_transform.basis = global_transform.basis.slerp(target_rotation, 2 * delta)
 		nav_agent.target_position = new_nav_point.global_position
-	
+		
 	direction = nav_agent.get_next_path_position() - global_position
 	direction = direction.normalized()
 	velocity = velocity.lerp(direction * SPEED * SPEED_MULT, 4 * delta)
-	
-	
 	move_and_slide()
 
 
@@ -123,15 +127,16 @@ func hear_enemy_target():
 				enemy_target = null
 			
 			
-
 func hear_enemy_in_range():
 	for enemy_in_range in enemies_in_range:
 		if target == null or state != CHASE:
-			if enemy_in_range.target != null and enemy_in_range.target.is_in_group("Player") and enemy_in_range.state == CHASE:
+			if enemy_in_range.target != null and enemy_in_range.target.is_in_group("Player") and enemy_in_range.state == CHASE and target_in_range:
 				target = enemy_in_range.target
 				do_chase()
 			else:
 				do_idle()
+
+
 
 func do_chase():
 	spotlight.target = target
@@ -141,6 +146,8 @@ func do_search():
 	state = SEARCH
 func do_idle():
 	state = IDLE
+	spotlight.target = null
+	target = null
 	
 
 
@@ -157,34 +164,20 @@ func _on_close_detection_area_body_exited(body):
 func _on_melee_area_body_entered(body):
 	if body.is_in_group("Enemy"):
 		enemies_in_range.append(body)
-		if body.target != null:
-			target = body.target
-		if target == null:
-			do_idle()
-		else:
-			do_chase()
 func _on_melee_area_body_exited(body):
 	if body.is_in_group("Enemy"):
 		enemies_in_range.erase(body)
 func _on_med_detection_area_body_entered(body):
 	if body.is_in_group("Player"):
 		target = body
-		#do_chase()
-#		spotlight.target = target
-#		print("med found player body")
 		target_in_range = true
-#		print("target_in_range")
-		#spotlight.player_detected = true
-		#body_found_target = true
 func _on_med_detection_area_body_exited(body):
 	if body.is_in_group("Player"):
 		target_in_range = false
-		body_found_target = false
 		if spotlight.target == body:
 			spotlight.target = null
 		target != body
 		do_idle()
-		
 func _on_far_detection_area_body_entered(body):
 	if body.is_in_group("Enemy"):
 		enemies.append(body)

@@ -28,35 +28,44 @@ pitch_max = 90
 
 [node name="Camera3D" type="Camera3D" parent="CameraTarget"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, -4.25)
+visible = false
 fov = 70.0
 
 [node name="RayCast_Left" type="RayCast3D" parent="CameraTarget/Camera3D"]
 transform = Transform3D(-4.37114e-08, 1, -8.74228e-08, -1, -4.37114e-08, -8.74228e-08, -8.74228e-08, 8.74228e-08, 1, 0, 0, 0)
+visible = false
 
 [node name="RayCast_Left1" type="RayCast3D" parent="CameraTarget/Camera3D"]
 transform = Transform3D(3.09086e-08, 0.707107, -0.707107, -1, -4.37114e-08, -8.74228e-08, -9.27259e-08, 0.707107, 0.707107, 0, 0, 0)
+visible = false
 
 [node name="RayCast_Left2" type="RayCast3D" parent="CameraTarget/Camera3D"]
 transform = Transform3D(-9.27259e-08, 0.707107, 0.707107, -1, -4.37114e-08, -8.74228e-08, -3.09086e-08, -0.707107, 0.707107, 0, 0, 0)
+visible = false
 enabled = false
 target_position = Vector3(0, -1.25, 0)
 
 [node name="RayCast_Right" type="RayCast3D" parent="CameraTarget/Camera3D"]
 transform = Transform3D(4.37114e-08, -1, 1.42109e-14, -1, -4.37114e-08, -8.74228e-08, 8.74228e-08, -1.42109e-14, -1, 0, 0, 0)
+visible = false
 
 [node name="RayCast_Right1" type="RayCast3D" parent="CameraTarget/Camera3D"]
 transform = Transform3D(9.27259e-08, -0.707107, -0.707107, -1, -4.37114e-08, -8.74228e-08, 3.09086e-08, 0.707107, -0.707107, 0, 0, 0)
+visible = false
 
 [node name="RayCast_Right2" type="RayCast3D" parent="CameraTarget/Camera3D"]
 transform = Transform3D(-3.09086e-08, -0.707107, 0.707107, -1, -4.37114e-08, -8.74228e-08, 9.27259e-08, -0.707107, -0.707107, 0, 0, 0)
+visible = false
 enabled = false
 
 [node name="RayCast_Back" type="RayCast3D" parent="CameraTarget/Camera3D"]
 transform = Transform3D(-8.74228e-08, 4.37114e-08, 1, -1, -4.37114e-08, -8.74228e-08, 4.37114e-08, -1, 4.37114e-08, 0, 0, 0)
+visible = false
 target_position = Vector3(0, -1.25, 0)
 
 [node name="RayCast_Bottom" type="RayCast3D" parent="CameraTarget/Camera3D"]
 transform = Transform3D(-6.47961e-08, -1.28156e-07, 1, 0.965926, 0.258819, 9.57572e-08, -0.258819, 0.965926, 1.07018e-07, 0, 0, 0)
+visible = false
 target_position = Vector3(0, -3, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="CameraTarget/Camera3D/RayCast_Bottom"]
@@ -67,6 +76,7 @@ mesh = SubResource("SphereMesh_jvdk3")
 
 [node name="RayCast_Top" type="RayCast3D" parent="CameraTarget/Camera3D"]
 transform = Transform3D(-1.10049e-07, -1.28156e-07, 1, 0.965926, -0.258819, 7.31305e-08, 0.258819, 0.965926, 1.52271e-07, 0, 0, 0)
+visible = false
 target_position = Vector3(0, -4.67, 0)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="CameraTarget/Camera3D"]
@@ -95,6 +105,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.25)
 
 [node name="RayCast_Front" type="RayCast3D" parent="CameraTarget"]
 transform = Transform3D(8.74228e-08, 2.18557e-07, -1, -1, -4.37114e-08, -8.74228e-08, -4.37114e-08, 1, 2.18557e-07, 0, 0, -1.25)
+visible = false
 target_position = Vector3(0, -3, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="CameraTarget/RayCast_Front"]
@@ -104,6 +115,7 @@ mesh = SubResource("SphereMesh_gc2k0")
 
 [node name="RayCast_Out" type="RayCast3D" parent="CameraTarget"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, -1.375)
+visible = false
 target_position = Vector3(0, 0, 2)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="CameraTarget/RayCast_Out"]
