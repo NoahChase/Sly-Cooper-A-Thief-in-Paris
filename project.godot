@@ -26,10 +26,14 @@ Global="*res://Scripts/Global.gd"
 
 [display]
 
-window/size/viewport_width=1920
-window/size/viewport_height=1080
+window/size/viewport_width=1280
+window/size/viewport_height=720
 window/size/mode=3
 window/stretch/mode="viewport"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/jigglebones/plugin.cfg")
 
 [input]
 
@@ -242,13 +246,16 @@ L2={
 [rendering]
 
 occlusion_culling/bvh_build_quality=0
-lights_and_shadows/directional_shadow/soft_shadow_filter_quality=5
+textures/vram_compression/import_s3tc_bptc=true
+lights_and_shadows/directional_shadow/soft_shadow_filter_quality=3
 global_illumination/gi/use_half_resolution=true
-textures/default_filters/anisotropic_filtering_level=3
+anti_aliasing/screen_space_roughness_limiter/enabled=false
 scaling_3d/fsr_sharpness=0.0
-environment/volumetric_fog/volume_size=256
+textures/decals/filter=4
+textures/light_projectors/filter=5
+occlusion_culling/occlusion_rays_per_thread=256
+environment/volumetric_fog/volume_size=128
 limits/spatial_indexer/update_iterations_per_frame=5
-anti_aliasing/quality/msaa_2d=2
 anti_aliasing/quality/msaa_3d=2
 anti_aliasing/quality/screen_space_aa=1
 occlusion_culling/use_occlusion_culling=true
@@ -256,7 +263,7 @@ mesh_lod/lod_change/threshold_pixels=0.1
 environment/use_physical_light_units=false
 environment/positional_shadow/atlas_size.mobile=512
 environment/positional_shadow/atlas_size=1024
-environment/directional_shadow/size.mobile=1024
 environment/directional_shadow/soft_shadow_filter_quality=3
-environment/directional_shadow/size=2048
 environment/transparent_background=false
+environment/directional_shadow/size=2048
+environment/directional_shadow/size.mobile=1024

@@ -39,8 +39,8 @@ func _ready():
 	
 func _input(event):
 	if event is InputEventMouseMotion and Input.get_mouse_mode() !=0:
-		yaw += -event.relative.x * yaw_sens * avg_distance
-		pitch += event.relative.y * pitch_sens * avg_distance
+		yaw += -event.relative.x * yaw_sens * 3 * avg_distance
+		pitch += event.relative.y * pitch_sens * 3 * avg_distance
 
 func _physics_process(delta):
 	left_stick_pressure = Input.get_action_strength("left_stick_left") + Input.get_action_strength("left_stick_right") + Input.get_action_strength("left_stick_up") + Input.get_action_strength("left_stick_down")

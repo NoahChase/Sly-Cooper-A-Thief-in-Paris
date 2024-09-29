@@ -9,7 +9,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	position -= transform.basis.z * 25 * delta
+	position -= transform.basis.z * 60 * delta
 	if $Timer.is_stopped():
 		$Timer.start(10)
 	if $Timer.time_left == 0.0:

@@ -28,8 +28,10 @@ ambient_light_source = 3
 reflected_light_source = 2
 tonemap_mode = 3
 ssao_enabled = true
-ssao_radius = 2.0
+ssao_radius = 1.5
 ssao_intensity = 1.5
+ssao_light_affect = 1.0
+ssao_ao_channel_affect = 1.0
 glow_enabled = true
 glow_normalized = true
 glow_bloom = 0.55
@@ -210,7 +212,8 @@ transform = Transform3D(0.965926, 0.040216, -0.255676, 0.0337827, 0.959813, 0.27
 light_color = Color(0.878431, 0.835294, 0.694118, 1)
 light_energy = 0.75
 shadow_enabled = true
-shadow_opacity = 0.75
+shadow_opacity = 0.5
+shadow_blur = 4.0
 
 [node name="Camera" parent="." node_paths=PackedStringArray("camera_player") instance=ExtResource("2_ciope")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -50.875, 28.375, 0.5)

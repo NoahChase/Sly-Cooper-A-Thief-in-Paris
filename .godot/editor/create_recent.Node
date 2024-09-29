@@ -1,6 +1,9 @@
 Node3D
+AnimationPlayer
 MeshInstance3D
+Jigglebone
 CollisionShape3D
+CSGMesh3D
 Area3D
 Timer
 RayCast3D
@@ -10,7 +13,6 @@ AudioStreamPlayer3D
 VoxelGI
 LightmapGI
 RichTextLabel
-AnimationPlayer
 GPUParticles3D
 AudioStreamPlayer
 CharacterBody3D
@@ -28,5 +30,3 @@ CSGPolygon3D
 Path3D
 Camera3D
 SpringArm3D
-AnimationTree
-StaticBody3D

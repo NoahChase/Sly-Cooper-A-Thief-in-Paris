@@ -20,3 +20,4 @@ func _on_border_body_exited(body):
 	if body.is_in_group("Player"):
 		target = body
 		target.position = spawn_point.position
+ 

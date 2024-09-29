@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cbcysjgxx2vcq"]
+[gd_scene load_steps=9 format=3 uid="uid://cbcysjgxx2vcq"]
 
 [ext_resource type="Script" path="res://Scripts/gun.gd" id="1_cq23w"]
 [ext_resource type="AudioStream" uid="uid://b6fsi2vfr4uss" path="res://Assets/Sounds/615028__zreimbach__designed-gunshot.wav" id="2_2f87u"]
@@ -89,9 +89,14 @@ tracks/1/keys = {
 "values": [Vector3(0, 0, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_16r2q"]
+resource_name = "no reset"
+length = 3.0
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_y4384"]
 _data = {
 "RESET": SubResource("Animation_gxafh"),
+"no reset": SubResource("Animation_16r2q"),
 "reset": SubResource("Animation_nhbrr"),
 "shoot": SubResource("Animation_fmuts")
 }

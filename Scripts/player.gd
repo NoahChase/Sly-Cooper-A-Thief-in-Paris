@@ -13,7 +13,7 @@ var air_accel = 0.0
 #in-game jump distance = 6
 #in-game jump height = 2
 #in-game double jump height = 3
-
+@onready var can_rotate = true
 @onready var direction
 @onready var input_dir
 @onready var grav_mult = 1
@@ -147,7 +147,6 @@ func joystick_event():
 func _process(delta):
 	if state_now == State.FLOOR and Input.is_action_just_pressed("RMB"):
 		pickpocket()
-	
 	if $"Pickpocket Time".time_left <= 0.01:
 		is_pickpocketing = false
 
@@ -229,13 +228,13 @@ func _physics_process(delta):
 		can_right_stick = false
 		$"CameraOrigin/State Reader".text = str("[center]AIR")
 		sly_anim_tree.set("parameters/Move_State/transition_request", air_anim)
-		SPEED_MULT = 1.2
+		SPEED_MULT = 1
 		if coyote_timer.time_left >= 0.3:
 			#could start a 1 second timer and say air_accel = timer value...
-			air_accel = 1
+			air_accel = 0.8
 			airtime = -1
 		else:
-			air_accel = lerpf(air_accel, 0.05, lerp_val / 4)
+			air_accel = lerpf(air_accel, 0.0, lerp_val / 2)
 			airtime += delta
 			
 		
@@ -348,14 +347,20 @@ func _physics_process(delta):
 			is_moving = true
 			sly_rot.look_at(position - direction)
 			var acceleration = 40
+			var friction
 			if state_now == State.AIR:
 				acceleration = 80
+				friction = true_left_stick_pressure * 20 / SPEED
+				
 			else:
 				acceleration = 50
+				friction = 1
 			if not is_pickpocketing:
-				sly_container.rotate_y(lerp(sly_new.rotation.y, sly_rot.rotation.y, lerp_val * air_accel * acceleration * delta))
-				velocity.x = lerp(velocity.x, direction.x * SPEED * SPEED_MULT * left_stick_pressure, lerp_val * acceleration * air_accel * delta)
-				velocity.z = lerp(velocity.z, direction.z * SPEED * SPEED_MULT * left_stick_pressure, lerp_val * acceleration * air_accel * delta)
+				
+				if can_rotate:
+					sly_container.rotate_y(lerp(sly_new.rotation.y, sly_rot.rotation.y, lerp_val * air_accel * acceleration * delta))
+				velocity.x = lerp(velocity.x, direction.x * SPEED * SPEED_MULT * left_stick_pressure, lerp_val * friction * acceleration * air_accel * delta)
+				velocity.z = lerp(velocity.z, direction.z * SPEED * SPEED_MULT * left_stick_pressure, lerp_val * friction * acceleration * air_accel * delta)
 			### Rotates Sly's Tail to Direction
 			$sly_container/SlyCooper_RigNoPhysics.ball_target.global_rotation.y = sly_rot.rotation.y + sly_container.global_rotation.y
 			$sly_container/SlyCooper_RigNoPhysics.get_node("Ball Tail Root/Ball Anim").play("walk")
@@ -415,6 +420,28 @@ func high_jump():
 			sly_anim_tree.set("parameters/Jump_or_Move/request", 1)
 			double_jump = false
 			Global.power_ups -= 1
+
+func handle_jump_rot():
+	#NOT WORKING WIP
+	var forward_dir = -sly_container.global_transform.basis.z.normalized()
+	var right_dir = sly_container.global_transform.basis.x.normalized()
+
+	var forward_dot = forward_dir.dot(velocity.normalized())
+	var right_dot = right_dir.dot(velocity.normalized())
+	
+	var threshold = 0.5
+	
+	var rot_dif = wrapf(rad_to_deg(sly_container.rotation.y - rotation.y), -180, 180)
+	
+	if abs(rot_dif) < 45:
+		sly_anim_tree.set("parameters/Jump_State/transition_request", "W_Jump")
+	elif rot_dif > 45 and rot_dif < 135:
+		sly_anim_tree.set("parameters/Jump_State/transition_request", "D_Jump")
+	elif rot_dif > -45 and rot_dif < -135:
+		sly_anim_tree.set("parameters/Jump_State/transition_request", "A_Jump")
+	else:
+		sly_anim_tree.set("parameters/Jump_State/transition_request", "S_Jump")
+	can_rotate = true
 
 func pickpocket():
 	$"Pickpocket Time".start(1)
@@ -648,7 +675,7 @@ func camera_smooth_follow(delta):
 	var cam_to_player_y = abs(camera_parent.camera.global_transform.origin.y - global_transform.origin.y)
 	var cam_to_player_z = abs(camera_parent.camera.global_transform.origin.z - global_transform.origin.z)
 	var cam_distance = (cam_to_player_x + cam_to_player_y + cam_to_player_z) / 3
-	var tform = sly_new.global_transform.origin + sly_new.global_transform.basis.z * 1
+	var tform = sly_new.global_transform.origin + sly_new.global_transform.basis.z * 0.75
 	var offsetform = sly_new.global_transform.origin + sly_new.global_transform.basis.z * 2
 	$"Movement Offset".global_transform.origin.x = offsetform.x
 	$"Movement Offset".global_transform.origin.y = offsetform.y
@@ -659,7 +686,7 @@ func camera_smooth_follow(delta):
 	camera_parent.position.x = $Basis_Offset.global_transform.origin.x
 	camera_parent.position.z = $Basis_Offset.global_transform.origin.z
 	if state_now != State.AIR or cam_y_follow == true:
-		camera_parent.position.y = lerp(camera_parent.global_transform.origin.y, global_transform.origin.y + 1.85, cam_timer / 5)
+		camera_parent.position.y = lerp(camera_parent.global_transform.origin.y, global_transform.origin.y + 1.8, cam_timer / 5)
 	else:
 		if can_wall == true or camtime.time_left <= 0:
-			camera_parent.position.y = lerp(camera_parent.global_transform.origin.y, global_transform.origin.y + 1.85, cam_timer / 2)
+			camera_parent.position.y = lerp(camera_parent.global_transform.origin.y, global_transform.origin.y + 1.8, cam_timer / 2)

@@ -54,8 +54,8 @@ func _process(delta):
 	ball_6.rotation = lerp(ball_6.rotation, ball_7.rotation + (ball_8.rotation / 2), 0.075)
 	ball_5.rotation = lerp(ball_5.rotation, ball_6.rotation + (ball_7.rotation / 3), 0.075)
 	ball_4.rotation = lerp(ball_4.rotation, ball_5.rotation + (ball_6.rotation / 3), 0.1125)
-	ball_3.rotation = lerp(ball_3.rotation, ball_4.rotation - (ball_5.rotation), 0.15)
-	ball_2.rotation = lerp(ball_2.rotation, ball_3.rotation - (ball_4.rotation), 0.3)
+	ball_3.rotation = lerp(ball_3.rotation, ball_4.rotation - (ball_5.rotation), 0.1125)
+	ball_2.rotation = lerp(ball_2.rotation, ball_3.rotation - (ball_4.rotation), 0.1125)
 
 	ball_target.global_position = lerp(ball_target.global_position, $metarig/GeneralSkeleton/BoneAttachment3D2.global_position, 0.9)
 	ball_1.global_position = lerp(ball_1.global_position, ball_target.global_position, 0.9)
@@ -64,8 +64,8 @@ func _process(delta):
 	ball_6.global_position = lerp(ball_6.global_position, ball_7_cnt.global_position + ball_1.position, 0.075)
 	ball_5.global_position = lerp(ball_5.global_position, ball_6_cnt.global_position + ball_1.position, 0.075)
 	ball_4.global_position = lerp(ball_4.global_position, ball_5_cnt.global_position + ball_1.position, 0.1125)
-	ball_3.global_position = lerp(ball_3.global_position, ball_4_cnt.global_position + ball_1.position, 0.15)
-	ball_2.global_position = lerp(ball_2.global_position, ball_3_cnt.global_position + ball_1.position, 0.3)
+	ball_3.global_position = lerp(ball_3.global_position, ball_4_cnt.global_position + ball_1.position, 0.1125)
+	ball_2.global_position = lerp(ball_2.global_position, ball_3_cnt.global_position + ball_1.position, 0.1125)
 	
 	
 	
