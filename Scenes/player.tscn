@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=3 uid="uid://dtn4nhjv25y3a"]
+[gd_scene load_steps=50 format=3 uid="uid://dtn4nhjv25y3a"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_te7i4"]
 [ext_resource type="Theme" uid="uid://f5b5fpewrxb6" path="res://Assets/Fonts/handwriting.tres" id="2_7h14n"]
@@ -200,6 +200,12 @@ _data = {
 "RESET": SubResource("Animation_x27lb"),
 "out_in_out": SubResource("Animation_0e7qf")
 }
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y3f1h"]
+albedo_color = Color(0.427451, 0.482353, 0.792157, 1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_eeuek"]
+size = Vector2(1.5, 1)
 
 [sub_resource type="Animation" id="Animation_8ebks"]
 length = 0.001
@@ -582,6 +588,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.5, 0)
 
 [node name="sly_container" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.723407, 0)
+
+[node name="paraglider" type="MeshInstance3D" parent="sly_container"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 1.0625, 0)
+material_override = SubResource("StandardMaterial3D_y3f1h")
+mesh = SubResource("QuadMesh_eeuek")
 
 [node name="SlyCooper_RigNoPhysics" parent="sly_container" instance=ExtResource("7_o6gr2")]
 transform = Transform3D(1.15, 0, 0, 0, 1.15, 0, 0, 0, 1.15, 0, -0.75, 0)

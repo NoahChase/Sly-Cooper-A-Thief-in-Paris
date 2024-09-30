@@ -18177,67 +18177,67 @@ damping = 0.3
 gravity = Vector3(0, 0, 0)
 
 [node name="Cane_LowPoly" parent="metarig/GeneralSkeleton" index="8"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00541937, -0.00215471, 0.0017447)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00541937, -1.00215, 0.0017447)
 visible = false
 bone_idx = 6
 
 [node name="TeethUpper_LowPoly" parent="metarig/GeneralSkeleton" index="9"]
-transform = Transform3D(0.974455, -0.189368, -0.120711, 0.0353153, 0.660051, -0.750385, 0.221775, 0.726957, 0.649879, -0.0397844, 0.980329, 0.263066)
+transform = Transform3D(0.981567, -0.037035, -0.187477, 0.0688775, 0.983664, 0.1663, 0.178256, -0.17615, 0.968084, -0.0650815, -0.462958, 0.360467)
 bone_idx = 20
 
 [node name="TeethLower_LowPoly" parent="metarig/GeneralSkeleton" index="10"]
-transform = Transform3D(-0.974455, -0.120711, -0.189368, -0.0353153, -0.750385, 0.660051, -0.221775, 0.649879, 0.726957, -0.0350339, 0.967563, 0.244226)
+transform = Transform3D(-0.981567, -0.187477, -0.037035, -0.0688775, 0.1663, 0.983664, -0.178256, 0.968084, -0.17615, -0.0636218, -0.486143, 0.361388)
 bone_idx = 23
 
 [node name="EyeHLightBot_L" parent="metarig/GeneralSkeleton" index="11"]
-transform = Transform3D(0.974455, -0.120711, 0.189368, 0.0353153, -0.750385, -0.660051, 0.221775, 0.649879, -0.726957, -0.0402391, 0.982816, 0.264668)
+transform = Transform3D(0.981567, -0.187477, 0.037035, 0.0688775, 0.1663, -0.983664, 0.178256, 0.968084, 0.17615, -0.0650443, -0.460242, 0.359213)
 bone_idx = 32
 
 [node name="EyeHLightTop_L" parent="metarig/GeneralSkeleton" index="12"]
-transform = Transform3D(0.974455, -0.120711, 0.189368, 0.0353153, -0.750385, -0.660051, 0.221775, 0.649879, -0.726957, -0.0402391, 0.982815, 0.264668)
+transform = Transform3D(0.981567, -0.187477, 0.037035, 0.0688775, 0.1663, -0.983664, 0.178256, 0.968084, 0.17615, -0.0650443, -0.460242, 0.359213)
 bone_idx = 34
 
 [node name="Iris_L" parent="metarig/GeneralSkeleton" index="13"]
-transform = Transform3D(0.974455, -0.120711, 0.189368, 0.0353153, -0.750385, -0.660051, 0.221775, 0.649879, -0.726957, -0.0402392, 0.982815, 0.264668)
+transform = Transform3D(0.981567, -0.187477, 0.037035, 0.0688775, 0.1663, -0.983664, 0.178256, 0.968084, 0.17615, -0.0650444, -0.460242, 0.359213)
 bone_idx = 35
 
 [node name="Pupil_L" parent="metarig/GeneralSkeleton" index="14"]
-transform = Transform3D(0.974455, -0.120711, 0.189368, 0.0353153, -0.750385, -0.660051, 0.221775, 0.649879, -0.726957, -0.0402392, 0.982815, 0.264668)
+transform = Transform3D(0.981567, -0.187477, 0.037035, 0.0688775, 0.1663, -0.983664, 0.178256, 0.968084, 0.17615, -0.0650444, -0.460242, 0.359213)
 bone_idx = 36
 
 [node name="EyeHLightBot_R" parent="metarig/GeneralSkeleton" index="15"]
-transform = Transform3D(0.974455, -0.120711, 0.189368, 0.0353153, -0.750385, -0.660051, 0.221775, 0.649879, -0.726957, -0.0402391, 0.982815, 0.264668)
+transform = Transform3D(0.981567, -0.187477, 0.037035, 0.0688775, 0.1663, -0.983664, 0.178256, 0.968084, 0.17615, -0.0650443, -0.460242, 0.359213)
 bone_idx = 39
 
 [node name="EyeHLightTop_R" parent="metarig/GeneralSkeleton" index="16"]
-transform = Transform3D(0.974455, -0.120711, 0.189368, 0.0353153, -0.750385, -0.660051, 0.221775, 0.649879, -0.726957, -0.0402392, 0.982815, 0.264668)
+transform = Transform3D(0.981567, -0.187477, 0.037035, 0.0688775, 0.1663, -0.983664, 0.178256, 0.968084, 0.17615, -0.0650444, -0.460242, 0.359213)
 bone_idx = 41
 
 [node name="Iris_R" parent="metarig/GeneralSkeleton" index="17"]
-transform = Transform3D(0.974455, -0.120711, 0.189368, 0.0353153, -0.750385, -0.660051, 0.221775, 0.649879, -0.726957, -0.0402391, 0.982815, 0.264668)
+transform = Transform3D(0.981567, -0.187477, 0.037035, 0.0688775, 0.1663, -0.983664, 0.178256, 0.968084, 0.17615, -0.0650443, -0.460242, 0.359213)
 bone_idx = 42
 
 [node name="Pupil_R" parent="metarig/GeneralSkeleton" index="18"]
-transform = Transform3D(0.974455, -0.120711, 0.189368, 0.0353153, -0.750385, -0.660051, 0.221775, 0.649879, -0.726957, -0.0402391, 0.982815, 0.264668)
+transform = Transform3D(0.981567, -0.187477, 0.037035, 0.0688775, 0.1663, -0.983664, 0.178256, 0.968084, 0.17615, -0.0650443, -0.460242, 0.359213)
 bone_idx = 43
 
 [node name="Hat_LowPoly" parent="metarig/GeneralSkeleton" index="19"]
-transform = Transform3D(0.974455, -0.189368, -0.120711, 0.0353153, 0.660051, -0.750385, 0.221775, 0.726957, 0.649879, 0.177955, -0.0944191, -0.522517)
+transform = Transform3D(0.981567, -0.037035, -0.187477, 0.0688775, 0.983664, 0.1663, 0.178256, -0.17615, 0.968084, -0.0666871, -1.71824, 0.854341)
 bone_idx = 45
 
 [node name="EyeWhite_lowPoly" parent="metarig/GeneralSkeleton" index="20"]
-transform = Transform3D(0.974455, -0.189368, -0.120711, 0.0353153, 0.660051, -0.750385, 0.221775, 0.726957, 0.649879, -0.0402391, 0.982815, 0.264668)
+transform = Transform3D(0.981567, -0.037035, -0.187477, 0.0688775, 0.983664, 0.1663, 0.178256, -0.17615, 0.968084, -0.0650443, -0.460242, 0.359213)
 bone_idx = 71
 
 [node name="EyeWhite_lowPoly" parent="metarig/GeneralSkeleton/EyeWhite_lowPoly" index="0"]
 transform = Transform3D(0.084569, -1.86265e-09, 0, -3.72529e-09, 0.081723, 0.0217545, 0, -0.0217545, 0.081723, -1.49012e-08, 0, 0)
 
 [node name="Belt_LowPoly" parent="metarig/GeneralSkeleton" index="21"]
-transform = Transform3D(0.984637, -0.0240375, -0.172944, -0.0562304, 0.894058, -0.444408, 0.165304, 0.447306, 0.878972, -0.012788, 1.11472, 0.226657)
+transform = Transform3D(0.984637, -0.0240375, -0.172944, -0.0562303, 0.894058, -0.444407, 0.165304, 0.447305, 0.878972, -0.0178529, -0.3359, 0.208037)
 bone_idx = 121
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="metarig/GeneralSkeleton" index="29"]
-transform = Transform3D(0.435424, -0.049238, 0.898877, -0.150885, -0.988357, 0.0189407, 0.887485, -0.143876, -0.437794, -0.553982, 0.669689, 0.203678)
+transform = Transform3D(0.123649, -0.234185, 0.964295, 0.250439, -0.93292, -0.258692, 0.9602, 0.273479, -0.0567053, -0.628128, -0.562938, 0.292641)
 bone_name = "f_middle.01.R"
 bone_idx = 107
 
@@ -18290,7 +18290,7 @@ tip_bone = &"Tail.002"
 target_node = NodePath("../../../Ball Tail Root/Ball Tail 2/Node3D/cnt")
 
 [node name="BoneAttachment3D2" type="BoneAttachment3D" parent="metarig/GeneralSkeleton" index="37"]
-transform = Transform3D(0.984637, -0.0240375, -0.172944, -0.0562304, 0.894058, -0.444408, 0.165304, 0.447306, 0.878972, 0.00745155, 0.744182, -0.0199431)
+transform = Transform3D(0.984637, -0.0240375, -0.172944, -0.0562303, 0.894058, -0.444407, 0.165304, 0.447305, 0.878972, 0.00238665, -0.706435, -0.0385631)
 bone_name = "Tail.001"
 bone_idx = 122
 

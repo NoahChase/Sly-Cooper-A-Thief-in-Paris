@@ -7,8 +7,13 @@ extends StaticBody3D
 @onready var move_backward = false
 @onready var target
 
+@export var mesh_visible = false
+
 func _ready():
-	pass # Replace with function body.
+	if mesh_visible == true:
+		mesh.visible = true
+	else:
+		mesh.visible = false
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

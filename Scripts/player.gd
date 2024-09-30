@@ -202,6 +202,7 @@ func _physics_process(delta):
 	if state_now == State.FLOOR:
 		#can_wall = true
 		#can_wall_timer = true
+		$sly_container/paraglider.visible = false
 		if SPEED_MULT == 1.7:
 			air_accel = lerpf(air_accel, 0.8, lerp_val)
 		else:
@@ -235,12 +236,26 @@ func _physics_process(delta):
 			air_accel = 0.8
 			airtime = -1
 		else:
-			air_accel = lerpf(air_accel, 0.0, lerp_val / 2)
+			if not Input.is_action_pressed("SHIFT"):
+				air_accel = lerpf(air_accel, 0.0, lerp_val / 2)
+			else:
+				air_accel = lerpf(air_accel, 0.05, lerp_val)
 			airtime += delta
 			
 		
-		velocity.y -= gravity * delta * 2
-		
+		# When using the paraglider
+		if Input.is_action_pressed("SHIFT"):
+			if velocity.y >= -2:
+				velocity.y -= gravity * delta * 2
+			if velocity.y < -2:
+				$sly_container/paraglider.visible = true
+				velocity.y += 0.1
+				SPEED_MULT = 1.2
+		else:
+			velocity.y -= gravity * delta * 2
+			$sly_container/paraglider.visible = false
+
+
 		sly_anim_tree.set("parameters/Air_Blend/blend_amount", airtime)
 		
 		if Input.is_action_just_pressed("RMB"):

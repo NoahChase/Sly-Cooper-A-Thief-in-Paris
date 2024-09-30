@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=3 uid="uid://o7qlp5rjtojd"]
+[gd_scene load_steps=50 format=3 uid="uid://o7qlp5rjtojd"]
 
 [ext_resource type="Texture2D" uid="uid://3mxsfiyr27n6" path="res://Assets/Materials/sand_noise.tres" id="1_4s2xb"]
 [ext_resource type="PackedScene" uid="uid://dtn4nhjv25y3a" path="res://Scenes/player.tscn" id="1_mh4k6"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bfulil1mgwmm5" path="res://Assets/Obj Scenes/modern_lamp_hanging.tscn" id="6_3btwr"]
 [ext_resource type="PackedScene" uid="uid://bpbla7dmp0k8e" path="res://Assets/Obj Scenes/awning_no_text.tscn" id="7_8ijcs"]
 [ext_resource type="PackedScene" uid="uid://ux0c82y3app5" path="res://Assets/Obj Scenes/modern_lamp_post.tscn" id="7_s1dkx"]
+[ext_resource type="PackedScene" uid="uid://bqga4vo278riy" path="res://Scenes/wall_notch.tscn" id="9_sw5pi"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ir8p2"]
 sky_top_color = Color(0.180392, 0.254902, 0.494118, 1)
@@ -3086,3 +3087,18 @@ target = NodePath("../../Player")
 [node name="Awning_No_Text" parent="." instance=ExtResource("7_8ijcs")]
 transform = Transform3D(-0.642879, 0, -1.89386, 0, 2, 0, 1.89386, 0, -0.642879, 54.125, 17.75, -104.625)
 jump = 15
+
+[node name="Wall Notch" parent="." instance=ExtResource("9_sw5pi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.875, 7.25, -62.125)
+
+[node name="Wall Notch2" parent="." instance=ExtResource("9_sw5pi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.375, 24.5, -70.75)
+
+[node name="Wall Notch5" parent="." instance=ExtResource("9_sw5pi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54.25, 24.5, -105.125)
+
+[node name="Wall Notch4" parent="." instance=ExtResource("9_sw5pi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.375, 36, -70.75)
+
+[node name="Wall Notch3" parent="." instance=ExtResource("9_sw5pi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.375, 30, -76.375)

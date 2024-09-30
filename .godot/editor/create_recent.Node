@@ -1,8 +1,8 @@
+MeshInstance3D
 CollisionShape3D
 Area3D
 Node3D
 AnimationPlayer
-MeshInstance3D
 Jigglebone
 CSGMesh3D
 Timer
