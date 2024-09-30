@@ -25,6 +25,7 @@ var air_accel = 0.0
 @onready var distance_to_target = 0
 @onready var to_target
 @onready var is_pickpocketing = false
+@onready var do_big_jump = false
 
 @onready var feet = $Feet
 @onready var head = $Head
@@ -377,7 +378,11 @@ func jump():
 	cam_y_follow = false
 	platform_type = Platform_Type.NULL
 	$jump_sound.pitch_scale = randf_range(0.7, 1)
-	if double_jump:
+	if do_big_jump == true:
+		velocity.y = JUMP_VELOCITY * 2
+		sly_anim_tree.set("parameters/Jump_State/transition_request", "Floor_Jump")
+		sly_anim_tree.set("parameters/Jump_or_Move/request", 1)
+	elif double_jump:
 		coyote_timer.start(0.3)
 		$Camtime.start(1.25)
 		$jump_sound.volume_db = -35
@@ -403,7 +408,7 @@ func jump():
 			
 				
 		double_jump = false
-		
+	do_big_jump = false
 
 func high_jump():
 	cam_y_follow = true
@@ -459,6 +464,8 @@ func manage_target_type():
 			floor_anim = "pole"
 		platform_type = Platform_Type.NULL
 		return
+	if target.is_in_group("Notch"):
+		do_big_jump = true
 	if target.is_in_group("Point"):
 		platform_type = Platform_Type.POINT
 		air_anim = "point"

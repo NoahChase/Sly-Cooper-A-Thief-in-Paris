@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://bqga4vo278riy"]
+
+[ext_resource type="Script" path="res://Scripts/Wall Notch.gd" id="1_1qpt2"]
+[ext_resource type="PackedScene" uid="uid://dki2qttdigjub" path="res://Scenes/test_ball.tscn" id="2_hf0tx"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_0hksd"]
+height = 4.0
+radius = 5.0
+
+[node name="Wall Notch" type="Node3D"]
+script = ExtResource("1_1qpt2")
+
+[node name="Test Ball" parent="." groups=["Notch", "Point"] instance=ExtResource("2_hf0tx")]
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.5, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
+shape = SubResource("CylinderShape3D_0hksd")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]
