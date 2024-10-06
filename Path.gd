@@ -29,7 +29,7 @@ func _physics_process(delta):
 				if target.state_now == target.State.ON_PLATFORM:
 					target.global_transform.origin = test_ball.global_transform.origin
 					target.sly_container.rotation.y = lerp(target.sly_container.rotation.y, -test_ball.rotation.y, 0.1)
-				speed = 1
+				speed = 1.25
 				
 				
 				if basis_type == 1:

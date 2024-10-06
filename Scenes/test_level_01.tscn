@@ -2319,7 +2319,6 @@ mesh = SubResource("CylinderMesh_nosq6")
 [node name="StaticBody3D" type="StaticBody3D" parent="Buildings/MeshInstance3D2"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Buildings/MeshInstance3D2/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 shape = SubResource("ConcavePolygonShape3D_t34vu")
 
 [node name="Platforming Blocks" type="Node3D" parent="."]

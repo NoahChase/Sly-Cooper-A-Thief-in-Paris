@@ -151,7 +151,9 @@ func _process(delta):
 		pickpocket()
 	if $"Pickpocket Time".time_left <= 0.01:
 		is_pickpocketing = false
-
+	
+	if state_now == State.FLOOR and Input.is_action_just_pressed("LMB"):
+		hit()
 
 func _physics_process(delta):
 	camera_smooth_follow(delta)
@@ -267,7 +269,7 @@ func _physics_process(delta):
 	
 	if state_now == State.TWEENING:
 		$"CameraOrigin/State Reader".text = str("[center]TWEENING")
-		if distance_to_target <= 0:
+		if distance_to_target == 0:
 			state_now = State.ON_PLATFORM
 		air_accel = lerpf(air_accel, 1, lerp_val)
 		can_right_stick = false
@@ -468,6 +470,10 @@ func pickpocket():
 	$"Pickpocket Time".start(1)
 	is_pickpocketing = true
 	sly_anim_tree.set("parameters/Jump_State/transition_request", "Fight")
+	sly_anim_tree.set("parameters/Jump_or_Move/request", 1)
+
+func hit():
+	sly_anim_tree.set("parameters/Jump_State/transition_request", "Punch")
 	sly_anim_tree.set("parameters/Jump_or_Move/request", 1)
 
 func manage_target_type():

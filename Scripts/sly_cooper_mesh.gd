@@ -1,4 +1,3 @@
-@tool
 extends Node3D
 
 @export var tail_targets = Node3D
