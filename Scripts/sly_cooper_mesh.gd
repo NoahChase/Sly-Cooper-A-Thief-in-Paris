@@ -1,3 +1,4 @@
+@tool
 extends Node3D
 
 @export var tail_targets = Node3D
@@ -45,27 +46,27 @@ func _ready():
 	$"metarig/GeneralSkeleton/Tail 7 IK".start()
 	
 
-func _process(delta):
+func _physics_process(delta):
 	ball_target.rotation.y = clamp(ball_target.rotation.y, deg_to_rad(-90), deg_to_rad(90))
 	ball_target.rotation.x = clamp(ball_target.rotation.x, deg_to_rad(-90), deg_to_rad(90))
-	ball_1.rotation = lerp(ball_1.rotation, ball_target.rotation, 0.9)
-	ball_8.rotation = lerp(ball_8.rotation, ball_1.rotation + (ball_target.rotation), 0.9)
-	ball_7.rotation = lerp(ball_7.rotation, ball_8.rotation + (ball_1.rotation), 0.1125)
-	ball_6.rotation = lerp(ball_6.rotation, ball_7.rotation + (ball_8.rotation / 2), 0.075)
-	ball_5.rotation = lerp(ball_5.rotation, ball_6.rotation + (ball_7.rotation / 3), 0.075)
-	ball_4.rotation = lerp(ball_4.rotation, ball_5.rotation + (ball_6.rotation / 3), 0.1125)
-	ball_3.rotation = lerp(ball_3.rotation, ball_4.rotation - (ball_5.rotation), 0.1125)
-	ball_2.rotation = lerp(ball_2.rotation, ball_3.rotation - (ball_4.rotation), 0.1125)
+	ball_1.rotation = lerp(ball_1.rotation, -ball_target.rotation, 0.9)
+	ball_8.rotation = lerp(ball_8.rotation, ball_1.rotation + (ball_target.rotation / 1.5), 0.9)
+	ball_7.rotation = lerp(ball_7.rotation, ball_8.rotation + (ball_1.rotation), 0.15)
+	ball_6.rotation = lerp(ball_6.rotation, ball_7.rotation + (ball_8.rotation), 0.1125)
+	ball_5.rotation = lerp(ball_5.rotation, ball_6.rotation + (ball_7.rotation), 0.1125)
+	ball_4.rotation = lerp(ball_4.rotation, ball_5.rotation + (ball_6.rotation / 5), 0.075)
+	ball_3.rotation = lerp(ball_3.rotation, ball_4.rotation + (ball_5.rotation / 10), 0.05)
+	ball_2.rotation = lerp(ball_2.rotation, ball_3.rotation + (ball_4.rotation / 5), 0.0125)
 
 	ball_target.global_position = lerp(ball_target.global_position, $metarig/GeneralSkeleton/BoneAttachment3D2.global_position, 0.9)
-	ball_1.global_position = lerp(ball_1.global_position, ball_target.global_position, 0.9)
-	ball_8.global_position = lerp(ball_8.global_position, ball_1_cnt.global_position + ball_1.position, 0.15)
-	ball_7.global_position = lerp(ball_7.global_position, ball_8_cnt.global_position + ball_1.position, 0.1125)
-	ball_6.global_position = lerp(ball_6.global_position, ball_7_cnt.global_position + ball_1.position, 0.075)
-	ball_5.global_position = lerp(ball_5.global_position, ball_6_cnt.global_position + ball_1.position, 0.075)
-	ball_4.global_position = lerp(ball_4.global_position, ball_5_cnt.global_position + ball_1.position, 0.1125)
-	ball_3.global_position = lerp(ball_3.global_position, ball_4_cnt.global_position + ball_1.position, 0.1125)
-	ball_2.global_position = lerp(ball_2.global_position, ball_3_cnt.global_position + ball_1.position, 0.1125)
+	ball_1.position = lerp(ball_1.position, -ball_target.position, 0.9)
+	ball_8.global_position = lerp(ball_8.global_position, ball_1_cnt.global_position + (ball_target.position / 1.5), 0.9)
+	ball_7.global_position = lerp(ball_7.global_position, ball_8_cnt.global_position + (ball_1.position), 0.15)
+	ball_6.global_position = lerp(ball_6.global_position, ball_7_cnt.global_position + ball_8.position, 0.1125)
+	ball_5.global_position = lerp(ball_5.global_position, ball_6_cnt.global_position + ball_7.position, 0.1125)
+	ball_4.global_position = lerp(ball_4.global_position, ball_5_cnt.global_position + (ball_6.position / 5), 0.075)
+	ball_3.global_position = lerp(ball_3.global_position, ball_4_cnt.global_position + (ball_5.position / 10), 0.075)
+	ball_2.global_position = lerp(ball_2.global_position, ball_3_cnt.global_position + (ball_4.position / 5), 0.075)
 	
 	
 	

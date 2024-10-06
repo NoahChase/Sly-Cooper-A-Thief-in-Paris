@@ -4,11 +4,16 @@
 [ext_resource type="PackedScene" uid="uid://dki2qttdigjub" path="res://Scenes/test_ball.tscn" id="2_hf0tx"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_0hksd"]
-height = 4.0
-radius = 5.0
+height = 3.0
+radius = 4.0
 
 [node name="Wall Notch" type="Node3D"]
 script = ExtResource("1_1qpt2")
+magnet_force = 0.1
+jump_mult = 2.0
+area_height = 3.0
+area_width = 3.0
+area_pos_y = 3.5
 
 [node name="Test Ball" parent="." groups=["Notch", "Point"] instance=ExtResource("2_hf0tx")]
 mesh_visible = true
@@ -17,7 +22,7 @@ mesh_visible = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.5, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5, 0)
 shape = SubResource("CylinderShape3D_0hksd")
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

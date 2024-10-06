@@ -1,12 +1,12 @@
 MeshInstance3D
 CollisionShape3D
+RayCast3D
 Area3D
 Node3D
 AnimationPlayer
 Jigglebone
 CSGMesh3D
 Timer
-RayCast3D
 WorldEnvironment
 DirectionalLight3D
 AudioStreamPlayer3D

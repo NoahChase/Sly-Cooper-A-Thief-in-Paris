@@ -32,7 +32,9 @@ shader_parameter/shadow_thickness = 4.0
 radius = 0.125
 height = 0.25
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_2yoqs"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_w5pvb"]
+custom_solver_bias = 1.0
+radius = 0.4
 height = 1.75
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_xkpx8"]
@@ -448,9 +450,8 @@ _data = {
 }
 
 [node name="Player" type="CharacterBody3D" groups=["Player"]]
-floor_constant_speed = true
-floor_max_angle = 0.959931
-floor_snap_length = 1.0
+floor_stop_on_slope = false
+floor_max_angle = 0.610865
 safe_margin = 0.01
 script = ExtResource("1_te7i4")
 
@@ -468,7 +469,12 @@ mesh = SubResource("SphereMesh_rlbuh")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.875, 0)
-shape = SubResource("CapsuleShape3D_2yoqs")
+shape = SubResource("CapsuleShape3D_w5pvb")
+
+[node name="Cam Y Ray" type="RayCast3D" parent="CollisionShape3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.875, 0)
+target_position = Vector3(0, -6, 0)
+debug_shape_thickness = 5
 
 [node name="Platform Snap Area" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)

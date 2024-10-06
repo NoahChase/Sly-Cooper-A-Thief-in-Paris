@@ -10,19 +10,19 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Ball Tail Target:rotation")
+tracks/0/path = NodePath("Ball Tail 1/Node3D/cnt:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0, 0, 0)]
+"values": [Vector3(0, -0.075, -0.15)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Ball Tail 1/Node3D/cnt:position")
+tracks/1/path = NodePath("Ball Tail 8/Node3D/cnt:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -34,98 +34,74 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Ball Tail 8/Node3D/cnt:position")
+tracks/2/path = NodePath("Ball Tail 7/Node3D/cnt:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0, -0.1, -0.15)]
+"values": [Vector3(0, -0.05, -0.148)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Ball Tail 7/Node3D/cnt:position")
+tracks/3/path = NodePath("Ball Tail 6/Node3D/cnt:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0, -0.15, -0.15)]
+"values": [Vector3(0, -0.075, -0.14)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Ball Tail 6/Node3D/cnt:position")
+tracks/4/path = NodePath("Ball Tail 5/Node3D/cnt:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0, -0.2, -0.15)]
+"values": [Vector3(0, -0.075, -0.135)]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("Ball Tail 5/Node3D/cnt:position")
+tracks/5/path = NodePath("Ball Tail 4/Node3D/cnt:position")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0, -0.1, -0.15)]
+"values": [Vector3(0, -0.075, -0.169)]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("Ball Tail 4/Node3D/cnt:position")
+tracks/6/path = NodePath("Ball Tail 3/Node3D/cnt:position")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0, -0.1, -0.15)]
+"values": [Vector3(0, -0.05, -0.262)]
 }
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("Ball Tail 3/Node3D/cnt:position")
+tracks/7/path = NodePath("Ball Tail 2/Node3D/cnt:position")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0, -0.1, -0.275)]
-}
-tracks/8/type = "value"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("Ball Tail 2/Node3D/cnt:position")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, -0.05, -0.275)]
-}
-tracks/9/type = "value"
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/path = NodePath("Ball Tail 2/Node3D/cnt:rotation")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0.261799, 0, 0)]
+"values": [Vector3(0, -0.05, -0.228)]
 }
 
 [sub_resource type="Animation" id="Animation_fynnk"]
@@ -259,7 +235,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0.5, 1.5, 2, 3, 4.1, 5.9, 6.9, 8),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector3(0, 0.261799, 0), Vector3(-0.174533, 0.261799, 0), Vector3(0, -0.174533, 0), Vector3(-0.261799, -0.261799, 0), Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, 0, 0)]
+"values": [Vector3(0.10472, 0.349066, 0), Vector3(-0.0872665, 0.261799, 0), Vector3(0.0872665, -0.174533, 0), Vector3(0.0523599, -0.261799, 0), Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, 0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_sjm8c"]
@@ -2218,7 +2194,7 @@ tracks/0/enabled = true
 tracks/0/path = NodePath("metarig/GeneralSkeleton:Hips")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
-tracks/0/keys = PackedFloat32Array(0, 1, 0.000511456, 0.724125, 0.000511456)
+tracks/0/keys = PackedFloat32Array(0, 1, 0.001, 0.55, 0.001)
 tracks/1/type = "rotation_3d"
 tracks/1/imported = true
 tracks/1/enabled = true
@@ -17839,6 +17815,7 @@ blend_point_2/pos = 1.0
 animation = &"SlyCooper_anims_01_/spin"
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_ynmj0"]
+graph_offset = Vector2(-498.044, -344.901)
 nodes/Add2/node = SubResource("AnimationNodeAdd2_48xj3")
 nodes/Add2/position = Vector2(700, -300)
 nodes/Air_Blend/node = SubResource("AnimationNodeBlend2_4kipy")
@@ -17905,103 +17882,103 @@ libraries = {
 }
 
 [node name="Ball Tail Target" type="MeshInstance3D" parent="Ball Tail Root" index="1"]
-transform = Transform3D(0.999831, 0, 0, 0, 0.997158, 0, 0, 0, 0.997158, 0.0405972, 0.00803131, -0.00418022)
+transform = Transform3D(0.99984, 0, 0, 0, 0.994727, -0.0695579, 0, 0.0695579, 0.994727, 0.00280662, -0.288355, 0.00267269)
 material_override = SubResource("StandardMaterial3D_ngjs4")
 mesh = SubResource("BoxMesh_27i8l")
 
 [node name="Ball Tail 1" type="MeshInstance3D" parent="Ball Tail Root" index="2"]
-transform = Transform3D(0.999833, 0, 0, 0, 0.997158, 0, 0, 0, 0.997158, 0.0406024, 0.00834739, -0.0033361)
+transform = Transform3D(0.99984, 0, 0, 0, 0.994744, 0.0695579, 0, -0.0695591, 0.994727, -0.00280662, 0.288355, -0.00267269)
 mesh = SubResource("BoxMesh_ng7sp")
 skeleton = NodePath("../../metarig/GeneralSkeleton/BoneAttachment3D2")
 
 [node name="Node3D" type="Node3D" parent="Ball Tail Root/Ball Tail 1" index="0"]
 
 [node name="cnt" type="MeshInstance3D" parent="Ball Tail Root/Ball Tail 1/Node3D" index="0"]
-transform = Transform3D(1, 0, 0, 0, 0.999999, 0, 0, 0, 1, 0, -0.05, -0.15)
+transform = Transform3D(1, 0, 0, 0, 0.999999, 0, 0, 0, 1, 0, -0.075, -0.15)
 mesh = SubResource("BoxMesh_ddew8")
 skeleton = NodePath("../../../Ball Tail 8")
 
 [node name="Ball Tail 8" type="MeshInstance3D" parent="Ball Tail Root" index="3"]
-transform = Transform3D(0.999838, 0, 0, 0, 0.997191, 0, 0, 0, 0.997191, 0.0763536, -0.0243714, -0.124503)
+transform = Transform3D(0.999842, 0, 0, 0, 0.996863, 0.0232042, 0, -0.0232022, 0.99695, -0.000935539, 0.0110788, -0.144883)
 mesh = SubResource("BoxMesh_ng7sp")
 skeleton = NodePath("")
 
 [node name="Node3D" type="Node3D" parent="Ball Tail Root/Ball Tail 8" index="0"]
 
 [node name="cnt" type="MeshInstance3D" parent="Ball Tail Root/Ball Tail 8/Node3D" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, -0.15)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.05, -0.15)
 mesh = SubResource("BoxMesh_2k55v")
 skeleton = NodePath("../../../Ball Tail 7")
 
 [node name="Ball Tail 7" type="MeshInstance3D" parent="Ball Tail Root" index="4"]
-transform = Transform3D(0.999845, 0, 0, 0, 0.99716, 0, 0, 0, 0.997192, 0.103674, -0.106181, -0.229431)
+transform = Transform3D(0.99985, 0, 4.2039e-45, 0, 0.992841, 0.0926885, -4.2039e-45, -0.0926855, 0.992873, -0.00374215, 0.24611, -0.295938)
 mesh = SubResource("BoxMesh_ng7sp")
 skeleton = NodePath("")
 
 [node name="Node3D" type="Node3D" parent="Ball Tail Root/Ball Tail 7" index="0"]
 
 [node name="cnt" type="MeshInstance3D" parent="Ball Tail Root/Ball Tail 7/Node3D" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.15, -0.15)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.05, -0.148)
 mesh = SubResource("BoxMesh_or1m0")
 skeleton = NodePath("../../../Ball Tail 6")
 
 [node name="Ball Tail 6" type="MeshInstance3D" parent="Ball Tail Root" index="5"]
-transform = Transform3D(0.999852, 0, 0, 0, 0.997161, 0, 0, 0, 0.997192, 0.114134, -0.211084, -0.311173)
+transform = Transform3D(0.99986, -1.4013e-45, 9.80909e-45, 0, 0.990415, 0.115765, -9.80909e-45, -0.115763, 0.990437, -0.0046777, 0.193829, -0.583132)
 mesh = SubResource("BoxMesh_ng7sp")
 skeleton = NodePath("")
 
 [node name="Node3D" type="Node3D" parent="Ball Tail Root/Ball Tail 6" index="0"]
 
 [node name="cnt" type="MeshInstance3D" parent="Ball Tail Root/Ball Tail 6/Node3D" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, -0.15)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.075, -0.14)
 mesh = SubResource("BoxMesh_bahrc")
 skeleton = NodePath("")
 
 [node name="Ball Tail 5" type="MeshInstance3D" parent="Ball Tail Root" index="6"]
-transform = Transform3D(0.999858, 0, 0, 0, 0.997151, 0, 0, 0, 0.997151, 0.117125, -0.264766, -0.400046)
+transform = Transform3D(0.99985, -1.4013e-45, 8.40779e-45, 0, 0.975358, 0.20732, -8.40779e-45, -0.207318, 0.975366, -0.00841985, 0.349451, -1.00905)
 mesh = SubResource("BoxMesh_ng7sp")
 skeleton = NodePath("")
 
 [node name="Node3D" type="Node3D" parent="Ball Tail Root/Ball Tail 5" index="0"]
 
 [node name="cnt" type="MeshInstance3D" parent="Ball Tail Root/Ball Tail 5/Node3D" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, -0.15)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.075, -0.135)
 mesh = SubResource("BoxMesh_bahrc")
 skeleton = NodePath("")
 
 [node name="Ball Tail 4" type="MeshInstance3D" parent="Ball Tail Root" index="7"]
-transform = Transform3D(0.999858, 0, 0, 0, 0.99715, 0, 0, 0, 0.997167, 0.129758, -0.345552, -0.509253)
+transform = Transform3D(0.999871, 0, 1.4013e-45, 0, 0.97027, 0.229958, -1.4013e-45, -0.229958, 0.97027, -0.0093554, 0.287078, -1.2418)
 mesh = SubResource("BoxMesh_ng7sp")
 skeleton = NodePath("")
 
 [node name="Node3D" type="Node3D" parent="Ball Tail Root/Ball Tail 4" index="0"]
 
 [node name="cnt" type="MeshInstance3D" parent="Ball Tail Root/Ball Tail 4/Node3D" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.999999, 0, -0.1, -0.15)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.999999, 0, -0.075, -0.169)
 mesh = SubResource("BoxMesh_bahrc")
 skeleton = NodePath("")
 
 [node name="Ball Tail 3" type="MeshInstance3D" parent="Ball Tail Root" index="8"]
-transform = Transform3D(0.999829, 0, 0, 0, 0.997118, 0, 0, 0, 0.997118, 0.147633, -0.427196, -0.626485)
+transform = Transform3D(0.99984, -2.8026e-45, 1.12104e-44, 0, 0.965201, 0.250219, -1.12104e-44, -0.250217, 0.96521, -0.0101974, 0.21039, -1.48943)
 mesh = SubResource("BoxMesh_ng7sp")
 skeleton = NodePath("")
 
 [node name="Node3D" type="Node3D" parent="Ball Tail Root/Ball Tail 3" index="0"]
 
 [node name="cnt" type="MeshInstance3D" parent="Ball Tail Root/Ball Tail 3/Node3D" index="0"]
-transform = Transform3D(1, 0, 6.96361e-06, 0, 1, 0, -6.96361e-06, 0, 1, 0, -0.1, -0.275)
+transform = Transform3D(1, 0, 6.96361e-06, 0, 1, 0, -6.96361e-06, 0, 1, 0, -0.05, -0.262)
 mesh = SubResource("BoxMesh_bahrc")
 skeleton = NodePath("")
 
 [node name="Ball Tail 2" type="MeshInstance3D" parent="Ball Tail Root" index="9"]
-transform = Transform3D(0.999854, 0, 0, 0, 0.997166, 0, 0, 0, 0.997166, 0.178044, -0.512643, -0.883799)
+transform = Transform3D(0.999846, -2.8026e-45, 1.12104e-44, 0, 0.95255, 0.294875, -1.12104e-44, -0.294869, 0.952571, -0.0120685, 0.153988, -1.97816)
 mesh = SubResource("BoxMesh_ng7sp")
 skeleton = NodePath("")
 
 [node name="Node3D" type="Node3D" parent="Ball Tail Root/Ball Tail 2" index="0"]
 
 [node name="cnt" type="MeshInstance3D" parent="Ball Tail Root/Ball Tail 2/Node3D" index="0"]
-transform = Transform3D(1, 0, 0, 0, 0.965926, -0.258818, 0, 0.258819, 0.965925, 0, -0.05, -0.275)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.999999, 0, -0.05, -0.228)
 mesh = SubResource("BoxMesh_bahrc")
 skeleton = NodePath("")
 
@@ -18021,16 +17998,17 @@ visible = false
 bones/0/position = Vector3(0, -1.07908, 0.0578878)
 bones/1/position = Vector3(0, -1, 0)
 bones/10/position = Vector3(-0.00391416, 0.297588, 0.000336398)
-bones/10/rotation = Quaternion(0.230004, -0.0872461, -0.00830368, 0.969235)
+bones/10/rotation = Quaternion(-0.0500517, -0.0155755, 0.0357865, 0.997984)
 bones/10/scale = Vector3(0.999999, 1, 1)
 bones/11/position = Vector3(-0.0190629, 0.185329, 0.0558959)
-bones/11/rotation = Quaternion(0.0808213, -0.0126901, 0.010739, 0.99659)
+bones/11/rotation = Quaternion(0.345374, -0.0686849, 0.038209, 0.935168)
 bones/11/scale = Vector3(0.999999, 0.999999, 1)
+bones/12/position = Vector3(0.00170817, 0.126351, -0.00938925)
 bones/12/rotation = Quaternion(0.158801, -0.0114298, -0.0255747, 0.986913)
 bones/12/scale = Vector3(1, 0.999999, 1)
 bones/13/rotation = Quaternion(-0.208717, 0.0645371, 0.0736596, 0.97306)
 bones/13/scale = Vector3(0.999999, 0.999999, 1)
-bones/14/rotation = Quaternion(0.0200364, 0.0066045, -0.0199701, 0.999578)
+bones/14/rotation = Quaternion(0.00248581, 0.00414446, -0.0144328, 0.999884)
 bones/14/scale = Vector3(1, 1, 0.999998)
 bones/15/rotation = Quaternion(-0.355249, -0.0143481, 0.00468402, 0.93465)
 bones/15/scale = Vector3(1, 1, 0.999998)
@@ -18093,7 +18071,7 @@ bones/118/scale = Vector3(1, 0.999998, 1)
 bones/130/rotation = Quaternion(-0.0217066, 0.517255, 0.854803, 0.035873)
 bones/131/rotation = Quaternion(-0.256349, -0.656527, 0.689855, -0.165403)
 bones/132/rotation = Quaternion(0.0416268, 0.992171, -0.117638, -0.00497667)
-bones/133/rotation = Quaternion(-0.000254293, 0.996747, 0.0779708, -0.0203804)
+bones/133/rotation = Quaternion(0.0305084, 0.988634, -0.133271, -0.0625394)
 bones/134/scale = Vector3(0.999999, 0.999999, 1)
 bones/135/rotation = Quaternion(-0.381338, -0.0320628, 5.43846e-07, 0.92388)
 bones/135/scale = Vector3(1, 0.999997, 1)
@@ -18104,7 +18082,7 @@ bones/139/rotation = Quaternion(7.75249e-06, 0.92388, 0.382683, 4.12277e-07)
 bones/141/rotation = Quaternion(-0.124363, 0.00943051, -0.0675758, 0.989888)
 
 [node name="Jigglebone" type="Node3D" parent="metarig/GeneralSkeleton" index="0"]
-transform = Transform3D(0.948593, -0.274233, -0.157992, 0.0687528, 0.665835, -0.74292, 0.308931, 0.693869, 0.650462, 0.191751, 1.88755, -0.21575)
+transform = Transform3D(0.992041, -0.098272, -0.078682, 0.0148564, 0.712026, -0.70199, 0.12501, 0.695237, 0.707821, 0.116813, 1.66326, -0.382898)
 top_level = true
 script = ExtResource("3_p812j")
 bone_name = "ear.L.001"
@@ -18113,7 +18091,7 @@ damping = 0.2
 gravity = Vector3(0, -0.01, 0)
 
 [node name="Jigglebone2" type="Node3D" parent="metarig/GeneralSkeleton" index="1"]
-transform = Transform3D(0.948592, -0.274481, -0.157568, 0.068747, 0.664666, -0.743966, 0.308936, 0.694891, 0.649368, -0.0338851, 1.87449, -0.287845)
+transform = Transform3D(0.992042, -0.0982682, -0.078679, 0.0148619, 0.71206, -0.701956, 0.125005, 0.695203, 0.707856, -0.118531, 1.65971, -0.412529)
 top_level = true
 script = ExtResource("3_p812j")
 bone_name = "ear.R.001"
@@ -18121,176 +18099,118 @@ stiffness = 0.4
 damping = 0.2
 gravity = Vector3(0, -0.01, 0)
 
-[node name="Jigglebone3" type="Node3D" parent="metarig/GeneralSkeleton" index="2"]
-transform = Transform3D(0.970463, 0.0108893, -0.240993, 0.0774338, 0.932056, 0.353935, 0.228474, -0.362143, 0.903684, -0.0228703, 0.140821, 0.327127)
-top_level = true
-script = ExtResource("3_p812j")
-bone_name = "MaskTail.001.L"
-stiffness = 2.0
-damping = 0.3
-use_gravity = true
-gravity = Vector3(0, -1, 0)
-
-[node name="Jigglebone4" type="Node3D" parent="metarig/GeneralSkeleton" index="3"]
-transform = Transform3D(0.970236, 0.0108073, -0.241908, 0.077323, 0.932873, 0.351799, 0.229473, -0.360035, 0.904273, -0.066379, 0.137745, 0.30793)
-top_level = true
-script = ExtResource("3_p812j")
-bone_name = "MaskTail.001.R"
-stiffness = 2.0
-damping = 0.3
-use_gravity = true
-gravity = Vector3(0, -1, 0)
-
-[node name="Jigglebone5" type="Node3D" parent="metarig/GeneralSkeleton" index="4"]
-transform = Transform3D(0.96882, 0.220219, -0.11353, -0.022651, 0.535031, 0.844529, 0.246723, -0.815626, 0.523337, -0.0807185, 0.26188, 0.664251)
-top_level = true
-script = ExtResource("3_p812j")
-bone_name = "Tail.008"
-stiffness = 0.1
-use_gravity = true
-gravity = Vector3(0, -0.01, 0)
-
-[node name="Jigglebone6" type="Node3D" parent="metarig/GeneralSkeleton" index="5"]
-transform = Transform3D(0.973289, 0.229161, -0.0138296, -0.0918924, 0.444072, 0.891267, 0.210385, -0.86619, 0.453269, -0.0387036, -0.233258, -0.583315)
-top_level = true
-script = ExtResource("3_p812j")
-bone_name = "Tail.007"
-stiffness = 0.1
-gravity = Vector3(0, -0.01, 0)
-
-[node name="Jigglebone7" type="Node3D" parent="metarig/GeneralSkeleton" index="6"]
-transform = Transform3D(0.890129, 0.325166, -0.319273, 0.305396, 0.0943546, 0.947539, 0.338232, -0.940938, -0.0153166, 0.555133, -0.141608, 0.248147)
-top_level = true
-script = ExtResource("3_p812j")
-bone_name = "Tail.006"
-stiffness = 0.1
-damping = 0.3
-gravity = Vector3(0, 0, 0)
-
-[node name="Jigglebone8" type="Node3D" parent="metarig/GeneralSkeleton" index="7"]
-transform = Transform3D(0.627544, 0.31782, -0.710758, 0.693627, 0.186441, 0.695788, 0.35365, -0.92964, -0.103449, 1.02328, 0.16118, -0.0272359)
-top_level = true
-script = ExtResource("3_p812j")
-bone_name = "Tail.005"
-stiffness = 0.1
-damping = 0.3
-gravity = Vector3(0, 0, 0)
-
-[node name="Cane_LowPoly" parent="metarig/GeneralSkeleton" index="8"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00541937, -1.00215, 0.0017447)
+[node name="Cane_LowPoly" parent="metarig/GeneralSkeleton" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00541937, -0.00215471, 0.0017447)
 visible = false
 bone_idx = 6
 
-[node name="TeethUpper_LowPoly" parent="metarig/GeneralSkeleton" index="9"]
-transform = Transform3D(0.981567, -0.037035, -0.187477, 0.0688775, 0.983664, 0.1663, 0.178256, -0.17615, 0.968084, -0.0650815, -0.462958, 0.360467)
+[node name="TeethUpper_LowPoly" parent="metarig/GeneralSkeleton" index="3"]
+transform = Transform3D(0.992053, -0.0982517, -0.0785576, 0.0149624, 0.712207, -0.701804, 0.124904, 0.695055, 0.70802, -0.0593215, 0.786347, 0.171464)
 bone_idx = 20
 
-[node name="TeethLower_LowPoly" parent="metarig/GeneralSkeleton" index="10"]
-transform = Transform3D(-0.981567, -0.187477, -0.037035, -0.0688775, 0.1663, 0.983664, -0.178256, 0.968084, -0.17615, -0.0636218, -0.486143, 0.361388)
+[node name="TeethLower_LowPoly" parent="metarig/GeneralSkeleton" index="4"]
+transform = Transform3D(-0.992053, -0.0785576, -0.0982517, -0.0149624, -0.701804, 0.712207, -0.124904, 0.70802, 0.695055, -0.0568052, 0.772224, 0.15317)
 bone_idx = 23
 
-[node name="EyeHLightBot_L" parent="metarig/GeneralSkeleton" index="11"]
-transform = Transform3D(0.981567, -0.187477, 0.037035, 0.0688775, 0.1663, -0.983664, 0.178256, 0.968084, 0.17615, -0.0650443, -0.460242, 0.359213)
+[node name="EyeHLightBot_L" parent="metarig/GeneralSkeleton" index="5"]
+transform = Transform3D(0.992053, -0.0785576, 0.0982517, 0.0149624, -0.701804, -0.712207, 0.124904, 0.70802, -0.695055, -0.0595452, 0.788947, 0.172929)
 bone_idx = 32
 
-[node name="EyeHLightTop_L" parent="metarig/GeneralSkeleton" index="12"]
-transform = Transform3D(0.981567, -0.187477, 0.037035, 0.0688775, 0.1663, -0.983664, 0.178256, 0.968084, 0.17615, -0.0650443, -0.460242, 0.359213)
+[node name="EyeHLightTop_L" parent="metarig/GeneralSkeleton" index="6"]
+transform = Transform3D(0.992053, -0.0785576, 0.0982517, 0.0149624, -0.701804, -0.712207, 0.124904, 0.70802, -0.695055, -0.0595452, 0.788947, 0.172929)
 bone_idx = 34
 
-[node name="Iris_L" parent="metarig/GeneralSkeleton" index="13"]
-transform = Transform3D(0.981567, -0.187477, 0.037035, 0.0688775, 0.1663, -0.983664, 0.178256, 0.968084, 0.17615, -0.0650444, -0.460242, 0.359213)
+[node name="Iris_L" parent="metarig/GeneralSkeleton" index="7"]
+transform = Transform3D(0.992053, -0.0785576, 0.0982517, 0.0149624, -0.701804, -0.712207, 0.124904, 0.70802, -0.695055, -0.0595452, 0.788947, 0.17293)
 bone_idx = 35
 
-[node name="Pupil_L" parent="metarig/GeneralSkeleton" index="14"]
-transform = Transform3D(0.981567, -0.187477, 0.037035, 0.0688775, 0.1663, -0.983664, 0.178256, 0.968084, 0.17615, -0.0650444, -0.460242, 0.359213)
+[node name="Pupil_L" parent="metarig/GeneralSkeleton" index="8"]
+transform = Transform3D(0.992053, -0.0785576, 0.0982517, 0.0149624, -0.701804, -0.712207, 0.124904, 0.70802, -0.695055, -0.0595452, 0.788947, 0.17293)
 bone_idx = 36
 
-[node name="EyeHLightBot_R" parent="metarig/GeneralSkeleton" index="15"]
-transform = Transform3D(0.981567, -0.187477, 0.037035, 0.0688775, 0.1663, -0.983664, 0.178256, 0.968084, 0.17615, -0.0650443, -0.460242, 0.359213)
+[node name="EyeHLightBot_R" parent="metarig/GeneralSkeleton" index="9"]
+transform = Transform3D(0.992053, -0.0785576, 0.0982517, 0.0149624, -0.701804, -0.712207, 0.124904, 0.70802, -0.695055, -0.0595452, 0.788947, 0.172929)
 bone_idx = 39
 
-[node name="EyeHLightTop_R" parent="metarig/GeneralSkeleton" index="16"]
-transform = Transform3D(0.981567, -0.187477, 0.037035, 0.0688775, 0.1663, -0.983664, 0.178256, 0.968084, 0.17615, -0.0650444, -0.460242, 0.359213)
+[node name="EyeHLightTop_R" parent="metarig/GeneralSkeleton" index="10"]
+transform = Transform3D(0.992053, -0.0785576, 0.0982517, 0.0149624, -0.701804, -0.712207, 0.124904, 0.70802, -0.695055, -0.0595452, 0.788947, 0.172929)
 bone_idx = 41
 
-[node name="Iris_R" parent="metarig/GeneralSkeleton" index="17"]
-transform = Transform3D(0.981567, -0.187477, 0.037035, 0.0688775, 0.1663, -0.983664, 0.178256, 0.968084, 0.17615, -0.0650443, -0.460242, 0.359213)
+[node name="Iris_R" parent="metarig/GeneralSkeleton" index="11"]
+transform = Transform3D(0.992053, -0.0785576, 0.0982517, 0.0149624, -0.701804, -0.712207, 0.124904, 0.70802, -0.695055, -0.0595451, 0.788947, 0.172929)
 bone_idx = 42
 
-[node name="Pupil_R" parent="metarig/GeneralSkeleton" index="18"]
-transform = Transform3D(0.981567, -0.187477, 0.037035, 0.0688775, 0.1663, -0.983664, 0.178256, 0.968084, 0.17615, -0.0650443, -0.460242, 0.359213)
+[node name="Pupil_R" parent="metarig/GeneralSkeleton" index="12"]
+transform = Transform3D(0.992053, -0.0785576, 0.0982517, 0.0149624, -0.701804, -0.712207, 0.124904, 0.70802, -0.695055, -0.0595451, 0.788947, 0.172929)
 bone_idx = 43
 
-[node name="Hat_LowPoly" parent="metarig/GeneralSkeleton" index="19"]
-transform = Transform3D(0.981567, -0.037035, -0.187477, 0.0688775, 0.983664, 0.1663, 0.178256, -0.17615, 0.968084, -0.0666871, -1.71824, 0.854341)
+[node name="Hat_LowPoly" parent="metarig/GeneralSkeleton" index="13"]
+transform = Transform3D(0.992053, -0.0982517, -0.0785576, 0.0149624, 0.712207, -0.701804, 0.124904, 0.695055, 0.70802, 0.0493553, -0.344236, -0.556275)
 bone_idx = 45
 
-[node name="EyeWhite_lowPoly" parent="metarig/GeneralSkeleton" index="20"]
-transform = Transform3D(0.981567, -0.037035, -0.187477, 0.0688775, 0.983664, 0.1663, 0.178256, -0.17615, 0.968084, -0.0650443, -0.460242, 0.359213)
+[node name="EyeWhite_lowPoly" parent="metarig/GeneralSkeleton" index="14"]
+transform = Transform3D(0.992053, -0.0982517, -0.0785576, 0.0149624, 0.712207, -0.701804, 0.124904, 0.695055, 0.70802, -0.0595452, 0.788947, 0.172929)
 bone_idx = 71
 
 [node name="EyeWhite_lowPoly" parent="metarig/GeneralSkeleton/EyeWhite_lowPoly" index="0"]
 transform = Transform3D(0.084569, -1.86265e-09, 0, -3.72529e-09, 0.081723, 0.0217545, 0, -0.0217545, 0.081723, -1.49012e-08, 0, 0)
 
-[node name="Belt_LowPoly" parent="metarig/GeneralSkeleton" index="21"]
-transform = Transform3D(0.984637, -0.0240375, -0.172944, -0.0562303, 0.894058, -0.444407, 0.165304, 0.447305, 0.878972, -0.0178529, -0.3359, 0.208037)
+[node name="Belt_LowPoly" parent="metarig/GeneralSkeleton" index="15"]
+transform = Transform3D(0.996952, -0.0698696, -0.0346705, 0.0729878, 0.992428, 0.0987868, 0.0275057, -0.101016, 0.994504, -0.0300086, 0.942415, -0.0142895)
 bone_idx = 121
 
-[node name="BoneAttachment3D" type="BoneAttachment3D" parent="metarig/GeneralSkeleton" index="29"]
-transform = Transform3D(0.123649, -0.234185, 0.964295, 0.250439, -0.93292, -0.258692, 0.9602, 0.273479, -0.0567053, -0.628128, -0.562938, 0.292641)
+[node name="BoneAttachment3D" type="BoneAttachment3D" parent="metarig/GeneralSkeleton" index="23"]
+transform = Transform3D(0.669915, 0.12354, 0.732084, 0.459382, -0.843597, -0.278022, 0.583242, 0.522547, -0.6219, -0.555114, 0.652891, 0.501961)
 bone_name = "f_middle.01.R"
 bone_idx = 107
 
 [node name="SlyCooper_Cane" parent="metarig/GeneralSkeleton/BoneAttachment3D" index="0" instance=ExtResource("2_g52sn")]
 transform = Transform3D(-0.231017, 0.915371, -0.329747, 0.75774, 0.381858, 0.529167, 0.610295, -0.127616, -0.781827, -0.071712, -0.0290478, 0.033608)
 
-[node name="SkeletonIK3D" type="SkeletonIK3D" parent="metarig/GeneralSkeleton" index="30"]
+[node name="SkeletonIK3D" type="SkeletonIK3D" parent="metarig/GeneralSkeleton" index="24"]
 process_priority = 1
 root_bone = &"Tail.001"
 tip_bone = &"Tail.008"
 target_node = NodePath("../../../Ball Tail Root/Ball Tail 1/Node3D/cnt")
 
-[node name="Tail 2 IK" type="SkeletonIK3D" parent="metarig/GeneralSkeleton" index="31"]
+[node name="Tail 2 IK" type="SkeletonIK3D" parent="metarig/GeneralSkeleton" index="25"]
 process_priority = 1
 root_bone = &"Tail.008"
 tip_bone = &"Tail.007"
-interpolation = 0.5
 target_node = NodePath("../../../Ball Tail Root/Ball Tail 8/Node3D/cnt")
 
-[node name="Tail 3 IK" type="SkeletonIK3D" parent="metarig/GeneralSkeleton" index="32"]
+[node name="Tail 3 IK" type="SkeletonIK3D" parent="metarig/GeneralSkeleton" index="26"]
 process_priority = 1
 root_bone = &"Tail.007"
 tip_bone = &"Tail.006"
-interpolation = 0.6
 target_node = NodePath("../../../Ball Tail Root/Ball Tail 7/Node3D/cnt")
 
-[node name="Tail 4 IK" type="SkeletonIK3D" parent="metarig/GeneralSkeleton" index="33"]
+[node name="Tail 4 IK" type="SkeletonIK3D" parent="metarig/GeneralSkeleton" index="27"]
 process_priority = 1
 root_bone = &"Tail.006"
 tip_bone = &"Tail.005"
-interpolation = 0.7
 target_node = NodePath("../../../Ball Tail Root/Ball Tail 6/Node3D/cnt")
 
-[node name="Tail 5 IK" type="SkeletonIK3D" parent="metarig/GeneralSkeleton" index="34"]
+[node name="Tail 5 IK" type="SkeletonIK3D" parent="metarig/GeneralSkeleton" index="28"]
 process_priority = 1
 root_bone = &"Tail.005"
 tip_bone = &"Tail.004"
 target_node = NodePath("../../../Ball Tail Root/Ball Tail 4/Node3D/cnt")
 
-[node name="Tail 6 IK" type="SkeletonIK3D" parent="metarig/GeneralSkeleton" index="35"]
+[node name="Tail 6 IK" type="SkeletonIK3D" parent="metarig/GeneralSkeleton" index="29"]
 process_priority = 1
 root_bone = &"Tail.004"
 tip_bone = &"Tail.003"
 target_node = NodePath("../../../Ball Tail Root/Ball Tail 3/Node3D/cnt")
 
-[node name="Tail 7 IK" type="SkeletonIK3D" parent="metarig/GeneralSkeleton" index="36"]
+[node name="Tail 7 IK" type="SkeletonIK3D" parent="metarig/GeneralSkeleton" index="30"]
 process_priority = 1
 root_bone = &"Tail.003"
 tip_bone = &"Tail.002"
 target_node = NodePath("../../../Ball Tail Root/Ball Tail 2/Node3D/cnt")
 
-[node name="BoneAttachment3D2" type="BoneAttachment3D" parent="metarig/GeneralSkeleton" index="37"]
-transform = Transform3D(0.984637, -0.0240375, -0.172944, -0.0562303, 0.894058, -0.444407, 0.165304, 0.447305, 0.878972, 0.00238665, -0.706435, -0.0385631)
+[node name="BoneAttachment3D2" type="BoneAttachment3D" parent="metarig/GeneralSkeleton" index="31"]
+transform = Transform3D(0.994852, -0.0952407, 0.0345849, 0.0396765, 0.0520964, -0.997854, 0.0932345, 0.99409, 0.0556071, 0.00280602, 0.498199, -0.0249136)
 bone_name = "Tail.001"
 bone_idx = 122
 
@@ -18308,17 +18228,17 @@ anim_player = NodePath("../AnimationPlayer")
 active = true
 parameters/Add2/add_amount = 1.0
 parameters/Air_Blend/blend_amount = 0.18
-parameters/Jump_State/current_state = "S_Jump"
+parameters/Jump_State/current_state = "Floor_Jump"
 parameters/Jump_State/transition_request = ""
-parameters/Jump_State/current_index = 3
+parameters/Jump_State/current_index = 0
 parameters/Jump_or_Move/active = false
 parameters/Jump_or_Move/internal_active = false
 parameters/Jump_or_Move/request = 0
-parameters/Move_State/current_state = "floor"
+parameters/Move_State/current_state = "air"
 parameters/Move_State/transition_request = ""
-parameters/Move_State/current_index = 0
+parameters/Move_State/current_index = 1
 parameters/TimeScale/scale = 1.0
-parameters/floor_blend/blend_position = 1.0
+parameters/floor_blend/blend_position = 0.0
 parameters/ledge_blend/blend_position = -0.000839651
 parameters/pole_blend/blend_position = -0.983207
 parameters/rope_blend/blend_position = -0.000801921

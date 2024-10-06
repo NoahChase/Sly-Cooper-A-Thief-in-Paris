@@ -6,7 +6,7 @@ extends CharacterBody3D
 
 
 const SPEED = 4
-var JUMP_VELOCITY = 7.75
+var JUMP_VELOCITY = 8
 const lerp_val = 0.15
 var air_accel = 0.0
 
@@ -26,6 +26,7 @@ var air_accel = 0.0
 @onready var to_target
 @onready var is_pickpocketing = false
 @onready var do_big_jump = false
+@onready var big_jump_mult = 2
 
 @onready var feet = $Feet
 @onready var head = $Head
@@ -230,7 +231,7 @@ func _physics_process(delta):
 		can_right_stick = false
 		$"CameraOrigin/State Reader".text = str("[center]AIR")
 		sly_anim_tree.set("parameters/Move_State/transition_request", air_anim)
-		SPEED_MULT = 1
+		SPEED_MULT = 1.1
 		if coyote_timer.time_left >= 0.3:
 			#could start a 1 second timer and say air_accel = timer value...
 			air_accel = 0.8
@@ -245,11 +246,11 @@ func _physics_process(delta):
 		
 		# When using the paraglider
 		if Input.is_action_pressed("SHIFT"):
-			if velocity.y >= -2:
+			if velocity.y >= -2.25:
 				velocity.y -= gravity * delta * 2
-			if velocity.y < -2:
+			if velocity.y < -2.25:
 				$sly_container/paraglider.visible = true
-				velocity.y += 0.1
+				velocity.y += 0.25
 				SPEED_MULT = 1.2
 		else:
 			velocity.y -= gravity * delta * 2
@@ -394,12 +395,12 @@ func jump():
 	platform_type = Platform_Type.NULL
 	$jump_sound.pitch_scale = randf_range(0.7, 1)
 	if do_big_jump == true:
-		velocity.y = JUMP_VELOCITY * 2
+		velocity.y = JUMP_VELOCITY * big_jump_mult
 		sly_anim_tree.set("parameters/Jump_State/transition_request", "Floor_Jump")
 		sly_anim_tree.set("parameters/Jump_or_Move/request", 1)
 	elif double_jump:
 		coyote_timer.start(0.3)
-		$Camtime.start(1.25)
+		$Camtime.start(1)
 		$jump_sound.volume_db = -35
 		$jump_sound.play()
 		if state_now == State.FLOOR or state_now == State.ON_PLATFORM:
@@ -432,7 +433,7 @@ func high_jump():
 	if state_now == State.FLOOR or state_now == State.TWEENING or state_now == State.ON_PLATFORM:
 		if Global.power_ups >= 1:
 			coyote_timer.start(0.3)
-			$Camtime.start(1.25)
+			$Camtime.start(1)
 			$jump_sound.volume_db = -35
 			$jump_sound.play()
 			velocity.y = JUMP_VELOCITY * 1.645
@@ -707,8 +708,25 @@ func camera_smooth_follow(delta):
 	$Basis_Offset.global_transform.origin.z = lerp($Basis_Offset.global_transform.origin.z, tform.z, cam_timer / 15)
 	camera_parent.position.x = $Basis_Offset.global_transform.origin.x
 	camera_parent.position.z = $Basis_Offset.global_transform.origin.z
-	if state_now != State.AIR or cam_y_follow == true:
-		camera_parent.position.y = lerp(camera_parent.global_transform.origin.y, global_transform.origin.y + 1.8, cam_timer / 5)
+
+#	if not $"CollisionShape3D/Cam Y Ray".is_colliding() or state_now != State.AIR or $sly_container/paraglider.visible == true:
+#		if camtime.time_left <= 0:
+#			camera_parent.position.y = lerp(camera_parent.global_transform.origin.y, global_transform.origin.y + 1.8, cam_timer / 5)
+#	elif $"CollisionShape3D/Cam Y Ray".is_colliding() and state_now == State.AIR and velocity.y < -9:
+#		if camtime.time_left <= 0:
+#			camera_parent.position.y = lerp(camera_parent.global_transform.origin.y, global_transform.origin.y + 1.8, cam_timer / 8)
+
+	if state_now == State.AIR:
+		if $sly_container/paraglider.visible == true:
+			camera_parent.position.y = lerp(camera_parent.global_transform.origin.y, global_transform.origin.y + 1.8, cam_timer / 1.5)
+		
+		if $"CollisionShape3D/Cam Y Ray".is_colliding():
+			if camtime.time_left <= 0:
+				camera_parent.position.y = lerp(camera_parent.global_transform.origin.y, global_transform.origin.y + 1.8, cam_timer / 1.5)
+		else:
+			if camtime.time_left <= 0 or velocity.y < -9:
+				camera_parent.position.y = lerp(camera_parent.global_transform.origin.y, global_transform.origin.y + 1.8, cam_timer / 1.5)
 	else:
-		if can_wall == true or camtime.time_left <= 0:
-			camera_parent.position.y = lerp(camera_parent.global_transform.origin.y, global_transform.origin.y + 1.8, cam_timer / 2)
+		camera_parent.position.y = lerp(camera_parent.global_transform.origin.y, global_transform.origin.y + 1.8, cam_timer / 4)
+	if cam_y_follow:
+		camera_parent.position.y = lerp(camera_parent.global_transform.origin.y, global_transform.origin.y + 1.8, cam_timer / 1.5)
